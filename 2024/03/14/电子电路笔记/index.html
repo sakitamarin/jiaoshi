@@ -187,6 +187,7 @@
 <li><input disabled type="checkbox"> 公式：<strong>G&#x3D;1&#x2F;R，U&#x3D;1&#x2F;G，I&#x3D;GU</strong></li>
 <li><input disabled type="checkbox"> 单位：<strong>西门子（S）</strong></li>
 <li><input disabled type="checkbox"> 电阻元件可以用电导来表征。</li>
+<li><input disabled type="checkbox"> G→0，R→∞</li>
 </ul>
 <h3><span id="2基尔霍夫定律">2.基尔霍夫定律</span></h3><h4><span id="1术语">（1）术语</span></h4><ul>
 <li><input disabled type="checkbox"> 节点：两条或两条以上的连接点。</li>
@@ -252,6 +253,34 @@
 <li><input disabled type="checkbox"> 电感中电流不能发生跃变。</li>
 </ul>
 <p><img src="/2024/03/14/%E7%94%B5%E5%AD%90%E7%94%B5%E8%B7%AF%E7%AC%94%E8%AE%B0/69732c59464c97ef9824e0b9011a78f.png" alt="69732c59464c97ef9824e0b9011a78f"></p>
+<h4><span id="5控能元件受控电源">（5）控能元件——受控电源</span></h4><p>①VCVS：电压控制电压源</p>
+<p>②CCVS：电流控制电压源</p>
+<p>③VCCS：电压控制电流源</p>
+<p>④CCCS：电流控制电流源</p>
+<p><img src="/2024/03/14/%E7%94%B5%E5%AD%90%E7%94%B5%E8%B7%AF%E7%AC%94%E8%AE%B0/14e0a9a236d237b6ec38351e0eded56.png" alt="14e0a9a236d237b6ec38351e0eded56"></p>
+<p>理想：对<strong>受控电压源</strong>来说，其输出电阻为0；对<strong>受控电流源</strong>来说，其输出电阻为无限大。对<strong>电压控制的受控源</strong>来说，其输入电阻为无限大；对<strong>电流控制的受控源</strong>来说，其输入电阻为0。</p>
+<p><u>在电路分析时，受控源可看作独立电源，然后进行电源的等效变换。</u></p>
+<p><img src="/2024/03/14/%E7%94%B5%E5%AD%90%E7%94%B5%E8%B7%AF%E7%AC%94%E8%AE%B0/bcc8038ff63ca6cb7d0fee91f5653a7.png" alt="bcc8038ff63ca6cb7d0fee91f5653a7"></p>
+<h2><span id="电阻电路的一般分析方法">电阻电路的一般分析方法</span></h2><h3><span id="等效电路分析法">等效电路分析法</span></h3><h4><span id="1电源模型的等效互换">1.电源模型的等效互换</span></h4><p>电源等效互换的依据是电源的外特性相同。</p>
+<p><img src="/2024/03/14/%E7%94%B5%E5%AD%90%E7%94%B5%E8%B7%AF%E7%AC%94%E8%AE%B0/132db370bc2f286ff83b54d52a9a3b2.png" alt="132db370bc2f286ff83b54d52a9a3b2"></p>
+<p>（1）<strong>等效电路</strong>：两个电路具有完全相同的“对外连接端”，两者分别和任意其他的电路成分构成完整电路，如果电路的其它部分工作完全一致，则这两个电路互为<strong>等效电路</strong>。</p>
+<p>（2）电路外特性：电路外接端上的电压与电流之间的关系。每个元件可视为一个电路部分，它的特性即是<strong>外特性</strong>。</p>
+<p>电路中的一部分用其等效电路替换后，电路其它部分的工作情况保持不变；等效只能适合用于外部，对于互相等效的两个电路内部工作一般是不等效的。</p>
+<h4><span id="2电阻的串联和并联">2.电阻的串联和并联</span></h4><p>（1）串联</p>
+<ul>
+<li><strong>“电阻串联”等效为“单个电阻元件”</strong>；</li>
+<li>两个电阻串联的等效条件：<strong>R &#x3D; R1 + R2</strong>；</li>
+</ul>
+<p><img src="/2024/03/14/%E7%94%B5%E5%AD%90%E7%94%B5%E8%B7%AF%E7%AC%94%E8%AE%B0/59e11257ee94fbad7830734dc0360eb.png" alt="59e11257ee94fbad7830734dc0360eb"></p>
+<p>（2）并联</p>
+<ul>
+<li><strong>“电阻并联”也等效为“单个电阻元件”</strong>；</li>
+<li>两个电阻并联的等效条件： <strong>G &#x3D; G1 + G2</strong> 或 <strong>R &#x3D; R1 * R2 &#x2F; R1 + R2</strong></li>
+</ul>
+<p><img src="/2024/03/14/%E7%94%B5%E5%AD%90%E7%94%B5%E8%B7%AF%E7%AC%94%E8%AE%B0/961340a8100133f28d58f7f3c92b046.png" alt="961340a8100133f28d58f7f3c92b046"></p>
+<p>3.电阻的混联及Y-Δ等效变换</p>
+<p><img src="/2024/03/14/%E7%94%B5%E5%AD%90%E7%94%B5%E8%B7%AF%E7%AC%94%E8%AE%B0/4444eafb8d5297a15e32c3fe4f04a1d.png" alt="4444eafb8d5297a15e32c3fe4f04a1d"></p>
+<p><img src="/2024/03/14/%E7%94%B5%E5%AD%90%E7%94%B5%E8%B7%AF%E7%AC%94%E8%AE%B0/7c514345062324cc216b14a44f06b06.png" alt="7c514345062324cc216b14a44f06b06"></p>
 
 </div> 
 
