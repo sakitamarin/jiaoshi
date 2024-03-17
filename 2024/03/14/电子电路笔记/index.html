@@ -152,6 +152,7 @@
 <li><input disabled type="checkbox"> <strong>电压</strong>：电路中两点之间的电位差。(规定电位下降的方向为电压的真实方向)</li>
 <li><input disabled type="checkbox"> <strong>电位</strong>：描述电路中电位能分布的物理量。如果正电荷由a点转移到b点时获得能量，则a点为低电位（负极），b点为高电位（正极）。</li>
 <li><input disabled type="checkbox"> <strong>电压降</strong>：电压Uab表示单位正电荷从a点移动到b点所失去的电位能。</li>
+<li><input disabled type="checkbox"> <strong>参考点</strong>：又叫“零电位点”，此处的电压为0，用<strong>⊥</strong>表示。</li>
 <li><input disabled type="checkbox"> 符号：U</li>
 <li><input disabled type="checkbox"> 单位：<strong>伏特（V）</strong></li>
 </ul>
@@ -266,13 +267,13 @@
 <p>（1）<strong>等效电路</strong>：两个电路具有完全相同的“对外连接端”，两者分别和任意其他的电路成分构成完整电路，如果电路的其它部分工作完全一致，则这两个电路互为<strong>等效电路</strong>。</p>
 <p>（2）电路外特性：电路外接端上的电压与电流之间的关系。每个元件可视为一个电路部分，它的特性即是<strong>外特性</strong>。</p>
 <p>电路中的一部分用其等效电路替换后，电路其它部分的工作情况保持不变；等效只能适合用于外部，对于互相等效的两个电路内部工作一般是不等效的。</p>
-<h4><span id="2电阻的串联和并联">2.电阻的串联和并联</span></h4><p>（1）串联</p>
+<h4><span id="2电阻的串联和并联">2.电阻的串联和并联</span></h4><p>（1）<strong>串联</strong></p>
 <ul>
 <li><strong>“电阻串联”等效为“单个电阻元件”</strong>；</li>
 <li>两个电阻串联的等效条件：<strong>R &#x3D; R1 + R2</strong>；</li>
 </ul>
 <p><img src="/2024/03/14/%E7%94%B5%E5%AD%90%E7%94%B5%E8%B7%AF%E7%AC%94%E8%AE%B0/59e11257ee94fbad7830734dc0360eb.png" alt="59e11257ee94fbad7830734dc0360eb"></p>
-<p>（2）并联</p>
+<p>（2）<strong>并联</strong></p>
 <ul>
 <li><strong>“电阻并联”也等效为“单个电阻元件”</strong>；</li>
 <li>两个电阻并联的等效条件： <strong>G &#x3D; G1 + G2</strong> 或 <strong>R &#x3D; R1 * R2 &#x2F; R1 + R2</strong></li>
@@ -281,6 +282,21 @@
 <p>3.电阻的混联及Y-Δ等效变换</p>
 <p><img src="/2024/03/14/%E7%94%B5%E5%AD%90%E7%94%B5%E8%B7%AF%E7%AC%94%E8%AE%B0/4444eafb8d5297a15e32c3fe4f04a1d.png" alt="4444eafb8d5297a15e32c3fe4f04a1d"></p>
 <p><img src="/2024/03/14/%E7%94%B5%E5%AD%90%E7%94%B5%E8%B7%AF%E7%AC%94%E8%AE%B0/7c514345062324cc216b14a44f06b06.png" alt="7c514345062324cc216b14a44f06b06"></p>
+<h3><span id="网孔分析法例题p39">网孔分析法（例题p39)</span></h3><ul>
+<li>对支路电流法所列的方程中做如下处理，可得到网孔方程：<br>1）对每个网孔按顺时针方向设定一个网孔电流；<br>2）将各支路电流表示成网孔电流的叠加。</li>
+<li>将含源支路转化为电压源U与电阻R串联的形式。</li>
+<li>自电阻总是正的，而互电阻既可为正也可为负，取决于流过互电阻的两个网孔电流是否一致，一致时取正。</li>
+</ul>
+<p><img src="/2024/03/14/%E7%94%B5%E5%AD%90%E7%94%B5%E8%B7%AF%E7%AC%94%E8%AE%B0/e1ca0f90aaf322d807af84bad6afa0f.png" alt="e1ca0f90aaf322d807af84bad6afa0f"></p>
+<h3><span id="节点分析法">节点分析法</span></h3><ul>
+<li>选取参考节点如4，则节点4的电位为0，其他3个节点分别对参考节点的电位是U1，U2，U3，即为节点电位。</li>
+<li>将含源支路转化为电流源I与电导G并联的形式。</li>
+</ul>
+<p><img src="/2024/03/14/%E7%94%B5%E5%AD%90%E7%94%B5%E8%B7%AF%E7%AC%94%E8%AE%B0/e11d4d54a9561856fb79a5ce741c6f9.png" alt="e11d4d54a9561856fb79a5ce741c6f9"></p>
+<p><strong>总结：</strong>①网络的独立节点数少于网孔数，用节点分析法。</p>
+<p>②已知的电源是电流源，用节点分析法；电源是电压源，用网孔分析法。</p>
+<p>③网孔分析法只适合平面网络。</p>
+<h3><span id="弥尔曼定理">弥尔曼定理</span></h3><p><img src="/2024/03/14/%E7%94%B5%E5%AD%90%E7%94%B5%E8%B7%AF%E7%AC%94%E8%AE%B0/55339e45bbf28eac69264f6abd4248b.png" alt="55339e45bbf28eac69264f6abd4248b"></p>
 
 </div> 
 
