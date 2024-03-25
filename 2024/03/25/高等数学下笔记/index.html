@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="John Doe">
+
+
+
+
+
+
+
+<title>高等数学下笔记 | Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/menu.js"></script>
+    
+
+
+
+
+
+
+
+    <script src='https://unpkg.com/valine@1.4.16/dist/Valine.min.js'></script>
+
+
+
+
+  <!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.1.1"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            首页
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">Home</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">Archive</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/categories/gallery/">Gallery</a>
+              </li> 
+                   
+          
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+                
+                    <span class="post-tag">
+                        <a href="/tags/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/">
+                            高等数学
+                        </a>
+                    </span>    
+                           
+            
+        </div>
+        <div class="post-title">
+            
+            
+                高等数学下笔记
+            
+            
+        </div>
+        <span class="post-date">
+            Mar 25, 2024
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <!-- toc -->
+
+<ul>
+<li><a href="#8-%E5%90%91%E9%87%8F%E4%BB%A3%E6%95%B0%E4%B8%8E%E7%A9%BA%E9%97%B4%E8%A7%A3%E6%9E%90%E5%87%A0%E4%BD%95">8 - 向量代数与空间解析几何</a></li>
+</ul>
+<!-- tocstop -->
+
+<p>[TOC]</p>
+<h3><span id="8-向量代数与空间解析几何">8 - 向量代数与空间解析几何</span></h3><h4><span id="8-1-向量及其线性运算">8-1 向量及其线性运算</span></h4><p>1.由三角形两边之和大于第三边，有：|<strong>a</strong> + <strong>b</strong>|&lt;&#x3D;|<strong>a</strong>|+|<strong>b</strong>|; |<strong>a</strong> - <strong>b</strong>|&lt;&#x3D;|<strong>a</strong>|+|<strong>b</strong>|</p>
+<p>2.数乘：|λ<strong>a</strong>| &#x3D; |λ||<strong>a</strong>|</p>
+<p>3.单位向量<strong>e</strong>&#x3D;<strong>a</strong>&#x2F;|<strong>a</strong>|</p>
+<p>4.<strong>a</strong>&#x2F;&#x2F;<strong>b</strong>等价于<strong>b</strong>&#x3D;λ<strong>a</strong>（<strong>a</strong>!&#x3D;0）</p>
+<h4><span id="8-2-空间直角坐标系">8-2 空间直角坐标系</span></h4><p><img src="/2024/03/25/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E4%B8%8B%E7%AC%94%E8%AE%B0/Users\孙雅欣\hexocode\source_posts\be8b438d8dab4f26425537c8e52ffa4.png" alt="be8b438d8dab4f26425537c8e52ffa4"></p>
+<p><img src="/2024/03/25/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E4%B8%8B%E7%AC%94%E8%AE%B0/Users\孙雅欣\hexocode\source_posts\ed720f4486e49cb4f94f47c876630bf.png" alt="ed720f4486e49cb4f94f47c876630bf"></p>
+<p>向量OF（x，y，z）是点O关于点F的向径，<u>求点F的坐标就是求向量OP的坐标</u></p>
+<p>①若点F在yoz面上，x&#x3D;0；</p>
+<p>②点F在zox面上，y&#x3D;0；点F在xoy面上，z&#x3D;0；</p>
+<p>③点F在x轴上，y&#x3D;z&#x3D;0；</p>
+<p>④点F在y轴上，z&#x3D;x&#x3D;0；点F在z轴上，x&#x3D;y&#x3D;0；</p>
+<p>⑤点F为原点，x&#x3D;y&#x3D;z&#x3D;0。</p>
+<h4><span id="8-3-向量的综合性质和运算">8-3 向量的综合性质和运算</span></h4><p><img src="/2024/03/25/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E4%B8%8B%E7%AC%94%E8%AE%B0/Users\孙雅欣\hexocode\source_posts\微信截图_20240326011004.png" alt="微信截图_20240326011004"></p>
+<h5><span id="题型"><strong>题型：</strong></span></h5><h5><span id="1向量模的坐标表达式">1.向量模的坐标表达式</span></h5><h5><span id="2两点距离公式">2.两点距离公式：</span></h5><p>求证三角形的类型（等腰、直角、等边）</p>
+<p>求已知向量的定向单位向量</p>
+<p>求与某几点等距离的点</p>
+<h5><span id="3方向角与方向余弦">3.方向角与方向余弦：</span></h5><p>已知角度求点的坐标</p>
+<p>已知向量求方向角、余弦和模</p>
+<h5><span id="4投影">4.投影</span></h5><p>已知向量求向量在某轴上的投影</p>
+<p>已知投影求向量</p>
+<h4><span id="8-4-数量积-向量积">8-4 数量积、向量积</span></h4><p><img src="/2024/03/25/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E4%B8%8B%E7%AC%94%E8%AE%B0/Users\孙雅欣\hexocode\source_posts\微信截图_20240326013200.png" alt="微信截图_20240326013200"></p>
+<h5><span id="题型"><strong>题型</strong>：</span></h5><p>1.用数量积公式求夹角、投影</p>
+<p>2.用向量积求三角形面积（用到正弦）</p>
+<p>3.用数量积、向量积定义证垂直或平行</p>
+<p>4.（多用）用向量积求平面方程</p>
+<h4><span id="8-5-平面及其方程">8-5 平面及其方程</span></h4><h5><span id="1平面的点法式方程">1.平面的点法式方程</span></h5><p><strong>A（x-x0）+B（y-y0）+C（z-z0）&#x3D;0</strong></p>
+<p>其中<strong>n</strong>&#x3D;（A,B,C），M0&#x3D;（x0，y0，z0）</p>
+<h5><span id="2平面的一般方程">2.平面的一般方程</span></h5><p><strong>Ax0 + By0 + Cz0 +D&#x3D;0</strong></p>
+<p><strong>n</strong>&#x3D;（A,B,C）</p>
+<p>①<strong>D&#x3D;0</strong>时，方程表示一个通过<strong>原点</strong>的平面</p>
+<p>②<strong>A&#x3D;0</strong>时，<strong>n</strong>垂直于x轴，方程表示一个平行于（或包含）<strong>x轴</strong>的平面；<strong>B&#x3D;0，C&#x3D;0</strong>同理</p>
+<p>③<strong>A&#x3D;B&#x3D;0</strong>，<strong>n</strong>同时垂直x轴和y轴，方程表示一个平行于（或重合）<strong>x0y面</strong>的平面；<strong>A&#x3D;C&#x3D;0,B&#x3D;C&#x3D;0</strong>同理</p>
+<h5><span id="3平面的截距式方程">3.平面的截距式方程</span></h5><p><strong>x&#x2F;a + y&#x2F;b + z&#x2F;c &#x3D; 1</strong></p>
+<p>a、b、c分别是平面在xyz轴上的截距</p>
+<h5><span id="4两平面夹角-点到平面距离">4.两平面夹角、点到平面距离</span></h5><p><strong>两平面互相垂直</strong>相当于<strong>A1A2 + B1B2 + C1C2 &#x3D; 0</strong></p>
+<p><strong>两平面互相平行或重合</strong>相当于<strong>A1&#x2F;A2 &#x3D; B1&#x2F;B2 &#x3D; C1&#x2F;C2</strong></p>
+<p><img src="/2024/03/25/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E4%B8%8B%E7%AC%94%E8%AE%B0/Users\孙雅欣\hexocode\source_posts\微信截图_20240326015143.png" alt="微信截图_20240326015143"></p>
+<h4><span id="8-6-空间直线及其方程">8-6 空间直线及其方程</span></h4><h5><span id="1直线的点向式方程对称式方程">1.直线的点向式方程（对称式方程）</span></h5><p>其中，<strong>s</strong>&#x3D;(m,n,p)，M0&#x3D;(x0,y0,z0)</p>
+<p>要素：①方向向量 ②点</p>
+<h5><span id="2直线的参数方程">2.直线的参数方程</span></h5><h5><span id="3直线的一般方程">3.直线的一般方程</span></h5><p>表现为两个平面的交线</p>
+<h5><span id="4线面角">4.线面角</span></h5><p>范围是【0，90°】</p>
+<p><img src="/2024/03/25/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E4%B8%8B%E7%AC%94%E8%AE%B0/Users\孙雅欣\hexocode\source_posts\微信截图_20240326015259.png" alt="微信截图_20240326015259"></p>
+<h5><span id="5线线角">5.线线角</span></h5><p>和面面角公式相同，用cos</p>
+<h5><span id="6性质">6.性质</span></h5><p><strong>两直线相互垂直（包括异面、相交）</strong>相当于 <strong>m1m2 + n1n2 + p1p2 &#x3D; 0</strong></p>
+<p><strong>两直线互相平行或重合</strong> 相当于 <strong>m1&#x2F;m2 &#x3D; n1&#x2F;n2 &#x3D; p1&#x2F;p2</strong></p>
+<p><strong>直线与平面平行或直线在平面上</strong> 相当于 <strong>Am + Bn + Cp &#x3D;0</strong></p>
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2024/03/24/%E7%94%A8%E9%93%BE%E8%A1%A8%E5%AE%9E%E7%8E%B0%E4%BA%A4%E9%9B%86%E5%92%8C%E5%B9%B6%E9%9B%86/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+    
+        <div id="vcomments"></div>
+        <script>
+            var META = ['nick', 'mail', 'link'];
+            var meta = 'nick,mail';
+            meta = meta.split(',').filter(item => {
+                return META.includes(item);
+            });
+            new Valine({
+                el: '#vcomments',
+                appId: 'f131VXTFNbI57QRvg5lJFtbq-MdYXbMMI',
+                appKey: 'd1GENolYcYpRMO2FbRRbarov',
+                lang: 'zh-CN',
+                placeholder: 'Say something',
+                avatar: 'mp',
+                meta: meta
+            })
+        </script>    
+     
+
+     
+    
+    
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    
+    
+
+  </body>
+</html>
