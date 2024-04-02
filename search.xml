@@ -229,6 +229,59 @@ return 0;
       </tags>
   </entry>
   <entry>
+    <title>正弦稳态电路分析</title>
+    <url>/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/</url>
+    <content><![CDATA[<h2><span id="正弦信号">正弦信号</span></h2><p>正弦稳态电路：在正弦电源作用下，电路达到稳定工作状态时的正弦稳态电路。</p>
+<p>正弦交流信号可以用sin函数表示，也可以用cos函数表示，本书采用sin函数。</p>
+<h3><span id="1正弦信号的三要素">1.正弦信号的三要素</span></h3><h4><span id="一个正弦信号由3个参数确定最大值-频率角频率和初相">一个正弦信号由3个参数确定：<strong>最大值、频率（角频率）和初相</strong></span></h4><p>（1）<strong>正弦交流信号的一般表达式</strong>：<strong>u(t) &#x3D; Um sin(ωt + θ)</strong></p>
+<p>（2）<strong>Um</strong>：<strong>幅值</strong>，表示正弦量所能达到的最大值；又叫峰值或振幅</p>
+<p>（3）**(ωt + θ)<strong>：</strong>相位**；θ称为相位角</p>
+<p>（4）<strong>ω</strong>：<strong>角频率</strong>，是正弦量在单位时间内变化的弧度数，单位<strong>rad&#x2F;s</strong></p>
+<p>（5）<strong>周期</strong>：周期T表示正弦量变化一周需要的时间，单位<strong>s</strong></p>
+<p>（6）<strong>公式</strong>：①<strong>T&#x3D;2π&#x2F;ω</strong></p>
+<p>​                      ②<strong>f&#x3D;1&#x2F;T</strong></p>
+<h3><span id="2正弦信号的相位差">2.正弦信号的相位差</span></h3><p>（1）<strong>定义</strong>：两个同频率正弦信号在任一时刻的相位之差称为相位差，实际上是初相之差。</p>
+<p>（2）<strong>符号表示</strong>：θ&#x3D;θᵢ - θᵤ</p>
+<p>（3）θ&gt;0，表示i(t)超前于u(t)，电流比电压先到达最大值或最小值；</p>
+<p>​          θ&lt;0，表示i(t)滞后于u(t)；</p>
+<p>​          θ&#x3D;0，则称i(t)与u(t)同相，二者同时到达最值；</p>
+<p>​          θ&#x3D;+-π，则称i(t)与u(t)反相，当i(t)达到最大值时，u(t)达到最小值，反之亦然。</p>
+<h3><span id="3正弦信号的有效值">3.正弦信号的有效值</span></h3><p>（1）<strong>定义</strong>：设两个阻值相同的电阻，分别通过周期电流和直流电流，在一个周期内，两个电阻消耗相同的能量，就称该直流电流值为周期电流的有效值。</p>
+<p>（2）<strong>总结</strong>：<u>正弦信号的振幅值等于有效值的√2倍。</u></p>
+<p>​                     Uₘ &#x3D; √2 U               Iₘ &#x3D; √2 I</p>
+<p>（3）<strong>公式表示</strong>：i(t)&#x3D;√2 I sin(ωt + θᵢ)</p>
+<p>​                             u(t)&#x3D;√2 U sin(ωt + θᵤ)</p>
+<h2><span id="正弦信号的相量表示">正弦信号的相量表示</span></h2><h3><span id="1复数a的表示">1.复数A的表示</span></h3><h4><span id="1代数型-指数型和极型">（1）代数型、指数型和极型</span></h4><ul>
+<li><input disabled type="checkbox"> <strong>代数型</strong>：A&#x3D;a1 + ja2</li>
+<li><input disabled type="checkbox"> <strong>指数型</strong>：A&#x3D;aeʲᶿ</li>
+<li><input disabled type="checkbox"> <strong>极型</strong>：a∠θ</li>
+</ul>
+<h4><span id="2指数型转换为代数型">（2）指数型转换为代数型</span></h4><ul>
+<li><input disabled type="checkbox"> <strong>欧拉公式</strong>：eʲᶿ &#x3D; cosθ + jsinθ</li>
+<li><input disabled type="checkbox"> 特别的，e^jπ&#x2F;2 &#x3D; cos(π&#x2F;2) + jsin(π&#x2F;2) &#x3D;j</li>
+</ul>
+<h4><span id="3代数型转换为指数型和极型">（3）代数型转换为指数型和极型</span></h4><ul>
+<li><p><input disabled type="checkbox"> 
+<strong>a &#x3D; (a₁² + a₂²)^1&#x2F;2</strong></p>
+</li>
+<li><p><input disabled type="checkbox"> 
+<strong>θ &#x3D; arctan (a₂&#x2F;a₁)</strong></p>
+</li>
+<li><p><input disabled type="checkbox"> 
+常用值：arctan1 &#x3D; π&#x2F;4</p>
+<p>​                arctan√3 &#x3D; π&#x2F;3</p>
+<p>​                arctan1&#x2F;√3 &#x3D; π&#x2F;6</p>
+</li>
+</ul>
+<img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/微信截图_20240402012354.png" alt="微信截图_20240402012354" style="zoom:80%;">
+
+<h4><span id="4计算">（4）计算</span></h4><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/微信截图_20240402012812.png" alt="微信截图_20240402012812" style="zoom:80%;">
+]]></content>
+      <tags>
+        <tag>电子电路基础</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>用链表实现交集和并集</title>
     <url>/2024/03/24/%E7%94%A8%E9%93%BE%E8%A1%A8%E5%AE%9E%E7%8E%B0%E4%BA%A4%E9%9B%86%E5%92%8C%E5%B9%B6%E9%9B%86/</url>
     <content><![CDATA[<!-- toc -->
@@ -484,58 +537,6 @@ return 0;
 ]]></content>
       <tags>
         <tag>数据结构笔记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>正弦稳态电路分析</title>
-    <url>/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/</url>
-    <content><![CDATA[<h2><span id="正弦信号">正弦信号</span></h2><p>正弦稳态电路：在正弦电源作用下，电路达到稳定工作状态时的正弦稳态电路。</p>
-<p>正弦交流信号可以用sin函数表示，也可以用cos函数表示，本书采用sin函数。</p>
-<h3><span id="1正弦信号的三要素">1.正弦信号的三要素</span></h3><h4><span id="一个正弦信号由3个参数确定最大值-频率角频率和初相">一个正弦信号由3个参数确定：<strong>最大值、频率（角频率）和初相</strong></span></h4><p>（1）<strong>正弦交流信号的一般表达式</strong>：<strong>u(t) &#x3D; Um sin(ωt + θ)</strong></p>
-<p>（2）<strong>Um</strong>：<strong>幅值</strong>，表示正弦量所能达到的最大值；又叫峰值或振幅</p>
-<p>（3）**(ωt + θ)<strong>：</strong>相位**；θ称为相位角</p>
-<p>（4）<strong>ω</strong>：<strong>角频率</strong>，是正弦量在单位时间内变化的弧度数，单位<strong>rad&#x2F;s</strong></p>
-<p>（5）<strong>周期</strong>：周期T表示正弦量变化一周需要的时间，单位<strong>s</strong></p>
-<p>（6）<strong>公式</strong>：①<strong>T&#x3D;2π&#x2F;ω</strong></p>
-<p>​                      ②<strong>f&#x3D;1&#x2F;T</strong></p>
-<h3><span id="2正弦信号的相位差">2.正弦信号的相位差</span></h3><p>（1）<strong>定义</strong>：两个同频率正弦信号在任一时刻的相位之差称为相位差，实际上是初相之差。</p>
-<p>（2）<strong>符号表示</strong>：θ&#x3D;θᵢ - θᵤ</p>
-<p>（3）θ&gt;0，表示i(t)超前于u(t)，电流比电压先到达最大值或最小值；</p>
-<p>​          θ&lt;0，表示i(t)滞后于u(t)；</p>
-<p>​          θ&#x3D;0，则称i(t)与u(t)同相，二者同时到达最值；</p>
-<p>​          θ&#x3D;+-π，则称i(t)与u(t)反相，当i(t)达到最大值时，u(t)达到最小值，反之亦然。</p>
-<h3><span id="3正弦信号的有效值">3.正弦信号的有效值</span></h3><p>（1）<strong>定义</strong>：设两个阻值相同的电阻，分别通过周期电流和直流电流，在一个周期内，两个电阻消耗相同的能量，就称该直流电流值为周期电流的有效值。</p>
-<p>（2）<strong>总结</strong>：<u>正弦信号的振幅值等于有效值的√2倍。</u></p>
-<p>​                     Uₘ &#x3D; √2 U               Iₘ &#x3D; √2 I</p>
-<p>（3）<strong>公式表示</strong>：i(t)&#x3D;√2 I sin(ωt + θᵢ)</p>
-<p>​                             u(t)&#x3D;√2 U sin(ωt + θᵤ)</p>
-<h2><span id="正弦信号的相量表示">正弦信号的相量表示</span></h2><h3><span id="1复数a的表示">1.复数A的表示</span></h3><h4><span id="1代数型-指数型和极型">（1）代数型、指数型和极型</span></h4><ul>
-<li><input disabled type="checkbox"> <strong>代数型</strong>：A&#x3D;a1 + ja2</li>
-<li><input disabled type="checkbox"> <strong>指数型</strong>：A&#x3D;aeʲᶿ</li>
-<li><input disabled type="checkbox"> <strong>极型</strong>：a∠θ</li>
-</ul>
-<h4><span id="2指数型转换为代数型">（2）指数型转换为代数型</span></h4><ul>
-<li><input disabled type="checkbox"> <strong>欧拉公式</strong>：eʲᶿ &#x3D; cosθ + jsinθ</li>
-<li><input disabled type="checkbox"> 特别的，e^jπ&#x2F;2 &#x3D; cos(π&#x2F;2) + jsin(π&#x2F;2) &#x3D;j</li>
-</ul>
-<h4><span id="3代数型转换为指数型和极型">（3）代数型转换为指数型和极型</span></h4><ul>
-<li><p><input disabled type="checkbox"> 
-<strong>a &#x3D; (a₁² + a₂²)^1&#x2F;2</strong></p>
-</li>
-<li><p><input disabled type="checkbox"> 
-<strong>θ &#x3D; arctan (a₂&#x2F;a₁)</strong></p>
-</li>
-<li><p><input disabled type="checkbox"> 
-常用值：arctan1 &#x3D; π&#x2F;4</p>
-<p>​                arctan√3 &#x3D; π&#x2F;3</p>
-<p>​                arctan1&#x2F;√3 &#x3D; π&#x2F;6</p>
-</li>
-</ul>
-<p><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/Users\孙雅欣\hexocode\source_posts\微信截图_20240402012354.png" alt="微信截图_20240402012354"></p>
-<h4><span id="4计算">（4）计算</span></h4><p><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/Users\孙雅欣\hexocode\source_posts\微信截图_20240402012812.png" alt="微信截图_20240402012812"></p>
-]]></content>
-      <tags>
-        <tag>电子电路基础</tag>
       </tags>
   </entry>
   <entry>
