@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Hello World</title>
+    <url>/2024/03/11/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2><span id="quick-start">Quick Start</span></h2><h3><span id="create-a-new-post">Create a new post</span></h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3><span id="run-server">Run server</span></h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3><span id="generate-static-files">Generate static files</span></h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3><span id="deploy-to-remote-sites">Deploy to remote sites</span></h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
     <title>stack容器基本知识</title>
     <url>/2024/04/03/stack%E5%AE%B9%E5%99%A8%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/</url>
     <content><![CDATA[<p>写作业的时候看到有人用stack容器做题，试了下效率起飞，二话不说记录一下XD</p>
@@ -105,6 +123,49 @@
 ]]></content>
       <tags>
         <tag>unity2d</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>上标、下标的字符显示</title>
+    <url>/2024/04/02/%E4%B8%8A%E6%A0%87%E3%80%81%E4%B8%8B%E6%A0%87%E7%9A%84%E5%AD%97%E7%AC%A6%E6%98%BE%E7%A4%BA/</url>
+    <content><![CDATA[<h3><span id></span></h3><h3><span id="一-上标">一、上标</span></h3><h4><span id="1数字">1.数字</span></h4><p>¹²³⁴⁵⁶⁷⁸⁹⁰⁺⁻⁼˂˃⁽⁾˙*′˙ⁿº</p>
+<h4><span id="2字母">2.字母</span></h4><p>ᵃᵇᶜᵈᵉᶠᵍʰⁱʲᵏˡᵐⁿᵒᵖʳˢᵗᵘᵛʷˣʸᶻ</p>
+<p>ᴬᴮᒼᴰᴱᶠᴳᴴᴵᴶᴷᴸᴹᴺᴼᴾᴼ̴ᴿˢᵀᵁⱽᵂˣᵞᙆ</p>
+<h4><span id="3其他">3.其他</span></h4><p>ᵃ ᵇ ᶜ ᵈ ᵉ ᵍ ʰ ⁱ ʲ ᵏ ˡ ᵐ ⁿ ᵒ ᵖ ᵒ⃒ ʳ ˢ ᵗ ᵘ ᵛ ʷ ˣ ʸ ᙆ ᴬ ᴮ ᒼ ᴰ ᴱ ᴳ ᴴ ᴵ ᴶ ᴷ ᴸ ᴹ ᴺ ᴼ ᴾ ᴼ̴ ᴿ ˢ ᵀ ᵁ ᵂ ˣ ᵞ ᙆ ꝰ ˀ ˁ ˤ ꟸ ꭜ ʱ ꭝ ꭞ ʴ ʵ ʶ ꭟ ˠ ꟹ ᴭ ᴯ ᴲ ᴻ ᴽ ᵄ ᵅ ᵆ ᵊ ᵋ ᵌ ᵑ ᵓ ᵚ ᵝ ᵞ ᵟ ᵠ ᵡ ᵎ ᵔ ᵕ ᵙ ᵜ ᶛ ᶜ ᶝ ᶞ ᶟ ᶡ ᶣ ᶤ ᶥ ᶦ ᶧ ᶨ ᶩ ᶪ ᶫ ᶬ ᶭ ᶮ ᶯ ᶰ ᶱ ᶲ ᶳ ᶴ ᶵ ᶶ ᶷ ᶸ ᶹ ᶺ ᶼ ᶽ ᶾ ᶿ ꚜ ꚝ ჼ ᒃ ᕻ ᑦ ᒄ ᕪ ᑋ ᑊ ᔿ ᐢ ᣕ ᐤ ᣖ ᣴ ᣗ ᔆ ᙚ ᐡ ᘁ ᐜ ᕽ ᙆ ᙇ ᒼ ᣳ ᒢ ᒻ ᔿ ᐤ ᣖ ᣵ ᙚ ᐪ ᓑ ᘁ ᐜ ᕽ ᙆ ᙇ </p>
+<h3><span id="二-下标">二、下标</span></h3><h4><span id="1数字">1.数字</span></h4><p>₀ ₁ ₂ ₃ ₄ ₅ ₆ ₇ ₈ ₉ ₊ ₋ ₌ ₍ ₎ ₐ ₑ ₒ ₓ ₔ ₕ ₖ ₗ ₘ ₙ ₚ ₛ ₜ</p>
+<h4><span id="2字母">2.字母</span></h4><p>ₐ ₔ ₑ ₕ ᵢ ⱼ ₖ ₗ ₘ ₙ ₒ ₚ ᵣ ₛ ₜ ᵤ ᵥ ₓ ᙮ ᵤ ᵩ ᵦ ₗ ˪ ៳ ៷ ₒ ᵨ ₛ ៴ ᵤ ᵪ ᵧ</p>
+]]></content>
+      <tags>
+        <tag>素材</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>栈的表示和操作实现</title>
+    <url>/2024/04/05/%E6%A0%88%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E6%93%8D%E4%BD%9C%E5%AE%9E%E7%8E%B0/</url>
+    <content><![CDATA[<h3><span id="一-顺序栈">一、顺序栈</span></h3><h3><span id="二-链栈">二、链栈</span></h3><h3><span id="三-用堆栈求解后缀表达式">三、用堆栈求解后缀表达式</span></h3><h4><span id="1定义">1.定义</span></h4><p>后缀表达式是一种不需要括号的表达式，其本身是对栈的一种应用。</p>
+<p>与之对应的是中缀表达式，即我们现在使用的四则运算。</p>
+<h4><span id="2运算规则">2.运算规则</span></h4><p>顺序：从左到右入栈。</p>
+<p>对于数字直接入栈，对于运算符号，就把栈最上面的两个数出栈，进行运算后再重新入栈。式子最后的结果出栈。</p>
+<p>栈顶元素永远在运算符的右边。</p>
+<h4><span id="3例子">3.例子</span></h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">（1）令P代表入栈，O代表出栈。当利用堆栈求解后缀表达式1 2 3 + * 4 –时，堆栈操作序列是：</span><br><span class="line"></span><br><span class="line">A.PPPOOPOO</span><br><span class="line"></span><br><span class="line">B.PPOOPPOOPPOO</span><br><span class="line"></span><br><span class="line">C.PPPOOPOOPPOO</span><br><span class="line"></span><br><span class="line">D.PPPOOPOOPPOOPO</span><br></pre></td></tr></table></figure>
+
+<p>1、2、3：进栈，PPP</p>
+<p>+：对最顶上的3、2出栈，计算2+3&#x3D;5，把结果进栈，OOP</p>
+<p>*：对5、1出栈，计算5x1&#x3D;5，把结果进栈，OOP</p>
+<p>4：进栈，P</p>
+<p>-：对4、5出栈，计算4-5&#x3D;-1，把结果进栈，OOP</p>
+<p>最后输出结果：O</p>
+<p>答案为D。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">（2）表达式`a*(b+c)-d`的后缀表达式是：</span><br><span class="line"></span><br><span class="line">A.`a b c + * d -`</span><br><span class="line"></span><br><span class="line">B.`a b c d * + -`</span><br><span class="line"></span><br><span class="line">C.`a b c * + d -`</span><br><span class="line"></span><br><span class="line">D.`- + * a b c d`</span><br></pre></td></tr></table></figure>
+
+<p>数字优先进栈，所以abc</p>
+<p>括号内的式子优先计算，所以首先遇到+，为abc+</p>
+<p>算完加法算乘法，所以abc+*</p>
+<p>继续将d进栈，然后算减法，所以是abc+*d-</p>
+<p>答案为A。</p>
+]]></content>
+      <tags>
+        <tag>数据结构笔记</tag>
       </tags>
   </entry>
   <entry>
@@ -294,65 +355,100 @@ return 0;
       </tags>
   </entry>
   <entry>
-    <title>上标、下标的字符显示</title>
-    <url>/2024/04/02/%E4%B8%8A%E6%A0%87%E3%80%81%E4%B8%8B%E6%A0%87%E7%9A%84%E5%AD%97%E7%AC%A6%E6%98%BE%E7%A4%BA/</url>
-    <content><![CDATA[<h3><span id></span></h3><h3><span id="一-上标">一、上标</span></h3><h4><span id="1数字">1.数字</span></h4><p>¹²³⁴⁵⁶⁷⁸⁹⁰⁺⁻⁼˂˃⁽⁾˙*′˙ⁿº</p>
-<h4><span id="2字母">2.字母</span></h4><p>ᵃᵇᶜᵈᵉᶠᵍʰⁱʲᵏˡᵐⁿᵒᵖʳˢᵗᵘᵛʷˣʸᶻ</p>
-<p>ᴬᴮᒼᴰᴱᶠᴳᴴᴵᴶᴷᴸᴹᴺᴼᴾᴼ̴ᴿˢᵀᵁⱽᵂˣᵞᙆ</p>
-<h4><span id="3其他">3.其他</span></h4><p>ᵃ ᵇ ᶜ ᵈ ᵉ ᵍ ʰ ⁱ ʲ ᵏ ˡ ᵐ ⁿ ᵒ ᵖ ᵒ⃒ ʳ ˢ ᵗ ᵘ ᵛ ʷ ˣ ʸ ᙆ ᴬ ᴮ ᒼ ᴰ ᴱ ᴳ ᴴ ᴵ ᴶ ᴷ ᴸ ᴹ ᴺ ᴼ ᴾ ᴼ̴ ᴿ ˢ ᵀ ᵁ ᵂ ˣ ᵞ ᙆ ꝰ ˀ ˁ ˤ ꟸ ꭜ ʱ ꭝ ꭞ ʴ ʵ ʶ ꭟ ˠ ꟹ ᴭ ᴯ ᴲ ᴻ ᴽ ᵄ ᵅ ᵆ ᵊ ᵋ ᵌ ᵑ ᵓ ᵚ ᵝ ᵞ ᵟ ᵠ ᵡ ᵎ ᵔ ᵕ ᵙ ᵜ ᶛ ᶜ ᶝ ᶞ ᶟ ᶡ ᶣ ᶤ ᶥ ᶦ ᶧ ᶨ ᶩ ᶪ ᶫ ᶬ ᶭ ᶮ ᶯ ᶰ ᶱ ᶲ ᶳ ᶴ ᶵ ᶶ ᶷ ᶸ ᶹ ᶺ ᶼ ᶽ ᶾ ᶿ ꚜ ꚝ ჼ ᒃ ᕻ ᑦ ᒄ ᕪ ᑋ ᑊ ᔿ ᐢ ᣕ ᐤ ᣖ ᣴ ᣗ ᔆ ᙚ ᐡ ᘁ ᐜ ᕽ ᙆ ᙇ ᒼ ᣳ ᒢ ᒻ ᔿ ᐤ ᣖ ᣵ ᙚ ᐪ ᓑ ᘁ ᐜ ᕽ ᙆ ᙇ </p>
-<h3><span id="二-下标">二、下标</span></h3><h4><span id="1数字">1.数字</span></h4><p>₀ ₁ ₂ ₃ ₄ ₅ ₆ ₇ ₈ ₉ ₊ ₋ ₌ ₍ ₎ ₐ ₑ ₒ ₓ ₔ ₕ ₖ ₗ ₘ ₙ ₚ ₛ ₜ</p>
-<h4><span id="2字母">2.字母</span></h4><p>ₐ ₔ ₑ ₕ ᵢ ⱼ ₖ ₗ ₘ ₙ ₒ ₚ ᵣ ₛ ₜ ᵤ ᵥ ₓ ᙮ ᵤ ᵩ ᵦ ₗ ˪ ៳ ៷ ₒ ᵨ ₛ ៴ ᵤ ᵪ ᵧ</p>
-]]></content>
+    <title>正弦稳态电路分析</title>
+    <url>/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/</url>
+    <content><![CDATA[<!-- toc -->
+
+<ul>
+<li><a href="#%E6%AD%A3%E5%BC%A6%E4%BF%A1%E5%8F%B7">正弦信号</a><ul>
+<li><a href="#1%E6%AD%A3%E5%BC%A6%E4%BF%A1%E5%8F%B7%E7%9A%84%E4%B8%89%E8%A6%81%E7%B4%A0">1.正弦信号的三要素</a></li>
+<li><a href="#2%E6%AD%A3%E5%BC%A6%E4%BF%A1%E5%8F%B7%E7%9A%84%E7%9B%B8%E4%BD%8D%E5%B7%AE">2.正弦信号的相位差</a></li>
+<li><a href="#3%E6%AD%A3%E5%BC%A6%E4%BF%A1%E5%8F%B7%E7%9A%84%E6%9C%89%E6%95%88%E5%80%BC">3.正弦信号的有效值</a></li>
+</ul>
+</li>
+<li><a href="#%E6%AD%A3%E5%BC%A6%E4%BF%A1%E5%8F%B7%E7%9A%84%E7%9B%B8%E9%87%8F%E8%A1%A8%E7%A4%BA">正弦信号的相量表示</a><ul>
+<li><a href="#1%E5%A4%8D%E6%95%B0a%E7%9A%84%E8%A1%A8%E7%A4%BA">1.复数A的表示</a></li>
+<li><a href="#2%E7%94%A8%E7%9B%B8%E9%87%8F%E8%A1%A8%E7%A4%BA%E6%AD%A3%E5%BC%A6%E4%BF%A1%E5%8F%B7">2.用相量表示正弦信号</a></li>
+</ul>
+</li>
+<li><a href="#%E5%9F%BA%E6%9C%AC%E5%85%83%E4%BB%B6%E4%BC%8F%E5%AE%89%E7%89%B9%E6%80%A7%E7%9A%84%E7%9B%B8%E9%87%8F%E5%BD%A2%E5%BC%8F">基本元件伏安特性的相量形式</a><ul>
+<li><a href="#1%E7%94%B5%E9%98%BB%E5%85%83%E4%BB%B6">1.电阻元件</a></li>
+<li><a href="#2%E7%94%B5%E6%84%9F%E5%85%83%E4%BB%B6">2.电感元件</a></li>
+<li><a href="#3%E7%94%B5%E5%AE%B9%E5%85%83%E4%BB%B6">3.电容元件</a></li>
+<li><a href="#4%E6%AD%A3%E5%BC%A6%E7%94%B5%E6%BA%90%E7%9A%84%E7%9B%B8%E9%87%8F%E6%A8%A1%E5%9E%8B">4.正弦电源的相量模型</a></li>
+</ul>
+</li>
+<li><a href="#%E7%9B%B8%E9%87%8F%E6%A8%A1%E5%9E%8B">相量模型</a><ul>
+<li><a href="#1%E9%98%BB%E6%8A%97%E5%92%8C%E5%AF%BC%E7%BA%B3">1.阻抗和导纳</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+
+<p>[TOC]</p>
+<h2><span id="正弦信号">正弦信号</span></h2><p>正弦稳态电路：在正弦电源作用下，电路达到稳定工作状态时的正弦稳态电路。</p>
+<p>正弦交流信号可以用sin函数表示，也可以用cos函数表示，本书采用sin函数。</p>
+<h3><span id="1正弦信号的三要素">1.正弦信号的三要素</span></h3><h4><span id="一个正弦信号由3个参数确定最大值-频率角频率和初相">一个正弦信号由3个参数确定：<strong>最大值、频率（角频率）和初相</strong></span></h4><p>（1）<strong>正弦交流信号的一般表达式</strong>：<strong>u(t) &#x3D; Uₘ sin(ωt + θ)</strong></p>
+<p>（2）<strong>Uₘ</strong>：<strong>幅值</strong>，表示正弦量所能达到的最大值；又叫峰值或振幅</p>
+<p>（3）**(ωt + θ)<strong>：</strong>相位**；θ称为相位角</p>
+<p>（4）<strong>ω</strong>：<strong>角频率</strong>，是正弦量在单位时间内变化的弧度数，单位<strong>rad&#x2F;s</strong></p>
+<p>（5）<strong>周期</strong>：周期T表示正弦量变化一周需要的时间，单位<strong>s</strong></p>
+<p>（6）<strong>公式</strong>：①<strong>T&#x3D;2π&#x2F;ω</strong></p>
+<p>​                      ②<strong>f&#x3D;1&#x2F;T</strong></p>
+<h3><span id="2正弦信号的相位差">2.正弦信号的相位差</span></h3><p>（1）<strong>定义</strong>：两个同频率正弦信号在任一时刻的相位之差称为相位差，实际上是初相之差。</p>
+<p>（2）<strong>符号表示</strong>：θ&#x3D;θᵢ - θᵤ</p>
+<p>（3）θ&gt;0，表示i(t)超前于u(t)，电流比电压先到达最大值或最小值；</p>
+<p>​          θ&lt;0，表示i(t)滞后于u(t)；</p>
+<p>​          θ&#x3D;0，则称i(t)与u(t)同相，二者同时到达最值；</p>
+<p>​          θ&#x3D;+-π，则称i(t)与u(t)反相，当i(t)达到最大值时，u(t)达到最小值，反之亦然。</p>
+<h3><span id="3正弦信号的有效值">3.正弦信号的有效值</span></h3><p>（1）<strong>定义</strong>：设两个阻值相同的电阻，分别通过周期电流和直流电流，在一个周期内，两个电阻消耗相同的能量，就称该直流电流值为周期电流的有效值。</p>
+<p>（2）<strong>总结</strong>：<u>正弦信号的振幅值等于有效值的√2倍。</u></p>
+<p>​                     Uₘ &#x3D; √2 U               Iₘ &#x3D; √2 I</p>
+<p>（3）<strong>公式表示</strong>：i(t)&#x3D;√2 I sin(ωt + θᵢ)</p>
+<p>​                             u(t)&#x3D;√2 U sin(ωt + θᵤ)</p>
+<h2><span id="正弦信号的相量表示">正弦信号的相量表示</span></h2><h3><span id="1复数a的表示">1.复数A的表示</span></h3><h4><span id="1代数型-指数型和极型">（1）代数型、指数型和极型</span></h4><ul>
+<li><input disabled type="checkbox"> <strong>代数型</strong>：A&#x3D;a1 + ja2</li>
+<li><input disabled type="checkbox"> <strong>指数型</strong>：A&#x3D;aeʲᶿ</li>
+<li><input disabled type="checkbox"> <strong>极型</strong>：a∠θ</li>
+</ul>
+<h4><span id="2指数型转换为代数型">（2）指数型转换为代数型</span></h4><ul>
+<li><input disabled type="checkbox"> <strong>欧拉公式</strong>：eʲᶿ &#x3D; cosθ + jsinθ</li>
+<li><input disabled type="checkbox"> 特别的，e^jπ&#x2F;2 &#x3D; cos(π&#x2F;2) + jsin(π&#x2F;2) &#x3D;j</li>
+</ul>
+<h4><span id="3代数型转换为指数型和极型">（3）代数型转换为指数型和极型</span></h4><ul>
+<li><p><input disabled type="checkbox"> 
+<strong>a &#x3D; (a₁² + a₂²)^1&#x2F;2</strong></p>
+</li>
+<li><p><input disabled type="checkbox"> 
+<strong>θ &#x3D; arctan (a₂&#x2F;a₁)</strong></p>
+</li>
+<li><p><input disabled type="checkbox"> 
+常用值：arctan1 &#x3D; π&#x2F;4</p>
+<p>​                arctan√3 &#x3D; π&#x2F;3</p>
+<p>​                arctan1&#x2F;√3 &#x3D; π&#x2F;6</p>
+</li>
+</ul>
+<img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/微信截图_20240402012354.png" alt="微信截图_20240402012354" style="zoom:80%;">
+
+<h4><span id="4计算">（4）计算</span></h4><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/微信截图_20240402012812.png" alt="微信截图_20240402012812" style="zoom:80%;">
+
+<h3><span id="2用相量表示正弦信号">2.用相量表示正弦信号</span></h3><h4><span id="1正弦电流-电压的表示">（1）正弦电流、电压的表示</span></h4><p><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240405124242-1712497802168-1.png" alt="微信截图_20240405124242"></p>
+<p><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240405123709-1712497855757-6.png" alt="微信图片_20240405123709"></p>
+<h4><span id="2正弦信号与相量的对应规则">（2）正弦信号与相量的对应规则</span></h4><p><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240405125143-1712497868082-8.png" alt="微信截图_20240405125143"></p>
+<h4><span id="3电流相量适用基尔霍夫定律见例题p87-p91">（3）电流相量适用基尔霍夫定律（见例题P87、P91）</span></h4><p>由i(t)&#x3D;i₁(t) + i₂(t)，有I˙ &#x3D;I˙₁ + I˙₂</p>
+<p>由u(t)&#x3D;u₁(t) + u₂(t)，有U˙ &#x3D;U˙₁ + U˙₂</p>
+<p>结论对于有效值相量和振幅相量都适用。</p>
+<h2><span id="基本元件伏安特性的相量形式">基本元件伏安特性的相量形式</span></h2><h3><span id="1电阻元件">1.电阻元件</span></h3><p><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240405130717-1712497944487-14.png" alt="微信图片_20240405130717"></p>
+<h3><span id="2电感元件">2.电感元件</span></h3><p><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240405131106-1712497895601-10.png" alt="微信截图_20240405131106"></p>
+<h3><span id="3电容元件">3.电容元件</span></h3><p><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240405132101-1712497926174-12.png" alt="微信截图_20240405132101"></p>
+<h3><span id="4正弦电源的相量模型">4.正弦电源的相量模型</span></h3><p>①<strong>正弦电压源</strong>：如果一个独立电压源uₛ(t)的输出电压为正弦电压，即uₛ(t) &#x3D; √2 Uₛ sin(ωt + θᵤ)，就称其为正弦电压源。</p>
+<p>参数：Uₛ→有效值；ω→角频率；θᵤ→初相。</p>
+<p>②<strong>正弦电流源</strong>：Iₛ(t) &#x3D; √2 Iₛ sin(ωt + θᵤ)</p>
+<p>③正弦受控源：VCVC,CCVS,VCCS,CCCS</p>
+<h2><span id="相量模型">相量模型</span></h2><h3><span id="1阻抗和导纳">1.阻抗和导纳</span></h3>]]></content>
       <tags>
-        <tag>素材</tag>
+        <tag>电子电路基础</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>栈的表示和操作实现</title>
-    <url>/2024/04/05/%E6%A0%88%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E6%93%8D%E4%BD%9C%E5%AE%9E%E7%8E%B0/</url>
-    <content><![CDATA[<h3><span id="一-顺序栈">一、顺序栈</span></h3><h3><span id="二-链栈">二、链栈</span></h3><h3><span id="三-用堆栈求解后缀表达式">三、用堆栈求解后缀表达式</span></h3><h4><span id="1定义">1.定义</span></h4><p>后缀表达式是一种不需要括号的表达式，其本身是对栈的一种应用。</p>
-<p>与之对应的是中缀表达式，即我们现在使用的四则运算。</p>
-<h4><span id="2运算规则">2.运算规则</span></h4><p>顺序：从左到右入栈。</p>
-<p>对于数字直接入栈，对于运算符号，就把栈最上面的两个数出栈，进行运算后再重新入栈。式子最后的结果出栈。</p>
-<p>栈顶元素永远在运算符的右边。</p>
-<h4><span id="3例子">3.例子</span></h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">（1）令P代表入栈，O代表出栈。当利用堆栈求解后缀表达式1 2 3 + * 4 –时，堆栈操作序列是：</span><br><span class="line"></span><br><span class="line">A.PPPOOPOO</span><br><span class="line"></span><br><span class="line">B.PPOOPPOOPPOO</span><br><span class="line"></span><br><span class="line">C.PPPOOPOOPPOO</span><br><span class="line"></span><br><span class="line">D.PPPOOPOOPPOOPO</span><br></pre></td></tr></table></figure>
-
-<p>1、2、3：进栈，PPP</p>
-<p>+：对最顶上的3、2出栈，计算2+3&#x3D;5，把结果进栈，OOP</p>
-<p>*：对5、1出栈，计算5x1&#x3D;5，把结果进栈，OOP</p>
-<p>4：进栈，P</p>
-<p>-：对4、5出栈，计算4-5&#x3D;-1，把结果进栈，OOP</p>
-<p>最后输出结果：O</p>
-<p>答案为D。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">（2）表达式`a*(b+c)-d`的后缀表达式是：</span><br><span class="line"></span><br><span class="line">A.`a b c + * d -`</span><br><span class="line"></span><br><span class="line">B.`a b c d * + -`</span><br><span class="line"></span><br><span class="line">C.`a b c * + d -`</span><br><span class="line"></span><br><span class="line">D.`- + * a b c d`</span><br></pre></td></tr></table></figure>
-
-<p>数字优先进栈，所以abc</p>
-<p>括号内的式子优先计算，所以首先遇到+，为abc+</p>
-<p>算完加法算乘法，所以abc+*</p>
-<p>继续将d进栈，然后算减法，所以是abc+*d-</p>
-<p>答案为A。</p>
-]]></content>
-      <tags>
-        <tag>数据结构笔记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/2024/03/11/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2><span id="quick-start">Quick Start</span></h2><h3><span id="create-a-new-post">Create a new post</span></h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3><span id="run-server">Run server</span></h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3><span id="generate-static-files">Generate static files</span></h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3><span id="deploy-to-remote-sites">Deploy to remote sites</span></h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
   </entry>
   <entry>
     <title>用链表实现交集和并集</title>
@@ -613,180 +709,6 @@ return 0;
       </tags>
   </entry>
   <entry>
-    <title>正弦稳态电路分析</title>
-    <url>/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/</url>
-    <content><![CDATA[<!-- toc -->
-
-<ul>
-<li><a href="#%E6%AD%A3%E5%BC%A6%E4%BF%A1%E5%8F%B7">正弦信号</a><ul>
-<li><a href="#1%E6%AD%A3%E5%BC%A6%E4%BF%A1%E5%8F%B7%E7%9A%84%E4%B8%89%E8%A6%81%E7%B4%A0">1.正弦信号的三要素</a></li>
-<li><a href="#2%E6%AD%A3%E5%BC%A6%E4%BF%A1%E5%8F%B7%E7%9A%84%E7%9B%B8%E4%BD%8D%E5%B7%AE">2.正弦信号的相位差</a></li>
-<li><a href="#3%E6%AD%A3%E5%BC%A6%E4%BF%A1%E5%8F%B7%E7%9A%84%E6%9C%89%E6%95%88%E5%80%BC">3.正弦信号的有效值</a></li>
-</ul>
-</li>
-<li><a href="#%E6%AD%A3%E5%BC%A6%E4%BF%A1%E5%8F%B7%E7%9A%84%E7%9B%B8%E9%87%8F%E8%A1%A8%E7%A4%BA">正弦信号的相量表示</a><ul>
-<li><a href="#1%E5%A4%8D%E6%95%B0a%E7%9A%84%E8%A1%A8%E7%A4%BA">1.复数A的表示</a></li>
-<li><a href="#2%E7%94%A8%E7%9B%B8%E9%87%8F%E8%A1%A8%E7%A4%BA%E6%AD%A3%E5%BC%A6%E4%BF%A1%E5%8F%B7">2.用相量表示正弦信号</a></li>
-</ul>
-</li>
-<li><a href="#%E5%9F%BA%E6%9C%AC%E5%85%83%E4%BB%B6%E4%BC%8F%E5%AE%89%E7%89%B9%E6%80%A7%E7%9A%84%E7%9B%B8%E9%87%8F%E5%BD%A2%E5%BC%8F">基本元件伏安特性的相量形式</a><ul>
-<li><a href="#1%E7%94%B5%E9%98%BB%E5%85%83%E4%BB%B6">1.电阻元件</a></li>
-<li><a href="#2%E7%94%B5%E6%84%9F%E5%85%83%E4%BB%B6">2.电感元件</a></li>
-<li><a href="#3%E7%94%B5%E5%AE%B9%E5%85%83%E4%BB%B6">3.电容元件</a></li>
-<li><a href="#4%E6%AD%A3%E5%BC%A6%E7%94%B5%E6%BA%90%E7%9A%84%E7%9B%B8%E9%87%8F%E6%A8%A1%E5%9E%8B">4.正弦电源的相量模型</a></li>
-</ul>
-</li>
-<li><a href="#%E7%9B%B8%E9%87%8F%E6%A8%A1%E5%9E%8B">相量模型</a><ul>
-<li><a href="#1%E9%98%BB%E6%8A%97%E5%92%8C%E5%AF%BC%E7%BA%B3">1.阻抗和导纳</a></li>
-</ul>
-</li>
-</ul>
-<!-- tocstop -->
-
-<p>[TOC]</p>
-<h2><span id="正弦信号">正弦信号</span></h2><p>正弦稳态电路：在正弦电源作用下，电路达到稳定工作状态时的正弦稳态电路。</p>
-<p>正弦交流信号可以用sin函数表示，也可以用cos函数表示，本书采用sin函数。</p>
-<h3><span id="1正弦信号的三要素">1.正弦信号的三要素</span></h3><h4><span id="一个正弦信号由3个参数确定最大值-频率角频率和初相">一个正弦信号由3个参数确定：<strong>最大值、频率（角频率）和初相</strong></span></h4><p>（1）<strong>正弦交流信号的一般表达式</strong>：<strong>u(t) &#x3D; Uₘ sin(ωt + θ)</strong></p>
-<p>（2）<strong>Uₘ</strong>：<strong>幅值</strong>，表示正弦量所能达到的最大值；又叫峰值或振幅</p>
-<p>（3）**(ωt + θ)<strong>：</strong>相位**；θ称为相位角</p>
-<p>（4）<strong>ω</strong>：<strong>角频率</strong>，是正弦量在单位时间内变化的弧度数，单位<strong>rad&#x2F;s</strong></p>
-<p>（5）<strong>周期</strong>：周期T表示正弦量变化一周需要的时间，单位<strong>s</strong></p>
-<p>（6）<strong>公式</strong>：①<strong>T&#x3D;2π&#x2F;ω</strong></p>
-<p>​                      ②<strong>f&#x3D;1&#x2F;T</strong></p>
-<h3><span id="2正弦信号的相位差">2.正弦信号的相位差</span></h3><p>（1）<strong>定义</strong>：两个同频率正弦信号在任一时刻的相位之差称为相位差，实际上是初相之差。</p>
-<p>（2）<strong>符号表示</strong>：θ&#x3D;θᵢ - θᵤ</p>
-<p>（3）θ&gt;0，表示i(t)超前于u(t)，电流比电压先到达最大值或最小值；</p>
-<p>​          θ&lt;0，表示i(t)滞后于u(t)；</p>
-<p>​          θ&#x3D;0，则称i(t)与u(t)同相，二者同时到达最值；</p>
-<p>​          θ&#x3D;+-π，则称i(t)与u(t)反相，当i(t)达到最大值时，u(t)达到最小值，反之亦然。</p>
-<h3><span id="3正弦信号的有效值">3.正弦信号的有效值</span></h3><p>（1）<strong>定义</strong>：设两个阻值相同的电阻，分别通过周期电流和直流电流，在一个周期内，两个电阻消耗相同的能量，就称该直流电流值为周期电流的有效值。</p>
-<p>（2）<strong>总结</strong>：<u>正弦信号的振幅值等于有效值的√2倍。</u></p>
-<p>​                     Uₘ &#x3D; √2 U               Iₘ &#x3D; √2 I</p>
-<p>（3）<strong>公式表示</strong>：i(t)&#x3D;√2 I sin(ωt + θᵢ)</p>
-<p>​                             u(t)&#x3D;√2 U sin(ωt + θᵤ)</p>
-<h2><span id="正弦信号的相量表示">正弦信号的相量表示</span></h2><h3><span id="1复数a的表示">1.复数A的表示</span></h3><h4><span id="1代数型-指数型和极型">（1）代数型、指数型和极型</span></h4><ul>
-<li><input disabled type="checkbox"> <strong>代数型</strong>：A&#x3D;a1 + ja2</li>
-<li><input disabled type="checkbox"> <strong>指数型</strong>：A&#x3D;aeʲᶿ</li>
-<li><input disabled type="checkbox"> <strong>极型</strong>：a∠θ</li>
-</ul>
-<h4><span id="2指数型转换为代数型">（2）指数型转换为代数型</span></h4><ul>
-<li><input disabled type="checkbox"> <strong>欧拉公式</strong>：eʲᶿ &#x3D; cosθ + jsinθ</li>
-<li><input disabled type="checkbox"> 特别的，e^jπ&#x2F;2 &#x3D; cos(π&#x2F;2) + jsin(π&#x2F;2) &#x3D;j</li>
-</ul>
-<h4><span id="3代数型转换为指数型和极型">（3）代数型转换为指数型和极型</span></h4><ul>
-<li><p><input disabled type="checkbox"> 
-<strong>a &#x3D; (a₁² + a₂²)^1&#x2F;2</strong></p>
-</li>
-<li><p><input disabled type="checkbox"> 
-<strong>θ &#x3D; arctan (a₂&#x2F;a₁)</strong></p>
-</li>
-<li><p><input disabled type="checkbox"> 
-常用值：arctan1 &#x3D; π&#x2F;4</p>
-<p>​                arctan√3 &#x3D; π&#x2F;3</p>
-<p>​                arctan1&#x2F;√3 &#x3D; π&#x2F;6</p>
-</li>
-</ul>
-<img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/微信截图_20240402012354.png" alt="微信截图_20240402012354" style="zoom:80%;">
-
-<h4><span id="4计算">（4）计算</span></h4><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/微信截图_20240402012812.png" alt="微信截图_20240402012812" style="zoom:80%;">
-
-<h3><span id="2用相量表示正弦信号">2.用相量表示正弦信号</span></h3><h4><span id="1正弦电流-电压的表示">（1）正弦电流、电压的表示</span></h4><p><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240405124242-1712497802168-1.png" alt="微信截图_20240405124242"></p>
-<p><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240405123709-1712497855757-6.png" alt="微信图片_20240405123709"></p>
-<h4><span id="2正弦信号与相量的对应规则">（2）正弦信号与相量的对应规则</span></h4><p><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240405125143-1712497868082-8.png" alt="微信截图_20240405125143"></p>
-<h4><span id="3电流相量适用基尔霍夫定律见例题p87-p91">（3）电流相量适用基尔霍夫定律（见例题P87、P91）</span></h4><p>由i(t)&#x3D;i₁(t) + i₂(t)，有I˙ &#x3D;I˙₁ + I˙₂</p>
-<p>由u(t)&#x3D;u₁(t) + u₂(t)，有U˙ &#x3D;U˙₁ + U˙₂</p>
-<p>结论对于有效值相量和振幅相量都适用。</p>
-<h2><span id="基本元件伏安特性的相量形式">基本元件伏安特性的相量形式</span></h2><h3><span id="1电阻元件">1.电阻元件</span></h3><p><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240405130717-1712497944487-14.png" alt="微信图片_20240405130717"></p>
-<h3><span id="2电感元件">2.电感元件</span></h3><p><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240405131106-1712497895601-10.png" alt="微信截图_20240405131106"></p>
-<h3><span id="3电容元件">3.电容元件</span></h3><p><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240405132101-1712497926174-12.png" alt="微信截图_20240405132101"></p>
-<h3><span id="4正弦电源的相量模型">4.正弦电源的相量模型</span></h3><p>①<strong>正弦电压源</strong>：如果一个独立电压源uₛ(t)的输出电压为正弦电压，即uₛ(t) &#x3D; √2 Uₛ sin(ωt + θᵤ)，就称其为正弦电压源。</p>
-<p>参数：Uₛ→有效值；ω→角频率；θᵤ→初相。</p>
-<p>②<strong>正弦电流源</strong>：Iₛ(t) &#x3D; √2 Iₛ sin(ωt + θᵤ)</p>
-<p>③正弦受控源：VCVC,CCVS,VCCS,CCCS</p>
-<h2><span id="相量模型">相量模型</span></h2><h3><span id="1阻抗和导纳">1.阻抗和导纳</span></h3>]]></content>
-      <tags>
-        <tag>电子电路基础</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>高等数学下笔记</title>
-    <url>/2024/03/25/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E4%B8%8B%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<!-- toc -->
-
-<ul>
-<li><a href="#8-%E5%90%91%E9%87%8F%E4%BB%A3%E6%95%B0%E4%B8%8E%E7%A9%BA%E9%97%B4%E8%A7%A3%E6%9E%90%E5%87%A0%E4%BD%95">8 - 向量代数与空间解析几何</a><ul>
-<li><a href="#8-1-%E5%90%91%E9%87%8F%E5%8F%8A%E5%85%B6%E7%BA%BF%E6%80%A7%E8%BF%90%E7%AE%97">8-1 向量及其线性运算</a></li>
-<li><a href="#8-2-%E7%A9%BA%E9%97%B4%E7%9B%B4%E8%A7%92%E5%9D%90%E6%A0%87%E7%B3%BB">8-2 空间直角坐标系</a></li>
-<li><a href="#8-3-%E5%90%91%E9%87%8F%E7%9A%84%E7%BB%BC%E5%90%88%E6%80%A7%E8%B4%A8%E5%92%8C%E8%BF%90%E7%AE%97">8-3 向量的综合性质和运算</a></li>
-<li><a href="#8-4-%E6%95%B0%E9%87%8F%E7%A7%AF-%E5%90%91%E9%87%8F%E7%A7%AF">8-4 数量积、向量积</a></li>
-<li><a href="#8-5-%E5%B9%B3%E9%9D%A2%E5%8F%8A%E5%85%B6%E6%96%B9%E7%A8%8B">8-5 平面及其方程</a></li>
-<li><a href="#8-6-%E7%A9%BA%E9%97%B4%E7%9B%B4%E7%BA%BF%E5%8F%8A%E5%85%B6%E6%96%B9%E7%A8%8B">8-6 空间直线及其方程</a></li>
-</ul>
-</li>
-</ul>
-<!-- tocstop -->
-
-<p>[TOC]</p>
-<h2><span id="8-向量代数与空间解析几何">8 - 向量代数与空间解析几何</span></h2><h3><span id="8-1-向量及其线性运算">8-1 向量及其线性运算</span></h3><p>1.由三角形两边之和大于第三边，有：|<strong>a</strong> + <strong>b</strong>|&lt;&#x3D;|<strong>a</strong>|+|<strong>b</strong>|; |<strong>a</strong> - <strong>b</strong>|&lt;&#x3D;|<strong>a</strong>|+|<strong>b</strong>|</p>
-<p>2.数乘：|λ<strong>a</strong>| &#x3D; |λ||<strong>a</strong>|</p>
-<p>3.单位向量<strong>e</strong>&#x3D;<strong>a</strong>&#x2F;|<strong>a</strong>|</p>
-<p>4.<strong>a</strong>&#x2F;&#x2F;<strong>b</strong>等价于<strong>b</strong>&#x3D;λ<strong>a</strong>（<strong>a</strong>!&#x3D;0）</p>
-<h3><span id="8-2-空间直角坐标系">8-2 空间直角坐标系</span></h3><img src="/2024/03/25/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E4%B8%8B%E7%AC%94%E8%AE%B0/be8b438d8dab4f26425537c8e52ffa4.png" alt="be8b438d8dab4f26425537c8e52ffa4" style="zoom:80%;">
-
-<img src="/2024/03/25/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E4%B8%8B%E7%AC%94%E8%AE%B0/ed720f4486e49cb4f94f47c876630bf.png" alt="ed720f4486e49cb4f94f47c876630bf" style="zoom:80%;">
-
-<p>向量OF（x，y，z）是点O关于点F的向径，<u>求点F的坐标就是求向量OP的坐标</u></p>
-<p>①若点F在yoz面上，x&#x3D;0；</p>
-<p>②点F在zox面上，y&#x3D;0；点F在xoy面上，z&#x3D;0；</p>
-<p>③点F在x轴上，y&#x3D;z&#x3D;0；</p>
-<p>④点F在y轴上，z&#x3D;x&#x3D;0；点F在z轴上，x&#x3D;y&#x3D;0；</p>
-<p>⑤点F为原点，x&#x3D;y&#x3D;z&#x3D;0。</p>
-<h3><span id="8-3-向量的综合性质和运算">8-3 向量的综合性质和运算</span></h3><img src="/2024/03/25/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E4%B8%8B%E7%AC%94%E8%AE%B0/微信截图_20240326011004.png" alt="微信截图_20240326011004" style="zoom:80%;">
-
-<h4><span id="题型"><strong>题型：</strong></span></h4><h5><span id="1向量模的坐标表达式">1.向量模的坐标表达式</span></h5><h5><span id="2两点距离公式">2.两点距离公式：</span></h5><p>求证三角形的类型（等腰、直角、等边）</p>
-<p>求已知向量的定向单位向量</p>
-<p>求与某几点等距离的点</p>
-<h5><span id="3方向角与方向余弦">3.方向角与方向余弦：</span></h5><p>已知角度求点的坐标</p>
-<p>已知向量求方向角、余弦和模</p>
-<h5><span id="4投影">4.投影</span></h5><p>已知向量求向量在某轴上的投影</p>
-<p>已知投影求向量</p>
-<h3><span id="8-4-数量积-向量积">8-4 数量积、向量积</span></h3><img src="/2024/03/25/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E4%B8%8B%E7%AC%94%E8%AE%B0/微信截图_20240326013200.png" alt="微信截图_20240326013200" style="zoom:80%;">
-
-<h4><span id="题型"><strong>题型</strong>：</span></h4><p>1.用数量积公式求夹角、投影</p>
-<p>2.用向量积求三角形面积（用到正弦）</p>
-<p>3.用数量积、向量积定义证垂直或平行</p>
-<p>4.（多用）用向量积求平面方程</p>
-<h3><span id="8-5-平面及其方程">8-5 平面及其方程</span></h3><h4><span id="1平面的点法式方程">1.平面的点法式方程</span></h4><p><strong>A（x-x₀）+B（y-y₀）+C（z-z₀）&#x3D;0</strong></p>
-<p>其中<strong>n</strong>&#x3D;（A,B,C），M₀&#x3D;（x₀，y₀，z₀）</p>
-<h4><span id="2平面的一般方程">2.平面的一般方程</span></h4><p><strong>Ax0 + By0 + Cz0 +D&#x3D;0</strong></p>
-<p><strong>n</strong>&#x3D;（A,B,C）</p>
-<p>①<strong>D&#x3D;0</strong>时，方程表示一个通过<strong>原点</strong>的平面</p>
-<p>②<strong>A&#x3D;0</strong>时，<strong>n</strong>垂直于x轴，方程表示一个平行于（或包含）<strong>x轴</strong>的平面；<strong>B&#x3D;0，C&#x3D;0</strong>同理</p>
-<p>③<strong>A&#x3D;B&#x3D;0</strong>，<strong>n</strong>同时垂直x轴和y轴，方程表示一个平行于（或重合）<strong>x0y面</strong>的平面；<strong>A&#x3D;C&#x3D;0,B&#x3D;C&#x3D;0</strong>同理</p>
-<h4><span id="3平面的截距式方程">3.平面的截距式方程</span></h4><p><strong>x&#x2F;a + y&#x2F;b + z&#x2F;c &#x3D; 1</strong></p>
-<p>a、b、c分别是平面在xyz轴上的截距</p>
-<h4><span id="4两平面夹角-点到平面距离">4.两平面夹角、点到平面距离</span></h4><p><strong>两平面互相垂直</strong>相当于<strong>A₁A₂ + B₁B₂ + C₁C₂ &#x3D; 0</strong></p>
-<p><strong>两平面互相平行或重合</strong>相当于<strong>A₁&#x2F;A₂ &#x3D; B₁&#x2F;B₂ &#x3D; C₁&#x2F;C₂</strong></p>
-<img src="/2024/03/25/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E4%B8%8B%E7%AC%94%E8%AE%B0/微信截图_20240326015143.png" alt="微信截图_20240326015143" style="zoom:80%;">
-
-
-
-<h3><span id="8-6-空间直线及其方程">8-6 空间直线及其方程</span></h3><h4><span id="1直线的点向式方程对称式方程">1.直线的点向式方程（对称式方程）</span></h4><p>其中，<strong>s</strong>&#x3D;(m,n,p)，M₀&#x3D;(x₀,y₀,z₀)</p>
-<p>要素：①方向向量 ②点</p>
-<h4><span id="2直线的参数方程">2.直线的参数方程</span></h4><h4><span id="3直线的一般方程">3.直线的一般方程</span></h4><p>表现为两个平面的交线</p>
-<h4><span id="4线面角">4.线面角</span></h4><p>范围是【0，90°】</p>
-<img src="/2024/03/25/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E4%B8%8B%E7%AC%94%E8%AE%B0/微信截图_20240326015259.png" alt="微信截图_20240326015259" style="zoom:80%;">
-
-<h4><span id="5线线角">5.线线角</span></h4><p>和面面角公式相同，用cos</p>
-<h4><span id="6性质">6.性质</span></h4><p><strong>两直线相互垂直（包括异面、相交）</strong>相当于 <strong>m₁m₂ + n₁n₂ + p₁p₂ &#x3D; 0</strong></p>
-<p><strong>两直线互相平行或重合</strong> 相当于 <strong>m₁&#x2F;m₂ &#x3D; n₁&#x2F;n₂ &#x3D; p₁&#x2F;p₂</strong></p>
-<p><strong>直线与平面平行或直线在平面上</strong> 相当于 <strong>Am + Bn + Cp &#x3D;0</strong></p>
-]]></content>
-      <tags>
-        <tag>高等数学</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>电路的一般分析方法</title>
     <url>/2024/03/14/%E7%94%B5%E5%AD%90%E7%94%B5%E8%B7%AF%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<!-- toc -->
@@ -971,6 +893,84 @@ return 0;
       </categories>
       <tags>
         <tag>电子电路基础</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>高等数学下笔记</title>
+    <url>/2024/03/25/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E4%B8%8B%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<!-- toc -->
+
+<ul>
+<li><a href="#8-%E5%90%91%E9%87%8F%E4%BB%A3%E6%95%B0%E4%B8%8E%E7%A9%BA%E9%97%B4%E8%A7%A3%E6%9E%90%E5%87%A0%E4%BD%95">8 - 向量代数与空间解析几何</a><ul>
+<li><a href="#8-1-%E5%90%91%E9%87%8F%E5%8F%8A%E5%85%B6%E7%BA%BF%E6%80%A7%E8%BF%90%E7%AE%97">8-1 向量及其线性运算</a></li>
+<li><a href="#8-2-%E7%A9%BA%E9%97%B4%E7%9B%B4%E8%A7%92%E5%9D%90%E6%A0%87%E7%B3%BB">8-2 空间直角坐标系</a></li>
+<li><a href="#8-3-%E5%90%91%E9%87%8F%E7%9A%84%E7%BB%BC%E5%90%88%E6%80%A7%E8%B4%A8%E5%92%8C%E8%BF%90%E7%AE%97">8-3 向量的综合性质和运算</a></li>
+<li><a href="#8-4-%E6%95%B0%E9%87%8F%E7%A7%AF-%E5%90%91%E9%87%8F%E7%A7%AF">8-4 数量积、向量积</a></li>
+<li><a href="#8-5-%E5%B9%B3%E9%9D%A2%E5%8F%8A%E5%85%B6%E6%96%B9%E7%A8%8B">8-5 平面及其方程</a></li>
+<li><a href="#8-6-%E7%A9%BA%E9%97%B4%E7%9B%B4%E7%BA%BF%E5%8F%8A%E5%85%B6%E6%96%B9%E7%A8%8B">8-6 空间直线及其方程</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+
+<p>[TOC]</p>
+<h2><span id="8-向量代数与空间解析几何">8 - 向量代数与空间解析几何</span></h2><h3><span id="8-1-向量及其线性运算">8-1 向量及其线性运算</span></h3><p>1.由三角形两边之和大于第三边，有：|<strong>a</strong> + <strong>b</strong>|&lt;&#x3D;|<strong>a</strong>|+|<strong>b</strong>|; |<strong>a</strong> - <strong>b</strong>|&lt;&#x3D;|<strong>a</strong>|+|<strong>b</strong>|</p>
+<p>2.数乘：|λ<strong>a</strong>| &#x3D; |λ||<strong>a</strong>|</p>
+<p>3.单位向量<strong>e</strong>&#x3D;<strong>a</strong>&#x2F;|<strong>a</strong>|</p>
+<p>4.<strong>a</strong>&#x2F;&#x2F;<strong>b</strong>等价于<strong>b</strong>&#x3D;λ<strong>a</strong>（<strong>a</strong>!&#x3D;0）</p>
+<h3><span id="8-2-空间直角坐标系">8-2 空间直角坐标系</span></h3><img src="/2024/03/25/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E4%B8%8B%E7%AC%94%E8%AE%B0/be8b438d8dab4f26425537c8e52ffa4.png" alt="be8b438d8dab4f26425537c8e52ffa4" style="zoom:80%;">
+
+<img src="/2024/03/25/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E4%B8%8B%E7%AC%94%E8%AE%B0/ed720f4486e49cb4f94f47c876630bf.png" alt="ed720f4486e49cb4f94f47c876630bf" style="zoom:80%;">
+
+<p>向量OF（x，y，z）是点O关于点F的向径，<u>求点F的坐标就是求向量OP的坐标</u></p>
+<p>①若点F在yoz面上，x&#x3D;0；</p>
+<p>②点F在zox面上，y&#x3D;0；点F在xoy面上，z&#x3D;0；</p>
+<p>③点F在x轴上，y&#x3D;z&#x3D;0；</p>
+<p>④点F在y轴上，z&#x3D;x&#x3D;0；点F在z轴上，x&#x3D;y&#x3D;0；</p>
+<p>⑤点F为原点，x&#x3D;y&#x3D;z&#x3D;0。</p>
+<h3><span id="8-3-向量的综合性质和运算">8-3 向量的综合性质和运算</span></h3><img src="/2024/03/25/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E4%B8%8B%E7%AC%94%E8%AE%B0/微信截图_20240326011004.png" alt="微信截图_20240326011004" style="zoom:80%;">
+
+<h4><span id="题型"><strong>题型：</strong></span></h4><h5><span id="1向量模的坐标表达式">1.向量模的坐标表达式</span></h5><h5><span id="2两点距离公式">2.两点距离公式：</span></h5><p>求证三角形的类型（等腰、直角、等边）</p>
+<p>求已知向量的定向单位向量</p>
+<p>求与某几点等距离的点</p>
+<h5><span id="3方向角与方向余弦">3.方向角与方向余弦：</span></h5><p>已知角度求点的坐标</p>
+<p>已知向量求方向角、余弦和模</p>
+<h5><span id="4投影">4.投影</span></h5><p>已知向量求向量在某轴上的投影</p>
+<p>已知投影求向量</p>
+<h3><span id="8-4-数量积-向量积">8-4 数量积、向量积</span></h3><img src="/2024/03/25/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E4%B8%8B%E7%AC%94%E8%AE%B0/微信截图_20240326013200.png" alt="微信截图_20240326013200" style="zoom:80%;">
+
+<h4><span id="题型"><strong>题型</strong>：</span></h4><p>1.用数量积公式求夹角、投影</p>
+<p>2.用向量积求三角形面积（用到正弦）</p>
+<p>3.用数量积、向量积定义证垂直或平行</p>
+<p>4.（多用）用向量积求平面方程</p>
+<h3><span id="8-5-平面及其方程">8-5 平面及其方程</span></h3><h4><span id="1平面的点法式方程">1.平面的点法式方程</span></h4><p><strong>A（x-x₀）+B（y-y₀）+C（z-z₀）&#x3D;0</strong></p>
+<p>其中<strong>n</strong>&#x3D;（A,B,C），M₀&#x3D;（x₀，y₀，z₀）</p>
+<h4><span id="2平面的一般方程">2.平面的一般方程</span></h4><p><strong>Ax0 + By0 + Cz0 +D&#x3D;0</strong></p>
+<p><strong>n</strong>&#x3D;（A,B,C）</p>
+<p>①<strong>D&#x3D;0</strong>时，方程表示一个通过<strong>原点</strong>的平面</p>
+<p>②<strong>A&#x3D;0</strong>时，<strong>n</strong>垂直于x轴，方程表示一个平行于（或包含）<strong>x轴</strong>的平面；<strong>B&#x3D;0，C&#x3D;0</strong>同理</p>
+<p>③<strong>A&#x3D;B&#x3D;0</strong>，<strong>n</strong>同时垂直x轴和y轴，方程表示一个平行于（或重合）<strong>x0y面</strong>的平面；<strong>A&#x3D;C&#x3D;0,B&#x3D;C&#x3D;0</strong>同理</p>
+<h4><span id="3平面的截距式方程">3.平面的截距式方程</span></h4><p><strong>x&#x2F;a + y&#x2F;b + z&#x2F;c &#x3D; 1</strong></p>
+<p>a、b、c分别是平面在xyz轴上的截距</p>
+<h4><span id="4两平面夹角-点到平面距离">4.两平面夹角、点到平面距离</span></h4><p><strong>两平面互相垂直</strong>相当于<strong>A₁A₂ + B₁B₂ + C₁C₂ &#x3D; 0</strong></p>
+<p><strong>两平面互相平行或重合</strong>相当于<strong>A₁&#x2F;A₂ &#x3D; B₁&#x2F;B₂ &#x3D; C₁&#x2F;C₂</strong></p>
+<img src="/2024/03/25/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E4%B8%8B%E7%AC%94%E8%AE%B0/微信截图_20240326015143.png" alt="微信截图_20240326015143" style="zoom:80%;">
+
+
+
+<h3><span id="8-6-空间直线及其方程">8-6 空间直线及其方程</span></h3><h4><span id="1直线的点向式方程对称式方程">1.直线的点向式方程（对称式方程）</span></h4><p>其中，<strong>s</strong>&#x3D;(m,n,p)，M₀&#x3D;(x₀,y₀,z₀)</p>
+<p>要素：①方向向量 ②点</p>
+<h4><span id="2直线的参数方程">2.直线的参数方程</span></h4><h4><span id="3直线的一般方程">3.直线的一般方程</span></h4><p>表现为两个平面的交线</p>
+<h4><span id="4线面角">4.线面角</span></h4><p>范围是【0，90°】</p>
+<img src="/2024/03/25/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E4%B8%8B%E7%AC%94%E8%AE%B0/微信截图_20240326015259.png" alt="微信截图_20240326015259" style="zoom:80%;">
+
+<h4><span id="5线线角">5.线线角</span></h4><p>和面面角公式相同，用cos</p>
+<h4><span id="6性质">6.性质</span></h4><p><strong>两直线相互垂直（包括异面、相交）</strong>相当于 <strong>m₁m₂ + n₁n₂ + p₁p₂ &#x3D; 0</strong></p>
+<p><strong>两直线互相平行或重合</strong> 相当于 <strong>m₁&#x2F;m₂ &#x3D; n₁&#x2F;n₂ &#x3D; p₁&#x2F;p₂</strong></p>
+<p><strong>直线与平面平行或直线在平面上</strong> 相当于 <strong>Am + Bn + Cp &#x3D;0</strong></p>
+]]></content>
+      <tags>
+        <tag>高等数学</tag>
       </tags>
   </entry>
   <entry>
