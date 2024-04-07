@@ -98,24 +98,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <url>/2024/03/11/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2><span id="quick-start">Quick Start</span></h2><h3><span id="create-a-new-post">Create a new post</span></h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3><span id="run-server">Run server</span></h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3><span id="generate-static-files">Generate static files</span></h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3><span id="deploy-to-remote-sites">Deploy to remote sites</span></h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
-  </entry>
-  <entry>
     <title>unity 控制角色移动</title>
     <url>/2024/03/19/unity-%E6%8E%A7%E5%88%B6%E8%A7%92%E8%89%B2%E7%A7%BB%E5%8A%A8/</url>
     <content><![CDATA[<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">using System.Collections;</span><br><span class="line">using System.Collections.Generic;</span><br><span class="line">using UnityEngine;</span><br><span class="line">//控制角色移动、生命、动画等</span><br><span class="line">public class NewBehaviourScript : MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    public float speed = 5f;//移动速度</span><br><span class="line">    // Start is called before the first frame update</span><br><span class="line">    void Start()</span><br><span class="line">    &#123;</span><br><span class="line">        </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// Update is called once per frame</span><br><span class="line">void Update()</span><br><span class="line">&#123;</span><br><span class="line">    float moveX = Input.GetAxisRaw(&quot;Horizontal&quot;);//控制水平方向移动，A：-1，D：1,0</span><br><span class="line">    float moveY = Input.GetAxisRaw(&quot;Vertical&quot;);//控制垂直方向W1 S-1 0</span><br><span class="line"></span><br><span class="line">    Vector2 position = transform.position;</span><br><span class="line">    position.x +=moveX * speed * Time.deltaTime;</span><br><span class="line">    position.y +=moveY * speed * Time.deltaTime;</span><br><span class="line">    transform.position = position;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -123,116 +105,6 @@
 ]]></content>
       <tags>
         <tag>unity2d</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>正弦稳态电路分析</title>
-    <url>/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/</url>
-    <content><![CDATA[<!-- toc -->
-
-<ul>
-<li><a href="#%E6%AD%A3%E5%BC%A6%E4%BF%A1%E5%8F%B7">正弦信号</a><ul>
-<li><a href="#1%E6%AD%A3%E5%BC%A6%E4%BF%A1%E5%8F%B7%E7%9A%84%E4%B8%89%E8%A6%81%E7%B4%A0">1.正弦信号的三要素</a></li>
-<li><a href="#2%E6%AD%A3%E5%BC%A6%E4%BF%A1%E5%8F%B7%E7%9A%84%E7%9B%B8%E4%BD%8D%E5%B7%AE">2.正弦信号的相位差</a></li>
-<li><a href="#3%E6%AD%A3%E5%BC%A6%E4%BF%A1%E5%8F%B7%E7%9A%84%E6%9C%89%E6%95%88%E5%80%BC">3.正弦信号的有效值</a></li>
-</ul>
-</li>
-<li><a href="#%E6%AD%A3%E5%BC%A6%E4%BF%A1%E5%8F%B7%E7%9A%84%E7%9B%B8%E9%87%8F%E8%A1%A8%E7%A4%BA">正弦信号的相量表示</a><ul>
-<li><a href="#1%E5%A4%8D%E6%95%B0a%E7%9A%84%E8%A1%A8%E7%A4%BA">1.复数A的表示</a></li>
-<li><a href="#2%E7%94%A8%E7%9B%B8%E9%87%8F%E8%A1%A8%E7%A4%BA%E6%AD%A3%E5%BC%A6%E4%BF%A1%E5%8F%B7">2.用相量表示正弦信号</a></li>
-</ul>
-</li>
-<li><a href="#%E5%9F%BA%E6%9C%AC%E5%85%83%E4%BB%B6%E4%BC%8F%E5%AE%89%E7%89%B9%E6%80%A7%E7%9A%84%E7%9B%B8%E9%87%8F%E5%BD%A2%E5%BC%8F">基本元件伏安特性的相量形式</a><ul>
-<li><a href="#1%E7%94%B5%E9%98%BB%E5%85%83%E4%BB%B6">1.电阻元件</a></li>
-<li><a href="#2%E7%94%B5%E6%84%9F%E5%85%83%E4%BB%B6">2.电感元件</a></li>
-<li><a href="#3%E7%94%B5%E5%AE%B9%E5%85%83%E4%BB%B6">3.电容元件</a></li>
-<li><a href="#4%E6%AD%A3%E5%BC%A6%E7%94%B5%E6%BA%90%E7%9A%84%E7%9B%B8%E9%87%8F%E6%A8%A1%E5%9E%8B">4.正弦电源的相量模型</a></li>
-</ul>
-</li>
-<li><a href="#%E7%9B%B8%E9%87%8F%E6%A8%A1%E5%9E%8B">相量模型</a><ul>
-<li><a href="#1%E9%98%BB%E6%8A%97%E5%92%8C%E5%AF%BC%E7%BA%B3">1.阻抗和导纳</a></li>
-</ul>
-</li>
-</ul>
-<!-- tocstop -->
-
-<p>[TOC]</p>
-<h2><span id="正弦信号">正弦信号</span></h2><p>正弦稳态电路：在正弦电源作用下，电路达到稳定工作状态时的正弦稳态电路。</p>
-<p>正弦交流信号可以用sin函数表示，也可以用cos函数表示，本书采用sin函数。</p>
-<h3><span id="1正弦信号的三要素">1.正弦信号的三要素</span></h3><h4><span id="一个正弦信号由3个参数确定最大值-频率角频率和初相">一个正弦信号由3个参数确定：<strong>最大值、频率（角频率）和初相</strong></span></h4><p>（1）<strong>正弦交流信号的一般表达式</strong>：<strong>u(t) &#x3D; Uₘ sin(ωt + θ)</strong></p>
-<p>（2）<strong>Uₘ</strong>：<strong>幅值</strong>，表示正弦量所能达到的最大值；又叫峰值或振幅</p>
-<p>（3）**(ωt + θ)<strong>：</strong>相位**；θ称为相位角</p>
-<p>（4）<strong>ω</strong>：<strong>角频率</strong>，是正弦量在单位时间内变化的弧度数，单位<strong>rad&#x2F;s</strong></p>
-<p>（5）<strong>周期</strong>：周期T表示正弦量变化一周需要的时间，单位<strong>s</strong></p>
-<p>（6）<strong>公式</strong>：①<strong>T&#x3D;2π&#x2F;ω</strong></p>
-<p>​                      ②<strong>f&#x3D;1&#x2F;T</strong></p>
-<h3><span id="2正弦信号的相位差">2.正弦信号的相位差</span></h3><p>（1）<strong>定义</strong>：两个同频率正弦信号在任一时刻的相位之差称为相位差，实际上是初相之差。</p>
-<p>（2）<strong>符号表示</strong>：θ&#x3D;θᵢ - θᵤ</p>
-<p>（3）θ&gt;0，表示i(t)超前于u(t)，电流比电压先到达最大值或最小值；</p>
-<p>​          θ&lt;0，表示i(t)滞后于u(t)；</p>
-<p>​          θ&#x3D;0，则称i(t)与u(t)同相，二者同时到达最值；</p>
-<p>​          θ&#x3D;+-π，则称i(t)与u(t)反相，当i(t)达到最大值时，u(t)达到最小值，反之亦然。</p>
-<h3><span id="3正弦信号的有效值">3.正弦信号的有效值</span></h3><p>（1）<strong>定义</strong>：设两个阻值相同的电阻，分别通过周期电流和直流电流，在一个周期内，两个电阻消耗相同的能量，就称该直流电流值为周期电流的有效值。</p>
-<p>（2）<strong>总结</strong>：<u>正弦信号的振幅值等于有效值的√2倍。</u></p>
-<p>​                     Uₘ &#x3D; √2 U               Iₘ &#x3D; √2 I</p>
-<p>（3）<strong>公式表示</strong>：i(t)&#x3D;√2 I sin(ωt + θᵢ)</p>
-<p>​                             u(t)&#x3D;√2 U sin(ωt + θᵤ)</p>
-<h2><span id="正弦信号的相量表示">正弦信号的相量表示</span></h2><h3><span id="1复数a的表示">1.复数A的表示</span></h3><h4><span id="1代数型-指数型和极型">（1）代数型、指数型和极型</span></h4><ul>
-<li><input disabled type="checkbox"> <strong>代数型</strong>：A&#x3D;a1 + ja2</li>
-<li><input disabled type="checkbox"> <strong>指数型</strong>：A&#x3D;aeʲᶿ</li>
-<li><input disabled type="checkbox"> <strong>极型</strong>：a∠θ</li>
-</ul>
-<h4><span id="2指数型转换为代数型">（2）指数型转换为代数型</span></h4><ul>
-<li><input disabled type="checkbox"> <strong>欧拉公式</strong>：eʲᶿ &#x3D; cosθ + jsinθ</li>
-<li><input disabled type="checkbox"> 特别的，e^jπ&#x2F;2 &#x3D; cos(π&#x2F;2) + jsin(π&#x2F;2) &#x3D;j</li>
-</ul>
-<h4><span id="3代数型转换为指数型和极型">（3）代数型转换为指数型和极型</span></h4><ul>
-<li><p><input disabled type="checkbox"> 
-<strong>a &#x3D; (a₁² + a₂²)^1&#x2F;2</strong></p>
-</li>
-<li><p><input disabled type="checkbox"> 
-<strong>θ &#x3D; arctan (a₂&#x2F;a₁)</strong></p>
-</li>
-<li><p><input disabled type="checkbox"> 
-常用值：arctan1 &#x3D; π&#x2F;4</p>
-<p>​                arctan√3 &#x3D; π&#x2F;3</p>
-<p>​                arctan1&#x2F;√3 &#x3D; π&#x2F;6</p>
-</li>
-</ul>
-<img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/微信截图_20240402012354.png" alt="微信截图_20240402012354" style="zoom:80%;">
-
-<h4><span id="4计算">（4）计算</span></h4><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/微信截图_20240402012812.png" alt="微信截图_20240402012812" style="zoom:80%;">
-
-<h3><span id="2用相量表示正弦信号">2.用相量表示正弦信号</span></h3><h4><span id="1正弦电流-电压的表示">（1）正弦电流、电压的表示</span></h4><p><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240405124242.png" alt="微信截图_20240405124242"></p>
-<p><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240405123709-1712385496351-13.png" alt="微信图片_20240405123709"></p>
-<h4><span id="2正弦信号与相量的对应规则">（2）正弦信号与相量的对应规则</span></h4><p><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240405125143-1712385463082-10.png" alt="微信截图_20240405125143"></p>
-<h4><span id="3电流相量适用基尔霍夫定律见例题p87-p91">（3）电流相量适用基尔霍夫定律（见例题P87、P91）</span></h4><p>由i(t)&#x3D;i₁(t) + i₂(t)，有I˙ &#x3D;I˙₁ + I˙₂</p>
-<p>由u(t)&#x3D;u₁(t) + u₂(t)，有U˙ &#x3D;U˙₁ + U˙₂</p>
-<p>结论对于有效值相量和振幅相量都适用。</p>
-<h2><span id="基本元件伏安特性的相量形式">基本元件伏安特性的相量形式</span></h2><h3><span id="1电阻元件">1.电阻元件</span></h3><p><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240405130717.png" alt="微信图片_20240405130717"></p>
-<h3><span id="2电感元件">2.电感元件</span></h3><p><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240405131106-1712385373623-4.png" alt="微信截图_20240405131106"></p>
-<h3><span id="3电容元件">3.电容元件</span></h3><p><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240405132101-1712385391309-6.png" alt="微信截图_20240405132101"></p>
-<h3><span id="4正弦电源的相量模型">4.正弦电源的相量模型</span></h3><p>①<strong>正弦电压源</strong>：如果一个独立电压源uₛ(t)的输出电压为正弦电压，即uₛ(t) &#x3D; √2 Uₛ sin(ωt + θᵤ)，就称其为正弦电压源。</p>
-<p>参数：Uₛ→有效值；ω→角频率；θᵤ→初相。</p>
-<p>②<strong>正弦电流源</strong>：Iₛ(t) &#x3D; √2 Iₛ sin(ωt + θᵤ)</p>
-<p>③正弦受控源：VCVC,CCVS,VCCS,CCCS</p>
-<h2><span id="相量模型">相量模型</span></h2><h3><span id="1阻抗和导纳">1.阻抗和导纳</span></h3>]]></content>
-      <tags>
-        <tag>电子电路基础</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>上标、下标的字符显示</title>
-    <url>/2024/04/02/%E4%B8%8A%E6%A0%87%E3%80%81%E4%B8%8B%E6%A0%87%E7%9A%84%E5%AD%97%E7%AC%A6%E6%98%BE%E7%A4%BA/</url>
-    <content><![CDATA[<h3><span id></span></h3><h3><span id="一-上标">一、上标</span></h3><h4><span id="1数字">1.数字</span></h4><p>¹²³⁴⁵⁶⁷⁸⁹⁰⁺⁻⁼˂˃⁽⁾˙*′˙ⁿº</p>
-<h4><span id="2字母">2.字母</span></h4><p>ᵃᵇᶜᵈᵉᶠᵍʰⁱʲᵏˡᵐⁿᵒᵖʳˢᵗᵘᵛʷˣʸᶻ</p>
-<p>ᴬᴮᒼᴰᴱᶠᴳᴴᴵᴶᴷᴸᴹᴺᴼᴾᴼ̴ᴿˢᵀᵁⱽᵂˣᵞᙆ</p>
-<h4><span id="3其他">3.其他</span></h4><p>ᵃ ᵇ ᶜ ᵈ ᵉ ᵍ ʰ ⁱ ʲ ᵏ ˡ ᵐ ⁿ ᵒ ᵖ ᵒ⃒ ʳ ˢ ᵗ ᵘ ᵛ ʷ ˣ ʸ ᙆ ᴬ ᴮ ᒼ ᴰ ᴱ ᴳ ᴴ ᴵ ᴶ ᴷ ᴸ ᴹ ᴺ ᴼ ᴾ ᴼ̴ ᴿ ˢ ᵀ ᵁ ᵂ ˣ ᵞ ᙆ ꝰ ˀ ˁ ˤ ꟸ ꭜ ʱ ꭝ ꭞ ʴ ʵ ʶ ꭟ ˠ ꟹ ᴭ ᴯ ᴲ ᴻ ᴽ ᵄ ᵅ ᵆ ᵊ ᵋ ᵌ ᵑ ᵓ ᵚ ᵝ ᵞ ᵟ ᵠ ᵡ ᵎ ᵔ ᵕ ᵙ ᵜ ᶛ ᶜ ᶝ ᶞ ᶟ ᶡ ᶣ ᶤ ᶥ ᶦ ᶧ ᶨ ᶩ ᶪ ᶫ ᶬ ᶭ ᶮ ᶯ ᶰ ᶱ ᶲ ᶳ ᶴ ᶵ ᶶ ᶷ ᶸ ᶹ ᶺ ᶼ ᶽ ᶾ ᶿ ꚜ ꚝ ჼ ᒃ ᕻ ᑦ ᒄ ᕪ ᑋ ᑊ ᔿ ᐢ ᣕ ᐤ ᣖ ᣴ ᣗ ᔆ ᙚ ᐡ ᘁ ᐜ ᕽ ᙆ ᙇ ᒼ ᣳ ᒢ ᒻ ᔿ ᐤ ᣖ ᣵ ᙚ ᐪ ᓑ ᘁ ᐜ ᕽ ᙆ ᙇ </p>
-<h3><span id="二-下标">二、下标</span></h3><h4><span id="1数字">1.数字</span></h4><p>₀ ₁ ₂ ₃ ₄ ₅ ₆ ₇ ₈ ₉ ₊ ₋ ₌ ₍ ₎ ₐ ₑ ₒ ₓ ₔ ₕ ₖ ₗ ₘ ₙ ₚ ₛ ₜ</p>
-<h4><span id="2字母">2.字母</span></h4><p>ₐ ₔ ₑ ₕ ᵢ ⱼ ₖ ₗ ₘ ₙ ₒ ₚ ᵣ ₛ ₜ ᵤ ᵥ ₓ ᙮ ᵤ ᵩ ᵦ ₗ ˪ ៳ ៷ ₒ ᵨ ₛ ៴ ᵤ ᵪ ᵧ</p>
-]]></content>
-      <tags>
-        <tag>素材</tag>
       </tags>
   </entry>
   <entry>
@@ -422,6 +294,20 @@ return 0;
       </tags>
   </entry>
   <entry>
+    <title>上标、下标的字符显示</title>
+    <url>/2024/04/02/%E4%B8%8A%E6%A0%87%E3%80%81%E4%B8%8B%E6%A0%87%E7%9A%84%E5%AD%97%E7%AC%A6%E6%98%BE%E7%A4%BA/</url>
+    <content><![CDATA[<h3><span id></span></h3><h3><span id="一-上标">一、上标</span></h3><h4><span id="1数字">1.数字</span></h4><p>¹²³⁴⁵⁶⁷⁸⁹⁰⁺⁻⁼˂˃⁽⁾˙*′˙ⁿº</p>
+<h4><span id="2字母">2.字母</span></h4><p>ᵃᵇᶜᵈᵉᶠᵍʰⁱʲᵏˡᵐⁿᵒᵖʳˢᵗᵘᵛʷˣʸᶻ</p>
+<p>ᴬᴮᒼᴰᴱᶠᴳᴴᴵᴶᴷᴸᴹᴺᴼᴾᴼ̴ᴿˢᵀᵁⱽᵂˣᵞᙆ</p>
+<h4><span id="3其他">3.其他</span></h4><p>ᵃ ᵇ ᶜ ᵈ ᵉ ᵍ ʰ ⁱ ʲ ᵏ ˡ ᵐ ⁿ ᵒ ᵖ ᵒ⃒ ʳ ˢ ᵗ ᵘ ᵛ ʷ ˣ ʸ ᙆ ᴬ ᴮ ᒼ ᴰ ᴱ ᴳ ᴴ ᴵ ᴶ ᴷ ᴸ ᴹ ᴺ ᴼ ᴾ ᴼ̴ ᴿ ˢ ᵀ ᵁ ᵂ ˣ ᵞ ᙆ ꝰ ˀ ˁ ˤ ꟸ ꭜ ʱ ꭝ ꭞ ʴ ʵ ʶ ꭟ ˠ ꟹ ᴭ ᴯ ᴲ ᴻ ᴽ ᵄ ᵅ ᵆ ᵊ ᵋ ᵌ ᵑ ᵓ ᵚ ᵝ ᵞ ᵟ ᵠ ᵡ ᵎ ᵔ ᵕ ᵙ ᵜ ᶛ ᶜ ᶝ ᶞ ᶟ ᶡ ᶣ ᶤ ᶥ ᶦ ᶧ ᶨ ᶩ ᶪ ᶫ ᶬ ᶭ ᶮ ᶯ ᶰ ᶱ ᶲ ᶳ ᶴ ᶵ ᶶ ᶷ ᶸ ᶹ ᶺ ᶼ ᶽ ᶾ ᶿ ꚜ ꚝ ჼ ᒃ ᕻ ᑦ ᒄ ᕪ ᑋ ᑊ ᔿ ᐢ ᣕ ᐤ ᣖ ᣴ ᣗ ᔆ ᙚ ᐡ ᘁ ᐜ ᕽ ᙆ ᙇ ᒼ ᣳ ᒢ ᒻ ᔿ ᐤ ᣖ ᣵ ᙚ ᐪ ᓑ ᘁ ᐜ ᕽ ᙆ ᙇ </p>
+<h3><span id="二-下标">二、下标</span></h3><h4><span id="1数字">1.数字</span></h4><p>₀ ₁ ₂ ₃ ₄ ₅ ₆ ₇ ₈ ₉ ₊ ₋ ₌ ₍ ₎ ₐ ₑ ₒ ₓ ₔ ₕ ₖ ₗ ₘ ₙ ₚ ₛ ₜ</p>
+<h4><span id="2字母">2.字母</span></h4><p>ₐ ₔ ₑ ₕ ᵢ ⱼ ₖ ₗ ₘ ₙ ₒ ₚ ᵣ ₛ ₜ ᵤ ᵥ ₓ ᙮ ᵤ ᵩ ᵦ ₗ ˪ ៳ ៷ ₒ ᵨ ₛ ៴ ᵤ ᵪ ᵧ</p>
+]]></content>
+      <tags>
+        <tag>素材</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>栈的表示和操作实现</title>
     <url>/2024/04/05/%E6%A0%88%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E6%93%8D%E4%BD%9C%E5%AE%9E%E7%8E%B0/</url>
     <content><![CDATA[<h3><span id="一-顺序栈">一、顺序栈</span></h3><h3><span id="二-链栈">二、链栈</span></h3><h3><span id="三-用堆栈求解后缀表达式">三、用堆栈求解后缀表达式</span></h3><h4><span id="1定义">1.定义</span></h4><p>后缀表达式是一种不需要括号的表达式，其本身是对栈的一种应用。</p>
@@ -449,6 +335,24 @@ return 0;
       <tags>
         <tag>数据结构笔记</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2024/03/11/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2><span id="quick-start">Quick Start</span></h2><h3><span id="create-a-new-post">Create a new post</span></h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3><span id="run-server">Run server</span></h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3><span id="generate-static-files">Generate static files</span></h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3><span id="deploy-to-remote-sites">Deploy to remote sites</span></h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
   </entry>
   <entry>
     <title>用链表实现交集和并集</title>
@@ -706,6 +610,102 @@ return 0;
 ]]></content>
       <tags>
         <tag>数据结构笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>正弦稳态电路分析</title>
+    <url>/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/</url>
+    <content><![CDATA[<!-- toc -->
+
+<ul>
+<li><a href="#%E6%AD%A3%E5%BC%A6%E4%BF%A1%E5%8F%B7">正弦信号</a><ul>
+<li><a href="#1%E6%AD%A3%E5%BC%A6%E4%BF%A1%E5%8F%B7%E7%9A%84%E4%B8%89%E8%A6%81%E7%B4%A0">1.正弦信号的三要素</a></li>
+<li><a href="#2%E6%AD%A3%E5%BC%A6%E4%BF%A1%E5%8F%B7%E7%9A%84%E7%9B%B8%E4%BD%8D%E5%B7%AE">2.正弦信号的相位差</a></li>
+<li><a href="#3%E6%AD%A3%E5%BC%A6%E4%BF%A1%E5%8F%B7%E7%9A%84%E6%9C%89%E6%95%88%E5%80%BC">3.正弦信号的有效值</a></li>
+</ul>
+</li>
+<li><a href="#%E6%AD%A3%E5%BC%A6%E4%BF%A1%E5%8F%B7%E7%9A%84%E7%9B%B8%E9%87%8F%E8%A1%A8%E7%A4%BA">正弦信号的相量表示</a><ul>
+<li><a href="#1%E5%A4%8D%E6%95%B0a%E7%9A%84%E8%A1%A8%E7%A4%BA">1.复数A的表示</a></li>
+<li><a href="#2%E7%94%A8%E7%9B%B8%E9%87%8F%E8%A1%A8%E7%A4%BA%E6%AD%A3%E5%BC%A6%E4%BF%A1%E5%8F%B7">2.用相量表示正弦信号</a></li>
+</ul>
+</li>
+<li><a href="#%E5%9F%BA%E6%9C%AC%E5%85%83%E4%BB%B6%E4%BC%8F%E5%AE%89%E7%89%B9%E6%80%A7%E7%9A%84%E7%9B%B8%E9%87%8F%E5%BD%A2%E5%BC%8F">基本元件伏安特性的相量形式</a><ul>
+<li><a href="#1%E7%94%B5%E9%98%BB%E5%85%83%E4%BB%B6">1.电阻元件</a></li>
+<li><a href="#2%E7%94%B5%E6%84%9F%E5%85%83%E4%BB%B6">2.电感元件</a></li>
+<li><a href="#3%E7%94%B5%E5%AE%B9%E5%85%83%E4%BB%B6">3.电容元件</a></li>
+<li><a href="#4%E6%AD%A3%E5%BC%A6%E7%94%B5%E6%BA%90%E7%9A%84%E7%9B%B8%E9%87%8F%E6%A8%A1%E5%9E%8B">4.正弦电源的相量模型</a></li>
+</ul>
+</li>
+<li><a href="#%E7%9B%B8%E9%87%8F%E6%A8%A1%E5%9E%8B">相量模型</a><ul>
+<li><a href="#1%E9%98%BB%E6%8A%97%E5%92%8C%E5%AF%BC%E7%BA%B3">1.阻抗和导纳</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+
+<p>[TOC]</p>
+<h2><span id="正弦信号">正弦信号</span></h2><p>正弦稳态电路：在正弦电源作用下，电路达到稳定工作状态时的正弦稳态电路。</p>
+<p>正弦交流信号可以用sin函数表示，也可以用cos函数表示，本书采用sin函数。</p>
+<h3><span id="1正弦信号的三要素">1.正弦信号的三要素</span></h3><h4><span id="一个正弦信号由3个参数确定最大值-频率角频率和初相">一个正弦信号由3个参数确定：<strong>最大值、频率（角频率）和初相</strong></span></h4><p>（1）<strong>正弦交流信号的一般表达式</strong>：<strong>u(t) &#x3D; Uₘ sin(ωt + θ)</strong></p>
+<p>（2）<strong>Uₘ</strong>：<strong>幅值</strong>，表示正弦量所能达到的最大值；又叫峰值或振幅</p>
+<p>（3）**(ωt + θ)<strong>：</strong>相位**；θ称为相位角</p>
+<p>（4）<strong>ω</strong>：<strong>角频率</strong>，是正弦量在单位时间内变化的弧度数，单位<strong>rad&#x2F;s</strong></p>
+<p>（5）<strong>周期</strong>：周期T表示正弦量变化一周需要的时间，单位<strong>s</strong></p>
+<p>（6）<strong>公式</strong>：①<strong>T&#x3D;2π&#x2F;ω</strong></p>
+<p>​                      ②<strong>f&#x3D;1&#x2F;T</strong></p>
+<h3><span id="2正弦信号的相位差">2.正弦信号的相位差</span></h3><p>（1）<strong>定义</strong>：两个同频率正弦信号在任一时刻的相位之差称为相位差，实际上是初相之差。</p>
+<p>（2）<strong>符号表示</strong>：θ&#x3D;θᵢ - θᵤ</p>
+<p>（3）θ&gt;0，表示i(t)超前于u(t)，电流比电压先到达最大值或最小值；</p>
+<p>​          θ&lt;0，表示i(t)滞后于u(t)；</p>
+<p>​          θ&#x3D;0，则称i(t)与u(t)同相，二者同时到达最值；</p>
+<p>​          θ&#x3D;+-π，则称i(t)与u(t)反相，当i(t)达到最大值时，u(t)达到最小值，反之亦然。</p>
+<h3><span id="3正弦信号的有效值">3.正弦信号的有效值</span></h3><p>（1）<strong>定义</strong>：设两个阻值相同的电阻，分别通过周期电流和直流电流，在一个周期内，两个电阻消耗相同的能量，就称该直流电流值为周期电流的有效值。</p>
+<p>（2）<strong>总结</strong>：<u>正弦信号的振幅值等于有效值的√2倍。</u></p>
+<p>​                     Uₘ &#x3D; √2 U               Iₘ &#x3D; √2 I</p>
+<p>（3）<strong>公式表示</strong>：i(t)&#x3D;√2 I sin(ωt + θᵢ)</p>
+<p>​                             u(t)&#x3D;√2 U sin(ωt + θᵤ)</p>
+<h2><span id="正弦信号的相量表示">正弦信号的相量表示</span></h2><h3><span id="1复数a的表示">1.复数A的表示</span></h3><h4><span id="1代数型-指数型和极型">（1）代数型、指数型和极型</span></h4><ul>
+<li><input disabled type="checkbox"> <strong>代数型</strong>：A&#x3D;a1 + ja2</li>
+<li><input disabled type="checkbox"> <strong>指数型</strong>：A&#x3D;aeʲᶿ</li>
+<li><input disabled type="checkbox"> <strong>极型</strong>：a∠θ</li>
+</ul>
+<h4><span id="2指数型转换为代数型">（2）指数型转换为代数型</span></h4><ul>
+<li><input disabled type="checkbox"> <strong>欧拉公式</strong>：eʲᶿ &#x3D; cosθ + jsinθ</li>
+<li><input disabled type="checkbox"> 特别的，e^jπ&#x2F;2 &#x3D; cos(π&#x2F;2) + jsin(π&#x2F;2) &#x3D;j</li>
+</ul>
+<h4><span id="3代数型转换为指数型和极型">（3）代数型转换为指数型和极型</span></h4><ul>
+<li><p><input disabled type="checkbox"> 
+<strong>a &#x3D; (a₁² + a₂²)^1&#x2F;2</strong></p>
+</li>
+<li><p><input disabled type="checkbox"> 
+<strong>θ &#x3D; arctan (a₂&#x2F;a₁)</strong></p>
+</li>
+<li><p><input disabled type="checkbox"> 
+常用值：arctan1 &#x3D; π&#x2F;4</p>
+<p>​                arctan√3 &#x3D; π&#x2F;3</p>
+<p>​                arctan1&#x2F;√3 &#x3D; π&#x2F;6</p>
+</li>
+</ul>
+<img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/微信截图_20240402012354.png" alt="微信截图_20240402012354" style="zoom:80%;">
+
+<h4><span id="4计算">（4）计算</span></h4><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/微信截图_20240402012812.png" alt="微信截图_20240402012812" style="zoom:80%;">
+
+<h3><span id="2用相量表示正弦信号">2.用相量表示正弦信号</span></h3><h4><span id="1正弦电流-电压的表示">（1）正弦电流、电压的表示</span></h4><p><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240405124242-1712497802168-1.png" alt="微信截图_20240405124242"></p>
+<p><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240405123709-1712497855757-6.png" alt="微信图片_20240405123709"></p>
+<h4><span id="2正弦信号与相量的对应规则">（2）正弦信号与相量的对应规则</span></h4><p><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240405125143-1712497868082-8.png" alt="微信截图_20240405125143"></p>
+<h4><span id="3电流相量适用基尔霍夫定律见例题p87-p91">（3）电流相量适用基尔霍夫定律（见例题P87、P91）</span></h4><p>由i(t)&#x3D;i₁(t) + i₂(t)，有I˙ &#x3D;I˙₁ + I˙₂</p>
+<p>由u(t)&#x3D;u₁(t) + u₂(t)，有U˙ &#x3D;U˙₁ + U˙₂</p>
+<p>结论对于有效值相量和振幅相量都适用。</p>
+<h2><span id="基本元件伏安特性的相量形式">基本元件伏安特性的相量形式</span></h2><h3><span id="1电阻元件">1.电阻元件</span></h3><p><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240405130717-1712497944487-14.png" alt="微信图片_20240405130717"></p>
+<h3><span id="2电感元件">2.电感元件</span></h3><p><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240405131106-1712497895601-10.png" alt="微信截图_20240405131106"></p>
+<h3><span id="3电容元件">3.电容元件</span></h3><p><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240405132101-1712497926174-12.png" alt="微信截图_20240405132101"></p>
+<h3><span id="4正弦电源的相量模型">4.正弦电源的相量模型</span></h3><p>①<strong>正弦电压源</strong>：如果一个独立电压源uₛ(t)的输出电压为正弦电压，即uₛ(t) &#x3D; √2 Uₛ sin(ωt + θᵤ)，就称其为正弦电压源。</p>
+<p>参数：Uₛ→有效值；ω→角频率；θᵤ→初相。</p>
+<p>②<strong>正弦电流源</strong>：Iₛ(t) &#x3D; √2 Iₛ sin(ωt + θᵤ)</p>
+<p>③正弦受控源：VCVC,CCVS,VCCS,CCCS</p>
+<h2><span id="相量模型">相量模型</span></h2><h3><span id="1阻抗和导纳">1.阻抗和导纳</span></h3>]]></content>
+      <tags>
+        <tag>电子电路基础</tag>
       </tags>
   </entry>
   <entry>
