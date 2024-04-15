@@ -233,7 +233,30 @@
 <p>参数：Uₛ→有效值；ω→角频率；θᵤ→初相。</p>
 <p>②<strong>正弦电流源</strong>：Iₛ(t) &#x3D; √2 Iₛ sin(ωt + θᵤ)</p>
 <p>③正弦受控源：VCVC,CCVS,VCCS,CCCS</p>
-<h2><span id="相量模型">相量模型</span></h2><h3><span id="1阻抗和导纳">1.阻抗和导纳</span></h3>
+<h2><span id="相量模型">相量模型</span></h2><h3><span id="1阻抗和导纳">1.阻抗和导纳</span></h3><h4><span id="1阻抗z">（1）阻抗Z</span></h4><h5><span id="1概念">①概念</span></h5><p><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/4c636121dd444a1e847b36ec124dfc34.png" alt="4c636121dd444a1e847b36ec124dfc34"></p>
+<p>X&#x3D;0时，阻抗Z成电阻性。</p>
+<p>把X替换成φᶻ也成立（z是下标）。</p>
+<h5><span id="2转换关系">②转换关系</span></h5><p>R &#x3D; |Z|cosφᶻ（z是下标）</p>
+<p>X &#x3D; |Z|sinφᶻ</p>
+<p>其中，</p>
+<p>|Z| &#x3D; √（R² + X²） &#x3D; U&#x2F;I</p>
+<p>φᶻ &#x3D; arctan（X&#x2F;R）&#x3D; θᵤ - θᵢ</p>
+<h5><span id="3基本元件的阻抗">③基本元件的阻抗</span></h5><p><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/35e4c5e6308d447aadb1585fcfa64836.png" alt="35e4c5e6308d447aadb1585fcfa64836"></p>
+<p>其中，X˪ &#x3D; ωL，Xᶜ &#x3D; -1&#x2F;ωC  （c是下标）</p>
+<h4><span id="2导纳y">（2）导纳Y</span></h4><p><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/aba8b119efdc4c78845b70dc846c1eaa.png" alt="aba8b119efdc4c78845b70dc846c1eaa"></p>
+<p>导纳的量纲是西门子（S）。</p>
+<h4><span id="3相量图">（3）相量图</span></h4><p>确定相量的角度需要两个步骤:</p>
+<p>①第1步:确定参考相量，即角度为零的相量</p>
+<p><strong>串联电路</strong>选<strong>电流</strong>作为参考相量</p>
+<p><strong>并联电路</strong>选<strong>电压</strong>作为参考相量</p>
+<p>②第2步:根据支路的VCR确定支路电压或电流相量的角度</p>
+<p><strong>滞后</strong>：顺时针，后面（以U˪的相量形式作为参照）</p>
+<p><strong>超前</strong>：逆时针，前面</p>
+<p><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/fb1a95a4fab44f2aac3ed1a013f8078d.png" alt="fb1a95a4fab44f2aac3ed1a013f8078d"></p>
+<p><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/db461cce59f34b9b9df7b855b362fb60.png" alt="db461cce59f34b9b9df7b855b362fb60"></p>
+<p><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/f6acd5e9b5bb46fb92aa919e11f436a0.png" alt="f6acd5e9b5bb46fb92aa919e11f436a0"></p>
+<h4><span id="4阻抗和导纳的串-并联">（4）阻抗和导纳的串、并联</span></h4><p><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240415222834.png" alt="微信图片_20240415222834"></p>
+
 </div> 
 
 <script>
