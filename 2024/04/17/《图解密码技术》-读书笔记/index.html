@@ -14,7 +14,7 @@
 
 
 
-<title>栈的表示和操作实现 | Hexo</title>
+<title>《图解密码技术》 读书笔记 | Hexo</title>
 
 
 
@@ -120,8 +120,8 @@
             
                 
                     <span class="post-tag">
-                        <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%94%E8%AE%B0/">
-                            数据结构笔记
+                        <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">
+                            读书笔记
                         </a>
                     </span>    
                            
@@ -130,12 +130,12 @@
         <div class="post-title">
             
             
-                栈的表示和操作实现
+                《图解密码技术》 读书笔记
             
             
         </div>
         <span class="post-date">
-            Apr 5, 2024
+            Apr 17, 2024
         </span>
     </div>
     <div class="post-img">
@@ -145,27 +145,38 @@
     </div>
 </div>
     <div class="post-content">
-    <h3><span id="一-顺序栈">一、顺序栈</span></h3><h3><span id="二-链栈">二、链栈</span></h3><h3><span id="三-用堆栈求解后缀表达式">三、用堆栈求解后缀表达式</span></h3><h4><span id="1定义">1.定义</span></h4><p>后缀表达式是一种不需要括号的表达式，其本身是对栈的一种应用。</p>
-<p>与之对应的是中缀表达式，即我们现在使用的四则运算。</p>
-<h4><span id="2运算规则">2.运算规则</span></h4><p>顺序：从左到右入栈。</p>
-<p>对于数字直接入栈，对于运算符号，就把栈最上面的两个数出栈，进行运算后再重新入栈。式子最后的结果出栈。</p>
-<p>栈顶元素永远在运算符的右边。</p>
-<h4><span id="3例子">3.例子</span></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">（1）令P代表入栈，O代表出栈。当利用堆栈求解后缀表达式1 2 3 + * 4 –时，堆栈操作序列是：</span><br><span class="line"></span><br><span class="line">A.PPPOOPOO</span><br><span class="line"></span><br><span class="line">B.PPOOPPOOPPOO</span><br><span class="line"></span><br><span class="line">C.PPPOOPOOPPOO</span><br><span class="line"></span><br><span class="line">D.PPPOOPOOPPOOPO</span><br></pre></td></tr></table></figure>
-
-<p>1、2、3：进栈，PPP</p>
-<p>+：对最顶上的3、2出栈，计算2+3&#x3D;5，把结果进栈，OOP</p>
-<p>*：对5、1出栈，计算5x1&#x3D;5，把结果进栈，OOP</p>
-<p>4：进栈，P</p>
-<p>-：对4、5出栈，计算4-5&#x3D;-1，把结果进栈，OOP</p>
-<p>最后输出结果：O</p>
-<p>答案为D。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">（2）表达式`a*(b+c)-d`的后缀表达式是：</span><br><span class="line"></span><br><span class="line">A.`a b c + * d -`</span><br><span class="line"></span><br><span class="line">B.`a b c d * + -`</span><br><span class="line"></span><br><span class="line">C.`a b c * + d -`</span><br><span class="line"></span><br><span class="line">D.`- + * a b c d`</span><br></pre></td></tr></table></figure>
-
-<p>数字优先进栈，所以abc</p>
-<p>括号内的式子优先计算，所以首先遇到+，为abc+</p>
-<p>算完加法算乘法，所以abc+*</p>
-<p>继续将d进栈，然后算减法，所以是abc+*d-</p>
-<p>答案为A。</p>
+    <h2><span id="基础概念">基础概念</span></h2><h3><span id="1-1-基本名词解释">1-1 基本名词解释</span></h3><p>1.密钥（key）：加密和解密所需的媒介。</p>
+<p>2.对称密码：在加密和解密时使用同一密钥的解密方式。</p>
+<p>3.公钥密码：在加密和解密时使用不同密钥的解密方式。又叫非对称密码。</p>
+<p>4.混合密码系统：结合了对称密码和非对称密码的优势。</p>
+<p>5.单向散列函数：是一种保证完整性的密码技术。</p>
+<p>为了防止软件被篡改，一些发布者会在发布软件的同时发布该软件的散列值，下载该软件的人自行下载散列值，如果后者与前者的值相等，说明下载的软件是正版的。</p>
+<p>6.消息认证码：是一种能够保证完整性和提供认证的密码技术。</p>
+<p>为了确认消息是否来自所期望的通信对象，可以使用消息认证码。</p>
+<p>7.数字签名：</p>
+<p>（1）伪装：第三方伪造发送者的身份传达消息。</p>
+<p>（2）篡改：消息在传输的过程中遭到第三方修改。</p>
+<p>（3）否认：发送者在事后推翻自己先前的主张。</p>
+<p>防止伪装、篡改、否认等威胁的技术，就是数字签名。</p>
+<p>8.伪随机数生成器</p>
+<p>9.隐写术：密码隐藏的是内容，而隐写术隐藏的是消息本身</p>
+<h2><span id="历史密码">历史密码</span></h2><h3><span id="2-1凯撒密码">2-1凯撒密码</span></h3><h4><span id="1概念">1.概念</span></h4><p>通过将明文中所使用的字母表按照一定的字数”平移“来进行加密的密码。</p>
+<p>如A→F，B→G</p>
+<p>在此例中，密钥为5</p>
+<h4><span id="2解密">2.解密</span></h4><p>将所有可能的密钥全部尝试一遍，这种方法称为<strong>暴力破解</strong>。由于这种方法的本质是从所有的密钥中找出正确的密钥，因此又称为<strong>穷举搜索</strong>。</p>
+<h3><span id="2-2简单替换密码">2-2简单替换密码</span></h3><h4><span id="1概念">1.概念</span></h4><p>将明文中所使用的字母表替换为另一套字母表的密码。</p>
+<h4><span id="2加密">2.加密</span></h4><p>依次将明文中的每一个字母按照替换表替换成另一个字母。</p>
+<p>如A→B，B→Z</p>
+<h4><span id="3解密">3.解密</span></h4><p>简单替换密码很难通过暴力破解来破译。</p>
+<p>一种密码能够使用的所有密钥的集合称为密钥空间。</p>
+<p>密钥空间越大，暴力破解越困难。</p>
+<p>计算：n!(n是密码所用到的字符的种类)</p>
+<p><strong>频率分析法</strong></p>
+<p>①明文中的字母的出现频率&#x3D;密文中的字母的出现频率</p>
+<p>②除了高频字母以外，低频字母也能够成为线索</p>
+<p>③搞清开头和结尾能够成为线索，搞清单词之间的分隔也能成为线索</p>
+<p>④密文越长越容易破译</p>
+<p>⑤同一个字母连续出现能够成为线索（这是因为在简单替换密码中，某个字母在替换表中所对应的另一个字母是固定的）</p>
 
 </div> 
 
@@ -177,17 +188,12 @@
     <nav class="post-nav">
         <div class="prev-item">
            
-                <div class="icon arrow-left"></div>
-                <div class="post-link">
-                    <a href="/2024/04/17/%E3%80%8A%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF%E3%80%8B-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">Prev</a>
-                </div>
-            
         </div>
         <div class="next-item">
             
                 <div class="icon arrow-right"></div>
                 <div class="post-link">
-                  <a href="/2024/04/03/stack%E5%AE%B9%E5%99%A8%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/">Next</a>  
+                  <a href="/2024/04/05/%E6%A0%88%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E6%93%8D%E4%BD%9C%E5%AE%9E%E7%8E%B0/">Next</a>  
                 </div>  
             
         </div>
