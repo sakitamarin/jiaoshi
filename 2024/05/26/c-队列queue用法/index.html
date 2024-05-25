@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="John Doe">
+
+
+
+
+
+
+
+<title>c++队列queue用法 | Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/menu.js"></script>
+    
+
+
+
+
+
+
+
+    <script src='https://unpkg.com/valine@1.4.16/dist/Valine.min.js'></script>
+
+
+
+
+  <!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.1.1"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            首页
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">主页</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">归档</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/categories/gallery/">画廊</a>
+              </li> 
+                   
+          
+          
+            <li class="menu-item search-btn">
+              <a href="#">Search</a>
+            </li>
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+                
+                    <span class="post-tag">
+                        <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%94%E8%AE%B0/">
+                            数据结构笔记
+                        </a>
+                    </span>    
+                           
+            
+        </div>
+        <div class="post-title">
+            
+            
+                c++队列queue用法
+            
+            
+        </div>
+        <span class="post-date">
+            May 26, 2024
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <!-- toc -->
+
+<ul>
+<li><a href="#%E5%AE%9A%E4%B9%89">定义</a></li>
+<li><a href="#%E4%B8%80-queue%E5%88%9D%E5%A7%8B%E5%8C%96">一、queue初始化</a></li>
+<li><a href="#%E4%BA%8C-queue%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0">二、queue常用函数</a><ul>
+<li><a href="#1%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0">1.常用函数</a></li>
+<li><a href="#2%E5%87%BD%E6%95%B0%E8%BF%90%E7%94%A8%E7%A4%BA%E4%BE%8B">2.函数运用示例</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+
+<p>[TOC]</p>
+<h2><span id="定义">定义</span></h2><p>queue是一种容器转换器模板，调用#include&lt; queue&gt;即可使用队列类。</p>
+<h2><span id="一-queue初始化">一、queue初始化</span></h2><p>queue&lt;Type, Container&gt; (&lt;数据类型，容器类型&gt;）<br>初始化时必须要有数据类型，容器可省略，省略时则默认为deque 类型</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">queue&lt;int&gt;q1;</span><br><span class="line"></span><br><span class="line">queue&lt;double&gt;q2; </span><br><span class="line"></span><br><span class="line">queue＜char＞q3；</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">queue＜char, list＜char＞＞q1；</span><br><span class="line">//用list容器实现的queue </span><br><span class="line"></span><br><span class="line">queue＜int, deque＜int＞＞q2；</span><br><span class="line"> //用deque容器实现的queue </span><br></pre></td></tr></table></figure>
+
+<h2><span id="二-queue常用函数">二、queue常用函数</span></h2><h3><span id="1常用函数">1.常用函数</span></h3><ol>
+<li>push() 在队尾插入一个元素</li>
+<li>pop() 删除队列第一个元素</li>
+<li>size() 返回队列中元素个数</li>
+<li>empty() 如果队列空则返回true</li>
+<li>front() 返回队列中的第一个元素</li>
+<li>back() 返回队列中最后一个元素</li>
+</ol>
+<h3><span id="2函数运用示例">2.函数运用示例</span></h3><h4><span id="1push在队尾插入一个元素">（1）<strong>push（）在队尾插入一个元素</strong></span></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">queue &lt;string&gt; q;</span><br><span class="line">   q.push(&quot;first&quot;);</span><br><span class="line">   q.push(&quot;second&quot;);</span><br><span class="line">   cout&lt;&lt;q.front()&lt;&lt;endl;</span><br></pre></td></tr></table></figure>
+
+<p>输出 first</p>
+<h4><span id="2pop-将队列中最靠前位置的元素删除没有返回值">（2）<strong>pop() 将队列中最靠前位置的元素删除，没有返回值</strong></span></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">queue &lt;string&gt; q;</span><br><span class="line">	q.push(&quot;first&quot;);</span><br><span class="line">	q.push(&quot;second&quot;);</span><br><span class="line">	q.pop();</span><br><span class="line">	cout&lt;&lt;q.front()&lt;&lt;endl;</span><br></pre></td></tr></table></figure>
+
+<p>输出 second</p>
+<h4><span id="3size-返回队列中元素个数">（3）<strong>size() 返回队列中元素个数</strong></span></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">queue &lt;string&gt; q;</span><br><span class="line">  q.push(&quot;first&quot;);</span><br><span class="line">  q.push(&quot;second&quot;);</span><br><span class="line">  cout&lt;&lt;q.size()&lt;&lt;endl;</span><br></pre></td></tr></table></figure>
+
+<p>输出2</p>
+<h4><span id="4empty-如果队列空则返回true">（4）<strong>empty() 如果队列空则返回true</strong></span></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">queue &lt;string&gt; q;</span><br><span class="line">    cout&lt;&lt;q.empty()&lt;&lt;endl;</span><br><span class="line">    q.push(&quot;first&quot;);</span><br><span class="line">    q.push(&quot;second&quot;);</span><br><span class="line">    cout&lt;&lt;q.empty()&lt;&lt;endl;</span><br></pre></td></tr></table></figure>
+
+<p>分别输出1和0</p>
+<h4><span id="5front-返回队列中的第一个元素">（5）<strong>front() 返回队列中的第一个元素</strong></span></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">queue &lt;string&gt; q;</span><br><span class="line">    q.push(&quot;first&quot;);</span><br><span class="line">    q.push(&quot;second&quot;);</span><br><span class="line">    cout&lt;&lt;q.front()&lt;&lt;endl;</span><br><span class="line">    q.pop();</span><br><span class="line">    cout&lt;&lt;q.front()&lt;&lt;endl;</span><br></pre></td></tr></table></figure>
+
+<p>第一行输出first；<br>第二行输出second</p>
+<h4><span id="6back-返回队列中最后一个元素">（6）<strong>back() 返回队列中最后一个元素</strong></span></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">queue &lt;string&gt; q;</span><br><span class="line">q.push(&quot;first&quot;);</span><br><span class="line">q.push(&quot;second&quot;);</span><br><span class="line">cout&lt;&lt;q.back()&lt;&lt;endl;</span><br></pre></td></tr></table></figure>
+
+<p>输出最后一个元素second</p>
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2024/04/23/%E5%8D%8A%E5%AF%BC%E4%BD%93%E5%99%A8%E4%BB%B6%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%89%B9%E6%80%A7/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+    
+        <div id="vcomments"></div>
+        <script>
+            var META = ['nick', 'mail', 'link'];
+            var meta = 'nick,mail';
+            meta = meta.split(',').filter(item => {
+                return META.includes(item);
+            });
+            new Valine({
+                el: '#vcomments',
+                appId: 'f131VXTFNbI57QRvg5lJFtbq-MdYXbMMI',
+                appKey: 'd1GENolYcYpRMO2FbRRbarov',
+                lang: 'zh-CN',
+                placeholder: 'Say something',
+                avatar: 'mp',
+                meta: meta
+            })
+        </script>    
+     
+
+     
+    
+    
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    
+      <div class="search-popup">
+    <div class="search-popup-overlay">  
+    </div>
+    <div class="search-popup-window" >
+        <div class="search-header">
+            <div class="search-input-container">
+              <input autocomplete="off" autocapitalize="off" maxlength="80"
+                     placeholder="Search Anything" spellcheck="false"
+                     type="search" class="search-input">
+            </div>
+            <div class="search-close-btn">
+                <div class="icon close-btn"></div>
+            </div>
+        </div>
+        <div class="search-result-container">
+        </div>
+    </div>
+</div>
+
+<script>
+    const searchConfig = {
+        path             : "/search.xml",
+        top_n_per_article: "1",
+        unescape         : "false",
+        trigger: "auto",
+        preload: "false"
+    }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js"></script>
+<script src="/js/search.js"></script>
+    
+    
+
+  </body>
+</html>

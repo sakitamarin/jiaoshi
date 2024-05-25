@@ -145,7 +145,17 @@
     </div>
 </div>
     <div class="post-content">
-    <h3><span id="一-顺序栈">一、顺序栈</span></h3><ul>
+    <!-- toc -->
+
+<ul>
+<li><a href="#%E4%B8%80-%E9%A1%BA%E5%BA%8F%E6%A0%88">一、顺序栈</a></li>
+<li><a href="#%E4%BA%8C-%E9%93%BE%E6%A0%88">二、链栈</a></li>
+<li><a href="#%E4%B8%89-%E7%94%A8%E5%A0%86%E6%A0%88%E6%B1%82%E8%A7%A3%E5%90%8E%E7%BC%80%E8%A1%A8%E8%BE%BE%E5%BC%8F">三、用堆栈求解后缀表达式</a></li>
+</ul>
+<!-- tocstop -->
+
+<p>[TOC]</p>
+<h3><span id="一-顺序栈">一、顺序栈</span></h3><ul>
 <li>存储结构：顺序存储</li>
 <li>后进后出，插入和删除只在栈顶进行</li>
 <li>递归</li>
@@ -184,8 +194,7 @@
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">int Pop(SqStack &amp;S,int &amp;e)&#123;</span><br><span class="line">//删除S的栈顶元素，用e返回其值</span><br><span class="line"></span><br><span class="line">if(S.top == S.base) return -1; //栈空</span><br><span class="line"></span><br><span class="line">e = *--S.top; //栈顶指针-1，将栈顶元素赋给e</span><br><span class="line"></span><br><span class="line">//等价于--S.top; e=*S.top;</span><br><span class="line"></span><br><span class="line">return 1;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>5.取栈顶元素</p>
-<ul>
+<h4><span id="5取栈顶元素">5.取栈顶元素</span></h4><ul>
 <li>判断栈非空</li>
 <li>返回当前栈顶元素的值，不修改指针</li>
 </ul>
@@ -218,7 +227,12 @@
 <li>下移栈顶指针</li>
 <li>释放p结点</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">int pop(LinkStack &amp;S，int &amp;e)&#123;</span><br><span class="line">//删除S的栈顶元素，用e返回其值</span><br><span class="line"></span><br><span class="line">if(S=NULL) return -1; //栈空</span><br><span class="line"></span><br><span class="line">e = S-&gt;data; //赋值</span><br><span class="line"></span><br><span class="line">LinkStack* p;</span><br><span class="line"></span><br><span class="line">p = S; //用p临时保存栈顶元素空间</span><br><span class="line"></span><br><span class="line">S = S-&gt;next; //下移栈顶指针</span><br><span class="line"></span><br><span class="line">free(p); //释放</span><br><span class="line"></span><br><span class="line">return 1;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">int Pop(LinkStack &amp;S，int &amp;e)&#123;</span><br><span class="line">//删除S的栈顶元素，用e返回其值</span><br><span class="line"></span><br><span class="line">if(S=NULL) return -1; //栈空</span><br><span class="line"></span><br><span class="line">e = S-&gt;data; //赋值</span><br><span class="line"></span><br><span class="line">LinkStack* p;</span><br><span class="line"></span><br><span class="line">p = S; //用p临时保存栈顶元素空间</span><br><span class="line"></span><br><span class="line">S = S-&gt;next; //下移栈顶指针</span><br><span class="line"></span><br><span class="line">free(p); //释放</span><br><span class="line"></span><br><span class="line">return 1;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="5读栈顶元素">5.读栈顶元素</span></h4><ul>
+<li>当栈非空，返回S的值，栈顶S保持不变</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">int GetTop(LinkStack S)&#123;</span><br><span class="line">//返回S的栈顶元素，不修改栈顶指针</span><br><span class="line"></span><br><span class="line">if(S!=NULL) </span><br><span class="line"></span><br><span class="line">return S-&gt;data;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 
