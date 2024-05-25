@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="John Doe">
+
+
+
+
+
+
+
+<title>队列的表示和操作实现 | Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/menu.js"></script>
+    
+
+
+
+
+
+
+
+    <script src='https://unpkg.com/valine@1.4.16/dist/Valine.min.js'></script>
+
+
+
+
+  <!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.1.1"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            首页
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">主页</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">归档</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/categories/gallery/">画廊</a>
+              </li> 
+                   
+          
+          
+            <li class="menu-item search-btn">
+              <a href="#">Search</a>
+            </li>
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+                
+                    <span class="post-tag">
+                        <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%94%E8%AE%B0/">
+                            数据结构笔记
+                        </a>
+                    </span>    
+                           
+            
+        </div>
+        <div class="post-title">
+            
+            
+                队列的表示和操作实现
+            
+            
+        </div>
+        <span class="post-date">
+            May 26, 2024
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <!-- toc -->
+
+<ul>
+<li><a href="#%E4%B8%80-%E5%BE%AA%E7%8E%AF%E9%98%9F%E5%88%97%E9%98%9F%E5%88%97%E7%9A%84%E9%A1%BA%E5%BA%8F%E5%AD%98%E5%82%A8">一、循环队列（队列的顺序存储）</a></li>
+<li><a href="#%E4%BA%8C-%E9%93%BE%E6%A0%88">二、链栈</a></li>
+</ul>
+<!-- tocstop -->
+
+<p>[TOC]</p>
+<h3><span id="一-循环队列队列的顺序存储">一、循环队列（队列的顺序存储）</span></h3><p>如果用户的应用程序中设有循环队列，就必须为它设定一个最大队列长度。</p>
+<h4><span id="1定义">1.定义</span></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#define MAXQSIZE 100 //队列可能达到的长度</span><br><span class="line"></span><br><span class="line">typedef struct&#123;</span><br><span class="line"></span><br><span class="line">int *base; //存储空间的基地址</span><br><span class="line"></span><br><span class="line">int front; //头指针，若队列不空，指向队列头元素（实位）</span><br><span class="line"></span><br><span class="line">int rear; //尾指针，若队列不空，指向队列尾元素的下一个位置（虚位）</span><br><span class="line"></span><br><span class="line">&#125;SqQueue;</span><br><span class="line"></span><br><span class="line">SqQueue Q;</span><br></pre></td></tr></table></figure>
+
+<h5><span id="顺序队列非循环队列">顺序队列——非循环队列</span></h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">初始化队列：Q.front=Q.rear=0;</span><br><span class="line"></span><br><span class="line">入队：新元素按 rear 指示位置加入，再将队尾指针加一，即</span><br><span class="line">Q.base[Q.rear] = e;</span><br><span class="line">Q.rear = Q.rear+1;</span><br><span class="line"></span><br><span class="line">出队：将front指示的元素取出，再将队头指针加一，即 </span><br><span class="line">e=Q.base[O.front];</span><br><span class="line">Q.front= Q.front+ 1;</span><br><span class="line"></span><br><span class="line">队空：Q.front==Q.rear;</span><br><span class="line"></span><br><span class="line">队满：Q.rear-Q.front==MAXQSIZE;</span><br><span class="line"></span><br><span class="line">求队长：Q.rear-Q.front;</span><br></pre></td></tr></table></figure>
+
+<p>存在“假上溢”的现象：<u>因数组越界而导致的程序非法操作错误，并且此时队列的实际可用空间并未占满。</u></p>
+<h5><span id="循环队列">循环队列</span></h5><p>防假上溢：少用一个元素空间，即队列空间大小为m时，有m-1个元素就认为是队满。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">队列初始化： Q.front = Q.rear =0;</span><br><span class="line"></span><br><span class="line">队空：Q.front == Q.rear;</span><br><span class="line"></span><br><span class="line">队满：(Q.rear + 1)%MAXQSIZE ==Q.front;</span><br><span class="line"></span><br><span class="line">入队：（1）队列不满，新元素e插入Q.rear所指的位置</span><br><span class="line">      Q.base[Q.rear] = e;</span><br><span class="line">      （2）Q.rear = (Q.rear+1)%MAXQSIZE;</span><br><span class="line">出队：（1）队列不空，删除Q.front所指的元素</span><br><span class="line">      e = Q.base[Q.front];</span><br><span class="line">     （2）Q.front = (Q.front+1)%MAXQSIZE;</span><br><span class="line">求队长：</span><br><span class="line">(Q.rear - Q.front + MAXQSIZE)%MAXQSIZE;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="2初始化">2.初始化</span></h4><ul>
+<li>分配一个最大容量为MAXQSIZE的存储空间Q.base &#x3D; new int[]</li>
+<li>判断分配失败</li>
+<li>否则将头指针和尾指针置为0，表示队列为空</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">int InitQueue(SqQueue &amp;Q)&#123;</span><br><span class="line">//构造一个空队列</span><br><span class="line"></span><br><span class="line">Q.base = new int[MAXQSIZE]; //分配存储空间</span><br><span class="line"></span><br><span class="line">if(!Q.base) return -1; //分配失败</span><br><span class="line"></span><br><span class="line">Q.front = Q.rear=0; //头指针、尾指针置为0，表示队列为空</span><br><span class="line"></span><br><span class="line">return 1;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="3入队">3.入队</span></h4><ul>
+<li>判断队满</li>
+<li>否则将新元素插入队尾</li>
+<li>队尾指针+1</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">int EnQueue(SqQueue &amp;Q,int e)&#123;</span><br><span class="line">//插入元素e为Q的新队尾元素</span><br><span class="line"></span><br><span class="line">if((Q.rear+1)%MAXQSIZE==Q.front)</span><br><span class="line">//尾指针在循环意义上+1后等于头指针，表示队满</span><br><span class="line"></span><br><span class="line">return -1;</span><br><span class="line"></span><br><span class="line">Q.base[Q.rear] = e; //新元素插入队尾</span><br><span class="line"></span><br><span class="line">Q.rear = (Q.rear+1)%MAXQSIZE; //队尾指针+1</span><br><span class="line"></span><br><span class="line">return 1;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="4出队">4.出队</span></h4><ul>
+<li>判断队空</li>
+<li>否则保存队头元素</li>
+<li>队头指针+1</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">int DeQueue(SqQueue &amp;Q,int &amp;e)&#123;</span><br><span class="line">//删除Q的队头元素，用e返回其值</span><br><span class="line"></span><br><span class="line">if(Q.front == Q.rear) return -1;//队空</span><br><span class="line"></span><br><span class="line">e = Q.base[Q.front]; //保存队头元素</span><br><span class="line"></span><br><span class="line">Q.front = (Q.front + 1 )%MAXQSIZE； //队头指针+1</span><br><span class="line"></span><br><span class="line">return 1;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="5取队头元素">5.取队头元素</span></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">int GetHead(SqQueue Q)&#123;</span><br><span class="line">//返回Q的队头元素，不修改队头指针</span><br><span class="line"></span><br><span class="line">if(Q.front!=Q.rear) //非空</span><br><span class="line"></span><br><span class="line">return Q.base[Q.front];//返回队头</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3><span id="二-链栈">二、链栈</span></h3><p>采用链式存储结构实现的队列称为<strong>链队列</strong>。</p>
+<p>为了使操作更加方便，将队头指针指向链队列的头结点，而队尾指针指向终端结点。 </p>
+<p><strong>空队列时，front和rear都指向头结点，即front&#x3D;&#x3D;rear</strong></p>
+<h4><span id="1定义">1.定义</span></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">typedef struct QNode&#123;</span><br><span class="line">int data;</span><br><span class="line">struct QNode *next;</span><br><span class="line">&#125;QNode,*QueuePtr;</span><br><span class="line"></span><br><span class="line">typedef struct &#123;</span><br><span class="line">QueuePtr front; //队头指针</span><br><span class="line">QueuePtr rear; //队尾指针</span><br><span class="line">&#125;LinkQueue;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2024/05/26/%E9%98%9F%E5%88%97%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E6%93%8D%E4%BD%9C%E5%AE%9E%E7%8E%B0/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526020235.png" alt="微信截图_20240526020235"></p>
+<h4><span id="2初始化">2.初始化</span></h4><p>构造一个只有一个头结点的空队。</p>
+<ul>
+<li>生成新结点作为头结点，队头和队尾指针指向此结点</li>
+<li>头结点的指针域置空</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">int InitQueue(LinkQueue &amp;Q)&#123;</span><br><span class="line"></span><br><span class="line">//构造一个空队列Q</span><br><span class="line"></span><br><span class="line">Q.front = Q.rear =new QNode;  //生成新结点作为头结点，队头和队尾指针指向此结点</span><br><span class="line"></span><br><span class="line">Q.front-&gt;next = NULL; //头结点的指针域置空</span><br><span class="line"></span><br><span class="line">return 1;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="3入队">3.入队</span></h4><p><strong>链队在入队前不需要判断队满，需要为入队元素分配结点空间。</strong></p>
+<ul>
+<li>为入队元素分配结点空间，用指针p指向</li>
+<li>将新结点数据域置为e</li>
+<li>将新结点插入到队尾</li>
+<li>修改队尾指针为p</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">int EnQueue(LinkQueue &amp;Q,int e)&#123;</span><br><span class="line">//插入元素e为Q的新队尾元素</span><br><span class="line"></span><br><span class="line">p = new QNode; //分配新结点</span><br><span class="line"></span><br><span class="line">p-&gt;data = e; //把p的数据域置为e</span><br><span class="line"></span><br><span class="line">p-&gt;next = NULL; Q.rear-&gt;next = p;//把新结点插到队尾</span><br><span class="line"></span><br><span class="line">Q.rear = p; //修改队尾指针</span><br><span class="line"></span><br><span class="line">return 1;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="4出队">4.出队</span></h4><p><strong>链队在出队前需要判断队列是否为空，不同的是，链队在出队后需要放出队头元素的所占空间。</strong></p>
+<ul>
+<li>判断队空</li>
+<li>否则临时保存队头元素的空间，等待释放</li>
+<li>修改头结点的指针域，指向下一个结点</li>
+<li>判断出队元素是否为最后一个元素，若是，则将队尾指针重新赋值，指向头结点</li>
+<li>释放原队头元素</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">int DeQueue(LinkQueue &amp;Q,int &amp;e)&#123;</span><br><span class="line">//删除Q的队头元素，用e返回其值</span><br><span class="line"></span><br><span class="line">if(Q.front==Q.rear) retrun -1; //队空</span><br><span class="line"></span><br><span class="line">p = Q.front-&gt;next; //p指向队头元素</span><br><span class="line"></span><br><span class="line">e = p-&gt;data; //e保存队头元素的值</span><br><span class="line"></span><br><span class="line">Q.front-&gt;next = p-&gt;next;  //修改头结点的指针域</span><br><span class="line"></span><br><span class="line">if(Q.rear == p) Q.rear = Q.front; //最后一个元素被删，队尾指针指向头结点</span><br><span class="line"></span><br><span class="line">free(p); //释放原队头元素</span><br><span class="line"></span><br><span class="line">return 1;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>5.求队头元素</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">int GetHead(LinkQueue Q)&#123;</span><br><span class="line">//返回Q的队头元素，不修改队头指针</span><br><span class="line"></span><br><span class="line">if(Q.front!=Q.rear)</span><br><span class="line"></span><br><span class="line">return Q.front-&gt;next-&gt;data;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2024/05/26/c-%E9%98%9F%E5%88%97queue%E7%94%A8%E6%B3%95/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+    
+        <div id="vcomments"></div>
+        <script>
+            var META = ['nick', 'mail', 'link'];
+            var meta = 'nick,mail';
+            meta = meta.split(',').filter(item => {
+                return META.includes(item);
+            });
+            new Valine({
+                el: '#vcomments',
+                appId: 'f131VXTFNbI57QRvg5lJFtbq-MdYXbMMI',
+                appKey: 'd1GENolYcYpRMO2FbRRbarov',
+                lang: 'zh-CN',
+                placeholder: 'Say something',
+                avatar: 'mp',
+                meta: meta
+            })
+        </script>    
+     
+
+     
+    
+    
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    
+      <div class="search-popup">
+    <div class="search-popup-overlay">  
+    </div>
+    <div class="search-popup-window" >
+        <div class="search-header">
+            <div class="search-input-container">
+              <input autocomplete="off" autocapitalize="off" maxlength="80"
+                     placeholder="Search Anything" spellcheck="false"
+                     type="search" class="search-input">
+            </div>
+            <div class="search-close-btn">
+                <div class="icon close-btn"></div>
+            </div>
+        </div>
+        <div class="search-result-container">
+        </div>
+    </div>
+</div>
+
+<script>
+    const searchConfig = {
+        path             : "/search.xml",
+        top_n_per_article: "1",
+        unescape         : "false",
+        trigger: "auto",
+        preload: "false"
+    }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js"></script>
+<script src="/js/search.js"></script>
+    
+    
+
+  </body>
+</html>
