@@ -210,16 +210,6 @@
       </tags>
   </entry>
   <entry>
-    <title>控制角色移动</title>
-    <url>/2024/03/19/unity-%E6%8E%A7%E5%88%B6%E8%A7%92%E8%89%B2%E7%A7%BB%E5%8A%A8/</url>
-    <content><![CDATA[<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">using System.Collections;</span><br><span class="line">using System.Collections.Generic;</span><br><span class="line">using UnityEngine;</span><br><span class="line">//控制角色移动、生命、动画等</span><br><span class="line">public class NewBehaviourScript : MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    public float speed = 5f;//移动速度</span><br><span class="line">    // Start is called before the first frame update</span><br><span class="line">    void Start()</span><br><span class="line">    &#123;</span><br><span class="line">        </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// Update is called once per frame</span><br><span class="line">void Update()</span><br><span class="line">&#123;</span><br><span class="line">    float moveX = Input.GetAxisRaw(&quot;Horizontal&quot;);//控制水平方向移动，A：-1，D：1,0</span><br><span class="line">    float moveY = Input.GetAxisRaw(&quot;Vertical&quot;);//控制垂直方向W1 S-1 0</span><br><span class="line"></span><br><span class="line">    Vector2 position = transform.position;</span><br><span class="line">    position.x +=moveX * speed * Time.deltaTime;</span><br><span class="line">    position.y +=moveY * speed * Time.deltaTime;</span><br><span class="line">    transform.position = position;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <tags>
-        <tag>unity2d</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>【离散数学】集合</title>
     <url>/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/</url>
     <content><![CDATA[<h2><span id="一-集合的概念和表示">一、集合的概念和表示</span></h2><h3><span id="名词解释">名词解释</span></h3><h4><span id="集合">集合</span></h4><p>把具有共同性质的一些东西汇集成一个整体，就形成一个集合。</p>
@@ -267,11 +257,82 @@
 <p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/97dfee6601d240678de51b656d2e2269.png" alt="在这里插入图片描述"></p>
 <p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/d260fc358e8a4abfbec140f60d714566.png" alt="在这里插入图片描述"></p>
 <h3><span id="2例题">2.例题</span></h3><p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526212553.png" alt="微信截图_20240526212553"></p>
-<h2><span id="四-序偶与笛卡尔积">四、序偶与笛卡尔积</span></h2><h4><span id="序偶">序偶</span></h4><p>有序二元组的称呼，可以看作一个有顺序的集合，记作&lt;A,B&gt;</p>
+<h2><span id="四-序偶与笛卡尔积">四、序偶与笛卡尔积</span></h2><h3><span id="1名词解释和原理">1.名词解释和原理</span></h3><h4><span id="序偶">序偶</span></h4><p>有序二元组的称呼，可以看作一个有顺序的集合，记作&lt;A,B&gt;</p>
 <p>序偶不同于集合的是序偶是有顺序的，&lt;A,B&gt; !&#x3D; &lt;B,A&gt;</p>
 <h4><span id="n元组">n元组</span></h4><p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526212700.png" alt="微信截图_20240526212700"></p>
 <h4><span id="笛卡尔积">笛卡尔积</span></h4><p>A与B是集合，那么A与B的笛卡尔积相当于A X B，表示&lt;a,b&gt;,其中：a∈A ,b∈B</p>
-]]></content>
+<p>笛卡尔积一般不满足交换律和结合律（并、交差运算除外）</p>
+<p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526215607.png" alt="微信截图_20240526215607"></p>
+<p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526215637.png" alt="微信截图_20240526215637"></p>
+<h3><span id="2例题">2.例题</span></h3><p>笛卡尔积的计算</p>
+<p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526215742.png" alt="微信截图_20240526215742"></p>
+<h2><span id="五-关系及其表示">五、关系及其表示</span></h2><h3><span id="1名词解释和原理">1.名词解释和原理</span></h3><h4><span id="关系">关系</span></h4><p>对于一个二元关系R，R里面的任意一个序偶&lt;x,y&gt;可以记作**&lt;x,y&gt;∈R **或 <strong>xRy</strong></p>
+<p>A X B的子集R称为一个从A到B的二元关系</p>
+<h4><span id="前域-值域-域">前域、值域、域</span></h4><p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526220618.png" alt="微信截图_20240526220618"></p>
+<h4><span id="空关系">空关系</span></h4><p>A X B的平凡子集∅，称为A到B的空关系。</p>
+<h4><span id="全域关系">全域关系</span></h4><p>A X B的平凡子集A X B称为A到B的全域关系。</p>
+<h4><span id="恒等关系">恒等关系</span></h4><p>设Iₓ是X上的二元关系，且满足Iₓ &#x3D; {&lt;x,x&gt;|x∈X}，则称Iₓ是X上的恒等关系。</p>
+<h4><span id="关系矩阵"><strong>关系矩阵</strong></span></h4><p>我们有两个有限集合：X &#x3D; {x₁,x₂,x₃,……,xₘ}，Y&#x3D;{y₁,y₂,y₃,……,yₙ}，R是X到Y上的一个二元关系，那么就有相应的关系矩阵：M &#x3D; [rᵢ ⱼ]ₘₓₙ</p>
+<p>rᵢ ⱼ&#x3D;1当且仅当&lt;aᵢ,bⱼ&gt;∈R</p>
+<p>rᵢ ⱼ&#x3D;0当且仅当&lt;aᵢ,bⱼ&gt;!∈R</p>
+<p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526221913.png" alt="微信截图_20240526221913"></p>
+<h4><span id="关系图">关系图</span></h4><p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526222016.png" alt="微信截图_20240526222016"></p>
+<h3><span id="2例题">2.例题</span></h3><h4><span id="关系矩阵的表示">关系矩阵的表示</span></h4><p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526221828.png" alt="微信截图_20240526221828"></p>
+<h4><span id="笛卡尔积的幂集算法">笛卡尔积的幂集算法</span></h4><p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240526221238.png" alt="微信图片_20240526221238"></p>
+<h4><span id="关系图的表示">关系图的表示</span></h4><p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526222107.png" alt="微信截图_20240526222107"></p>
+<h2><span id="六-关系的性质">六、关系的性质</span></h2><h3><span id="名词解释">名词解释</span></h3><h4><span id="自反的关系">自反的关系</span></h4><p>R是集合X上面的二元关系，如果对于每一个x ∈A,有xRx，即&lt;x,x&gt;∈R，就称R是自反的。</p>
+<p>设集合S非空，S上的关系可以是自反的，是反自反的，也可以两者都不是。</p>
+<p>Y是自反的，则：</p>
+<ul>
+<li>Iₓ ⊆ Y；（集合X上的恒等关系是自反关系，但自反关系却不一定是恒等关系）</li>
+<li>Mᵧ主对角线上的元素都是1；</li>
+<li>Gᵧ的每个结点均有环。</li>
+</ul>
+<h4><span id="反自反关系">反自反关系</span></h4><p>R是集合X上面的二元关系，如果对于每一个x ∈A,有xRx，即&lt;x,x&gt;!∈R，就称R是自反的。</p>
+<p>Y是反自反的，则：</p>
+<ul>
+<li>Iₓ ∩ Y &#x3D;∅；</li>
+<li>Mᵧ主对角线上的元素都是0；</li>
+<li>Gᵧ的每个结点均无环。</li>
+</ul>
+<h4><span id="对称关系">对称关系</span></h4><p>对于关系里面x,y ∈ X，每当xRy，就有yRx，就X上面关系R是对称的。</p>
+<p>Y是对称的，则：</p>
+<ul>
+<li>Mᵧ是对称的；</li>
+<li>Gᵧ中任何两个结点之间若有有向边，必有两条方向相反的有向边。</li>
+</ul>
+<h4><span id="反对称关系">反对称关系</span></h4><p>对于关系里面x,y ∈ X，每当xRy和yRx，就有x&#x3D;y，就X上面关系R是反对称的。</p>
+<ul>
+<li>关系矩阵以对角线对称的元素不能同时为1，(但可为对称阵，同时为0)。</li>
+<li>关系图中如果两个结点之间有有向弧，则不能成对出现。</li>
+</ul>
+<h4><span id="传递关系">传递关系</span></h4><p>对于x, y, z ∈ X，每当xRy, yRz时就有xRz,就称R在X上是传递的。</p>
+<h4><span id="特殊关系的性质">特殊关系的性质</span></h4><p><strong>空关系</strong>： 反自反性，对称性，反对称性，传递性<br><strong>全域关系</strong>：自反性，对称性，传递性<br><strong>恒等关系</strong>：自反性，对称性，传递性</p>
+<h4><span id="总结">总结</span></h4><ul>
+<li>自反性：应该含有所有&lt;x, x&gt;<br>对称性：如果有&lt;x, y&gt;就应该有&lt;y, x&gt;<br>传递性：如果有&lt;x, y&gt;和&lt;y, z&gt;就应该有&lt;x, z&gt;</li>
+<li>反自反性：不应该含有任何&lt;x, x&gt;<br>反对称性：如果有&lt;x, y&gt;就不应该有&lt;y, x&gt;</li>
+</ul>
+<h3><span id="例题">例题</span></h3><p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526231540.png" alt="微信截图_20240526231540"></p>
+<p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526233116.png" alt="微信截图_20240526233116"></p>
+<h2><span id="七-复合关系和逆关系">七、复合关系和逆关系</span></h2><h3><span id="1名词和定理">1.名词和定理</span></h3><h4><span id="复合关系">复合关系</span></h4><p>R是X到Y的关系，S是Y到Z的关系，则R和S的复合关系R°S称为R和S的复合关系，表示为: </p>
+<p>RoS&#x3D;{&lt;x,z&gt;|x∈X且z∈Z(y∈Y ,&lt;x, y&gt;∈R且&lt;y,z&gt; ∈S)}</p>
+<p>复合关系相当于一个个元素进行传递，看是否满足传递关系。</p>
+<h4><span id="逆关系">逆关系</span></h4><p>R是X到Y的二元关系，把R中每一序偶的元素次序颠倒，得到的关系称为R的逆关系，记作Rᶜ</p>
+<ul>
+<li>xRy &#x3D;&#x3D; xRᶜy</li>
+<li>互换R的关系矩阵的行和列，即得Rᶜ的关系矩阵（转置）</li>
+<li>颠倒R的关系图中每条弧线的箭头方向，即得Rᶜ的关系图</li>
+<li>空关系的逆是空关系</li>
+<li>R&#x3D;Rᶜ，则说明R是对称的</li>
+</ul>
+<p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526235030.png" alt="微信截图_20240526235030"></p>
+<p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526235224.png" alt="微信截图_20240526235224"></p>
+<h4><span id="复合关系的结合律">复合关系的结合律</span></h4><p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526233655.png" alt="微信截图_20240526233655"></p>
+<h4><span id="复合关系的幂集">复合关系的幂集</span></h4><p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526234315.png" alt="微信截图_20240526234315"></p>
+<h4><span id="复合关系的矩阵表示">复合关系的矩阵表示</span></h4><p>（1）布尔加法 &#x3D;&#x3D; or</p>
+<p>（2）布尔乘法 &#x3D;&#x3D; and</p>
+<h3><span id="2例题">2.例题</span></h3><h4><span id="复合关系的矩阵表示">复合关系的矩阵表示</span></h4><p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526234530.png" alt="微信截图_20240526234530"></p>
+<h2><span id="八-闭包运算">八、闭包运算</span></h2>]]></content>
       <tags>
         <tag>离散数学</tag>
       </tags>
@@ -288,6 +349,73 @@
 ]]></content>
       <tags>
         <tag>素材</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>控制角色移动</title>
+    <url>/2024/03/19/unity-%E6%8E%A7%E5%88%B6%E8%A7%92%E8%89%B2%E7%A7%BB%E5%8A%A8/</url>
+    <content><![CDATA[<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">using System.Collections;</span><br><span class="line">using System.Collections.Generic;</span><br><span class="line">using UnityEngine;</span><br><span class="line">//控制角色移动、生命、动画等</span><br><span class="line">public class NewBehaviourScript : MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    public float speed = 5f;//移动速度</span><br><span class="line">    // Start is called before the first frame update</span><br><span class="line">    void Start()</span><br><span class="line">    &#123;</span><br><span class="line">        </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// Update is called once per frame</span><br><span class="line">void Update()</span><br><span class="line">&#123;</span><br><span class="line">    float moveX = Input.GetAxisRaw(&quot;Horizontal&quot;);//控制水平方向移动，A：-1，D：1,0</span><br><span class="line">    float moveY = Input.GetAxisRaw(&quot;Vertical&quot;);//控制垂直方向W1 S-1 0</span><br><span class="line"></span><br><span class="line">    Vector2 position = transform.position;</span><br><span class="line">    position.x +=moveX * speed * Time.deltaTime;</span><br><span class="line">    position.y +=moveY * speed * Time.deltaTime;</span><br><span class="line">    transform.position = position;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <tags>
+        <tag>unity2d</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>半导体器件的基本特性</title>
+    <url>/2024/04/23/%E5%8D%8A%E5%AF%BC%E4%BD%93%E5%99%A8%E4%BB%B6%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%89%B9%E6%80%A7/</url>
+    <content><![CDATA[<h2><span id="半导体">半导体</span></h2><p>根据导电性能，物质分为：导体、绝缘体和半导体。</p>
+<p>物质的导电特性取决于物质的原子结构。</p>
+<p>常见的半导体：硅（Si）、锗（Ge），四价元素。</p>
+<h3><span id="1本征半导体">1.<strong>本征半导体</strong></span></h3><ul>
+<li>完全纯净的、结构完整的半导体。</li>
+<li>在本征半导体中，自由电子和空穴<strong>成对产生，浓度相等</strong>。</li>
+</ul>
+<h3><span id="2n型半导体">2.N型半导体</span></h3><ul>
+<li>在本侦半导体中加入“<strong>五价元素</strong>”。</li>
+<li>靠自由电子导电。</li>
+<li>对外呈<strong>电中性</strong>。</li>
+<li>N型半导体中含有<strong>较高</strong>的自由电子浓度，<strong>自由电子</strong>是<strong>多数载流子（多子）</strong>，空穴浓度较低，是少数载流子（少子）。</li>
+<li>多数载流子浓度越高，导电性能越强。</li>
+</ul>
+<h3><span id="3p型半导体">3.P型半导体</span></h3><ul>
+<li>在本征半导体中掺入“<strong>三价元素</strong>”。</li>
+<li>对外呈<strong>电中性</strong>。</li>
+<li><strong>空穴</strong>为<strong>多数载流子</strong>，而自由电子为少数载流子。</li>
+</ul>
+<h3><span id="4载流子的运动">4.载流子的运动</span></h3><ul>
+<li><strong>漂移运动</strong>： 在<strong>电场</strong>的作用下，载流子的运动称为“漂移运动”，由漂移运动产生的电流为<strong>漂移电流</strong>。</li>
+<li><strong>扩散运动</strong>：由于<strong>浓度差</strong>引起的载流子运动称为“扩散运动”，产生的相应电流为<strong>扩散电流</strong>。</li>
+<li>漂移运动与扩散运动相反。</li>
+<li>漂移运动作用和扩散运动作用相等。</li>
+</ul>
+<h2><span id="pn结">PN结</span></h2><h3><span id="1形成">1.形成</span></h3><ul>
+<li>扩散越多，电场越强，漂移运动越强，对扩散的阻力越大，从而达到<strong>动态平衡</strong>，形成PN结。</li>
+<li>PN结的电流为0。</li>
+<li>PN区交界处有一个缺少载流子的高阻区，称为<strong>阻挡区</strong>，又叫耗尽区。</li>
+</ul>
+<p><img src="/2024/04/23/%E5%8D%8A%E5%AF%BC%E4%BD%93%E5%99%A8%E4%BB%B6%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%89%B9%E6%80%A7/20200622205628795.jpg" alt="20200622205628795"></p>
+<h3><span id="2单向导电特性">2.单向导电特性</span></h3><h4><span id="1pn结外加正向电压导通">（1）PN结外加正向电压（导通）</span></h4><ul>
+<li>**正向偏置：P+N-**。</li>
+<li>扩散运动增加，漂流运动减弱，多数载流子向对方区扩散形成<strong>较大的正向电流</strong>。</li>
+<li>PN结<strong>导通</strong>。</li>
+<li>形成的电阻为正向电阻，阻值很小。</li>
+<li><strong>正向电压越大，正向电流越大</strong>。</li>
+</ul>
+<p><img src="/2024/04/23/%E5%8D%8A%E5%AF%BC%E4%BD%93%E5%99%A8%E4%BB%B6%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%89%B9%E6%80%A7/20200622212041521.jpg" alt="20200622212041521"></p>
+<h4><span id="2pn结外加反向电压截止">（2）PN结外加反向电压（截止）</span></h4><ul>
+<li>**反向偏置：N+P-**。</li>
+<li>漂流作用大于扩散作用，少数载流子做漂移运动，称反向电流。</li>
+<li><strong>反向电流很小</strong>。</li>
+<li>反向电压再增加，反向电流也不会增加，I&#x3D;-Iₛ。</li>
+<li><strong>呈现的电阻为反向电阻，阻值很大</strong>。</li>
+</ul>
+<p><img src="/2024/04/23/%E5%8D%8A%E5%AF%BC%E4%BD%93%E5%99%A8%E4%BB%B6%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%89%B9%E6%80%A7/20200622211350136.jpg" alt="20200622211350136"></p>
+<h4><span id="3伏安特性">（3）伏安特性</span></h4><p>当反向电压超过一定数值（反向击穿电压Uᵦ）后，反向电流会突然<strong>急剧增加</strong>，称为<strong>反向击穿</strong>。</p>
+<p><img src="/2024/04/23/%E5%8D%8A%E5%AF%BC%E4%BD%93%E5%99%A8%E4%BB%B6%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%89%B9%E6%80%A7/R-C.png" alt="R-C"></p>
+]]></content>
+      <tags>
+        <tag>电子电路基础</tag>
       </tags>
   </entry>
   <entry>
@@ -474,63 +602,6 @@ return 0;
 ]]></content>
       <tags>
         <tag>数据结构笔记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>半导体器件的基本特性</title>
-    <url>/2024/04/23/%E5%8D%8A%E5%AF%BC%E4%BD%93%E5%99%A8%E4%BB%B6%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%89%B9%E6%80%A7/</url>
-    <content><![CDATA[<h2><span id="半导体">半导体</span></h2><p>根据导电性能，物质分为：导体、绝缘体和半导体。</p>
-<p>物质的导电特性取决于物质的原子结构。</p>
-<p>常见的半导体：硅（Si）、锗（Ge），四价元素。</p>
-<h3><span id="1本征半导体">1.<strong>本征半导体</strong></span></h3><ul>
-<li>完全纯净的、结构完整的半导体。</li>
-<li>在本征半导体中，自由电子和空穴<strong>成对产生，浓度相等</strong>。</li>
-</ul>
-<h3><span id="2n型半导体">2.N型半导体</span></h3><ul>
-<li>在本侦半导体中加入“<strong>五价元素</strong>”。</li>
-<li>靠自由电子导电。</li>
-<li>对外呈<strong>电中性</strong>。</li>
-<li>N型半导体中含有<strong>较高</strong>的自由电子浓度，<strong>自由电子</strong>是<strong>多数载流子（多子）</strong>，空穴浓度较低，是少数载流子（少子）。</li>
-<li>多数载流子浓度越高，导电性能越强。</li>
-</ul>
-<h3><span id="3p型半导体">3.P型半导体</span></h3><ul>
-<li>在本征半导体中掺入“<strong>三价元素</strong>”。</li>
-<li>对外呈<strong>电中性</strong>。</li>
-<li><strong>空穴</strong>为<strong>多数载流子</strong>，而自由电子为少数载流子。</li>
-</ul>
-<h3><span id="4载流子的运动">4.载流子的运动</span></h3><ul>
-<li><strong>漂移运动</strong>： 在<strong>电场</strong>的作用下，载流子的运动称为“漂移运动”，由漂移运动产生的电流为<strong>漂移电流</strong>。</li>
-<li><strong>扩散运动</strong>：由于<strong>浓度差</strong>引起的载流子运动称为“扩散运动”，产生的相应电流为<strong>扩散电流</strong>。</li>
-<li>漂移运动与扩散运动相反。</li>
-<li>漂移运动作用和扩散运动作用相等。</li>
-</ul>
-<h2><span id="pn结">PN结</span></h2><h3><span id="1形成">1.形成</span></h3><ul>
-<li>扩散越多，电场越强，漂移运动越强，对扩散的阻力越大，从而达到<strong>动态平衡</strong>，形成PN结。</li>
-<li>PN结的电流为0。</li>
-<li>PN区交界处有一个缺少载流子的高阻区，称为<strong>阻挡区</strong>，又叫耗尽区。</li>
-</ul>
-<p><img src="/2024/04/23/%E5%8D%8A%E5%AF%BC%E4%BD%93%E5%99%A8%E4%BB%B6%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%89%B9%E6%80%A7/20200622205628795.jpg" alt="20200622205628795"></p>
-<h3><span id="2单向导电特性">2.单向导电特性</span></h3><h4><span id="1pn结外加正向电压导通">（1）PN结外加正向电压（导通）</span></h4><ul>
-<li>**正向偏置：P+N-**。</li>
-<li>扩散运动增加，漂流运动减弱，多数载流子向对方区扩散形成<strong>较大的正向电流</strong>。</li>
-<li>PN结<strong>导通</strong>。</li>
-<li>形成的电阻为正向电阻，阻值很小。</li>
-<li><strong>正向电压越大，正向电流越大</strong>。</li>
-</ul>
-<p><img src="/2024/04/23/%E5%8D%8A%E5%AF%BC%E4%BD%93%E5%99%A8%E4%BB%B6%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%89%B9%E6%80%A7/20200622212041521.jpg" alt="20200622212041521"></p>
-<h4><span id="2pn结外加反向电压截止">（2）PN结外加反向电压（截止）</span></h4><ul>
-<li>**反向偏置：N+P-**。</li>
-<li>漂流作用大于扩散作用，少数载流子做漂移运动，称反向电流。</li>
-<li><strong>反向电流很小</strong>。</li>
-<li>反向电压再增加，反向电流也不会增加，I&#x3D;-Iₛ。</li>
-<li><strong>呈现的电阻为反向电阻，阻值很大</strong>。</li>
-</ul>
-<p><img src="/2024/04/23/%E5%8D%8A%E5%AF%BC%E4%BD%93%E5%99%A8%E4%BB%B6%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%89%B9%E6%80%A7/20200622211350136.jpg" alt="20200622211350136"></p>
-<h4><span id="3伏安特性">（3）伏安特性</span></h4><p>当反向电压超过一定数值（反向击穿电压Uᵦ）后，反向电流会突然<strong>急剧增加</strong>，称为<strong>反向击穿</strong>。</p>
-<p><img src="/2024/04/23/%E5%8D%8A%E5%AF%BC%E4%BD%93%E5%99%A8%E4%BB%B6%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%89%B9%E6%80%A7/R-C.png" alt="R-C"></p>
-]]></content>
-      <tags>
-        <tag>电子电路基础</tag>
       </tags>
   </entry>
   <entry>
@@ -1231,84 +1302,6 @@ return 0;
       </tags>
   </entry>
   <entry>
-    <title>高等数学下笔记</title>
-    <url>/2024/03/25/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E4%B8%8B%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<!-- toc -->
-
-<ul>
-<li><a href="#8-%E5%90%91%E9%87%8F%E4%BB%A3%E6%95%B0%E4%B8%8E%E7%A9%BA%E9%97%B4%E8%A7%A3%E6%9E%90%E5%87%A0%E4%BD%95">8 - 向量代数与空间解析几何</a><ul>
-<li><a href="#8-1-%E5%90%91%E9%87%8F%E5%8F%8A%E5%85%B6%E7%BA%BF%E6%80%A7%E8%BF%90%E7%AE%97">8-1 向量及其线性运算</a></li>
-<li><a href="#8-2-%E7%A9%BA%E9%97%B4%E7%9B%B4%E8%A7%92%E5%9D%90%E6%A0%87%E7%B3%BB">8-2 空间直角坐标系</a></li>
-<li><a href="#8-3-%E5%90%91%E9%87%8F%E7%9A%84%E7%BB%BC%E5%90%88%E6%80%A7%E8%B4%A8%E5%92%8C%E8%BF%90%E7%AE%97">8-3 向量的综合性质和运算</a></li>
-<li><a href="#8-4-%E6%95%B0%E9%87%8F%E7%A7%AF-%E5%90%91%E9%87%8F%E7%A7%AF">8-4 数量积、向量积</a></li>
-<li><a href="#8-5-%E5%B9%B3%E9%9D%A2%E5%8F%8A%E5%85%B6%E6%96%B9%E7%A8%8B">8-5 平面及其方程</a></li>
-<li><a href="#8-6-%E7%A9%BA%E9%97%B4%E7%9B%B4%E7%BA%BF%E5%8F%8A%E5%85%B6%E6%96%B9%E7%A8%8B">8-6 空间直线及其方程</a></li>
-</ul>
-</li>
-</ul>
-<!-- tocstop -->
-
-<p>[TOC]</p>
-<h2><span id="8-向量代数与空间解析几何">8 - 向量代数与空间解析几何</span></h2><h3><span id="8-1-向量及其线性运算">8-1 向量及其线性运算</span></h3><p>1.由三角形两边之和大于第三边，有：|<strong>a</strong> + <strong>b</strong>|&lt;&#x3D;|<strong>a</strong>|+|<strong>b</strong>|; |<strong>a</strong> - <strong>b</strong>|&lt;&#x3D;|<strong>a</strong>|+|<strong>b</strong>|</p>
-<p>2.数乘：|λ<strong>a</strong>| &#x3D; |λ||<strong>a</strong>|</p>
-<p>3.单位向量<strong>e</strong>&#x3D;<strong>a</strong>&#x2F;|<strong>a</strong>|</p>
-<p>4.<strong>a</strong>&#x2F;&#x2F;<strong>b</strong>等价于<strong>b</strong>&#x3D;λ<strong>a</strong>（<strong>a</strong>!&#x3D;0）</p>
-<h3><span id="8-2-空间直角坐标系">8-2 空间直角坐标系</span></h3><img src="/2024/03/25/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E4%B8%8B%E7%AC%94%E8%AE%B0/be8b438d8dab4f26425537c8e52ffa4.png" alt="be8b438d8dab4f26425537c8e52ffa4" style="zoom:80%;">
-
-<img src="/2024/03/25/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E4%B8%8B%E7%AC%94%E8%AE%B0/ed720f4486e49cb4f94f47c876630bf.png" alt="ed720f4486e49cb4f94f47c876630bf" style="zoom:80%;">
-
-<p>向量OF（x，y，z）是点O关于点F的向径，<u>求点F的坐标就是求向量OP的坐标</u></p>
-<p>①若点F在yoz面上，x&#x3D;0；</p>
-<p>②点F在zox面上，y&#x3D;0；点F在xoy面上，z&#x3D;0；</p>
-<p>③点F在x轴上，y&#x3D;z&#x3D;0；</p>
-<p>④点F在y轴上，z&#x3D;x&#x3D;0；点F在z轴上，x&#x3D;y&#x3D;0；</p>
-<p>⑤点F为原点，x&#x3D;y&#x3D;z&#x3D;0。</p>
-<h3><span id="8-3-向量的综合性质和运算">8-3 向量的综合性质和运算</span></h3><img src="/2024/03/25/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E4%B8%8B%E7%AC%94%E8%AE%B0/微信截图_20240326011004.png" alt="微信截图_20240326011004" style="zoom:80%;">
-
-<h4><span id="题型"><strong>题型：</strong></span></h4><h5><span id="1向量模的坐标表达式">1.向量模的坐标表达式</span></h5><h5><span id="2两点距离公式">2.两点距离公式：</span></h5><p>求证三角形的类型（等腰、直角、等边）</p>
-<p>求已知向量的定向单位向量</p>
-<p>求与某几点等距离的点</p>
-<h5><span id="3方向角与方向余弦">3.方向角与方向余弦：</span></h5><p>已知角度求点的坐标</p>
-<p>已知向量求方向角、余弦和模</p>
-<h5><span id="4投影">4.投影</span></h5><p>已知向量求向量在某轴上的投影</p>
-<p>已知投影求向量</p>
-<h3><span id="8-4-数量积-向量积">8-4 数量积、向量积</span></h3><img src="/2024/03/25/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E4%B8%8B%E7%AC%94%E8%AE%B0/微信截图_20240326013200.png" alt="微信截图_20240326013200" style="zoom:80%;">
-
-<h4><span id="题型"><strong>题型</strong>：</span></h4><p>1.用数量积公式求夹角、投影</p>
-<p>2.用向量积求三角形面积（用到正弦）</p>
-<p>3.用数量积、向量积定义证垂直或平行</p>
-<p>4.（多用）用向量积求平面方程</p>
-<h3><span id="8-5-平面及其方程">8-5 平面及其方程</span></h3><h4><span id="1平面的点法式方程">1.平面的点法式方程</span></h4><p><strong>A（x-x₀）+B（y-y₀）+C（z-z₀）&#x3D;0</strong></p>
-<p>其中<strong>n</strong>&#x3D;（A,B,C），M₀&#x3D;（x₀，y₀，z₀）</p>
-<h4><span id="2平面的一般方程">2.平面的一般方程</span></h4><p><strong>Ax0 + By0 + Cz0 +D&#x3D;0</strong></p>
-<p><strong>n</strong>&#x3D;（A,B,C）</p>
-<p>①<strong>D&#x3D;0</strong>时，方程表示一个通过<strong>原点</strong>的平面</p>
-<p>②<strong>A&#x3D;0</strong>时，<strong>n</strong>垂直于x轴，方程表示一个平行于（或包含）<strong>x轴</strong>的平面；<strong>B&#x3D;0，C&#x3D;0</strong>同理</p>
-<p>③<strong>A&#x3D;B&#x3D;0</strong>，<strong>n</strong>同时垂直x轴和y轴，方程表示一个平行于（或重合）<strong>x0y面</strong>的平面；<strong>A&#x3D;C&#x3D;0,B&#x3D;C&#x3D;0</strong>同理</p>
-<h4><span id="3平面的截距式方程">3.平面的截距式方程</span></h4><p><strong>x&#x2F;a + y&#x2F;b + z&#x2F;c &#x3D; 1</strong></p>
-<p>a、b、c分别是平面在xyz轴上的截距</p>
-<h4><span id="4两平面夹角-点到平面距离">4.两平面夹角、点到平面距离</span></h4><p><strong>两平面互相垂直</strong>相当于<strong>A₁A₂ + B₁B₂ + C₁C₂ &#x3D; 0</strong></p>
-<p><strong>两平面互相平行或重合</strong>相当于<strong>A₁&#x2F;A₂ &#x3D; B₁&#x2F;B₂ &#x3D; C₁&#x2F;C₂</strong></p>
-<img src="/2024/03/25/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E4%B8%8B%E7%AC%94%E8%AE%B0/微信截图_20240326015143.png" alt="微信截图_20240326015143" style="zoom:80%;">
-
-
-
-<h3><span id="8-6-空间直线及其方程">8-6 空间直线及其方程</span></h3><h4><span id="1直线的点向式方程对称式方程">1.直线的点向式方程（对称式方程）</span></h4><p>其中，<strong>s</strong>&#x3D;(m,n,p)，M₀&#x3D;(x₀,y₀,z₀)</p>
-<p>要素：①方向向量 ②点</p>
-<h4><span id="2直线的参数方程">2.直线的参数方程</span></h4><h4><span id="3直线的一般方程">3.直线的一般方程</span></h4><p>表现为两个平面的交线</p>
-<h4><span id="4线面角">4.线面角</span></h4><p>范围是【0，90°】</p>
-<img src="/2024/03/25/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E4%B8%8B%E7%AC%94%E8%AE%B0/微信截图_20240326015259.png" alt="微信截图_20240326015259" style="zoom:80%;">
-
-<h4><span id="5线线角">5.线线角</span></h4><p>和面面角公式相同，用cos</p>
-<h4><span id="6性质">6.性质</span></h4><p><strong>两直线相互垂直（包括异面、相交）</strong>相当于 <strong>m₁m₂ + n₁n₂ + p₁p₂ &#x3D; 0</strong></p>
-<p><strong>两直线互相平行或重合</strong> 相当于 <strong>m₁&#x2F;m₂ &#x3D; n₁&#x2F;n₂ &#x3D; p₁&#x2F;p₂</strong></p>
-<p><strong>直线与平面平行或直线在平面上</strong> 相当于 <strong>Am + Bn + Cp &#x3D;0</strong></p>
-]]></content>
-      <tags>
-        <tag>高等数学</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>队列的表示和操作实现</title>
     <url>/2024/05/26/%E9%98%9F%E5%88%97%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E6%93%8D%E4%BD%9C%E5%AE%9E%E7%8E%B0/</url>
     <content><![CDATA[<!-- toc -->
@@ -1392,6 +1385,84 @@ return 0;
 ]]></content>
       <tags>
         <tag>数据结构笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>高等数学下笔记</title>
+    <url>/2024/03/25/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E4%B8%8B%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<!-- toc -->
+
+<ul>
+<li><a href="#8-%E5%90%91%E9%87%8F%E4%BB%A3%E6%95%B0%E4%B8%8E%E7%A9%BA%E9%97%B4%E8%A7%A3%E6%9E%90%E5%87%A0%E4%BD%95">8 - 向量代数与空间解析几何</a><ul>
+<li><a href="#8-1-%E5%90%91%E9%87%8F%E5%8F%8A%E5%85%B6%E7%BA%BF%E6%80%A7%E8%BF%90%E7%AE%97">8-1 向量及其线性运算</a></li>
+<li><a href="#8-2-%E7%A9%BA%E9%97%B4%E7%9B%B4%E8%A7%92%E5%9D%90%E6%A0%87%E7%B3%BB">8-2 空间直角坐标系</a></li>
+<li><a href="#8-3-%E5%90%91%E9%87%8F%E7%9A%84%E7%BB%BC%E5%90%88%E6%80%A7%E8%B4%A8%E5%92%8C%E8%BF%90%E7%AE%97">8-3 向量的综合性质和运算</a></li>
+<li><a href="#8-4-%E6%95%B0%E9%87%8F%E7%A7%AF-%E5%90%91%E9%87%8F%E7%A7%AF">8-4 数量积、向量积</a></li>
+<li><a href="#8-5-%E5%B9%B3%E9%9D%A2%E5%8F%8A%E5%85%B6%E6%96%B9%E7%A8%8B">8-5 平面及其方程</a></li>
+<li><a href="#8-6-%E7%A9%BA%E9%97%B4%E7%9B%B4%E7%BA%BF%E5%8F%8A%E5%85%B6%E6%96%B9%E7%A8%8B">8-6 空间直线及其方程</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+
+<p>[TOC]</p>
+<h2><span id="8-向量代数与空间解析几何">8 - 向量代数与空间解析几何</span></h2><h3><span id="8-1-向量及其线性运算">8-1 向量及其线性运算</span></h3><p>1.由三角形两边之和大于第三边，有：|<strong>a</strong> + <strong>b</strong>|&lt;&#x3D;|<strong>a</strong>|+|<strong>b</strong>|; |<strong>a</strong> - <strong>b</strong>|&lt;&#x3D;|<strong>a</strong>|+|<strong>b</strong>|</p>
+<p>2.数乘：|λ<strong>a</strong>| &#x3D; |λ||<strong>a</strong>|</p>
+<p>3.单位向量<strong>e</strong>&#x3D;<strong>a</strong>&#x2F;|<strong>a</strong>|</p>
+<p>4.<strong>a</strong>&#x2F;&#x2F;<strong>b</strong>等价于<strong>b</strong>&#x3D;λ<strong>a</strong>（<strong>a</strong>!&#x3D;0）</p>
+<h3><span id="8-2-空间直角坐标系">8-2 空间直角坐标系</span></h3><img src="/2024/03/25/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E4%B8%8B%E7%AC%94%E8%AE%B0/be8b438d8dab4f26425537c8e52ffa4.png" alt="be8b438d8dab4f26425537c8e52ffa4" style="zoom:80%;">
+
+<img src="/2024/03/25/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E4%B8%8B%E7%AC%94%E8%AE%B0/ed720f4486e49cb4f94f47c876630bf.png" alt="ed720f4486e49cb4f94f47c876630bf" style="zoom:80%;">
+
+<p>向量OF（x，y，z）是点O关于点F的向径，<u>求点F的坐标就是求向量OP的坐标</u></p>
+<p>①若点F在yoz面上，x&#x3D;0；</p>
+<p>②点F在zox面上，y&#x3D;0；点F在xoy面上，z&#x3D;0；</p>
+<p>③点F在x轴上，y&#x3D;z&#x3D;0；</p>
+<p>④点F在y轴上，z&#x3D;x&#x3D;0；点F在z轴上，x&#x3D;y&#x3D;0；</p>
+<p>⑤点F为原点，x&#x3D;y&#x3D;z&#x3D;0。</p>
+<h3><span id="8-3-向量的综合性质和运算">8-3 向量的综合性质和运算</span></h3><img src="/2024/03/25/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E4%B8%8B%E7%AC%94%E8%AE%B0/微信截图_20240326011004.png" alt="微信截图_20240326011004" style="zoom:80%;">
+
+<h4><span id="题型"><strong>题型：</strong></span></h4><h5><span id="1向量模的坐标表达式">1.向量模的坐标表达式</span></h5><h5><span id="2两点距离公式">2.两点距离公式：</span></h5><p>求证三角形的类型（等腰、直角、等边）</p>
+<p>求已知向量的定向单位向量</p>
+<p>求与某几点等距离的点</p>
+<h5><span id="3方向角与方向余弦">3.方向角与方向余弦：</span></h5><p>已知角度求点的坐标</p>
+<p>已知向量求方向角、余弦和模</p>
+<h5><span id="4投影">4.投影</span></h5><p>已知向量求向量在某轴上的投影</p>
+<p>已知投影求向量</p>
+<h3><span id="8-4-数量积-向量积">8-4 数量积、向量积</span></h3><img src="/2024/03/25/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E4%B8%8B%E7%AC%94%E8%AE%B0/微信截图_20240326013200.png" alt="微信截图_20240326013200" style="zoom:80%;">
+
+<h4><span id="题型"><strong>题型</strong>：</span></h4><p>1.用数量积公式求夹角、投影</p>
+<p>2.用向量积求三角形面积（用到正弦）</p>
+<p>3.用数量积、向量积定义证垂直或平行</p>
+<p>4.（多用）用向量积求平面方程</p>
+<h3><span id="8-5-平面及其方程">8-5 平面及其方程</span></h3><h4><span id="1平面的点法式方程">1.平面的点法式方程</span></h4><p><strong>A（x-x₀）+B（y-y₀）+C（z-z₀）&#x3D;0</strong></p>
+<p>其中<strong>n</strong>&#x3D;（A,B,C），M₀&#x3D;（x₀，y₀，z₀）</p>
+<h4><span id="2平面的一般方程">2.平面的一般方程</span></h4><p><strong>Ax0 + By0 + Cz0 +D&#x3D;0</strong></p>
+<p><strong>n</strong>&#x3D;（A,B,C）</p>
+<p>①<strong>D&#x3D;0</strong>时，方程表示一个通过<strong>原点</strong>的平面</p>
+<p>②<strong>A&#x3D;0</strong>时，<strong>n</strong>垂直于x轴，方程表示一个平行于（或包含）<strong>x轴</strong>的平面；<strong>B&#x3D;0，C&#x3D;0</strong>同理</p>
+<p>③<strong>A&#x3D;B&#x3D;0</strong>，<strong>n</strong>同时垂直x轴和y轴，方程表示一个平行于（或重合）<strong>x0y面</strong>的平面；<strong>A&#x3D;C&#x3D;0,B&#x3D;C&#x3D;0</strong>同理</p>
+<h4><span id="3平面的截距式方程">3.平面的截距式方程</span></h4><p><strong>x&#x2F;a + y&#x2F;b + z&#x2F;c &#x3D; 1</strong></p>
+<p>a、b、c分别是平面在xyz轴上的截距</p>
+<h4><span id="4两平面夹角-点到平面距离">4.两平面夹角、点到平面距离</span></h4><p><strong>两平面互相垂直</strong>相当于<strong>A₁A₂ + B₁B₂ + C₁C₂ &#x3D; 0</strong></p>
+<p><strong>两平面互相平行或重合</strong>相当于<strong>A₁&#x2F;A₂ &#x3D; B₁&#x2F;B₂ &#x3D; C₁&#x2F;C₂</strong></p>
+<img src="/2024/03/25/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E4%B8%8B%E7%AC%94%E8%AE%B0/微信截图_20240326015143.png" alt="微信截图_20240326015143" style="zoom:80%;">
+
+
+
+<h3><span id="8-6-空间直线及其方程">8-6 空间直线及其方程</span></h3><h4><span id="1直线的点向式方程对称式方程">1.直线的点向式方程（对称式方程）</span></h4><p>其中，<strong>s</strong>&#x3D;(m,n,p)，M₀&#x3D;(x₀,y₀,z₀)</p>
+<p>要素：①方向向量 ②点</p>
+<h4><span id="2直线的参数方程">2.直线的参数方程</span></h4><h4><span id="3直线的一般方程">3.直线的一般方程</span></h4><p>表现为两个平面的交线</p>
+<h4><span id="4线面角">4.线面角</span></h4><p>范围是【0，90°】</p>
+<img src="/2024/03/25/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E4%B8%8B%E7%AC%94%E8%AE%B0/微信截图_20240326015259.png" alt="微信截图_20240326015259" style="zoom:80%;">
+
+<h4><span id="5线线角">5.线线角</span></h4><p>和面面角公式相同，用cos</p>
+<h4><span id="6性质">6.性质</span></h4><p><strong>两直线相互垂直（包括异面、相交）</strong>相当于 <strong>m₁m₂ + n₁n₂ + p₁p₂ &#x3D; 0</strong></p>
+<p><strong>两直线互相平行或重合</strong> 相当于 <strong>m₁&#x2F;m₂ &#x3D; n₁&#x2F;n₂ &#x3D; p₁&#x2F;p₂</strong></p>
+<p><strong>直线与平面平行或直线在平面上</strong> 相当于 <strong>Am + Bn + Cp &#x3D;0</strong></p>
+]]></content>
+      <tags>
+        <tag>高等数学</tag>
       </tags>
   </entry>
   <entry>
