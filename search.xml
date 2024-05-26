@@ -19,6 +19,16 @@
 ]]></content>
   </entry>
   <entry>
+    <title>控制角色移动</title>
+    <url>/2024/03/19/unity-%E6%8E%A7%E5%88%B6%E8%A7%92%E8%89%B2%E7%A7%BB%E5%8A%A8/</url>
+    <content><![CDATA[<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">using System.Collections;</span><br><span class="line">using System.Collections.Generic;</span><br><span class="line">using UnityEngine;</span><br><span class="line">//控制角色移动、生命、动画等</span><br><span class="line">public class NewBehaviourScript : MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    public float speed = 5f;//移动速度</span><br><span class="line">    // Start is called before the first frame update</span><br><span class="line">    void Start()</span><br><span class="line">    &#123;</span><br><span class="line">        </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// Update is called once per frame</span><br><span class="line">void Update()</span><br><span class="line">&#123;</span><br><span class="line">    float moveX = Input.GetAxisRaw(&quot;Horizontal&quot;);//控制水平方向移动，A：-1，D：1,0</span><br><span class="line">    float moveY = Input.GetAxisRaw(&quot;Vertical&quot;);//控制垂直方向W1 S-1 0</span><br><span class="line"></span><br><span class="line">    Vector2 position = transform.position;</span><br><span class="line">    position.x +=moveX * speed * Time.deltaTime;</span><br><span class="line">    position.y +=moveY * speed * Time.deltaTime;</span><br><span class="line">    transform.position = position;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <tags>
+        <tag>unity2d</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>stack容器基本知识</title>
     <url>/2024/04/03/stack%E5%AE%B9%E5%99%A8%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/</url>
     <content><![CDATA[<p>写作业的时候看到有人用stack容器做题，试了下效率起飞，二话不说记录一下XD</p>
@@ -207,6 +217,58 @@
 ]]></content>
       <tags>
         <tag>读书笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【离散数学】集合</title>
+    <url>/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/</url>
+    <content><![CDATA[<h2><span id="一-集合的概念和表示">一、集合的概念和表示</span></h2><h3><span id="名词解释">名词解释</span></h3><h4><span id="集合">集合</span></h4><p>把具有共同性质的一些东西汇集成一个整体，就形成一个集合。</p>
+<h4><span id="元素">元素</span></h4><p>汇集成集合的事物叫元素。</p>
+<p>描述：元素x属于集合A</p>
+<p>记作：x∈A</p>
+<h4><span id="子集">子集</span></h4><p>描述：A集合是B集合的子集</p>
+<p>记作：A ⊆ B</p>
+<h4><span id="真子集">真子集</span></h4><p>描述 : A集合是B集合的子集 , 并且 A &#x3D;̸ B，则称A集合是B集合的真子集</p>
+<p>记作 : A ⊂ B</p>
+<p><u>真包含关系的性质：</u></p>
+<ul>
+<li><strong>反自反性</strong>: A ⊄ A</li>
+<li><strong>反对称性</strong>: 如果 A ⊂ B，那么 B ⊄ A</li>
+<li><strong>传递性</strong>: 如果 A ⊂ B, 并且 B ⊂ C, 那么 A ⊂ C</li>
+</ul>
+<h4><span id="非真子集">非真子集</span></h4><p>描述 : 存在元素x是集合A的元素，不是集合B的元素，并且A、B不相等，则称A集合不是B集合的真子集</p>
+<p>记作 : A ⊄ B</p>
+<h4><span id="空集">空集</span></h4><p>描述 : 没有任何元素的集合 , 称为空集合 , 简称为空集 </p>
+<p>记作 : ∅</p>
+<ul>
+<li>x无解→空集</li>
+<li>空集是一切集合的子集</li>
+<li>空集是唯一的</li>
+<li>{∅} ≠ ∅</li>
+<li>对任何一个集合A，∅ ⊆ A</li>
+</ul>
+<h4><span id="全集">全集</span></h4><p>限定所讨论的集合 , 都是某个集合的子集 , 则称该集合为全集 , 记作 E</p>
+<h4><span id="幂集">幂集</span></h4><p>描述 : A集合的全体子集组成的集合称为 A的幂集 ;</p>
+<p>记作 : P ( A )</p>
+<p>幂集个数定理 : 集合 A中的元素个数∣ A ∣ &#x3D; n ，则 A的 幂集个数 ∣ P ( A ) ∣ &#x3D; 2ⁿ</p>
+<h4><span id="外延性原理">外延性原理</span></h4><p>两个集合是相等的，当且仅当它们有相同的成员。（两个集合A和B相等，记作A &#x3D; B）</p>
+<p>集合A和集合B相等的充分必要条件是这两个集合互为子集。</p>
+<h2><span id="二-集合运算">二、集合运算</span></h2><h3><span id="1运算">1.运算</span></h3><p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/image-20240526210038548.png" alt="image-20240526210038548"></p>
+<h3><span id="2性质">2.性质</span></h3><p><img src="https://img-blog.csdnimg.cn/e2067441ba7746f0b650c1e43d9e64ef.png" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/87c29f238b2a41818fd3187d7829d652.png" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/dd8be408e0b24359b25f7ddefbf425eb.png" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/5dda146382eb4276a8a6ec029c2d4b42.png" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/8fdd73e243d841179f607fba34a9e141.png" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/255afd2714574225b2e84a5f04b48c5e.png" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/80456386fbfb4c72b4f4144838eea10d.png" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/0da7a50fde1f474d8f18293ee9f488ef.png" alt="在这里插入图片描述"></p>
+<h2><span id="三-包含排斥原理">三、包含排斥原理</span></h2><p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/image-20240526211225304.png" alt="image-20240526211225304"></p>
+<p><img src="https://img-blog.csdnimg.cn/7d8cec1b0d80461b967e6d29f39c7288.png" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/97dfee6601d240678de51b656d2e2269.png" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/d260fc358e8a4abfbec140f60d714566.png" alt="在这里插入图片描述"></p>
+]]></content>
+      <tags>
+        <tag>离散数学</tag>
       </tags>
   </entry>
   <entry>
@@ -401,13 +463,447 @@
       </tags>
   </entry>
   <entry>
-    <title>控制角色移动</title>
-    <url>/2024/03/19/unity-%E6%8E%A7%E5%88%B6%E8%A7%92%E8%89%B2%E7%A7%BB%E5%8A%A8/</url>
-    <content><![CDATA[<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">using System.Collections;</span><br><span class="line">using System.Collections.Generic;</span><br><span class="line">using UnityEngine;</span><br><span class="line">//控制角色移动、生命、动画等</span><br><span class="line">public class NewBehaviourScript : MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    public float speed = 5f;//移动速度</span><br><span class="line">    // Start is called before the first frame update</span><br><span class="line">    void Start()</span><br><span class="line">    &#123;</span><br><span class="line">        </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// Update is called once per frame</span><br><span class="line">void Update()</span><br><span class="line">&#123;</span><br><span class="line">    float moveX = Input.GetAxisRaw(&quot;Horizontal&quot;);//控制水平方向移动，A：-1，D：1,0</span><br><span class="line">    float moveY = Input.GetAxisRaw(&quot;Vertical&quot;);//控制垂直方向W1 S-1 0</span><br><span class="line"></span><br><span class="line">    Vector2 position = transform.position;</span><br><span class="line">    position.x +=moveX * speed * Time.deltaTime;</span><br><span class="line">    position.y +=moveY * speed * Time.deltaTime;</span><br><span class="line">    transform.position = position;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    <title>数据结构课设报告——用顺序表实现图书信息管理系统</title>
+    <url>/2024/03/12/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AF%BE%E8%AE%BE%E6%8A%A5%E5%91%8A%E2%80%94%E2%80%94%E7%94%A8%E9%A1%BA%E5%BA%8F%E8%A1%A8%E5%AE%9E%E7%8E%B0%E5%9B%BE%E4%B9%A6%E4%BF%A1%E6%81%AF%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/</url>
+    <content><![CDATA[<!-- toc -->
 
+<ul>
+<li><a href="#%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90">【案例分析】</a></li>
+<li><a href="#%E5%AE%9E%E9%AA%8C%E8%BF%87%E7%A8%8B">【实验过程】</a><ul>
+<li><a href="#1%E9%A2%84%E5%85%88%E5%AE%9A%E4%B9%89">1.预先定义</a></li>
+<li><a href="#2%E9%A1%BA%E5%BA%8F%E8%A1%A8%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96">2.顺序表的初始化</a></li>
+<li><a href="#3%E5%BD%95%E5%85%A5%E5%9B%BE%E4%B9%A6%E4%BF%A1%E6%81%AF">3.录入图书信息</a></li>
+<li><a href="#4%E6%9F%A5%E6%89%BE%E5%9B%BE%E4%B9%A6%E4%BF%A1%E6%81%AF">4.查找图书信息</a></li>
+</ul>
+</li>
+<li><a href="#5%E6%B7%BB%E5%8A%A0%E4%B9%A6%E7%B1%8D%E4%BF%A1%E6%81%AF">5.添加书籍信息</a></li>
+<li><a href="#6%E5%88%A0%E9%99%A4%E4%B9%A6%E7%B1%8D">6.删除书籍</a></li>
+<li><a href="#7%E4%BF%AE%E6%94%B9%E4%B9%A6%E7%B1%8D%E4%BF%A1%E6%81%AF">7.修改书籍信息</a></li>
+<li><a href="#8%E6%8E%92%E5%BA%8F">8.排序</a></li>
+</ul>
+<ul>
+<li><a href="#%E4%BB%A3%E7%A0%81">【代码】</a></li>
+</ul>
+<!-- tocstop -->
+
+<p>[TOC]</p>
+<h2><span id="案例分析">【案例分析】</span></h2><p>将图书馆信息管理系统抽象成</p>
+<p>线性表，每本书作为线性表的一个元素，其中包括以下功能：</p>
+<p>1.查找。通过输入关键词，返回该书的所有信息。</p>
+<p>2.插入。添加新的书籍。</p>
+<p>3.删除。删除书籍。</p>
+<p>4.修改。调用查找功能，找到对应书籍并修改。</p>
+<p>5.排序。</p>
+<p>6.计数。</p>
+<h2><span id="实验过程">【实验过程】</span></h2><h3><span id="1预先定义">1.预先定义</span></h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">`#include&lt;new&gt;`</span><br><span class="line">`#include&lt;fstream&gt; //对文件输入输出` </span><br><span class="line">`#include&lt;iostream&gt;  //对屏幕上输入输出`</span><br><span class="line">`using namespace std;`</span><br><span class="line">`#define maxsize 1000`</span><br><span class="line">`typedef struct&#123;`</span><br><span class="line">	`char no[20];  //图书编号` </span><br><span class="line">	`char name[50];  //书名` </span><br><span class="line">	`float price;  //定价` </span><br><span class="line">`&#125;book;`</span><br><span class="line">`typedef struct&#123;`</span><br><span class="line">	`book *elem;   //存储空间的基地址`</span><br><span class="line">	`int len;     //表长`</span><br><span class="line">`&#125;SqList;  //图书表的顺序存储结构为SqList` </span><br></pre></td></tr></table></figure>
+
+<p>之后，在main函数中设置 </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">`SqList L;` </span><br></pre></td></tr></table></figure>
+
+
+
+<h3><span id="2顺序表的初始化">2.顺序表的初始化</span></h3><p>为顺序表分配一个预定义大小的数组空间，并把表长设定为0。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">`int initlist(SqList &amp;L)`</span><br><span class="line">`//构造空表` </span><br><span class="line">`&#123;`</span><br><span class="line">	`L.elem = new book[maxsize];`</span><br><span class="line">	`if(!L.elem)  exit(0);  //存储分配失败，不知为何，在这个地方用return -1会导致后续程序出错`</span><br><span class="line">	`L.len=0;`</span><br><span class="line">	`return 1;` </span><br><span class="line">`&#125;`</span><br></pre></td></tr></table></figure>
+
+<p>new int的作用是分配内存，找到一个连续的内存块，然后返回一个指向该内存的指针。</p>
+<p>如：<code>int* a = new int;</code></p>
+<p>这样，我们为a分配了一个4字节的内存。</p>
+<p>如果想分配一个数组，就在数组名后面加[]，里面输入数字。</p>
+<h3><span id="3录入图书信息">3.录入图书信息</span></h3><p>在开启图书馆管理功能前，有必要先录入书籍信息，在这里，我用文件读取数组信息的方法实现批量录入。</p>
+<p><em>001 NineteenEightyFour 25.00</em><br><em>002 HarryPotter 400.00</em><br><em>003 GonewiththeWind 40.00</em><br><em>004 AnimalFarm 10.00</em><br><em>005 LePetitPrince 22.00</em><br><em>006 ToKillaMockingBird 32.00</em><br><em>007 Siddhartha 32.00</em><br><em>008 DifferentSeasons 29.90</em><br><em>009 FlowersforAlgernon 36.00</em><br><em>010 RiverTown 36.00</em></p>
+<p>关于文件读写的笔记，我写在另一篇文章。</p>
+<h3><span id="4查找图书信息">4.查找图书信息</span></h3><p>由于图书一共录入三种信息，所以我们可以分别用三种信息（编号，名字，价格）进行查找。编号和名字是char[]字符数组，借助函数**strcmp(新字符，待比较旧字符)**，如果函数值为0，说明两个字符相同，完成查找；这时我们借助一个初始值为0的计数器joke，如果查找成功，joke++，如果遍历结束还是找不到，joke值则始终为0。</p>
+<p>如果不要求键入信息十分精准，通过关键字即可返回，则可以使用函数<strong>strstr（母字符串，子字符串）</strong>，注意定义指针。它的写法是：</p>
+<p><code>#include&lt;cstring&gt;//头文件</code></p>
+<p><code>char new[20];</code></p>
+<p><code>char old[20];</code></p>
+<p><code>char* a=strstr(old,new);</code></p>
+<p><code>if(a==NULL)  cout&lt;&lt;&quot;not found&quot;&lt;&lt;endl; //此时说明两个字符完全不相同</code></p>
+<p><u>注意：strstr函数区分大小写。</u></p>
+<h4><span id="1根据图书编号查找">（1）根据图书编号查找</span></h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">`void Findno(SqList L)`</span><br><span class="line">`//查找书号` </span><br><span class="line">`&#123;`</span><br><span class="line">	`char findno[20];`</span><br><span class="line">	`cin&gt;&gt;findno;`</span><br><span class="line">	`int joke=0;`</span><br><span class="line">	`cout&lt;&lt;&quot;图书编号&quot;&lt;&lt;setw(20)&lt;&lt;&quot;书名&quot;&lt;&lt;setw(30)&lt;&lt;&quot;价格&quot;&lt;&lt;endl;`</span><br><span class="line">	`for(int i=0;i&lt;L.len;i++)&#123;`</span><br><span class="line">		`if(strcmp(findno,L.elem[i].no)==0)&#123;`</span><br><span class="line">			`joke++;`</span><br><span class="line">			`cout&lt;&lt;fixed&lt;&lt;setprecision(2);`</span><br><span class="line">			`cout&lt;&lt;L.elem[i].no&lt;&lt;setw(30)&lt;&lt;L.elem[i].name&lt;&lt;setw(30)&lt;&lt;L.elem[i].price&lt;&lt;endl;`</span><br><span class="line">		`&#125;`</span><br><span class="line">	`&#125;`</span><br><span class="line">	`if(joke==0) cout&lt;&lt;&quot;404 NOT FOUND&quot;&lt;&lt;endl;`</span><br><span class="line">`&#125;`</span><br></pre></td></tr></table></figure>
+
+
+
+<h4><span id="2根据书名查找">（2）根据书名查找</span></h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">`void Findname(SqList L)`</span><br><span class="line">`//查找书名`</span><br><span class="line">`&#123;`</span><br><span class="line">	`char findname[50];`</span><br><span class="line">	`cin&gt;&gt;findname;`</span><br><span class="line">	`int joke=0;`</span><br><span class="line">	`cout&lt;&lt;&quot;图书编号&quot;&lt;&lt;setw(20)&lt;&lt;&quot;书名&quot;&lt;&lt;setw(30)&lt;&lt;&quot;价格&quot;&lt;&lt;endl;`</span><br><span class="line">	`for(int i=0;i&lt;L.len;i++)&#123;`</span><br><span class="line">	`char *b=strstr(L.elem[i].name,findname);`</span><br><span class="line">		`if(b!=NULL)&#123;`</span><br><span class="line">			`joke++;`</span><br><span class="line">			`cout&lt;&lt;L.elem[i].no&lt;&lt;setw(30)&lt;&lt;L.elem[i].name&lt;&lt;setw(30)&lt;&lt;L.elem[i].price&lt;&lt;endl;`</span><br><span class="line">		`&#125;`</span><br><span class="line">	`&#125;`</span><br><span class="line">	`if(joke==0) cout&lt;&lt;&quot;404 NOT FOUND&quot;&lt;&lt;endl;`</span><br><span class="line">	 ``</span><br><span class="line">`&#125;`</span><br></pre></td></tr></table></figure>
+
+
+
+<h4><span id="3根据价格查找">（3）根据价格查找</span></h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">`void Findprice(SqList L)`</span><br><span class="line">`//查找价格` </span><br><span class="line">`&#123;`</span><br><span class="line">	`float findprice;`</span><br><span class="line">	`cin&gt;&gt;findprice;`</span><br><span class="line">	`int joke=0;`</span><br><span class="line">	`cout&lt;&lt;&quot;图书编号&quot;&lt;&lt;setw(20)&lt;&lt;&quot;书名&quot;&lt;&lt;setw(30)&lt;&lt;&quot;价格&quot;&lt;&lt;endl;`</span><br><span class="line">	`for(int i=0;i&lt;L.len;i++)&#123;`</span><br><span class="line">		`if(findprice==L.elem[i].price)&#123;`</span><br><span class="line">			`joke++;`</span><br><span class="line">			`cout&lt;&lt;L.elem[i].no&lt;&lt;setw(30)&lt;&lt;L.elem[i].name&lt;&lt;setw(30)&lt;&lt;L.elem[i].price&lt;&lt;endl;`</span><br><span class="line">		`&#125;`</span><br><span class="line">	`&#125;`</span><br><span class="line">	`if(joke==0) cout&lt;&lt;&quot;404 NOT FOUND&quot;&lt;&lt;endl;`</span><br><span class="line">	 ``</span><br><span class="line">`&#125;`</span><br></pre></td></tr></table></figure>
+
+
+
+<h2><span id="5添加书籍信息">5.添加书籍信息</span></h2><p>这个功能很简单，先准备好待插入的顺序表位置newnumber，对于newnumber之后的元素，统一后移一个单位，<u>表长加一</u>。记得<u>检查表是否溢出（表长&#x3D;&#x3D;maxsize），和newnumber的合法范围</u>（还记得数组从0开始，而顺序表是从1开始吗？所以，newnumber最小可以是1；另外，插入顺序表允许末尾追加，所以newnumber最大可以是表长+1。实际范围是**<u>[1,表长+1]</u>**。)</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">``int listinsert(SqList &amp;L,int newnumber)`</span><br><span class="line">`//添加新图书`</span><br><span class="line">`&#123;`</span><br><span class="line">	`if( (newnumber&gt;L.len+1) || (newnumber&lt;1) ) exit(0);`</span><br><span class="line">	`if(L.len==maxsize) exit(0);`</span><br><span class="line">	`for(int i=L.len-1;i&gt;=newnumber-1;i--)&#123;`</span><br><span class="line">		`L.elem[i+1]=L.elem[i]; //插入位置以后的元素后移一个单位`</span><br><span class="line">	`&#125;L.elem[newnumber-1]=L.elem[maxsize-1];`</span><br><span class="line">	`L.len++;`</span><br><span class="line">	`return 1;`</span><br><span class="line"> &#125;` </span><br><span class="line"></span><br><span class="line">这里，</span><br></pre></td></tr></table></figure>
+
+<p>我把要添加进去的数组信息放在了顺序表的最后一个位置maxsize，等插入位置以后的元素完成后移后，再将这组信息填进待插入的位置。</p>
+<p>为了能直观地查看添加后的效果，设置一个输出函数，后续可以重复利用。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">``void readlist(SqList L)&#123;`</span><br><span class="line">	`cout&lt;&lt;&quot;图书编号&quot;&lt;&lt;setw(20)&lt;&lt;&quot;书名&quot;&lt;&lt;setw(30)&lt;&lt;&quot;价格&quot;&lt;&lt;endl;`</span><br><span class="line">	`for(int i=0;i&lt;L.len;i++)&#123;`</span><br><span class="line">		`cout&lt;&lt;fixed&lt;&lt;setprecision(2);`</span><br><span class="line">		`cout&lt;&lt;L.elem[i].no&lt;&lt;setw(30)&lt;&lt;L.elem[i].name&lt;&lt;setw(30)&lt;&lt;L.elem[i].price&lt;&lt;endl;`</span><br><span class="line"> `&#125;`</span><br><span class="line">&#125;`</span><br></pre></td></tr></table></figure>
+
+
+
+<h2><span id="6删除书籍">6.删除书籍</span></h2><p>这个功能需要借助查找功能。首先，我们查找一本书，定位到它在顺序表中的位置后（自然，我们知道了<u>这个位置的合法范围是**[1,表长]**</u>），使<u>该位置之后的元素统一往前移动一个单位，该书自然就被覆盖掉了。记得<u>表长减一</u>。</u></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">`void listdelete(SqList &amp;L)`</span><br><span class="line">`//删除一本书`</span><br><span class="line">`&#123;`</span><br><span class="line">   `int deletedata;`</span><br><span class="line">	`char findnoname[50];`</span><br><span class="line">`cin&gt;&gt;findnoname;`</span><br><span class="line">`int joke=0;`</span><br><span class="line">`char* a;`</span><br><span class="line">`cout&lt;&lt;&quot;图书编号&quot;&lt;&lt;setw(20)&lt;&lt;&quot;书名&quot;&lt;&lt;setw(30)&lt;&lt;&quot;价格&quot;&lt;&lt;endl;`</span><br><span class="line">`for(int i=0;i&lt;L.len;i++)&#123;`</span><br><span class="line">	`a=strstr(L.elem[i].name,findnoname);`</span><br><span class="line">	`if(strcmp(findnoname,L.elem[i].no)==0)&#123;`</span><br><span class="line">		`joke++;`</span><br><span class="line">		`cout&lt;&lt;L.elem[i].no&lt;&lt;setw(30)&lt;&lt;L.elem[i].name&lt;&lt;setw(30)&lt;&lt;L.elem[i].price&lt;&lt;endl;`</span><br><span class="line">		`deletedata=i+1;`</span><br><span class="line">	`&#125;`</span><br><span class="line">	`if(a!=NULL)&#123;`</span><br><span class="line">		`joke++;`</span><br><span class="line">		`cout&lt;&lt;L.elem[i].no&lt;&lt;setw(30)&lt;&lt;L.elem[i].name&lt;&lt;setw(30)&lt;&lt;L.elem[i].price&lt;&lt;endl;`</span><br><span class="line">		`deletedata=i+1;`</span><br><span class="line">	`&#125;`</span><br><span class="line">`&#125;`</span><br><span class="line">`if(joke==0) cout&lt;&lt;&quot;404 NOT FOUND&quot;&lt;&lt;endl;`</span><br><span class="line">	``if((deletedata&lt;1) || (deletedata&gt;L.len)) exit(0);`</span><br><span class="line">	`for(int i=deletedata;i&lt;L.len;i++)&#123;`</span><br><span class="line">		`L.elem[i-1]=L.elem[i]; //对i所在的位置删除数据后，进行前移，前一个元素等于后一个元素` </span><br><span class="line"> `&#125;L.len--;`</span><br><span class="line">&#125;`</span><br></pre></td></tr></table></figure>
+
+<h2><span id="7修改书籍信息">7.修改书籍信息</span></h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int doinglist(SqList &amp;L)</span><br><span class="line">//修改顺序表信息 </span><br><span class="line">&#123;</span><br><span class="line">	cout&lt;&lt;&quot;请输入书籍编号&quot;&lt;&lt;endl;</span><br><span class="line">char findno[20];</span><br><span class="line">cin&gt;&gt;findno;</span><br><span class="line">int joke=0;</span><br><span class="line">int doing;</span><br><span class="line">for(int i=0;i&lt;L.len;i++)&#123;</span><br><span class="line">	if(strcmp(findno,L.elem[i].no)==0)&#123;</span><br><span class="line">		joke++;</span><br><span class="line">		cout&lt;&lt;&quot;获取书籍信息成功！&quot;&lt;&lt;endl;</span><br><span class="line">		cout&lt;&lt;&quot;图书编号&quot;&lt;&lt;setw(20)&lt;&lt;&quot;书名&quot;&lt;&lt;setw(30)&lt;&lt;&quot;价格&quot;&lt;&lt;endl;</span><br><span class="line">		cout&lt;&lt;fixed&lt;&lt;setprecision(2);</span><br><span class="line">		cout&lt;&lt;L.elem[i].no&lt;&lt;setw(30)&lt;&lt;L.elem[i].name&lt;&lt;setw(30)&lt;&lt;L.elem[i].price&lt;&lt;endl;</span><br><span class="line">		while(1)&#123;</span><br><span class="line">			cout&lt;&lt;&quot;请输入（0-3）：1.修改书籍编号 2.修改书名 3.修改书的价格 0.退出修改&quot;&lt;&lt;endl;</span><br><span class="line">			cin&gt;&gt;doing;</span><br><span class="line">			switch(doing)&#123;</span><br><span class="line">				case 1:&#123;</span><br><span class="line">					cout&lt;&lt;&quot;请输入新书籍编号：&quot;&lt;&lt;endl;</span><br><span class="line">					char newno[20];</span><br><span class="line">					cin&gt;&gt;newno;</span><br><span class="line">					strcpy(L.elem[i].no,newno); </span><br><span class="line">					break;</span><br><span class="line">				&#125;</span><br><span class="line">				case 2:&#123;</span><br><span class="line">					cout&lt;&lt;&quot;请输入新书名：&quot;&lt;&lt;endl;</span><br><span class="line">					char newname[50];</span><br><span class="line">					cin&gt;&gt;newname;</span><br><span class="line">					strcpy(L.elem[i].name,newname); </span><br><span class="line">					break;</span><br><span class="line">				&#125;</span><br><span class="line">				case 3:&#123;</span><br><span class="line">					cout&lt;&lt;&quot;请输入新价格：&quot;&lt;&lt;endl;</span><br><span class="line">					float newprice;</span><br><span class="line">					cin&gt;&gt;newprice;</span><br><span class="line">					L.elem[i].price=newprice;</span><br><span class="line">					break;</span><br><span class="line">				&#125;</span><br><span class="line">				case 0:&#123;</span><br><span class="line">				system(&quot;pause&quot;);</span><br><span class="line">			    system(&quot;cls&quot;);//实现清屏</span><br><span class="line">			    return 0;</span><br><span class="line">				&#125;break;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; </span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2><span id="8排序">8.排序</span></h2><p>依照价格高低，对书籍进行排序。采用选择排序法。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">void talllist(SqList &amp;L)</span><br><span class="line"> //选择排序法 </span><br><span class="line"> &#123;</span><br><span class="line"> 	int max;  </span><br><span class="line">    for(int i=0;i&lt;L.len-1;i++)  </span><br><span class="line">    &#123;  </span><br><span class="line">        max=i;  </span><br><span class="line">        for(int j=i;j&lt;L.len;j++)  </span><br><span class="line">        &#123;  </span><br><span class="line">            if(L.elem[max].price &gt; L.elem[j].price)  //本质是索引为i和i+1 的结构体成员在做比较，这种写法可以保证不漏掉每一组比较 </span><br><span class="line">                max=j;  </span><br><span class="line">        &#125;  </span><br><span class="line">        L.elem[L.len+1] = L.elem[i];  //用一个在顺序表外面的位置储存旧值，暂时没想到其他好的办法 </span><br><span class="line">        L.elem[i] = L.elem[max];  </span><br><span class="line">        L.elem[max] = L.elem[L.len+1] ;</span><br><span class="line">	 &#125;</span><br></pre></td></tr></table></figure>
+
+<p>9.这个很简单，统计数目只需要输出表长就可以了</p>
+<p>我用文件读取的时候多读了一行0，所以实操的时候用了表长-1</p>
+<h1><span id="代码">【代码】</span></h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include&lt;new&gt;</span><br><span class="line">#include&lt;fstream&gt; //对文件输入输出 </span><br><span class="line">#include&lt;iostream&gt;  //对屏幕上输入输出</span><br><span class="line">#include &lt;iomanip&gt;</span><br><span class="line">#include &lt;cstring&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define maxsize 1000</span><br><span class="line">typedef struct&#123;</span><br><span class="line">	char no[20];  //图书编号 </span><br><span class="line">	char name[50];  //书名 </span><br><span class="line">	float price;  //定价 </span><br><span class="line">&#125;book;</span><br><span class="line">typedef struct&#123;</span><br><span class="line">	book *elem;   //存储空间的基地址</span><br><span class="line">	int len;     //表长</span><br><span class="line">&#125;SqList;  //图书表的顺序存储结构为SqList </span><br><span class="line"></span><br><span class="line">int initlist(SqList &amp;L)</span><br><span class="line">//构造空表 </span><br><span class="line">&#123;</span><br><span class="line">	L.elem = new book[maxsize];</span><br><span class="line">	if(!L.elem)  exit(0);  //存储分配失败，不知为何，在这个地方用return -1会导致后续程序出错</span><br><span class="line">	L.len=0;</span><br><span class="line">	return 1; </span><br><span class="line">&#125; </span><br><span class="line">void menu()&#123;</span><br><span class="line">//菜单 </span><br><span class="line">	cout&lt;&lt;&quot;————&quot;&lt;&lt;&#x27;\n&#x27;&lt;&lt;&quot;menu&quot;&lt;&lt;endl;</span><br><span class="line">	cout&lt;&lt;&quot;1.查找某本书&quot;&lt;&lt;&#x27;\n&#x27;&lt;&lt;&quot;2.添加新书&quot;&lt;&lt;&#x27;\n&#x27;&lt;&lt;&quot;3.删除某本书&quot;&lt;&lt;&#x27;\n&#x27;&lt;&lt;&quot;4.修改某本书的信息&quot;&lt;&lt;&#x27;\n&#x27;&lt;&lt; &quot;5.排序&quot;&lt;&lt;&#x27;\n&#x27;&lt;&lt;&quot;6.统计&quot;&lt;&lt;&#x27;\n&#x27;; </span><br><span class="line">	cout&lt;&lt;&quot;————&quot;&lt;&lt;endl; </span><br><span class="line">&#125;</span><br><span class="line">void Findno(SqList L)</span><br><span class="line">//查找书号 </span><br><span class="line">&#123;</span><br><span class="line">	char findno[20];</span><br><span class="line">	cin&gt;&gt;findno;</span><br><span class="line">	int joke=0;</span><br><span class="line">	cout&lt;&lt;&quot;图书编号&quot;&lt;&lt;setw(20)&lt;&lt;&quot;书名&quot;&lt;&lt;setw(30)&lt;&lt;&quot;价格&quot;&lt;&lt;endl;</span><br><span class="line">	for(int i=0;i&lt;L.len;i++)&#123;</span><br><span class="line">		if(strcmp(findno,L.elem[i].no)==0)&#123;</span><br><span class="line">			joke++;</span><br><span class="line">			cout&lt;&lt;L.elem[i].no&lt;&lt;setw(30)&lt;&lt;L.elem[i].name&lt;&lt;setw(30)&lt;&lt;L.elem[i].price&lt;&lt;endl;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	if(joke==0) cout&lt;&lt;&quot;404 NOT FOUND&quot;&lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line">void Findname(SqList L)</span><br><span class="line">//查找书名</span><br><span class="line">&#123;</span><br><span class="line">	char findname[50];</span><br><span class="line">	cin&gt;&gt;findname;</span><br><span class="line">	int joke=0;</span><br><span class="line">	cout&lt;&lt;&quot;图书编号&quot;&lt;&lt;setw(20)&lt;&lt;&quot;书名&quot;&lt;&lt;setw(30)&lt;&lt;&quot;价格&quot;&lt;&lt;endl;</span><br><span class="line">	for(int i=0;i&lt;L.len;i++)&#123;</span><br><span class="line">	char *b=strstr(L.elem[i].name,findname);</span><br><span class="line">		if(b!=NULL)&#123;</span><br><span class="line">			joke++;</span><br><span class="line">			cout&lt;&lt;L.elem[i].no&lt;&lt;setw(30)&lt;&lt;L.elem[i].name&lt;&lt;setw(30)&lt;&lt;L.elem[i].price&lt;&lt;endl;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	if(joke==0) cout&lt;&lt;&quot;404 NOT FOUND&quot;&lt;&lt;endl;</span><br><span class="line">	 </span><br><span class="line">&#125;</span><br><span class="line">void Findprice(SqList L)</span><br><span class="line">//查找价格 </span><br><span class="line">&#123;</span><br><span class="line">	float findprice;</span><br><span class="line">	cin&gt;&gt;findprice;</span><br><span class="line">	int joke=0;</span><br><span class="line">	cout&lt;&lt;&quot;图书编号&quot;&lt;&lt;setw(20)&lt;&lt;&quot;书名&quot;&lt;&lt;setw(30)&lt;&lt;&quot;价格&quot;&lt;&lt;endl;</span><br><span class="line">	for(int i=0;i&lt;L.len;i++)&#123;</span><br><span class="line">		if(findprice==L.elem[i].price)&#123;</span><br><span class="line">			joke++;</span><br><span class="line">			cout&lt;&lt;fixed&lt;&lt;setprecision(2);</span><br><span class="line">			cout&lt;&lt;L.elem[i].no&lt;&lt;setw(30)&lt;&lt;L.elem[i].name&lt;&lt;setw(30)&lt;&lt;L.elem[i].price&lt;&lt;endl;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	if(joke==0) cout&lt;&lt;&quot;404 NOT FOUND&quot;&lt;&lt;endl;</span><br><span class="line">	 </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int listinsert(SqList &amp;L,int newnumber)</span><br><span class="line">//添加新图书</span><br><span class="line">&#123;</span><br><span class="line">	if( (newnumber&gt;L.len+1) || (newnumber&lt;1) ) exit(0);</span><br><span class="line">	if(L.len==maxsize) exit(0);</span><br><span class="line">	for(int i=L.len-1;i&gt;=newnumber-1;i--)&#123;</span><br><span class="line">		L.elem[i+1]=L.elem[i]; //插入位置以后的元素后移一个单位</span><br><span class="line">	&#125;L.elem[newnumber-1]=L.elem[maxsize-1];</span><br><span class="line">	L.len++;</span><br><span class="line">	return 1;</span><br><span class="line"> &#125; </span><br><span class="line"></span><br><span class="line"> void listdelete(SqList &amp;L)</span><br><span class="line"> //删除一本书</span><br><span class="line"> &#123;</span><br><span class="line">    int deletedata;</span><br><span class="line"> 	char findnoname[50];</span><br><span class="line">	cin&gt;&gt;findnoname;</span><br><span class="line">	int joke=0;</span><br><span class="line">	char* a;</span><br><span class="line">	cout&lt;&lt;&quot;图书编号&quot;&lt;&lt;setw(20)&lt;&lt;&quot;书名&quot;&lt;&lt;setw(30)&lt;&lt;&quot;价格&quot;&lt;&lt;endl;</span><br><span class="line">	for(int i=0;i&lt;L.len;i++)&#123;</span><br><span class="line">		a=strstr(L.elem[i].name,findnoname);</span><br><span class="line">		if(strcmp(findnoname,L.elem[i].no)==0)&#123;</span><br><span class="line">			joke++;</span><br><span class="line">			cout&lt;&lt;L.elem[i].no&lt;&lt;setw(30)&lt;&lt;L.elem[i].name&lt;&lt;setw(30)&lt;&lt;L.elem[i].price&lt;&lt;endl;</span><br><span class="line">			deletedata=i+1;</span><br><span class="line">		&#125;</span><br><span class="line">		if(a!=NULL)&#123;</span><br><span class="line">			joke++;</span><br><span class="line">			cout&lt;&lt;L.elem[i].no&lt;&lt;setw(30)&lt;&lt;L.elem[i].name&lt;&lt;setw(30)&lt;&lt;L.elem[i].price&lt;&lt;endl;</span><br><span class="line">			deletedata=i+1;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	if(joke==0) cout&lt;&lt;&quot;404 NOT FOUND&quot;&lt;&lt;endl;</span><br><span class="line"> 	</span><br><span class="line"></span><br><span class="line"> 	if((deletedata&lt;1) || (deletedata&gt;L.len)) exit(0);</span><br><span class="line"> 	for(int i=deletedata;i&lt;L.len;i++)&#123;</span><br><span class="line"> 		L.elem[i-1]=L.elem[i]; //对i所在的位置删除数据后，进行前移，前一个元素等于后一个元素 </span><br><span class="line"> 	 &#125;L.len--;</span><br><span class="line"></span><br><span class="line"> &#125;</span><br><span class="line"> int doinglist(SqList &amp;L)</span><br><span class="line"> //修改顺序表信息 </span><br><span class="line"> &#123;</span><br><span class="line"> 	cout&lt;&lt;&quot;请输入书籍编号&quot;&lt;&lt;endl;</span><br><span class="line">	char findno[20];</span><br><span class="line">	cin&gt;&gt;findno;</span><br><span class="line">	int joke=0;</span><br><span class="line">	int doing;</span><br><span class="line">	for(int i=0;i&lt;L.len;i++)&#123;</span><br><span class="line">		if(strcmp(findno,L.elem[i].no)==0)&#123;</span><br><span class="line">			joke++;</span><br><span class="line">			cout&lt;&lt;&quot;获取书籍信息成功！&quot;&lt;&lt;endl;</span><br><span class="line">			cout&lt;&lt;&quot;图书编号&quot;&lt;&lt;setw(20)&lt;&lt;&quot;书名&quot;&lt;&lt;setw(30)&lt;&lt;&quot;价格&quot;&lt;&lt;endl;</span><br><span class="line">			cout&lt;&lt;fixed&lt;&lt;setprecision(2);</span><br><span class="line">			cout&lt;&lt;L.elem[i].no&lt;&lt;setw(30)&lt;&lt;L.elem[i].name&lt;&lt;setw(30)&lt;&lt;L.elem[i].price&lt;&lt;endl;</span><br><span class="line">			while(1)&#123;</span><br><span class="line">				cout&lt;&lt;&quot;请输入（0-3）：1.修改书籍编号 2.修改书名 3.修改书的价格 0.退出修改&quot;&lt;&lt;endl;</span><br><span class="line">				cin&gt;&gt;doing;</span><br><span class="line">				switch(doing)&#123;</span><br><span class="line">					case 1:&#123;</span><br><span class="line">						cout&lt;&lt;&quot;请输入新书籍编号：&quot;&lt;&lt;endl;</span><br><span class="line">						char newno[20];</span><br><span class="line">						cin&gt;&gt;newno;</span><br><span class="line">						strcpy(L.elem[i].no,newno); </span><br><span class="line">						break;</span><br><span class="line">					&#125;</span><br><span class="line">					case 2:&#123;</span><br><span class="line">						cout&lt;&lt;&quot;请输入新书名：&quot;&lt;&lt;endl;</span><br><span class="line">						char newname[50];</span><br><span class="line">						cin&gt;&gt;newname;</span><br><span class="line">						strcpy(L.elem[i].name,newname); </span><br><span class="line">						break;</span><br><span class="line">					&#125;</span><br><span class="line">					case 3:&#123;</span><br><span class="line">						cout&lt;&lt;&quot;请输入新价格：&quot;&lt;&lt;endl;</span><br><span class="line">						float newprice;</span><br><span class="line">						cin&gt;&gt;newprice;</span><br><span class="line">						L.elem[i].price=newprice;</span><br><span class="line">						break;</span><br><span class="line">					&#125;</span><br><span class="line">					case 0:&#123;</span><br><span class="line">					system(&quot;pause&quot;);</span><br><span class="line">				    system(&quot;cls&quot;);</span><br><span class="line">				    return 0;</span><br><span class="line">					&#125;break;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125; </span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"> &#125;</span><br><span class="line"> void talllist(SqList &amp;L)</span><br><span class="line"> //选择排序法 </span><br><span class="line"> &#123;</span><br><span class="line"> 	int max;  </span><br><span class="line">    for(int i=0;i&lt;L.len-1;i++)  </span><br><span class="line">    &#123;  </span><br><span class="line">        max=i;  </span><br><span class="line">        for(int j=i;j&lt;L.len;j++)  </span><br><span class="line">        &#123;  </span><br><span class="line">            if(L.elem[max].price &gt; L.elem[j].price)  //本质是索引为i和i+1 的结构体成员在做比较，这种写法可以保证不漏掉每一组比较 </span><br><span class="line">                max=j;  </span><br><span class="line">        &#125;  </span><br><span class="line">        L.elem[L.len+1] = L.elem[i];  //用一个在顺序表外面的位置储存旧值，暂时没想到其他好的办法 </span><br><span class="line">        L.elem[i] = L.elem[max];  </span><br><span class="line">        L.elem[max] = L.elem[L.len+1] ;</span><br><span class="line">	 &#125;</span><br><span class="line">&#125;</span><br><span class="line"> void readlist(SqList L)&#123;</span><br><span class="line"> 	cout&lt;&lt;&quot;图书编号&quot;&lt;&lt;setw(20)&lt;&lt;&quot;书名&quot;&lt;&lt;setw(30)&lt;&lt;&quot;价格&quot;&lt;&lt;endl;</span><br><span class="line"> 	for(int i=0;i&lt;L.len;i++)&#123;</span><br><span class="line"> 		cout&lt;&lt;fixed&lt;&lt;setprecision(2);</span><br><span class="line"> 		cout&lt;&lt;L.elem[i].no&lt;&lt;setw(30)&lt;&lt;L.elem[i].name&lt;&lt;setw(30)&lt;&lt;L.elem[i].price&lt;&lt;endl;</span><br><span class="line">	 &#125;</span><br><span class="line"> &#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">	SqList L;</span><br><span class="line">	initlist(L); //顺序表的初始化 </span><br><span class="line">	FILE *fp=NULL;</span><br><span class="line">	FILE *fp1=NULL;</span><br><span class="line">	fp=fopen(&quot;information.txt&quot;,&quot;r&quot;);//r打开只读文件 </span><br><span class="line">	if(fp==NULL)&#123;</span><br><span class="line">	cout&lt;&lt;&quot;文件读取无效&quot;&lt;&lt;endl;</span><br><span class="line">	exit(0); </span><br><span class="line">	&#125;</span><br><span class="line">	int i=0;</span><br><span class="line">	while(!feof(fp))&#123;</span><br><span class="line">        fscanf(fp, &quot;%s %s %f\n&quot;, L.elem[i].no,L.elem[i].name,&amp;L.elem[i].price);//字符变量不需要加&amp;指向地址，%s忽略字符串前一个空格 </span><br><span class="line">		i++;</span><br><span class="line">	&#125; </span><br><span class="line">	L.len=i+1; </span><br><span class="line">	fclose(fp);//关闭文件 </span><br></pre></td></tr></table></figure>
+
+<p>​	</p>
+<pre><code>while(1)&#123;
+    menu(); 
+    int choose;
+    int find;
+    string yes;
+    cin&gt;&gt;choose; 
+    switch(choose)&#123;
+        case 1:&#123;
+            cout&lt;&lt;&quot;请选择（0-3）：1.按图书编号查找 2.按书名查找 3.按价格查找 0.退出&quot;&lt;&lt;endl;
+            cin&gt;&gt;find;
+            if(find==1) Findno(L);
+            if(find==2) Findname(L);
+            if(find==3) Findprice(L);
+            break;
+        &#125;
+        case 2:&#123;
+            int newnumber;
+            cout&lt;&lt;&quot;请输入：添加新图书至第__位(按0退出)&quot;&lt;&lt;endl;
+            cin&gt;&gt;newnumber;
+            if(newnumber!=0)&#123;
+                cin&gt;&gt;L.elem[maxsize-1].no&gt;&gt;L.elem[maxsize-1].name&gt;&gt;L.elem[maxsize-1].price;
+                listinsert(L,newnumber);
+                cout&lt;&lt;&quot;添加成功！是否查看？Y/N&quot;&lt;&lt;endl;
+                cin&gt;&gt;yes;
+                if(yes==&quot;Y&quot;) readlist(L);
+                if(yes==&quot;N&quot;) break;
+            &#125;
+            break;
+        &#125;
+        case 3:&#123;
+            cout&lt;&lt;&quot;请选择（0-2）：1.输入图书编号并删除该书 2.输入书名并删除该书 0.退出&quot;&lt;&lt;endl;
+            cin&gt;&gt;find;
+            if(find==1) &#123;
+            cout&lt;&lt;&quot;正在查询你想删除的书...&quot;&lt;&lt;endl; 
+            listdelete(L); 
+            cout&lt;&lt;&quot;删除完成！请查看：&quot;&lt;&lt;endl; 
+            readlist(L);
+            &#125;
+            if(find==2)&#123;
+            cout&lt;&lt;&quot;查找到你想删除的书是：&quot;&lt;&lt;endl; 	
+            listdelete(L);
+            cout&lt;&lt;&quot;删除完成！请查看：&quot;&lt;&lt;endl; 
+            readlist(L);
+         	&#125;
+            break;
+        &#125;
+        case 4:&#123;
+            cout&lt;&lt;&quot;请选择（0-1）：1.输入图书编号并修改该书信息  0.退出&quot;&lt;&lt;endl;
+            cin&gt;&gt;find;
+            if(find==1) doinglist(L);
+            break;
+        &#125;
+        case 5:&#123;
+            cout&lt;&lt;&quot;请选择（0-1）：1.按价格升序排序  0.退出&quot;&lt;&lt;endl;
+            cin&gt;&gt;find;
+            if(find==1)&#123;
+                talllist(L);
+                readlist(L);
+            &#125;
+            break;
+        &#125;
+        case 6:&#123;
+            cout&lt;&lt;&quot;本系统目前共收录&quot;&lt;&lt;L.len-1&lt;&lt;&quot;本书&quot;&lt;&lt;endl; 
+            float sum=0;
+            for(int i=0;i&lt;L.len;i++)&#123;
+                sum+=L.elem[i].price;
+            &#125;
+            cout&lt;&lt;fixed&lt;&lt;setprecision(2);
+            cout&lt;&lt;&quot;价值约&quot;&lt;&lt; sum&lt;&lt;&quot;元&quot;&lt;&lt;endl; 
+            break;
+        &#125;
+    &#125;
+fp1=fopen(&quot;information2.txt&quot;,&quot;w+&quot;);//w+打开可读写文件，若不存在则建立，若存在则清空并覆盖 
+if(fp==NULL)&#123;
+cout&lt;&lt;&quot;文件写入无效&quot;&lt;&lt;endl;
+exit(0); 
+&#125;
+for(i=0;i&lt;L.len;i++)&#123;
+    fprintf(fp1,&quot;%s %s %.2f\n&quot;,L.elem[i].no,L.elem[i].name,L.elem[i].price);
+&#125;
+fclose(fp1);//关闭文件 
+
+system(&quot;pause&quot;);
+system(&quot;cls&quot;);
+
+&#125;
+return 0;
+&#125;
+</code></pre>
 ]]></content>
       <tags>
-        <tag>unity2d</tag>
+        <tag>数据结构笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>用链表实现交集和并集</title>
+    <url>/2024/03/24/%E7%94%A8%E9%93%BE%E8%A1%A8%E5%AE%9E%E7%8E%B0%E4%BA%A4%E9%9B%86%E5%92%8C%E5%B9%B6%E9%9B%86/</url>
+    <content><![CDATA[<!-- toc -->
+
+<ul>
+<li><a href="#7-1-%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8%E5%BA%8F%E5%88%97%E7%9A%84%E4%BA%A4%E9%9B%86"><strong>7-1 两个有序链表序列的交集</strong></a><ul>
+<li><a href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F">输入格式:</a></li>
+<li><a href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F">输出格式:</a></li>
+<li><a href="#%E8%BE%93%E5%85%A5%E6%A0%B7%E4%BE%8B">输入样例:</a></li>
+<li><a href="#%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B">输出样例:</a></li>
+<li><a href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0">代码实现：</a></li>
+</ul>
+</li>
+<li><a href="#7-2-%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8%E5%BA%8F%E5%88%97%E7%9A%84%E5%90%88%E5%B9%B6"><strong>7-2 两个有序链表序列的合并</strong></a><ul>
+<li><a href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F-1">输入格式:</a></li>
+<li><a href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F-1">输出格式:</a></li>
+<li><a href="#%E8%BE%93%E5%85%A5%E6%A0%B7%E4%BE%8B-1">输入样例:</a></li>
+<li><a href="#%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B-1">输出样例:</a></li>
+<li><a href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0-1">代码实现：</a></li>
+</ul>
+</li>
+<li><a href="#7-3-%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8%E5%90%88%E5%B9%B6%E6%96%B0%E8%A1%A8%E4%B8%8D%E5%90%AB%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0"><strong>7-3 两个有序链表合并（新表不含重复元素）</strong></a><ul>
+<li><a href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F-2">输入格式:</a></li>
+<li><a href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F-2">输出格式:</a></li>
+<li><a href="#%E8%BE%93%E5%85%A5%E6%A0%B7%E4%BE%8B-2">输入样例:</a></li>
+<li><a href="#%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B-2">输出样例:</a></li>
+<li><a href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0-2">代码实现：</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+
+<p>[TOC]</p>
+<h2><span id="7-1-两个有序链表序列的交集"><strong>7-1 两个有序链表序列的交集</strong></span></h2><p>已知两个非降序链表序列S1与S2，设计函数构造出S1与S2的交集新链表S3。</p>
+<h3><span id="输入格式">输入格式:</span></h3><p>输入分两行，分别在每行给出由若干个正整数构成的非降序序列，用−1表示序列的结尾（−1不属于这个序列）。数字用空格间隔。</p>
+<h3><span id="输出格式">输出格式:</span></h3><p>在一行中输出两个输入序列的交集序列，数字间用空格分开，结尾不能有多余空格；若新链表为空，输出<code>NULL</code>。</p>
+<h3><span id="输入样例">输入样例:</span></h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1 2 5 -1</span><br><span class="line">2 4 5 8 10 -1</span><br></pre></td></tr></table></figure>
+
+<h3><span id="输出样例">输出样例:</span></h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">2 5</span><br></pre></td></tr></table></figure>
+
+<h3><span id="代码实现">代码实现：</span></h3><p>这段程序的通过难点主要在于关心交集为空的情况，分为两种：</p>
+<p>①集合1和集合2之间最少有一个为空</p>
+<p>②集合1和集合2不是空集，但是相同元素的个数为0</p>
+<p>针对第二种情况，只需要设置一个计数器i&#x3D;0，当集合1的元素&#x3D;&#x3D;集合2的元素时，i++，若运行到循环结束，i仍然为0，说明得到的交集为空</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">typedef struct LNode&#123;</span><br><span class="line">    int data;</span><br><span class="line">    struct LNode *next;</span><br><span class="line">&#125;LNode,*LinkList;</span><br><span class="line"></span><br><span class="line">int creatlist(LinkList &amp;S1,LinkList &amp;S2)&#123;</span><br><span class="line">    LNode *p1,*p2,*r;</span><br><span class="line">    p1=S1,p2=S2;</span><br><span class="line">    r=S1;</span><br><span class="line">    while(1)&#123;</span><br><span class="line">        p1=new LNode;</span><br><span class="line">        cin&gt;&gt;p1-&gt;data;</span><br><span class="line">        if(p1-&gt;data==-1) break;//在链表录入-1前结束循环</span><br><span class="line">        p1-&gt;next=NULL;</span><br><span class="line">        r-&gt;next=p1;</span><br><span class="line">        r=p1;</span><br><span class="line">    &#125;//尾插法</span><br><span class="line">    r=S2;//循环利用变量r</span><br><span class="line">    while(1)&#123;</span><br><span class="line">        p2=new LNode;</span><br><span class="line">        cin&gt;&gt;p2-&gt;data;</span><br><span class="line">        if(p2-&gt;data==-1) break;</span><br><span class="line">        p2-&gt;next=NULL;</span><br><span class="line">        r-&gt;next=p2;</span><br><span class="line">        r=p2;</span><br><span class="line">    &#125;//尾插法</span><br><span class="line">    return 1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int jiaoji(LinkList &amp;S1,LinkList &amp;S2)&#123;</span><br><span class="line">    LNode *S3,*p3,*r;</span><br><span class="line">    LNode *p1,*p2;</span><br><span class="line">    p1=S1-&gt;next,p2=S2-&gt;next;</span><br><span class="line">    S3=new LNode;</span><br><span class="line">    S3-&gt;next=NULL;</span><br><span class="line">    r=S3;</span><br><span class="line">    int i=0;//统计S3的长度</span><br><span class="line">    if(S1==NULL || S2==NULL)&#123;</span><br><span class="line">        cout&lt;&lt;&quot;NULL&quot;;</span><br><span class="line">        return 0;</span><br><span class="line">    &#125;</span><br><span class="line">    while(p1&amp;&amp;p2)&#123;</span><br><span class="line">        if(p1-&gt;data==p2-&gt;data)&#123;</span><br><span class="line">            i++;</span><br><span class="line">            p3=new LNode;</span><br><span class="line">            p3-&gt;data=p1-&gt;data;</span><br><span class="line">            p3-&gt;next=NULL;</span><br><span class="line">            r-&gt;next=p3;</span><br><span class="line">            r=p3;</span><br><span class="line">            p1=p1-&gt;next;</span><br><span class="line">            p2=p2-&gt;next;</span><br><span class="line">        &#125;else if(p1-&gt;data&gt;p2-&gt;data) p2=p2-&gt;next;</span><br><span class="line">        else if(p1-&gt;data&lt;p2-&gt;data) p1=p1-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    if(i==0) &#123;</span><br><span class="line">        cout&lt;&lt;&quot;NULL&quot;;</span><br><span class="line">        return 0;</span><br><span class="line">    &#125;</span><br><span class="line">    p3=S3-&gt;next;//p3重新退回头结点指向的位置</span><br><span class="line">    while(p3-&gt;next)&#123;</span><br><span class="line">        cout&lt;&lt;p3-&gt;data&lt;&lt;&quot; &quot;;</span><br><span class="line">        p3=p3-&gt;next;</span><br><span class="line">    &#125;cout&lt;&lt;p3-&gt;data;</span><br><span class="line">    return 1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">    LNode *S1,*S2;</span><br><span class="line">    S1=new LNode;</span><br><span class="line">    S1-&gt;next=NULL;</span><br><span class="line">    S2=new LNode;</span><br><span class="line">    S2-&gt;next=NULL;</span><br><span class="line">    creatlist(S1,S2);</span><br><span class="line">    jiaoji(S1,S2);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>测试点</td>
+<td>提示</td>
+<td>内存(KB)</td>
+<td>用时(ms)</td>
+<td>结果</td>
+<td>得分</td>
+<td></td>
+</tr>
+<tr>
+<td>0</td>
+<td>样例等价</td>
+<td>300</td>
+<td>2</td>
+<td>答案正确</td>
+<td>2 &#x2F; 2</td>
+<td></td>
+</tr>
+<tr>
+<td>1</td>
+<td>交集为空</td>
+<td>488</td>
+<td>3</td>
+<td>答案正确</td>
+<td>2 &#x2F; 2</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td>完全相交</td>
+<td>276</td>
+<td>3</td>
+<td>答案正确</td>
+<td>2 &#x2F; 2</td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>其中一个序列完全属于交集</td>
+<td>492</td>
+<td>2</td>
+<td>答案正确</td>
+<td>2 &#x2F; 2</td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td>其中一个序列为空</td>
+<td>492</td>
+<td>3</td>
+<td>答案正确</td>
+<td>2 &#x2F; 2</td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td>大规模数据</td>
+<td>31864</td>
+<td>291</td>
+<td>答案正确</td>
+<td>2 &#x2F; 2</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2><span id="7-2-两个有序链表序列的合并"><strong>7-2 两个有序链表序列的合并</strong></span></h2><p>已知两个非降序链表序列S1与S2，设计函数构造出S1与S2合并后的新的非降序链表S3。</p>
+<h3><span id="输入格式">输入格式:</span></h3><p>输入分两行，分别在每行给出由若干个正整数构成的非降序序列，用−1表示序列的结尾（−1不属于这个序列）。数字用空格间隔。</p>
+<h3><span id="输出格式">输出格式:</span></h3><p>在一行中输出合并后新的非降序链表，数字间用空格分开，结尾不能有多余空格；若新链表为空，输出<code>NULL</code>。</p>
+<h3><span id="输入样例">输入样例:</span></h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1 3 5 -1</span><br><span class="line">2 4 6 8 10 -1</span><br></pre></td></tr></table></figure>
+
+<h3><span id="输出样例">输出样例:</span></h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1 2 3 4 5 6 8 10</span><br></pre></td></tr></table></figure>
+
+<h3><span id="代码实现">代码实现：</span></h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">typedef struct LNode&#123;</span><br><span class="line">    int data;</span><br><span class="line">    struct LNode *next;</span><br><span class="line">&#125;LNode,*LinkList;</span><br><span class="line"></span><br><span class="line">int creatlist(LinkList &amp;S1,LinkList &amp;S2)&#123;</span><br><span class="line">    LNode *p1,*p2,*r;</span><br><span class="line">    r=S1;</span><br><span class="line">    while(1)&#123;</span><br><span class="line">        p1=new LNode;</span><br><span class="line">        cin&gt;&gt;p1-&gt;data;</span><br><span class="line">        if(p1-&gt;data==-1) break;</span><br><span class="line">        p1-&gt;next=NULL;</span><br><span class="line">        r-&gt;next=p1;</span><br><span class="line">        r=p1;</span><br><span class="line">    &#125;</span><br><span class="line">    r=S2;</span><br><span class="line">    while(1)&#123;</span><br><span class="line">        p2=new LNode;</span><br><span class="line">        cin&gt;&gt;p2-&gt;data;</span><br><span class="line">        if(p2-&gt;data==-1) break;</span><br><span class="line">        p2-&gt;next=NULL;</span><br><span class="line">        r-&gt;next=p2;</span><br><span class="line">        r=p2;</span><br><span class="line">    &#125;</span><br><span class="line">    return 1;</span><br><span class="line">&#125;</span><br><span class="line">int bingji(LinkList &amp;S1,LinkList &amp;S2)&#123;</span><br><span class="line">    LNode *p1,*p2;</span><br><span class="line">    p1=S1-&gt;next,p2=S2-&gt;next;</span><br><span class="line">    LNode *S3,*p3;</span><br><span class="line">    S3=S1;</span><br><span class="line">    p3=S3;</span><br><span class="line">    while(p1&amp;&amp;p2)&#123;</span><br><span class="line">        if(p1-&gt;data&lt;=p2-&gt;data)&#123;</span><br><span class="line">            p3-&gt;next=p1;</span><br><span class="line">            p3=p1;</span><br><span class="line">            p1=p1-&gt;next;</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            p3-&gt;next=p2;</span><br><span class="line">            p3=p2;</span><br><span class="line">            p2=p2-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    p3-&gt;next=p1?p1:p2;</span><br><span class="line">    //三目运算符，等价于</span><br><span class="line">    //if(p1)p3-&gt;next=p1; </span><br><span class="line">    //else if(p2)p3-a.next=p2;</span><br><span class="line">    </span><br><span class="line">    free(S2);//释放头结点</span><br><span class="line">    p3=S3-&gt;next;</span><br><span class="line">    if(p3==NULL)&#123;</span><br><span class="line">        cout&lt;&lt;&quot;NULL&quot;;</span><br><span class="line">        return 0;</span><br><span class="line">    &#125;</span><br><span class="line">    while(p3-&gt;next)&#123;</span><br><span class="line">        cout&lt;&lt;p3-&gt;data&lt;&lt;&quot; &quot;;</span><br><span class="line">        p3=p3-&gt;next;</span><br><span class="line">    &#125;cout&lt;&lt;p3-&gt;data;</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    return 1;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">    LNode *S1,*S2;</span><br><span class="line">    S1=new LNode,S2=new LNode;</span><br><span class="line">    S1-&gt;next=NULL,S2-&gt;next=NULL;</span><br><span class="line">    creatlist(S1,S2);</span><br><span class="line">    bingji(S1,S2);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>测试点</th>
+<th>提示</th>
+<th>内存(KB)</th>
+<th>用时(ms)</th>
+<th>结果</th>
+<th>得分</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>样例等价</td>
+<td>400</td>
+<td>2</td>
+<td>答案正确</td>
+<td>5 &#x2F; 5</td>
+<td></td>
+</tr>
+<tr>
+<td>1</td>
+<td>有并列</td>
+<td>288</td>
+<td>2</td>
+<td>答案正确</td>
+<td>5 &#x2F; 5</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td>链表为空</td>
+<td>400</td>
+<td>2</td>
+<td>答案正确</td>
+<td>5 &#x2F; 5</td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>大规模输入</td>
+<td>46228</td>
+<td>370</td>
+<td>答案正确</td>
+<td>5 &#x2F; 5</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2><span id="7-3-两个有序链表合并新表不含重复元素"><strong>7-3 两个有序链表合并（新表不含重复元素）</strong></span></h2><p>已知两个非降序链表序列S1与S2，设计函数构造出S1与S2合并后的新的非降序链表S3。<br>要求S3中没有重复元素。</p>
+<h3><span id="输入格式">输入格式:</span></h3><p>输入分两行，分别在每行给出由若干个正整数构成的非降序序列，用−1表示序列的结尾（−1不属于这个序列）。数字用空格间隔。</p>
+<h3><span id="输出格式">输出格式:</span></h3><p>在一行中输出合并后新的非降序链表，要求链表中没有重复元素。数字间用空格分开，结尾不能有多余空格；若新链表为空，输出NULL。</p>
+<h3><span id="输入样例">输入样例:</span></h3><p>在这里给出一组输入。例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1 3 3 5 8 -1</span><br><span class="line">2 3 4 6 8 10 -1</span><br></pre></td></tr></table></figure>
+
+<h3><span id="输出样例">输出样例:</span></h3><p>在这里给出相应的输出。例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1 2 3 4 5 6 8 10</span><br></pre></td></tr></table></figure>
+
+<h3><span id="代码实现">代码实现：</span></h3><p>这一段程序相对于上一题的难点在于：</p>
+<p>①要求并集中的元素不可重复，因此必须细致的分类讨论集合1大于、小于或等于集合2，以及集合1和集合2的值分别等不等于并集已存在的值</p>
+<p>②设置了测试点：一个是空表，一个只有两个相同的元素。如果不加上p3-&gt;next&#x3D;NULL，程序会报错</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">typedef struct LNode&#123;</span><br><span class="line">    int data;</span><br><span class="line">    struct LNode *next;</span><br><span class="line">&#125;LNode,*LinkList;</span><br><span class="line"></span><br><span class="line">int creatlist(LinkList &amp;S1,LinkList &amp;S2)&#123;</span><br><span class="line">    LNode *p1,*p2,*r;</span><br><span class="line">    r=S1;</span><br><span class="line">    while(1)&#123;</span><br><span class="line">        p1=new LNode;</span><br><span class="line">        cin&gt;&gt;p1-&gt;data;</span><br><span class="line">        if(p1-&gt;data==-1) break;</span><br><span class="line">        p1-&gt;next=NULL;</span><br><span class="line">        r-&gt;next=p1;</span><br><span class="line">        r=p1;</span><br><span class="line">    &#125;</span><br><span class="line">    r=S2;</span><br><span class="line">    while(1)&#123;</span><br><span class="line">        p2=new LNode;</span><br><span class="line">        cin&gt;&gt;p2-&gt;data;</span><br><span class="line">        if(p2-&gt;data==-1) break;</span><br><span class="line">        p2-&gt;next=NULL;</span><br><span class="line">        r-&gt;next=p2;</span><br><span class="line">        r=p2;</span><br><span class="line">    &#125;</span><br><span class="line">    return 1;</span><br><span class="line">&#125;</span><br><span class="line">int bingji(LinkList &amp;S1,LinkList &amp;S2)&#123;</span><br><span class="line">    LNode *p1,*p2;</span><br><span class="line">    p1=S1-&gt;next,p2=S2-&gt;next;</span><br><span class="line">    LNode *S3,*p3;</span><br><span class="line">    S3=S1;</span><br><span class="line">    p3=S3;</span><br><span class="line">    while(p1&amp;&amp;p2)&#123;</span><br><span class="line">        if(p1-&gt;data&lt;p2-&gt;data &amp;&amp;p1-&gt;data!=p3-&gt;data)&#123;</span><br><span class="line">            p3-&gt;next=p1;</span><br><span class="line">            p3=p1;</span><br><span class="line">            p1=p1-&gt;next;</span><br><span class="line">        &#125;else if(p1-&gt;data&gt;p2-&gt;data&amp;&amp;p2-&gt;data!=p3-&gt;data)&#123;</span><br><span class="line">            p3-&gt;next=p2;</span><br><span class="line">            p3=p2;</span><br><span class="line">            p2=p2-&gt;next;</span><br><span class="line">        &#125;else if(p1-&gt;data==p2-&gt;data&amp;&amp;p1-&gt;data!=p3-&gt;data)&#123;</span><br><span class="line">            p3-&gt;next=p1;</span><br><span class="line">            p3=p1;</span><br><span class="line">            p1=p1-&gt;next;</span><br><span class="line">            p2=p2-&gt;next;</span><br><span class="line">        &#125;else if(p1-&gt;data==p3-&gt;data) p1=p1-&gt;next;</span><br><span class="line">        else if(p2-&gt;data==p3-&gt;data) p2=p2-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    while(p1)&#123;</span><br><span class="line">        if(p3-&gt;data!=p1-&gt;data)&#123;</span><br><span class="line">            p3-&gt;next=p1;</span><br><span class="line">            p3=p1;</span><br><span class="line">        &#125;</span><br><span class="line">        p1=p1-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    while(p2)&#123;</span><br><span class="line">        if(p3-&gt;data!=p2-&gt;data)&#123;</span><br><span class="line">            p3-&gt;next=p2;</span><br><span class="line">            p3=p2;</span><br><span class="line">        &#125;</span><br><span class="line">        p2=p2-&gt;next;</span><br><span class="line">    &#125;//不能简单地使用三目运算符，因为必须考虑值相等的情况</span><br><span class="line">    p3-&gt;next=NULL;//如果没有这一条，会报错一个测试点</span><br><span class="line">    free(S2);//释放头结点</span><br><span class="line">    p3=S3-&gt;next;</span><br><span class="line">    if(p3==NULL)&#123;</span><br><span class="line">        cout&lt;&lt;&quot;NULL&quot;;</span><br><span class="line">        return 0;</span><br><span class="line">    &#125;</span><br><span class="line">    while(p3-&gt;next)&#123;</span><br><span class="line">        cout&lt;&lt;p3-&gt;data&lt;&lt;&quot; &quot;;</span><br><span class="line">        p3=p3-&gt;next;</span><br><span class="line">    &#125;cout&lt;&lt;p3-&gt;data;</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    return 1;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">    LNode *S1,*S2;</span><br><span class="line">    S1=new LNode,S2=new LNode;</span><br><span class="line">    S1-&gt;next=NULL,S2-&gt;next=NULL;</span><br><span class="line">    creatlist(S1,S2);</span><br><span class="line">    bingji(S1,S2);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>测试点</td>
+<td>提示</td>
+<td>内存(KB)</td>
+<td>用时(ms)</td>
+<td>结果</td>
+<td>得分</td>
+<td></td>
+</tr>
+<tr>
+<td>0</td>
+<td>样例</td>
+<td>316</td>
+<td>2</td>
+<td>答案正确</td>
+<td>5 &#x2F; 5</td>
+<td></td>
+</tr>
+<tr>
+<td>1</td>
+<td>一个是空表，另一个只有两个相同元素</td>
+<td>316</td>
+<td>2</td>
+<td>答案正确</td>
+<td>5 &#x2F; 5</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td>两个表都只有一个元素且相同</td>
+<td>316</td>
+<td>2</td>
+<td>答案正确</td>
+<td>5 &#x2F; 5</td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>两个表有很多相同元素</td>
+<td>452</td>
+<td>2</td>
+<td>答案正确</td>
+<td>5 &#x2F; 5</td>
+<td></td>
+</tr>
+</tbody></table>
+]]></content>
+      <tags>
+        <tag>数据结构笔记</tag>
       </tags>
   </entry>
   <entry>
@@ -595,240 +1091,6 @@
       </categories>
       <tags>
         <tag>电子电路基础</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【离散数学】集合</title>
-    <url>/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/</url>
-    <content><![CDATA[<h2><span id="一-集合的概念和表示">一、集合的概念和表示</span></h2><h3><span id="名词解释">名词解释</span></h3><h4><span id="集合">集合</span></h4><p>把具有共同性质的一些东西汇集成一个整体，就形成一个集合。</p>
-<h4><span id="元素">元素</span></h4><p>汇集成集合的事物叫元素。</p>
-<p>描述：元素x属于集合A</p>
-<p>记作：x∈A</p>
-<h4><span id="子集">子集</span></h4><p>描述：A集合是B集合的子集</p>
-<p>记作：A ⊆ B</p>
-<h4><span id="真子集">真子集</span></h4><p>描述 : A集合是B集合的子集 , 并且 A &#x3D;̸ B，则称A集合是B集合的真子集</p>
-<p>记作 : A ⊂ B</p>
-<p><u>真包含关系的性质：</u></p>
-<ul>
-<li><strong>反自反性</strong>: A ⊄ A</li>
-<li><strong>反对称性</strong>: 如果 A ⊂ B，那么 B ⊄ A</li>
-<li><strong>传递性</strong>: 如果 A ⊂ B, 并且 B ⊂ C, 那么 A ⊂ C</li>
-</ul>
-<h4><span id="非真子集">非真子集</span></h4><p>描述 : 存在元素x是集合A的元素，不是集合B的元素，并且A、B不相等，则称A集合不是B集合的真子集</p>
-<p>记作 : A ⊄ B</p>
-<h4><span id="空集">空集</span></h4><p>描述 : 没有任何元素的集合 , 称为空集合 , 简称为空集 </p>
-<p>记作 : ∅</p>
-<ul>
-<li>x无解→空集</li>
-<li>空集是一切集合的子集</li>
-<li>空集是唯一的</li>
-<li>{∅} ≠ ∅</li>
-<li>对任何一个集合A，∅ ⊆ A</li>
-</ul>
-<h4><span id="全集">全集</span></h4><p>限定所讨论的集合 , 都是某个集合的子集 , 则称该集合为全集 , 记作 E</p>
-<h4><span id="幂集">幂集</span></h4><p>描述 : A集合的全体子集组成的集合称为 A的幂集 ;</p>
-<p>记作 : P ( A )</p>
-<p>幂集个数定理 : 集合 A中的元素个数∣ A ∣ &#x3D; n ，则 A的 幂集个数 ∣ P ( A ) ∣ &#x3D; 2ⁿ</p>
-<h4><span id="外延性原理">外延性原理</span></h4><p>两个集合是相等的，当且仅当它们有相同的成员。（两个集合A和B相等，记作A &#x3D; B）</p>
-<p>集合A和集合B相等的充分必要条件是这两个集合互为子集。</p>
-<h2><span id="二-集合运算">二、集合运算</span></h2><h3><span id="1运算">1.运算</span></h3><p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/image-20240526210038548.png" alt="image-20240526210038548"></p>
-<h3><span id="2性质">2.性质</span></h3><p><img src="https://img-blog.csdnimg.cn/e2067441ba7746f0b650c1e43d9e64ef.png" alt="在这里插入图片描述"></p>
-<p><img src="https://img-blog.csdnimg.cn/87c29f238b2a41818fd3187d7829d652.png" alt="在这里插入图片描述"></p>
-<p><img src="https://img-blog.csdnimg.cn/dd8be408e0b24359b25f7ddefbf425eb.png" alt="在这里插入图片描述"></p>
-<p><img src="https://img-blog.csdnimg.cn/5dda146382eb4276a8a6ec029c2d4b42.png" alt="在这里插入图片描述"></p>
-<p><img src="https://img-blog.csdnimg.cn/8fdd73e243d841179f607fba34a9e141.png" alt="在这里插入图片描述"></p>
-<p><img src="https://img-blog.csdnimg.cn/255afd2714574225b2e84a5f04b48c5e.png" alt="在这里插入图片描述"></p>
-<p><img src="https://img-blog.csdnimg.cn/80456386fbfb4c72b4f4144838eea10d.png" alt="在这里插入图片描述"></p>
-<p><img src="https://img-blog.csdnimg.cn/0da7a50fde1f474d8f18293ee9f488ef.png" alt="在这里插入图片描述"></p>
-]]></content>
-      <tags>
-        <tag>离散数学</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>数据结构课设报告——用顺序表实现图书信息管理系统</title>
-    <url>/2024/03/12/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AF%BE%E8%AE%BE%E6%8A%A5%E5%91%8A%E2%80%94%E2%80%94%E7%94%A8%E9%A1%BA%E5%BA%8F%E8%A1%A8%E5%AE%9E%E7%8E%B0%E5%9B%BE%E4%B9%A6%E4%BF%A1%E6%81%AF%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/</url>
-    <content><![CDATA[<!-- toc -->
-
-<ul>
-<li><a href="#%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90">【案例分析】</a></li>
-<li><a href="#%E5%AE%9E%E9%AA%8C%E8%BF%87%E7%A8%8B">【实验过程】</a><ul>
-<li><a href="#1%E9%A2%84%E5%85%88%E5%AE%9A%E4%B9%89">1.预先定义</a></li>
-<li><a href="#2%E9%A1%BA%E5%BA%8F%E8%A1%A8%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96">2.顺序表的初始化</a></li>
-<li><a href="#3%E5%BD%95%E5%85%A5%E5%9B%BE%E4%B9%A6%E4%BF%A1%E6%81%AF">3.录入图书信息</a></li>
-<li><a href="#4%E6%9F%A5%E6%89%BE%E5%9B%BE%E4%B9%A6%E4%BF%A1%E6%81%AF">4.查找图书信息</a></li>
-</ul>
-</li>
-<li><a href="#5%E6%B7%BB%E5%8A%A0%E4%B9%A6%E7%B1%8D%E4%BF%A1%E6%81%AF">5.添加书籍信息</a></li>
-<li><a href="#6%E5%88%A0%E9%99%A4%E4%B9%A6%E7%B1%8D">6.删除书籍</a></li>
-<li><a href="#7%E4%BF%AE%E6%94%B9%E4%B9%A6%E7%B1%8D%E4%BF%A1%E6%81%AF">7.修改书籍信息</a></li>
-<li><a href="#8%E6%8E%92%E5%BA%8F">8.排序</a></li>
-</ul>
-<ul>
-<li><a href="#%E4%BB%A3%E7%A0%81">【代码】</a></li>
-</ul>
-<!-- tocstop -->
-
-<p>[TOC]</p>
-<h2><span id="案例分析">【案例分析】</span></h2><p>将图书馆信息管理系统抽象成</p>
-<p>线性表，每本书作为线性表的一个元素，其中包括以下功能：</p>
-<p>1.查找。通过输入关键词，返回该书的所有信息。</p>
-<p>2.插入。添加新的书籍。</p>
-<p>3.删除。删除书籍。</p>
-<p>4.修改。调用查找功能，找到对应书籍并修改。</p>
-<p>5.排序。</p>
-<p>6.计数。</p>
-<h2><span id="实验过程">【实验过程】</span></h2><h3><span id="1预先定义">1.预先定义</span></h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">`#include&lt;new&gt;`</span><br><span class="line">`#include&lt;fstream&gt; //对文件输入输出` </span><br><span class="line">`#include&lt;iostream&gt;  //对屏幕上输入输出`</span><br><span class="line">`using namespace std;`</span><br><span class="line">`#define maxsize 1000`</span><br><span class="line">`typedef struct&#123;`</span><br><span class="line">	`char no[20];  //图书编号` </span><br><span class="line">	`char name[50];  //书名` </span><br><span class="line">	`float price;  //定价` </span><br><span class="line">`&#125;book;`</span><br><span class="line">`typedef struct&#123;`</span><br><span class="line">	`book *elem;   //存储空间的基地址`</span><br><span class="line">	`int len;     //表长`</span><br><span class="line">`&#125;SqList;  //图书表的顺序存储结构为SqList` </span><br></pre></td></tr></table></figure>
-
-<p>之后，在main函数中设置 </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">`SqList L;` </span><br></pre></td></tr></table></figure>
-
-
-
-<h3><span id="2顺序表的初始化">2.顺序表的初始化</span></h3><p>为顺序表分配一个预定义大小的数组空间，并把表长设定为0。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">`int initlist(SqList &amp;L)`</span><br><span class="line">`//构造空表` </span><br><span class="line">`&#123;`</span><br><span class="line">	`L.elem = new book[maxsize];`</span><br><span class="line">	`if(!L.elem)  exit(0);  //存储分配失败，不知为何，在这个地方用return -1会导致后续程序出错`</span><br><span class="line">	`L.len=0;`</span><br><span class="line">	`return 1;` </span><br><span class="line">`&#125;`</span><br></pre></td></tr></table></figure>
-
-<p>new int的作用是分配内存，找到一个连续的内存块，然后返回一个指向该内存的指针。</p>
-<p>如：<code>int* a = new int;</code></p>
-<p>这样，我们为a分配了一个4字节的内存。</p>
-<p>如果想分配一个数组，就在数组名后面加[]，里面输入数字。</p>
-<h3><span id="3录入图书信息">3.录入图书信息</span></h3><p>在开启图书馆管理功能前，有必要先录入书籍信息，在这里，我用文件读取数组信息的方法实现批量录入。</p>
-<p><em>001 NineteenEightyFour 25.00</em><br><em>002 HarryPotter 400.00</em><br><em>003 GonewiththeWind 40.00</em><br><em>004 AnimalFarm 10.00</em><br><em>005 LePetitPrince 22.00</em><br><em>006 ToKillaMockingBird 32.00</em><br><em>007 Siddhartha 32.00</em><br><em>008 DifferentSeasons 29.90</em><br><em>009 FlowersforAlgernon 36.00</em><br><em>010 RiverTown 36.00</em></p>
-<p>关于文件读写的笔记，我写在另一篇文章。</p>
-<h3><span id="4查找图书信息">4.查找图书信息</span></h3><p>由于图书一共录入三种信息，所以我们可以分别用三种信息（编号，名字，价格）进行查找。编号和名字是char[]字符数组，借助函数**strcmp(新字符，待比较旧字符)**，如果函数值为0，说明两个字符相同，完成查找；这时我们借助一个初始值为0的计数器joke，如果查找成功，joke++，如果遍历结束还是找不到，joke值则始终为0。</p>
-<p>如果不要求键入信息十分精准，通过关键字即可返回，则可以使用函数<strong>strstr（母字符串，子字符串）</strong>，注意定义指针。它的写法是：</p>
-<p><code>#include&lt;cstring&gt;//头文件</code></p>
-<p><code>char new[20];</code></p>
-<p><code>char old[20];</code></p>
-<p><code>char* a=strstr(old,new);</code></p>
-<p><code>if(a==NULL)  cout&lt;&lt;&quot;not found&quot;&lt;&lt;endl; //此时说明两个字符完全不相同</code></p>
-<p><u>注意：strstr函数区分大小写。</u></p>
-<h4><span id="1根据图书编号查找">（1）根据图书编号查找</span></h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">`void Findno(SqList L)`</span><br><span class="line">`//查找书号` </span><br><span class="line">`&#123;`</span><br><span class="line">	`char findno[20];`</span><br><span class="line">	`cin&gt;&gt;findno;`</span><br><span class="line">	`int joke=0;`</span><br><span class="line">	`cout&lt;&lt;&quot;图书编号&quot;&lt;&lt;setw(20)&lt;&lt;&quot;书名&quot;&lt;&lt;setw(30)&lt;&lt;&quot;价格&quot;&lt;&lt;endl;`</span><br><span class="line">	`for(int i=0;i&lt;L.len;i++)&#123;`</span><br><span class="line">		`if(strcmp(findno,L.elem[i].no)==0)&#123;`</span><br><span class="line">			`joke++;`</span><br><span class="line">			`cout&lt;&lt;fixed&lt;&lt;setprecision(2);`</span><br><span class="line">			`cout&lt;&lt;L.elem[i].no&lt;&lt;setw(30)&lt;&lt;L.elem[i].name&lt;&lt;setw(30)&lt;&lt;L.elem[i].price&lt;&lt;endl;`</span><br><span class="line">		`&#125;`</span><br><span class="line">	`&#125;`</span><br><span class="line">	`if(joke==0) cout&lt;&lt;&quot;404 NOT FOUND&quot;&lt;&lt;endl;`</span><br><span class="line">`&#125;`</span><br></pre></td></tr></table></figure>
-
-
-
-<h4><span id="2根据书名查找">（2）根据书名查找</span></h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">`void Findname(SqList L)`</span><br><span class="line">`//查找书名`</span><br><span class="line">`&#123;`</span><br><span class="line">	`char findname[50];`</span><br><span class="line">	`cin&gt;&gt;findname;`</span><br><span class="line">	`int joke=0;`</span><br><span class="line">	`cout&lt;&lt;&quot;图书编号&quot;&lt;&lt;setw(20)&lt;&lt;&quot;书名&quot;&lt;&lt;setw(30)&lt;&lt;&quot;价格&quot;&lt;&lt;endl;`</span><br><span class="line">	`for(int i=0;i&lt;L.len;i++)&#123;`</span><br><span class="line">	`char *b=strstr(L.elem[i].name,findname);`</span><br><span class="line">		`if(b!=NULL)&#123;`</span><br><span class="line">			`joke++;`</span><br><span class="line">			`cout&lt;&lt;L.elem[i].no&lt;&lt;setw(30)&lt;&lt;L.elem[i].name&lt;&lt;setw(30)&lt;&lt;L.elem[i].price&lt;&lt;endl;`</span><br><span class="line">		`&#125;`</span><br><span class="line">	`&#125;`</span><br><span class="line">	`if(joke==0) cout&lt;&lt;&quot;404 NOT FOUND&quot;&lt;&lt;endl;`</span><br><span class="line">	 ``</span><br><span class="line">`&#125;`</span><br></pre></td></tr></table></figure>
-
-
-
-<h4><span id="3根据价格查找">（3）根据价格查找</span></h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">`void Findprice(SqList L)`</span><br><span class="line">`//查找价格` </span><br><span class="line">`&#123;`</span><br><span class="line">	`float findprice;`</span><br><span class="line">	`cin&gt;&gt;findprice;`</span><br><span class="line">	`int joke=0;`</span><br><span class="line">	`cout&lt;&lt;&quot;图书编号&quot;&lt;&lt;setw(20)&lt;&lt;&quot;书名&quot;&lt;&lt;setw(30)&lt;&lt;&quot;价格&quot;&lt;&lt;endl;`</span><br><span class="line">	`for(int i=0;i&lt;L.len;i++)&#123;`</span><br><span class="line">		`if(findprice==L.elem[i].price)&#123;`</span><br><span class="line">			`joke++;`</span><br><span class="line">			`cout&lt;&lt;L.elem[i].no&lt;&lt;setw(30)&lt;&lt;L.elem[i].name&lt;&lt;setw(30)&lt;&lt;L.elem[i].price&lt;&lt;endl;`</span><br><span class="line">		`&#125;`</span><br><span class="line">	`&#125;`</span><br><span class="line">	`if(joke==0) cout&lt;&lt;&quot;404 NOT FOUND&quot;&lt;&lt;endl;`</span><br><span class="line">	 ``</span><br><span class="line">`&#125;`</span><br></pre></td></tr></table></figure>
-
-
-
-<h2><span id="5添加书籍信息">5.添加书籍信息</span></h2><p>这个功能很简单，先准备好待插入的顺序表位置newnumber，对于newnumber之后的元素，统一后移一个单位，<u>表长加一</u>。记得<u>检查表是否溢出（表长&#x3D;&#x3D;maxsize），和newnumber的合法范围</u>（还记得数组从0开始，而顺序表是从1开始吗？所以，newnumber最小可以是1；另外，插入顺序表允许末尾追加，所以newnumber最大可以是表长+1。实际范围是**<u>[1,表长+1]</u>**。)</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">``int listinsert(SqList &amp;L,int newnumber)`</span><br><span class="line">`//添加新图书`</span><br><span class="line">`&#123;`</span><br><span class="line">	`if( (newnumber&gt;L.len+1) || (newnumber&lt;1) ) exit(0);`</span><br><span class="line">	`if(L.len==maxsize) exit(0);`</span><br><span class="line">	`for(int i=L.len-1;i&gt;=newnumber-1;i--)&#123;`</span><br><span class="line">		`L.elem[i+1]=L.elem[i]; //插入位置以后的元素后移一个单位`</span><br><span class="line">	`&#125;L.elem[newnumber-1]=L.elem[maxsize-1];`</span><br><span class="line">	`L.len++;`</span><br><span class="line">	`return 1;`</span><br><span class="line"> &#125;` </span><br><span class="line"></span><br><span class="line">这里，</span><br></pre></td></tr></table></figure>
-
-<p>我把要添加进去的数组信息放在了顺序表的最后一个位置maxsize，等插入位置以后的元素完成后移后，再将这组信息填进待插入的位置。</p>
-<p>为了能直观地查看添加后的效果，设置一个输出函数，后续可以重复利用。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">``void readlist(SqList L)&#123;`</span><br><span class="line">	`cout&lt;&lt;&quot;图书编号&quot;&lt;&lt;setw(20)&lt;&lt;&quot;书名&quot;&lt;&lt;setw(30)&lt;&lt;&quot;价格&quot;&lt;&lt;endl;`</span><br><span class="line">	`for(int i=0;i&lt;L.len;i++)&#123;`</span><br><span class="line">		`cout&lt;&lt;fixed&lt;&lt;setprecision(2);`</span><br><span class="line">		`cout&lt;&lt;L.elem[i].no&lt;&lt;setw(30)&lt;&lt;L.elem[i].name&lt;&lt;setw(30)&lt;&lt;L.elem[i].price&lt;&lt;endl;`</span><br><span class="line"> `&#125;`</span><br><span class="line">&#125;`</span><br></pre></td></tr></table></figure>
-
-
-
-<h2><span id="6删除书籍">6.删除书籍</span></h2><p>这个功能需要借助查找功能。首先，我们查找一本书，定位到它在顺序表中的位置后（自然，我们知道了<u>这个位置的合法范围是**[1,表长]**</u>），使<u>该位置之后的元素统一往前移动一个单位，该书自然就被覆盖掉了。记得<u>表长减一</u>。</u></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">`void listdelete(SqList &amp;L)`</span><br><span class="line">`//删除一本书`</span><br><span class="line">`&#123;`</span><br><span class="line">   `int deletedata;`</span><br><span class="line">	`char findnoname[50];`</span><br><span class="line">`cin&gt;&gt;findnoname;`</span><br><span class="line">`int joke=0;`</span><br><span class="line">`char* a;`</span><br><span class="line">`cout&lt;&lt;&quot;图书编号&quot;&lt;&lt;setw(20)&lt;&lt;&quot;书名&quot;&lt;&lt;setw(30)&lt;&lt;&quot;价格&quot;&lt;&lt;endl;`</span><br><span class="line">`for(int i=0;i&lt;L.len;i++)&#123;`</span><br><span class="line">	`a=strstr(L.elem[i].name,findnoname);`</span><br><span class="line">	`if(strcmp(findnoname,L.elem[i].no)==0)&#123;`</span><br><span class="line">		`joke++;`</span><br><span class="line">		`cout&lt;&lt;L.elem[i].no&lt;&lt;setw(30)&lt;&lt;L.elem[i].name&lt;&lt;setw(30)&lt;&lt;L.elem[i].price&lt;&lt;endl;`</span><br><span class="line">		`deletedata=i+1;`</span><br><span class="line">	`&#125;`</span><br><span class="line">	`if(a!=NULL)&#123;`</span><br><span class="line">		`joke++;`</span><br><span class="line">		`cout&lt;&lt;L.elem[i].no&lt;&lt;setw(30)&lt;&lt;L.elem[i].name&lt;&lt;setw(30)&lt;&lt;L.elem[i].price&lt;&lt;endl;`</span><br><span class="line">		`deletedata=i+1;`</span><br><span class="line">	`&#125;`</span><br><span class="line">`&#125;`</span><br><span class="line">`if(joke==0) cout&lt;&lt;&quot;404 NOT FOUND&quot;&lt;&lt;endl;`</span><br><span class="line">	``if((deletedata&lt;1) || (deletedata&gt;L.len)) exit(0);`</span><br><span class="line">	`for(int i=deletedata;i&lt;L.len;i++)&#123;`</span><br><span class="line">		`L.elem[i-1]=L.elem[i]; //对i所在的位置删除数据后，进行前移，前一个元素等于后一个元素` </span><br><span class="line"> `&#125;L.len--;`</span><br><span class="line">&#125;`</span><br></pre></td></tr></table></figure>
-
-<h2><span id="7修改书籍信息">7.修改书籍信息</span></h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int doinglist(SqList &amp;L)</span><br><span class="line">//修改顺序表信息 </span><br><span class="line">&#123;</span><br><span class="line">	cout&lt;&lt;&quot;请输入书籍编号&quot;&lt;&lt;endl;</span><br><span class="line">char findno[20];</span><br><span class="line">cin&gt;&gt;findno;</span><br><span class="line">int joke=0;</span><br><span class="line">int doing;</span><br><span class="line">for(int i=0;i&lt;L.len;i++)&#123;</span><br><span class="line">	if(strcmp(findno,L.elem[i].no)==0)&#123;</span><br><span class="line">		joke++;</span><br><span class="line">		cout&lt;&lt;&quot;获取书籍信息成功！&quot;&lt;&lt;endl;</span><br><span class="line">		cout&lt;&lt;&quot;图书编号&quot;&lt;&lt;setw(20)&lt;&lt;&quot;书名&quot;&lt;&lt;setw(30)&lt;&lt;&quot;价格&quot;&lt;&lt;endl;</span><br><span class="line">		cout&lt;&lt;fixed&lt;&lt;setprecision(2);</span><br><span class="line">		cout&lt;&lt;L.elem[i].no&lt;&lt;setw(30)&lt;&lt;L.elem[i].name&lt;&lt;setw(30)&lt;&lt;L.elem[i].price&lt;&lt;endl;</span><br><span class="line">		while(1)&#123;</span><br><span class="line">			cout&lt;&lt;&quot;请输入（0-3）：1.修改书籍编号 2.修改书名 3.修改书的价格 0.退出修改&quot;&lt;&lt;endl;</span><br><span class="line">			cin&gt;&gt;doing;</span><br><span class="line">			switch(doing)&#123;</span><br><span class="line">				case 1:&#123;</span><br><span class="line">					cout&lt;&lt;&quot;请输入新书籍编号：&quot;&lt;&lt;endl;</span><br><span class="line">					char newno[20];</span><br><span class="line">					cin&gt;&gt;newno;</span><br><span class="line">					strcpy(L.elem[i].no,newno); </span><br><span class="line">					break;</span><br><span class="line">				&#125;</span><br><span class="line">				case 2:&#123;</span><br><span class="line">					cout&lt;&lt;&quot;请输入新书名：&quot;&lt;&lt;endl;</span><br><span class="line">					char newname[50];</span><br><span class="line">					cin&gt;&gt;newname;</span><br><span class="line">					strcpy(L.elem[i].name,newname); </span><br><span class="line">					break;</span><br><span class="line">				&#125;</span><br><span class="line">				case 3:&#123;</span><br><span class="line">					cout&lt;&lt;&quot;请输入新价格：&quot;&lt;&lt;endl;</span><br><span class="line">					float newprice;</span><br><span class="line">					cin&gt;&gt;newprice;</span><br><span class="line">					L.elem[i].price=newprice;</span><br><span class="line">					break;</span><br><span class="line">				&#125;</span><br><span class="line">				case 0:&#123;</span><br><span class="line">				system(&quot;pause&quot;);</span><br><span class="line">			    system(&quot;cls&quot;);//实现清屏</span><br><span class="line">			    return 0;</span><br><span class="line">				&#125;break;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; </span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2><span id="8排序">8.排序</span></h2><p>依照价格高低，对书籍进行排序。采用选择排序法。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">void talllist(SqList &amp;L)</span><br><span class="line"> //选择排序法 </span><br><span class="line"> &#123;</span><br><span class="line"> 	int max;  </span><br><span class="line">    for(int i=0;i&lt;L.len-1;i++)  </span><br><span class="line">    &#123;  </span><br><span class="line">        max=i;  </span><br><span class="line">        for(int j=i;j&lt;L.len;j++)  </span><br><span class="line">        &#123;  </span><br><span class="line">            if(L.elem[max].price &gt; L.elem[j].price)  //本质是索引为i和i+1 的结构体成员在做比较，这种写法可以保证不漏掉每一组比较 </span><br><span class="line">                max=j;  </span><br><span class="line">        &#125;  </span><br><span class="line">        L.elem[L.len+1] = L.elem[i];  //用一个在顺序表外面的位置储存旧值，暂时没想到其他好的办法 </span><br><span class="line">        L.elem[i] = L.elem[max];  </span><br><span class="line">        L.elem[max] = L.elem[L.len+1] ;</span><br><span class="line">	 &#125;</span><br></pre></td></tr></table></figure>
-
-<p>9.这个很简单，统计数目只需要输出表长就可以了</p>
-<p>我用文件读取的时候多读了一行0，所以实操的时候用了表长-1</p>
-<h1><span id="代码">【代码】</span></h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include&lt;new&gt;</span><br><span class="line">#include&lt;fstream&gt; //对文件输入输出 </span><br><span class="line">#include&lt;iostream&gt;  //对屏幕上输入输出</span><br><span class="line">#include &lt;iomanip&gt;</span><br><span class="line">#include &lt;cstring&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define maxsize 1000</span><br><span class="line">typedef struct&#123;</span><br><span class="line">	char no[20];  //图书编号 </span><br><span class="line">	char name[50];  //书名 </span><br><span class="line">	float price;  //定价 </span><br><span class="line">&#125;book;</span><br><span class="line">typedef struct&#123;</span><br><span class="line">	book *elem;   //存储空间的基地址</span><br><span class="line">	int len;     //表长</span><br><span class="line">&#125;SqList;  //图书表的顺序存储结构为SqList </span><br><span class="line"></span><br><span class="line">int initlist(SqList &amp;L)</span><br><span class="line">//构造空表 </span><br><span class="line">&#123;</span><br><span class="line">	L.elem = new book[maxsize];</span><br><span class="line">	if(!L.elem)  exit(0);  //存储分配失败，不知为何，在这个地方用return -1会导致后续程序出错</span><br><span class="line">	L.len=0;</span><br><span class="line">	return 1; </span><br><span class="line">&#125; </span><br><span class="line">void menu()&#123;</span><br><span class="line">//菜单 </span><br><span class="line">	cout&lt;&lt;&quot;————&quot;&lt;&lt;&#x27;\n&#x27;&lt;&lt;&quot;menu&quot;&lt;&lt;endl;</span><br><span class="line">	cout&lt;&lt;&quot;1.查找某本书&quot;&lt;&lt;&#x27;\n&#x27;&lt;&lt;&quot;2.添加新书&quot;&lt;&lt;&#x27;\n&#x27;&lt;&lt;&quot;3.删除某本书&quot;&lt;&lt;&#x27;\n&#x27;&lt;&lt;&quot;4.修改某本书的信息&quot;&lt;&lt;&#x27;\n&#x27;&lt;&lt; &quot;5.排序&quot;&lt;&lt;&#x27;\n&#x27;&lt;&lt;&quot;6.统计&quot;&lt;&lt;&#x27;\n&#x27;; </span><br><span class="line">	cout&lt;&lt;&quot;————&quot;&lt;&lt;endl; </span><br><span class="line">&#125;</span><br><span class="line">void Findno(SqList L)</span><br><span class="line">//查找书号 </span><br><span class="line">&#123;</span><br><span class="line">	char findno[20];</span><br><span class="line">	cin&gt;&gt;findno;</span><br><span class="line">	int joke=0;</span><br><span class="line">	cout&lt;&lt;&quot;图书编号&quot;&lt;&lt;setw(20)&lt;&lt;&quot;书名&quot;&lt;&lt;setw(30)&lt;&lt;&quot;价格&quot;&lt;&lt;endl;</span><br><span class="line">	for(int i=0;i&lt;L.len;i++)&#123;</span><br><span class="line">		if(strcmp(findno,L.elem[i].no)==0)&#123;</span><br><span class="line">			joke++;</span><br><span class="line">			cout&lt;&lt;L.elem[i].no&lt;&lt;setw(30)&lt;&lt;L.elem[i].name&lt;&lt;setw(30)&lt;&lt;L.elem[i].price&lt;&lt;endl;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	if(joke==0) cout&lt;&lt;&quot;404 NOT FOUND&quot;&lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line">void Findname(SqList L)</span><br><span class="line">//查找书名</span><br><span class="line">&#123;</span><br><span class="line">	char findname[50];</span><br><span class="line">	cin&gt;&gt;findname;</span><br><span class="line">	int joke=0;</span><br><span class="line">	cout&lt;&lt;&quot;图书编号&quot;&lt;&lt;setw(20)&lt;&lt;&quot;书名&quot;&lt;&lt;setw(30)&lt;&lt;&quot;价格&quot;&lt;&lt;endl;</span><br><span class="line">	for(int i=0;i&lt;L.len;i++)&#123;</span><br><span class="line">	char *b=strstr(L.elem[i].name,findname);</span><br><span class="line">		if(b!=NULL)&#123;</span><br><span class="line">			joke++;</span><br><span class="line">			cout&lt;&lt;L.elem[i].no&lt;&lt;setw(30)&lt;&lt;L.elem[i].name&lt;&lt;setw(30)&lt;&lt;L.elem[i].price&lt;&lt;endl;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	if(joke==0) cout&lt;&lt;&quot;404 NOT FOUND&quot;&lt;&lt;endl;</span><br><span class="line">	 </span><br><span class="line">&#125;</span><br><span class="line">void Findprice(SqList L)</span><br><span class="line">//查找价格 </span><br><span class="line">&#123;</span><br><span class="line">	float findprice;</span><br><span class="line">	cin&gt;&gt;findprice;</span><br><span class="line">	int joke=0;</span><br><span class="line">	cout&lt;&lt;&quot;图书编号&quot;&lt;&lt;setw(20)&lt;&lt;&quot;书名&quot;&lt;&lt;setw(30)&lt;&lt;&quot;价格&quot;&lt;&lt;endl;</span><br><span class="line">	for(int i=0;i&lt;L.len;i++)&#123;</span><br><span class="line">		if(findprice==L.elem[i].price)&#123;</span><br><span class="line">			joke++;</span><br><span class="line">			cout&lt;&lt;fixed&lt;&lt;setprecision(2);</span><br><span class="line">			cout&lt;&lt;L.elem[i].no&lt;&lt;setw(30)&lt;&lt;L.elem[i].name&lt;&lt;setw(30)&lt;&lt;L.elem[i].price&lt;&lt;endl;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	if(joke==0) cout&lt;&lt;&quot;404 NOT FOUND&quot;&lt;&lt;endl;</span><br><span class="line">	 </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int listinsert(SqList &amp;L,int newnumber)</span><br><span class="line">//添加新图书</span><br><span class="line">&#123;</span><br><span class="line">	if( (newnumber&gt;L.len+1) || (newnumber&lt;1) ) exit(0);</span><br><span class="line">	if(L.len==maxsize) exit(0);</span><br><span class="line">	for(int i=L.len-1;i&gt;=newnumber-1;i--)&#123;</span><br><span class="line">		L.elem[i+1]=L.elem[i]; //插入位置以后的元素后移一个单位</span><br><span class="line">	&#125;L.elem[newnumber-1]=L.elem[maxsize-1];</span><br><span class="line">	L.len++;</span><br><span class="line">	return 1;</span><br><span class="line"> &#125; </span><br><span class="line"></span><br><span class="line"> void listdelete(SqList &amp;L)</span><br><span class="line"> //删除一本书</span><br><span class="line"> &#123;</span><br><span class="line">    int deletedata;</span><br><span class="line"> 	char findnoname[50];</span><br><span class="line">	cin&gt;&gt;findnoname;</span><br><span class="line">	int joke=0;</span><br><span class="line">	char* a;</span><br><span class="line">	cout&lt;&lt;&quot;图书编号&quot;&lt;&lt;setw(20)&lt;&lt;&quot;书名&quot;&lt;&lt;setw(30)&lt;&lt;&quot;价格&quot;&lt;&lt;endl;</span><br><span class="line">	for(int i=0;i&lt;L.len;i++)&#123;</span><br><span class="line">		a=strstr(L.elem[i].name,findnoname);</span><br><span class="line">		if(strcmp(findnoname,L.elem[i].no)==0)&#123;</span><br><span class="line">			joke++;</span><br><span class="line">			cout&lt;&lt;L.elem[i].no&lt;&lt;setw(30)&lt;&lt;L.elem[i].name&lt;&lt;setw(30)&lt;&lt;L.elem[i].price&lt;&lt;endl;</span><br><span class="line">			deletedata=i+1;</span><br><span class="line">		&#125;</span><br><span class="line">		if(a!=NULL)&#123;</span><br><span class="line">			joke++;</span><br><span class="line">			cout&lt;&lt;L.elem[i].no&lt;&lt;setw(30)&lt;&lt;L.elem[i].name&lt;&lt;setw(30)&lt;&lt;L.elem[i].price&lt;&lt;endl;</span><br><span class="line">			deletedata=i+1;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	if(joke==0) cout&lt;&lt;&quot;404 NOT FOUND&quot;&lt;&lt;endl;</span><br><span class="line"> 	</span><br><span class="line"></span><br><span class="line"> 	if((deletedata&lt;1) || (deletedata&gt;L.len)) exit(0);</span><br><span class="line"> 	for(int i=deletedata;i&lt;L.len;i++)&#123;</span><br><span class="line"> 		L.elem[i-1]=L.elem[i]; //对i所在的位置删除数据后，进行前移，前一个元素等于后一个元素 </span><br><span class="line"> 	 &#125;L.len--;</span><br><span class="line"></span><br><span class="line"> &#125;</span><br><span class="line"> int doinglist(SqList &amp;L)</span><br><span class="line"> //修改顺序表信息 </span><br><span class="line"> &#123;</span><br><span class="line"> 	cout&lt;&lt;&quot;请输入书籍编号&quot;&lt;&lt;endl;</span><br><span class="line">	char findno[20];</span><br><span class="line">	cin&gt;&gt;findno;</span><br><span class="line">	int joke=0;</span><br><span class="line">	int doing;</span><br><span class="line">	for(int i=0;i&lt;L.len;i++)&#123;</span><br><span class="line">		if(strcmp(findno,L.elem[i].no)==0)&#123;</span><br><span class="line">			joke++;</span><br><span class="line">			cout&lt;&lt;&quot;获取书籍信息成功！&quot;&lt;&lt;endl;</span><br><span class="line">			cout&lt;&lt;&quot;图书编号&quot;&lt;&lt;setw(20)&lt;&lt;&quot;书名&quot;&lt;&lt;setw(30)&lt;&lt;&quot;价格&quot;&lt;&lt;endl;</span><br><span class="line">			cout&lt;&lt;fixed&lt;&lt;setprecision(2);</span><br><span class="line">			cout&lt;&lt;L.elem[i].no&lt;&lt;setw(30)&lt;&lt;L.elem[i].name&lt;&lt;setw(30)&lt;&lt;L.elem[i].price&lt;&lt;endl;</span><br><span class="line">			while(1)&#123;</span><br><span class="line">				cout&lt;&lt;&quot;请输入（0-3）：1.修改书籍编号 2.修改书名 3.修改书的价格 0.退出修改&quot;&lt;&lt;endl;</span><br><span class="line">				cin&gt;&gt;doing;</span><br><span class="line">				switch(doing)&#123;</span><br><span class="line">					case 1:&#123;</span><br><span class="line">						cout&lt;&lt;&quot;请输入新书籍编号：&quot;&lt;&lt;endl;</span><br><span class="line">						char newno[20];</span><br><span class="line">						cin&gt;&gt;newno;</span><br><span class="line">						strcpy(L.elem[i].no,newno); </span><br><span class="line">						break;</span><br><span class="line">					&#125;</span><br><span class="line">					case 2:&#123;</span><br><span class="line">						cout&lt;&lt;&quot;请输入新书名：&quot;&lt;&lt;endl;</span><br><span class="line">						char newname[50];</span><br><span class="line">						cin&gt;&gt;newname;</span><br><span class="line">						strcpy(L.elem[i].name,newname); </span><br><span class="line">						break;</span><br><span class="line">					&#125;</span><br><span class="line">					case 3:&#123;</span><br><span class="line">						cout&lt;&lt;&quot;请输入新价格：&quot;&lt;&lt;endl;</span><br><span class="line">						float newprice;</span><br><span class="line">						cin&gt;&gt;newprice;</span><br><span class="line">						L.elem[i].price=newprice;</span><br><span class="line">						break;</span><br><span class="line">					&#125;</span><br><span class="line">					case 0:&#123;</span><br><span class="line">					system(&quot;pause&quot;);</span><br><span class="line">				    system(&quot;cls&quot;);</span><br><span class="line">				    return 0;</span><br><span class="line">					&#125;break;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125; </span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"> &#125;</span><br><span class="line"> void talllist(SqList &amp;L)</span><br><span class="line"> //选择排序法 </span><br><span class="line"> &#123;</span><br><span class="line"> 	int max;  </span><br><span class="line">    for(int i=0;i&lt;L.len-1;i++)  </span><br><span class="line">    &#123;  </span><br><span class="line">        max=i;  </span><br><span class="line">        for(int j=i;j&lt;L.len;j++)  </span><br><span class="line">        &#123;  </span><br><span class="line">            if(L.elem[max].price &gt; L.elem[j].price)  //本质是索引为i和i+1 的结构体成员在做比较，这种写法可以保证不漏掉每一组比较 </span><br><span class="line">                max=j;  </span><br><span class="line">        &#125;  </span><br><span class="line">        L.elem[L.len+1] = L.elem[i];  //用一个在顺序表外面的位置储存旧值，暂时没想到其他好的办法 </span><br><span class="line">        L.elem[i] = L.elem[max];  </span><br><span class="line">        L.elem[max] = L.elem[L.len+1] ;</span><br><span class="line">	 &#125;</span><br><span class="line">&#125;</span><br><span class="line"> void readlist(SqList L)&#123;</span><br><span class="line"> 	cout&lt;&lt;&quot;图书编号&quot;&lt;&lt;setw(20)&lt;&lt;&quot;书名&quot;&lt;&lt;setw(30)&lt;&lt;&quot;价格&quot;&lt;&lt;endl;</span><br><span class="line"> 	for(int i=0;i&lt;L.len;i++)&#123;</span><br><span class="line"> 		cout&lt;&lt;fixed&lt;&lt;setprecision(2);</span><br><span class="line"> 		cout&lt;&lt;L.elem[i].no&lt;&lt;setw(30)&lt;&lt;L.elem[i].name&lt;&lt;setw(30)&lt;&lt;L.elem[i].price&lt;&lt;endl;</span><br><span class="line">	 &#125;</span><br><span class="line"> &#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">	SqList L;</span><br><span class="line">	initlist(L); //顺序表的初始化 </span><br><span class="line">	FILE *fp=NULL;</span><br><span class="line">	FILE *fp1=NULL;</span><br><span class="line">	fp=fopen(&quot;information.txt&quot;,&quot;r&quot;);//r打开只读文件 </span><br><span class="line">	if(fp==NULL)&#123;</span><br><span class="line">	cout&lt;&lt;&quot;文件读取无效&quot;&lt;&lt;endl;</span><br><span class="line">	exit(0); </span><br><span class="line">	&#125;</span><br><span class="line">	int i=0;</span><br><span class="line">	while(!feof(fp))&#123;</span><br><span class="line">        fscanf(fp, &quot;%s %s %f\n&quot;, L.elem[i].no,L.elem[i].name,&amp;L.elem[i].price);//字符变量不需要加&amp;指向地址，%s忽略字符串前一个空格 </span><br><span class="line">		i++;</span><br><span class="line">	&#125; </span><br><span class="line">	L.len=i+1; </span><br><span class="line">	fclose(fp);//关闭文件 </span><br></pre></td></tr></table></figure>
-
-<p>​	</p>
-<pre><code>while(1)&#123;
-    menu(); 
-    int choose;
-    int find;
-    string yes;
-    cin&gt;&gt;choose; 
-    switch(choose)&#123;
-        case 1:&#123;
-            cout&lt;&lt;&quot;请选择（0-3）：1.按图书编号查找 2.按书名查找 3.按价格查找 0.退出&quot;&lt;&lt;endl;
-            cin&gt;&gt;find;
-            if(find==1) Findno(L);
-            if(find==2) Findname(L);
-            if(find==3) Findprice(L);
-            break;
-        &#125;
-        case 2:&#123;
-            int newnumber;
-            cout&lt;&lt;&quot;请输入：添加新图书至第__位(按0退出)&quot;&lt;&lt;endl;
-            cin&gt;&gt;newnumber;
-            if(newnumber!=0)&#123;
-                cin&gt;&gt;L.elem[maxsize-1].no&gt;&gt;L.elem[maxsize-1].name&gt;&gt;L.elem[maxsize-1].price;
-                listinsert(L,newnumber);
-                cout&lt;&lt;&quot;添加成功！是否查看？Y/N&quot;&lt;&lt;endl;
-                cin&gt;&gt;yes;
-                if(yes==&quot;Y&quot;) readlist(L);
-                if(yes==&quot;N&quot;) break;
-            &#125;
-            break;
-        &#125;
-        case 3:&#123;
-            cout&lt;&lt;&quot;请选择（0-2）：1.输入图书编号并删除该书 2.输入书名并删除该书 0.退出&quot;&lt;&lt;endl;
-            cin&gt;&gt;find;
-            if(find==1) &#123;
-            cout&lt;&lt;&quot;正在查询你想删除的书...&quot;&lt;&lt;endl; 
-            listdelete(L); 
-            cout&lt;&lt;&quot;删除完成！请查看：&quot;&lt;&lt;endl; 
-            readlist(L);
-            &#125;
-            if(find==2)&#123;
-            cout&lt;&lt;&quot;查找到你想删除的书是：&quot;&lt;&lt;endl; 	
-            listdelete(L);
-            cout&lt;&lt;&quot;删除完成！请查看：&quot;&lt;&lt;endl; 
-            readlist(L);
-         	&#125;
-            break;
-        &#125;
-        case 4:&#123;
-            cout&lt;&lt;&quot;请选择（0-1）：1.输入图书编号并修改该书信息  0.退出&quot;&lt;&lt;endl;
-            cin&gt;&gt;find;
-            if(find==1) doinglist(L);
-            break;
-        &#125;
-        case 5:&#123;
-            cout&lt;&lt;&quot;请选择（0-1）：1.按价格升序排序  0.退出&quot;&lt;&lt;endl;
-            cin&gt;&gt;find;
-            if(find==1)&#123;
-                talllist(L);
-                readlist(L);
-            &#125;
-            break;
-        &#125;
-        case 6:&#123;
-            cout&lt;&lt;&quot;本系统目前共收录&quot;&lt;&lt;L.len-1&lt;&lt;&quot;本书&quot;&lt;&lt;endl; 
-            float sum=0;
-            for(int i=0;i&lt;L.len;i++)&#123;
-                sum+=L.elem[i].price;
-            &#125;
-            cout&lt;&lt;fixed&lt;&lt;setprecision(2);
-            cout&lt;&lt;&quot;价值约&quot;&lt;&lt; sum&lt;&lt;&quot;元&quot;&lt;&lt;endl; 
-            break;
-        &#125;
-    &#125;
-fp1=fopen(&quot;information2.txt&quot;,&quot;w+&quot;);//w+打开可读写文件，若不存在则建立，若存在则清空并覆盖 
-if(fp==NULL)&#123;
-cout&lt;&lt;&quot;文件写入无效&quot;&lt;&lt;endl;
-exit(0); 
-&#125;
-for(i=0;i&lt;L.len;i++)&#123;
-    fprintf(fp1,&quot;%s %s %.2f\n&quot;,L.elem[i].no,L.elem[i].name,L.elem[i].price);
-&#125;
-fclose(fp1);//关闭文件 
-
-system(&quot;pause&quot;);
-system(&quot;cls&quot;);
-
-&#125;
-return 0;
-&#125;
-</code></pre>
-]]></content>
-      <tags>
-        <tag>数据结构笔记</tag>
       </tags>
   </entry>
   <entry>
@@ -1122,264 +1384,6 @@ return 0;
 <p>5.求队头元素</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int GetHead(LinkQueue Q)&#123;</span><br><span class="line">//返回Q的队头元素，不修改队头指针</span><br><span class="line"></span><br><span class="line">if(Q.front!=Q.rear)</span><br><span class="line"></span><br><span class="line">return Q.front-&gt;next-&gt;data;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-]]></content>
-      <tags>
-        <tag>数据结构笔记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>用链表实现交集和并集</title>
-    <url>/2024/03/24/%E7%94%A8%E9%93%BE%E8%A1%A8%E5%AE%9E%E7%8E%B0%E4%BA%A4%E9%9B%86%E5%92%8C%E5%B9%B6%E9%9B%86/</url>
-    <content><![CDATA[<!-- toc -->
-
-<ul>
-<li><a href="#7-1-%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8%E5%BA%8F%E5%88%97%E7%9A%84%E4%BA%A4%E9%9B%86"><strong>7-1 两个有序链表序列的交集</strong></a><ul>
-<li><a href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F">输入格式:</a></li>
-<li><a href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F">输出格式:</a></li>
-<li><a href="#%E8%BE%93%E5%85%A5%E6%A0%B7%E4%BE%8B">输入样例:</a></li>
-<li><a href="#%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B">输出样例:</a></li>
-<li><a href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0">代码实现：</a></li>
-</ul>
-</li>
-<li><a href="#7-2-%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8%E5%BA%8F%E5%88%97%E7%9A%84%E5%90%88%E5%B9%B6"><strong>7-2 两个有序链表序列的合并</strong></a><ul>
-<li><a href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F-1">输入格式:</a></li>
-<li><a href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F-1">输出格式:</a></li>
-<li><a href="#%E8%BE%93%E5%85%A5%E6%A0%B7%E4%BE%8B-1">输入样例:</a></li>
-<li><a href="#%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B-1">输出样例:</a></li>
-<li><a href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0-1">代码实现：</a></li>
-</ul>
-</li>
-<li><a href="#7-3-%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8%E5%90%88%E5%B9%B6%E6%96%B0%E8%A1%A8%E4%B8%8D%E5%90%AB%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0"><strong>7-3 两个有序链表合并（新表不含重复元素）</strong></a><ul>
-<li><a href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F-2">输入格式:</a></li>
-<li><a href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F-2">输出格式:</a></li>
-<li><a href="#%E8%BE%93%E5%85%A5%E6%A0%B7%E4%BE%8B-2">输入样例:</a></li>
-<li><a href="#%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B-2">输出样例:</a></li>
-<li><a href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0-2">代码实现：</a></li>
-</ul>
-</li>
-</ul>
-<!-- tocstop -->
-
-<p>[TOC]</p>
-<h2><span id="7-1-两个有序链表序列的交集"><strong>7-1 两个有序链表序列的交集</strong></span></h2><p>已知两个非降序链表序列S1与S2，设计函数构造出S1与S2的交集新链表S3。</p>
-<h3><span id="输入格式">输入格式:</span></h3><p>输入分两行，分别在每行给出由若干个正整数构成的非降序序列，用−1表示序列的结尾（−1不属于这个序列）。数字用空格间隔。</p>
-<h3><span id="输出格式">输出格式:</span></h3><p>在一行中输出两个输入序列的交集序列，数字间用空格分开，结尾不能有多余空格；若新链表为空，输出<code>NULL</code>。</p>
-<h3><span id="输入样例">输入样例:</span></h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1 2 5 -1</span><br><span class="line">2 4 5 8 10 -1</span><br></pre></td></tr></table></figure>
-
-<h3><span id="输出样例">输出样例:</span></h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">2 5</span><br></pre></td></tr></table></figure>
-
-<h3><span id="代码实现">代码实现：</span></h3><p>这段程序的通过难点主要在于关心交集为空的情况，分为两种：</p>
-<p>①集合1和集合2之间最少有一个为空</p>
-<p>②集合1和集合2不是空集，但是相同元素的个数为0</p>
-<p>针对第二种情况，只需要设置一个计数器i&#x3D;0，当集合1的元素&#x3D;&#x3D;集合2的元素时，i++，若运行到循环结束，i仍然为0，说明得到的交集为空</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">typedef struct LNode&#123;</span><br><span class="line">    int data;</span><br><span class="line">    struct LNode *next;</span><br><span class="line">&#125;LNode,*LinkList;</span><br><span class="line"></span><br><span class="line">int creatlist(LinkList &amp;S1,LinkList &amp;S2)&#123;</span><br><span class="line">    LNode *p1,*p2,*r;</span><br><span class="line">    p1=S1,p2=S2;</span><br><span class="line">    r=S1;</span><br><span class="line">    while(1)&#123;</span><br><span class="line">        p1=new LNode;</span><br><span class="line">        cin&gt;&gt;p1-&gt;data;</span><br><span class="line">        if(p1-&gt;data==-1) break;//在链表录入-1前结束循环</span><br><span class="line">        p1-&gt;next=NULL;</span><br><span class="line">        r-&gt;next=p1;</span><br><span class="line">        r=p1;</span><br><span class="line">    &#125;//尾插法</span><br><span class="line">    r=S2;//循环利用变量r</span><br><span class="line">    while(1)&#123;</span><br><span class="line">        p2=new LNode;</span><br><span class="line">        cin&gt;&gt;p2-&gt;data;</span><br><span class="line">        if(p2-&gt;data==-1) break;</span><br><span class="line">        p2-&gt;next=NULL;</span><br><span class="line">        r-&gt;next=p2;</span><br><span class="line">        r=p2;</span><br><span class="line">    &#125;//尾插法</span><br><span class="line">    return 1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int jiaoji(LinkList &amp;S1,LinkList &amp;S2)&#123;</span><br><span class="line">    LNode *S3,*p3,*r;</span><br><span class="line">    LNode *p1,*p2;</span><br><span class="line">    p1=S1-&gt;next,p2=S2-&gt;next;</span><br><span class="line">    S3=new LNode;</span><br><span class="line">    S3-&gt;next=NULL;</span><br><span class="line">    r=S3;</span><br><span class="line">    int i=0;//统计S3的长度</span><br><span class="line">    if(S1==NULL || S2==NULL)&#123;</span><br><span class="line">        cout&lt;&lt;&quot;NULL&quot;;</span><br><span class="line">        return 0;</span><br><span class="line">    &#125;</span><br><span class="line">    while(p1&amp;&amp;p2)&#123;</span><br><span class="line">        if(p1-&gt;data==p2-&gt;data)&#123;</span><br><span class="line">            i++;</span><br><span class="line">            p3=new LNode;</span><br><span class="line">            p3-&gt;data=p1-&gt;data;</span><br><span class="line">            p3-&gt;next=NULL;</span><br><span class="line">            r-&gt;next=p3;</span><br><span class="line">            r=p3;</span><br><span class="line">            p1=p1-&gt;next;</span><br><span class="line">            p2=p2-&gt;next;</span><br><span class="line">        &#125;else if(p1-&gt;data&gt;p2-&gt;data) p2=p2-&gt;next;</span><br><span class="line">        else if(p1-&gt;data&lt;p2-&gt;data) p1=p1-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    if(i==0) &#123;</span><br><span class="line">        cout&lt;&lt;&quot;NULL&quot;;</span><br><span class="line">        return 0;</span><br><span class="line">    &#125;</span><br><span class="line">    p3=S3-&gt;next;//p3重新退回头结点指向的位置</span><br><span class="line">    while(p3-&gt;next)&#123;</span><br><span class="line">        cout&lt;&lt;p3-&gt;data&lt;&lt;&quot; &quot;;</span><br><span class="line">        p3=p3-&gt;next;</span><br><span class="line">    &#125;cout&lt;&lt;p3-&gt;data;</span><br><span class="line">    return 1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">    LNode *S1,*S2;</span><br><span class="line">    S1=new LNode;</span><br><span class="line">    S1-&gt;next=NULL;</span><br><span class="line">    S2=new LNode;</span><br><span class="line">    S2-&gt;next=NULL;</span><br><span class="line">    creatlist(S1,S2);</span><br><span class="line">    jiaoji(S1,S2);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>测试点</td>
-<td>提示</td>
-<td>内存(KB)</td>
-<td>用时(ms)</td>
-<td>结果</td>
-<td>得分</td>
-<td></td>
-</tr>
-<tr>
-<td>0</td>
-<td>样例等价</td>
-<td>300</td>
-<td>2</td>
-<td>答案正确</td>
-<td>2 &#x2F; 2</td>
-<td></td>
-</tr>
-<tr>
-<td>1</td>
-<td>交集为空</td>
-<td>488</td>
-<td>3</td>
-<td>答案正确</td>
-<td>2 &#x2F; 2</td>
-<td></td>
-</tr>
-<tr>
-<td>2</td>
-<td>完全相交</td>
-<td>276</td>
-<td>3</td>
-<td>答案正确</td>
-<td>2 &#x2F; 2</td>
-<td></td>
-</tr>
-<tr>
-<td>3</td>
-<td>其中一个序列完全属于交集</td>
-<td>492</td>
-<td>2</td>
-<td>答案正确</td>
-<td>2 &#x2F; 2</td>
-<td></td>
-</tr>
-<tr>
-<td>4</td>
-<td>其中一个序列为空</td>
-<td>492</td>
-<td>3</td>
-<td>答案正确</td>
-<td>2 &#x2F; 2</td>
-<td></td>
-</tr>
-<tr>
-<td>5</td>
-<td>大规模数据</td>
-<td>31864</td>
-<td>291</td>
-<td>答案正确</td>
-<td>2 &#x2F; 2</td>
-<td></td>
-</tr>
-</tbody></table>
-<h2><span id="7-2-两个有序链表序列的合并"><strong>7-2 两个有序链表序列的合并</strong></span></h2><p>已知两个非降序链表序列S1与S2，设计函数构造出S1与S2合并后的新的非降序链表S3。</p>
-<h3><span id="输入格式">输入格式:</span></h3><p>输入分两行，分别在每行给出由若干个正整数构成的非降序序列，用−1表示序列的结尾（−1不属于这个序列）。数字用空格间隔。</p>
-<h3><span id="输出格式">输出格式:</span></h3><p>在一行中输出合并后新的非降序链表，数字间用空格分开，结尾不能有多余空格；若新链表为空，输出<code>NULL</code>。</p>
-<h3><span id="输入样例">输入样例:</span></h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1 3 5 -1</span><br><span class="line">2 4 6 8 10 -1</span><br></pre></td></tr></table></figure>
-
-<h3><span id="输出样例">输出样例:</span></h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1 2 3 4 5 6 8 10</span><br></pre></td></tr></table></figure>
-
-<h3><span id="代码实现">代码实现：</span></h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">typedef struct LNode&#123;</span><br><span class="line">    int data;</span><br><span class="line">    struct LNode *next;</span><br><span class="line">&#125;LNode,*LinkList;</span><br><span class="line"></span><br><span class="line">int creatlist(LinkList &amp;S1,LinkList &amp;S2)&#123;</span><br><span class="line">    LNode *p1,*p2,*r;</span><br><span class="line">    r=S1;</span><br><span class="line">    while(1)&#123;</span><br><span class="line">        p1=new LNode;</span><br><span class="line">        cin&gt;&gt;p1-&gt;data;</span><br><span class="line">        if(p1-&gt;data==-1) break;</span><br><span class="line">        p1-&gt;next=NULL;</span><br><span class="line">        r-&gt;next=p1;</span><br><span class="line">        r=p1;</span><br><span class="line">    &#125;</span><br><span class="line">    r=S2;</span><br><span class="line">    while(1)&#123;</span><br><span class="line">        p2=new LNode;</span><br><span class="line">        cin&gt;&gt;p2-&gt;data;</span><br><span class="line">        if(p2-&gt;data==-1) break;</span><br><span class="line">        p2-&gt;next=NULL;</span><br><span class="line">        r-&gt;next=p2;</span><br><span class="line">        r=p2;</span><br><span class="line">    &#125;</span><br><span class="line">    return 1;</span><br><span class="line">&#125;</span><br><span class="line">int bingji(LinkList &amp;S1,LinkList &amp;S2)&#123;</span><br><span class="line">    LNode *p1,*p2;</span><br><span class="line">    p1=S1-&gt;next,p2=S2-&gt;next;</span><br><span class="line">    LNode *S3,*p3;</span><br><span class="line">    S3=S1;</span><br><span class="line">    p3=S3;</span><br><span class="line">    while(p1&amp;&amp;p2)&#123;</span><br><span class="line">        if(p1-&gt;data&lt;=p2-&gt;data)&#123;</span><br><span class="line">            p3-&gt;next=p1;</span><br><span class="line">            p3=p1;</span><br><span class="line">            p1=p1-&gt;next;</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            p3-&gt;next=p2;</span><br><span class="line">            p3=p2;</span><br><span class="line">            p2=p2-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    p3-&gt;next=p1?p1:p2;</span><br><span class="line">    //三目运算符，等价于</span><br><span class="line">    //if(p1)p3-&gt;next=p1; </span><br><span class="line">    //else if(p2)p3-a.next=p2;</span><br><span class="line">    </span><br><span class="line">    free(S2);//释放头结点</span><br><span class="line">    p3=S3-&gt;next;</span><br><span class="line">    if(p3==NULL)&#123;</span><br><span class="line">        cout&lt;&lt;&quot;NULL&quot;;</span><br><span class="line">        return 0;</span><br><span class="line">    &#125;</span><br><span class="line">    while(p3-&gt;next)&#123;</span><br><span class="line">        cout&lt;&lt;p3-&gt;data&lt;&lt;&quot; &quot;;</span><br><span class="line">        p3=p3-&gt;next;</span><br><span class="line">    &#125;cout&lt;&lt;p3-&gt;data;</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    return 1;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">    LNode *S1,*S2;</span><br><span class="line">    S1=new LNode,S2=new LNode;</span><br><span class="line">    S1-&gt;next=NULL,S2-&gt;next=NULL;</span><br><span class="line">    creatlist(S1,S2);</span><br><span class="line">    bingji(S1,S2);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<table>
-<thead>
-<tr>
-<th>测试点</th>
-<th>提示</th>
-<th>内存(KB)</th>
-<th>用时(ms)</th>
-<th>结果</th>
-<th>得分</th>
-<th></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>0</td>
-<td>样例等价</td>
-<td>400</td>
-<td>2</td>
-<td>答案正确</td>
-<td>5 &#x2F; 5</td>
-<td></td>
-</tr>
-<tr>
-<td>1</td>
-<td>有并列</td>
-<td>288</td>
-<td>2</td>
-<td>答案正确</td>
-<td>5 &#x2F; 5</td>
-<td></td>
-</tr>
-<tr>
-<td>2</td>
-<td>链表为空</td>
-<td>400</td>
-<td>2</td>
-<td>答案正确</td>
-<td>5 &#x2F; 5</td>
-<td></td>
-</tr>
-<tr>
-<td>3</td>
-<td>大规模输入</td>
-<td>46228</td>
-<td>370</td>
-<td>答案正确</td>
-<td>5 &#x2F; 5</td>
-<td></td>
-</tr>
-</tbody></table>
-<h2><span id="7-3-两个有序链表合并新表不含重复元素"><strong>7-3 两个有序链表合并（新表不含重复元素）</strong></span></h2><p>已知两个非降序链表序列S1与S2，设计函数构造出S1与S2合并后的新的非降序链表S3。<br>要求S3中没有重复元素。</p>
-<h3><span id="输入格式">输入格式:</span></h3><p>输入分两行，分别在每行给出由若干个正整数构成的非降序序列，用−1表示序列的结尾（−1不属于这个序列）。数字用空格间隔。</p>
-<h3><span id="输出格式">输出格式:</span></h3><p>在一行中输出合并后新的非降序链表，要求链表中没有重复元素。数字间用空格分开，结尾不能有多余空格；若新链表为空，输出NULL。</p>
-<h3><span id="输入样例">输入样例:</span></h3><p>在这里给出一组输入。例如：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1 3 3 5 8 -1</span><br><span class="line">2 3 4 6 8 10 -1</span><br></pre></td></tr></table></figure>
-
-<h3><span id="输出样例">输出样例:</span></h3><p>在这里给出相应的输出。例如：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1 2 3 4 5 6 8 10</span><br></pre></td></tr></table></figure>
-
-<h3><span id="代码实现">代码实现：</span></h3><p>这一段程序相对于上一题的难点在于：</p>
-<p>①要求并集中的元素不可重复，因此必须细致的分类讨论集合1大于、小于或等于集合2，以及集合1和集合2的值分别等不等于并集已存在的值</p>
-<p>②设置了测试点：一个是空表，一个只有两个相同的元素。如果不加上p3-&gt;next&#x3D;NULL，程序会报错</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">typedef struct LNode&#123;</span><br><span class="line">    int data;</span><br><span class="line">    struct LNode *next;</span><br><span class="line">&#125;LNode,*LinkList;</span><br><span class="line"></span><br><span class="line">int creatlist(LinkList &amp;S1,LinkList &amp;S2)&#123;</span><br><span class="line">    LNode *p1,*p2,*r;</span><br><span class="line">    r=S1;</span><br><span class="line">    while(1)&#123;</span><br><span class="line">        p1=new LNode;</span><br><span class="line">        cin&gt;&gt;p1-&gt;data;</span><br><span class="line">        if(p1-&gt;data==-1) break;</span><br><span class="line">        p1-&gt;next=NULL;</span><br><span class="line">        r-&gt;next=p1;</span><br><span class="line">        r=p1;</span><br><span class="line">    &#125;</span><br><span class="line">    r=S2;</span><br><span class="line">    while(1)&#123;</span><br><span class="line">        p2=new LNode;</span><br><span class="line">        cin&gt;&gt;p2-&gt;data;</span><br><span class="line">        if(p2-&gt;data==-1) break;</span><br><span class="line">        p2-&gt;next=NULL;</span><br><span class="line">        r-&gt;next=p2;</span><br><span class="line">        r=p2;</span><br><span class="line">    &#125;</span><br><span class="line">    return 1;</span><br><span class="line">&#125;</span><br><span class="line">int bingji(LinkList &amp;S1,LinkList &amp;S2)&#123;</span><br><span class="line">    LNode *p1,*p2;</span><br><span class="line">    p1=S1-&gt;next,p2=S2-&gt;next;</span><br><span class="line">    LNode *S3,*p3;</span><br><span class="line">    S3=S1;</span><br><span class="line">    p3=S3;</span><br><span class="line">    while(p1&amp;&amp;p2)&#123;</span><br><span class="line">        if(p1-&gt;data&lt;p2-&gt;data &amp;&amp;p1-&gt;data!=p3-&gt;data)&#123;</span><br><span class="line">            p3-&gt;next=p1;</span><br><span class="line">            p3=p1;</span><br><span class="line">            p1=p1-&gt;next;</span><br><span class="line">        &#125;else if(p1-&gt;data&gt;p2-&gt;data&amp;&amp;p2-&gt;data!=p3-&gt;data)&#123;</span><br><span class="line">            p3-&gt;next=p2;</span><br><span class="line">            p3=p2;</span><br><span class="line">            p2=p2-&gt;next;</span><br><span class="line">        &#125;else if(p1-&gt;data==p2-&gt;data&amp;&amp;p1-&gt;data!=p3-&gt;data)&#123;</span><br><span class="line">            p3-&gt;next=p1;</span><br><span class="line">            p3=p1;</span><br><span class="line">            p1=p1-&gt;next;</span><br><span class="line">            p2=p2-&gt;next;</span><br><span class="line">        &#125;else if(p1-&gt;data==p3-&gt;data) p1=p1-&gt;next;</span><br><span class="line">        else if(p2-&gt;data==p3-&gt;data) p2=p2-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    while(p1)&#123;</span><br><span class="line">        if(p3-&gt;data!=p1-&gt;data)&#123;</span><br><span class="line">            p3-&gt;next=p1;</span><br><span class="line">            p3=p1;</span><br><span class="line">        &#125;</span><br><span class="line">        p1=p1-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    while(p2)&#123;</span><br><span class="line">        if(p3-&gt;data!=p2-&gt;data)&#123;</span><br><span class="line">            p3-&gt;next=p2;</span><br><span class="line">            p3=p2;</span><br><span class="line">        &#125;</span><br><span class="line">        p2=p2-&gt;next;</span><br><span class="line">    &#125;//不能简单地使用三目运算符，因为必须考虑值相等的情况</span><br><span class="line">    p3-&gt;next=NULL;//如果没有这一条，会报错一个测试点</span><br><span class="line">    free(S2);//释放头结点</span><br><span class="line">    p3=S3-&gt;next;</span><br><span class="line">    if(p3==NULL)&#123;</span><br><span class="line">        cout&lt;&lt;&quot;NULL&quot;;</span><br><span class="line">        return 0;</span><br><span class="line">    &#125;</span><br><span class="line">    while(p3-&gt;next)&#123;</span><br><span class="line">        cout&lt;&lt;p3-&gt;data&lt;&lt;&quot; &quot;;</span><br><span class="line">        p3=p3-&gt;next;</span><br><span class="line">    &#125;cout&lt;&lt;p3-&gt;data;</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    return 1;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">    LNode *S1,*S2;</span><br><span class="line">    S1=new LNode,S2=new LNode;</span><br><span class="line">    S1-&gt;next=NULL,S2-&gt;next=NULL;</span><br><span class="line">    creatlist(S1,S2);</span><br><span class="line">    bingji(S1,S2);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>测试点</td>
-<td>提示</td>
-<td>内存(KB)</td>
-<td>用时(ms)</td>
-<td>结果</td>
-<td>得分</td>
-<td></td>
-</tr>
-<tr>
-<td>0</td>
-<td>样例</td>
-<td>316</td>
-<td>2</td>
-<td>答案正确</td>
-<td>5 &#x2F; 5</td>
-<td></td>
-</tr>
-<tr>
-<td>1</td>
-<td>一个是空表，另一个只有两个相同元素</td>
-<td>316</td>
-<td>2</td>
-<td>答案正确</td>
-<td>5 &#x2F; 5</td>
-<td></td>
-</tr>
-<tr>
-<td>2</td>
-<td>两个表都只有一个元素且相同</td>
-<td>316</td>
-<td>2</td>
-<td>答案正确</td>
-<td>5 &#x2F; 5</td>
-<td></td>
-</tr>
-<tr>
-<td>3</td>
-<td>两个表有很多相同元素</td>
-<td>452</td>
-<td>2</td>
-<td>答案正确</td>
-<td>5 &#x2F; 5</td>
-<td></td>
-</tr>
-</tbody></table>
 ]]></content>
       <tags>
         <tag>数据结构笔记</tag>
