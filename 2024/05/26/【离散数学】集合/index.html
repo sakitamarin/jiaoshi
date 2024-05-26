@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="John Doe">
+
+
+
+
+
+
+
+<title>【离散数学】集合 | Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/menu.js"></script>
+    
+
+
+
+
+
+
+
+    <script src='https://unpkg.com/valine@1.4.16/dist/Valine.min.js'></script>
+
+
+
+
+  <!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.1.1"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            首页
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">主页</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">归档</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/categories/gallery/">画廊</a>
+              </li> 
+                   
+          
+          
+            <li class="menu-item search-btn">
+              <a href="#">Search</a>
+            </li>
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+                
+                    <span class="post-tag">
+                        <a href="/tags/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/">
+                            离散数学
+                        </a>
+                    </span>    
+                           
+            
+        </div>
+        <div class="post-title">
+            
+            
+                【离散数学】集合
+            
+            
+        </div>
+        <span class="post-date">
+            May 26, 2024
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <h2><span id="一-集合的概念和表示">一、集合的概念和表示</span></h2><h3><span id="名词解释">名词解释</span></h3><h4><span id="集合">集合</span></h4><p>把具有共同性质的一些东西汇集成一个整体，就形成一个集合。</p>
+<h4><span id="元素">元素</span></h4><p>汇集成集合的事物叫元素。</p>
+<p>描述：元素x属于集合A</p>
+<p>记作：x∈A</p>
+<h4><span id="子集">子集</span></h4><p>描述：A集合是B集合的子集</p>
+<p>记作：A ⊆ B</p>
+<h4><span id="真子集">真子集</span></h4><p>描述 : A集合是B集合的子集 , 并且 A &#x3D;̸ B，则称A集合是B集合的真子集</p>
+<p>记作 : A ⊂ B</p>
+<p><u>真包含关系的性质：</u></p>
+<ul>
+<li><strong>反自反性</strong>: A ⊄ A</li>
+<li><strong>反对称性</strong>: 如果 A ⊂ B，那么 B ⊄ A</li>
+<li><strong>传递性</strong>: 如果 A ⊂ B, 并且 B ⊂ C, 那么 A ⊂ C</li>
+</ul>
+<h4><span id="非真子集">非真子集</span></h4><p>描述 : 存在元素x是集合A的元素，不是集合B的元素，并且A、B不相等，则称A集合不是B集合的真子集</p>
+<p>记作 : A ⊄ B</p>
+<h4><span id="空集">空集</span></h4><p>描述 : 没有任何元素的集合 , 称为空集合 , 简称为空集 </p>
+<p>记作 : ∅</p>
+<ul>
+<li>x无解→空集</li>
+<li>空集是一切集合的子集</li>
+<li>空集是唯一的</li>
+<li>{∅} ≠ ∅</li>
+<li>对任何一个集合A，∅ ⊆ A</li>
+</ul>
+<h4><span id="全集">全集</span></h4><p>限定所讨论的集合 , 都是某个集合的子集 , 则称该集合为全集 , 记作 E</p>
+<h4><span id="幂集">幂集</span></h4><p>描述 : A集合的全体子集组成的集合称为 A的幂集 ;</p>
+<p>记作 : P ( A )</p>
+<p>幂集个数定理 : 集合 A中的元素个数∣ A ∣ &#x3D; n ，则 A的 幂集个数 ∣ P ( A ) ∣ &#x3D; 2ⁿ</p>
+<h4><span id="外延性原理">外延性原理</span></h4><p>两个集合是相等的，当且仅当它们有相同的成员。（两个集合A和B相等，记作A &#x3D; B）</p>
+<p>集合A和集合B相等的充分必要条件是这两个集合互为子集。</p>
+<h2><span id="二-集合运算">二、集合运算</span></h2><h3><span id="1运算">1.运算</span></h3><p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/image-20240526210038548.png" alt="image-20240526210038548"></p>
+<h3><span id="2性质">2.性质</span></h3><p><img src="https://img-blog.csdnimg.cn/e2067441ba7746f0b650c1e43d9e64ef.png" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/87c29f238b2a41818fd3187d7829d652.png" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/dd8be408e0b24359b25f7ddefbf425eb.png" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/5dda146382eb4276a8a6ec029c2d4b42.png" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/8fdd73e243d841179f607fba34a9e141.png" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/255afd2714574225b2e84a5f04b48c5e.png" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/80456386fbfb4c72b4f4144838eea10d.png" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/0da7a50fde1f474d8f18293ee9f488ef.png" alt="在这里插入图片描述"></p>
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2024/05/26/%E9%98%9F%E5%88%97%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E6%93%8D%E4%BD%9C%E5%AE%9E%E7%8E%B0/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+    
+        <div id="vcomments"></div>
+        <script>
+            var META = ['nick', 'mail', 'link'];
+            var meta = 'nick,mail';
+            meta = meta.split(',').filter(item => {
+                return META.includes(item);
+            });
+            new Valine({
+                el: '#vcomments',
+                appId: 'f131VXTFNbI57QRvg5lJFtbq-MdYXbMMI',
+                appKey: 'd1GENolYcYpRMO2FbRRbarov',
+                lang: 'zh-CN',
+                placeholder: 'Say something',
+                avatar: 'mp',
+                meta: meta
+            })
+        </script>    
+     
+
+     
+    
+    
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    
+      <div class="search-popup">
+    <div class="search-popup-overlay">  
+    </div>
+    <div class="search-popup-window" >
+        <div class="search-header">
+            <div class="search-input-container">
+              <input autocomplete="off" autocapitalize="off" maxlength="80"
+                     placeholder="Search Anything" spellcheck="false"
+                     type="search" class="search-input">
+            </div>
+            <div class="search-close-btn">
+                <div class="icon close-btn"></div>
+            </div>
+        </div>
+        <div class="search-result-container">
+        </div>
+    </div>
+</div>
+
+<script>
+    const searchConfig = {
+        path             : "/search.xml",
+        top_n_per_article: "1",
+        unescape         : "false",
+        trigger: "auto",
+        preload: "false"
+    }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js"></script>
+<script src="/js/search.js"></script>
+    
+    
+
+  </body>
+</html>
