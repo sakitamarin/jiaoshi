@@ -156,6 +156,8 @@
 <li><a href="#5%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86">5.后序遍历</a></li>
 </ul>
 </li>
+<li><a href="#%E4%BA%8C-%E5%A4%8D%E5%88%B6%E4%BA%8C%E5%8F%89%E6%A0%91">二、复制二叉树</a></li>
+<li><a href="#%E4%B8%89-%E8%AE%A1%E7%AE%97%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%B7%B1%E5%BA%A6">三、计算二叉树的深度</a></li>
 </ul>
 <!-- tocstop -->
 
@@ -216,6 +218,23 @@
 
 <p>三种遍历的输出为：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">请输入建立二叉链表的序列：</span><br><span class="line">ABC##DE#G##F###</span><br><span class="line">中序遍历的结果为：</span><br><span class="line">CBEGDFA</span><br><span class="line">先序遍历的结果为：</span><br><span class="line">ABCDEGF</span><br><span class="line">后序遍历的结果为：</span><br><span class="line">CGEFDBA</span><br></pre></td></tr></table></figure>
+
+
+
+<h2><span id="二-复制二叉树">二、复制二叉树</span></h2><p>如果是空树，停止递归，否则：</p>
+<ul>
+<li>申请一个新结点空间，复制根结点；</li>
+<li>递归复制左子树、右子树。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">void copy(BiTree T,BiTree &amp;NewT)&#123;</span><br><span class="line">//复制一颗和T完全相同的二叉树</span><br><span class="line">if(T==NULL)&#123;</span><br><span class="line">	NewT=NULL;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;else&#123;</span><br><span class="line">	NewT = new BiTNode;</span><br><span class="line">	NewT-&gt;data=T-&gt;data;//复制根结点</span><br><span class="line">	copy(T-&gt;lchild,NewT-&gt;lchild);//递归复制左子树</span><br><span class="line">	copy(T-&gt;rchild,NewT-&gt;rchild);//递归复制右子树  </span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>遍历以后可以发现新树和被复制的树完全一致。</p>
+<h2><span id="三-计算二叉树的深度">三、计算二叉树的深度</span></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">int Depth(BiTree T)&#123;</span><br><span class="line">//计算二叉树的深度</span><br><span class="line">int m,n;</span><br><span class="line">if(T==NULL) return 0;</span><br><span class="line">else&#123;</span><br><span class="line">	m=Depth(T-&gt;lchild);//递归计算左子树的深度 </span><br><span class="line">	n=Depth(T-&gt;rchild);//递归计算右子树的深度</span><br><span class="line">	if(m&gt;n) return m+1;//取更大者 ，+1 是为了加上当前节点这一层</span><br><span class="line">	else return n+1; </span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>四、计算二叉树的结点数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">int NodeCount(BiTree T) &#123;</span><br><span class="line">	//统计二叉树T中结点的个数</span><br><span class="line">	if (T == NULL) return 0;//如果是空树，则结点个数为0，递归结束</span><br><span class="line">	else return NodeCount(T-&gt;lchild) + NodeCount(T-&gt;rchild) + 1;</span><br><span class="line">	//否则结点个数为左子树的结点个数+右子树的结点个数+1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 </div> 
