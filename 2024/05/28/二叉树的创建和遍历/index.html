@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="John Doe">
+
+
+
+
+
+
+
+<title>二叉树 | Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/menu.js"></script>
+    
+
+
+
+
+
+
+
+    <script src='https://unpkg.com/valine@1.4.16/dist/Valine.min.js'></script>
+
+
+
+
+  <!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.1.1"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            首页
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">主页</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">归档</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/categories/gallery/">画廊</a>
+              </li> 
+                   
+          
+          
+            <li class="menu-item search-btn">
+              <a href="#">Search</a>
+            </li>
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+                
+                    <span class="post-tag">
+                        <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%94%E8%AE%B0/">
+                            数据结构笔记
+                        </a>
+                    </span>    
+                           
+            
+        </div>
+        <div class="post-title">
+            
+            
+                二叉树
+            
+            
+        </div>
+        <span class="post-date">
+            May 28, 2024
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <!-- toc -->
+
+<ul>
+<li><a href="#%E4%B8%80-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E9%81%8D%E5%8E%86%E5%92%8C%E5%BB%BA%E7%AB%8B">一、二叉树的遍历和建立</a><ul>
+<li><a href="#1%E5%AE%9A%E4%B9%89">1.定义</a></li>
+<li><a href="#2%E5%BB%BA%E7%AB%8B%E6%8C%89%E5%85%88%E5%BA%8F%E9%81%8D%E5%8E%86%E7%9A%84%E9%A1%BA%E5%BA%8F">2.建立（按先序遍历的顺序）</a></li>
+<li><a href="#3%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86">3.中序遍历</a></li>
+<li><a href="#4%E5%85%88%E5%BA%8F%E9%81%8D%E5%8E%86">4.先序遍历</a></li>
+<li><a href="#5%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86">5.后序遍历</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+
+<p>[TOC]</p>
+<h2><span id="一-二叉树的遍历和建立">一、二叉树的遍历和建立</span></h2><h3><span id="1定义">1.定义</span></h3><h4><span id="1顺序存储表示">（1）顺序存储表示</span></h4><p>仅适用于完全二叉树，层序存储</p>
+<p>深度k个结点的二叉树（无论完全与否）都需要长度2^k-1的一维数组</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#define MAXTSIZE 100</span><br><span class="line">typedef TElemType SqBiTree[MAXTSIZE]; //0号单元存储根结点</span><br><span class="line">SqBiTree bt;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="2链式存储表示">（2）链式存储表示</span></h4><p>这里注意data的数据类型是char！不然是返回不了结点的</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">typedef struct BiTNode&#123;</span><br><span class="line">	char data;</span><br><span class="line">	struct BiTNode *lchild,*rchild; //左右孩子指针 </span><br><span class="line">&#125;BiTNode,*BiTree;</span><br></pre></td></tr></table></figure>
+
+<h3><span id="2建立按先序遍历的顺序">2.建立（按先序遍历的顺序）</span></h3><ul>
+<li>读入单个字符ch；</li>
+<li>如果ch是#，看作空树，否则：</li>
+<li>申请新的结点空间T；</li>
+<li>把ch赋给T-&gt;data；</li>
+<li>递归创建左、右子树。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">void CreateBiTree(BiTree &amp;T)&#123;</span><br><span class="line">//按先序遍历的顺序建立二叉链表 </span><br><span class="line">	char ch;</span><br><span class="line">	cin&gt;&gt;ch;</span><br><span class="line">	if(ch == &#x27;#&#x27;) T=NULL; //递归结束</span><br><span class="line">	else&#123;</span><br><span class="line">		T = new BiTNode; //根结点 </span><br><span class="line">		T-&gt;data =ch;</span><br><span class="line">		CreateBiTree(T-&gt;lchild);//递归创建左子树 </span><br><span class="line">		CreateBiTree(T-&gt;rchild);//递归创建右子树 </span><br><span class="line">	&#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3><span id="3中序遍历">3.中序遍历</span></h3><p>若二叉树为空，则空操作，否则：</p>
+<ul>
+<li>中序遍历左子树；</li>
+<li>访问根结点；</li>
+<li>中序遍历右子树。</li>
+</ul>
+<h4><span id="1递归遍历">（1）递归遍历</span></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">void InOrderTraverse11(BiTree T)&#123;</span><br><span class="line">//中序遍历的递归算法</span><br><span class="line">if(T)&#123;</span><br><span class="line">	InOrderTraverse(T-&gt;lchild);//中序遍历左子树</span><br><span class="line">	cout&lt;&lt;T-&gt;data;</span><br><span class="line">	InOrderTraverse(T-&gt;rchild);//中序遍历右子树</span><br><span class="line">&#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="2非递归遍历">（2）非递归遍历</span></h4><p>①对于STL下的stack容器，如果要使链表结点进出栈，就定义类似于</p>
+<p>stack&lt;BiTNode*&gt;stk; </p>
+<p>然后就可以照常使用了。</p>
+<p>②这一段的工作机制是：</p>
+<ul>
+<li>从根结点开始，遇到结点则将结点压栈；</li>
+<li>当遇到无左子树的结点时，将此结点弹栈且访问它并遍历它的右子树；</li>
+<li>若该结点为叶子结点，则继续弹栈，开始遍历它的父节点的右子树。</li>
+</ul>
+<p>③用了一个临时变量BiTNode* top来储存栈顶结点，存完以后stack出栈，top被访问，之后继续遍历</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">void InOrderTraverse12(BiTree T)&#123;</span><br><span class="line">//中序遍历的非递归算法（栈）</span><br><span class="line">stack&lt;BiTNode*&gt;stk; </span><br><span class="line">BiTNode *p;</span><br><span class="line">p = T;</span><br><span class="line">while (p || !stk.empty()) &#123;    </span><br><span class="line">// 遍历左子树    </span><br><span class="line">if(p) &#123;    </span><br><span class="line">  stk.push(p);    </span><br><span class="line">  p = p-&gt;lchild;    </span><br><span class="line">&#125;else&#123;    </span><br><span class="line">  BiTNode* top = stk.top();  // 临时变量存储栈顶元素  </span><br><span class="line">  stk.pop();    </span><br><span class="line">  cout &lt;&lt; top-&gt;data; // 访问根结点    </span><br><span class="line">  p = top-&gt;rchild; // 遍历右子树    </span><br><span class="line">&#125;    </span><br><span class="line">&#125;    </span><br><span class="line"></span><br><span class="line">&#125;  </span><br></pre></td></tr></table></figure>
+
+<h3><span id="4先序遍历">4.先序遍历</span></h3><h4><span id="1递归">（1）递归</span></h4><p>若二叉树为空，则空操作，否则：</p>
+<ul>
+<li>访问根结点；</li>
+<li>先序遍历左子树；</li>
+<li>先序遍历右子树。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">void InOrderTraverse21(BiTree T)&#123;</span><br><span class="line">//先序遍历的递归算法</span><br><span class="line">if(T)&#123;</span><br><span class="line">	cout&lt;&lt;T-&gt;data;</span><br><span class="line">	InOrderTraverse21(T-&gt;lchild);//先序遍历左子树</span><br><span class="line">	InOrderTraverse21(T-&gt;rchild);//先序遍历右子树</span><br><span class="line">&#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="2非递归">（2）非递归</span></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">void InOrderTraverse22(BiTree T)&#123;</span><br><span class="line">//先序遍历的非递归算法（栈）</span><br><span class="line">stack&lt;BiTNode*&gt;stk; </span><br><span class="line">BiTNode *p;</span><br><span class="line">p = T;</span><br><span class="line">while (p || !stk.empty()) &#123;    </span><br><span class="line">// 遍历左子树    </span><br><span class="line">    if(p) &#123;</span><br><span class="line">	cout&lt;&lt;p-&gt;data;   //访问根结点 </span><br><span class="line">    stk.push(p);    //根结点进栈 </span><br><span class="line">    p = p-&gt;lchild;   //遍历左子树 </span><br><span class="line">    &#125;else&#123;</span><br><span class="line">	BiTNode* top = stk.top();    </span><br><span class="line">    stk.pop();       </span><br><span class="line">    p = top-&gt;rchild; // 遍历右子树    </span><br><span class="line">    &#125;    </span><br><span class="line">    &#125;    </span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<h3><span id="5后序遍历">5.后序遍历</span></h3><h4><span id="1递归">（1）递归</span></h4><p>若二叉树为空，则空操作，否则：</p>
+<ul>
+<li>后序遍历左子树；</li>
+<li>后序遍历右子树。</li>
+<li>访问根结点；</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">void InOrderTraverse31(BiTree T)&#123;</span><br><span class="line">//后序遍历的递归算法</span><br><span class="line">if(T)&#123;</span><br><span class="line">	InOrderTraverse31(T-&gt;lchild);//后序遍历左子树</span><br><span class="line">	InOrderTraverse31(T-&gt;rchild);//后序遍历右子树</span><br><span class="line">	cout&lt;&lt;T-&gt;data;</span><br><span class="line">&#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>三种遍历的输出为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">请输入建立二叉链表的序列：</span><br><span class="line">ABC##DE#G##F###</span><br><span class="line">中序遍历的结果为：</span><br><span class="line">CBEGDFA</span><br><span class="line">先序遍历的结果为：</span><br><span class="line">ABCDEGF</span><br><span class="line">后序遍历的结果为：</span><br><span class="line">CGEFDBA</span><br></pre></td></tr></table></figure>
+
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2024/05/27/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AF%BE%E8%AE%BE%E6%8A%A5%E5%91%8A%E2%80%94%E2%80%94%E7%94%A8%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97%E5%81%9A%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%B1%82%E5%80%BC/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+    
+        <div id="vcomments"></div>
+        <script>
+            var META = ['nick', 'mail', 'link'];
+            var meta = 'nick,mail';
+            meta = meta.split(',').filter(item => {
+                return META.includes(item);
+            });
+            new Valine({
+                el: '#vcomments',
+                appId: 'f131VXTFNbI57QRvg5lJFtbq-MdYXbMMI',
+                appKey: 'd1GENolYcYpRMO2FbRRbarov',
+                lang: 'zh-CN',
+                placeholder: 'Say something',
+                avatar: 'mp',
+                meta: meta
+            })
+        </script>    
+     
+
+     
+    
+    
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    
+      <div class="search-popup">
+    <div class="search-popup-overlay">  
+    </div>
+    <div class="search-popup-window" >
+        <div class="search-header">
+            <div class="search-input-container">
+              <input autocomplete="off" autocapitalize="off" maxlength="80"
+                     placeholder="Search Anything" spellcheck="false"
+                     type="search" class="search-input">
+            </div>
+            <div class="search-close-btn">
+                <div class="icon close-btn"></div>
+            </div>
+        </div>
+        <div class="search-result-container">
+        </div>
+    </div>
+</div>
+
+<script>
+    const searchConfig = {
+        path             : "/search.xml",
+        top_n_per_article: "1",
+        unescape         : "false",
+        trigger: "auto",
+        preload: "false"
+    }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js"></script>
+<script src="/js/search.js"></script>
+    
+    
+
+  </body>
+</html>

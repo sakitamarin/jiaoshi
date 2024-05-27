@@ -1,24 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Hello World</title>
-    <url>/2024/03/11/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2><span id="quick-start">Quick Start</span></h2><h3><span id="create-a-new-post">Create a new post</span></h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3><span id="run-server">Run server</span></h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3><span id="generate-static-files">Generate static files</span></h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3><span id="deploy-to-remote-sites">Deploy to remote sites</span></h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
-  </entry>
-  <entry>
     <title>c++ map使用方法</title>
     <url>/2024/05/27/c-map%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/</url>
     <content><![CDATA[<p>在浏览器上搜了一下相关的博文，整理了一部分相对基础的内容，有点难懂的另一部分等以后遇到案例了再重新整理</p>
@@ -142,6 +124,185 @@
 ]]></content>
       <tags>
         <tag>STL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2024/03/11/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2><span id="quick-start">Quick Start</span></h2><h3><span id="create-a-new-post">Create a new post</span></h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3><span id="run-server">Run server</span></h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3><span id="generate-static-files">Generate static files</span></h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3><span id="deploy-to-remote-sites">Deploy to remote sites</span></h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>stack容器基本知识</title>
+    <url>/2024/04/03/stack%E5%AE%B9%E5%99%A8%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/</url>
+    <content><![CDATA[<p>写作业的时候看到有人用stack容器做题，试了下效率起飞，二话不说记录一下XD</p>
+<!-- toc -->
+
+<ul>
+<li><a href="#1%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86">1.基础知识</a><ul>
+<li><a href="#%E5%A4%B4%E6%96%87%E4%BB%B6"><strong>头文件</strong></a></li>
+<li><a href="#%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C"><strong>常用操作</strong></a></li>
+<li><a href="#stack%E5%AF%B9%E8%B1%A1%E7%9A%84%E9%BB%98%E8%AE%A4%E6%9E%84%E9%80%A0">stack对象的默认构造</a></li>
+<li><a href="#stack%E7%9A%84%E5%87%BA%E6%A0%88%E5%92%8C%E8%BF%9B%E6%A0%88">stack的出栈和进栈</a></li>
+<li><a href="#stack%E7%9A%84%E6%8B%B7%E8%B4%9D%E6%9E%84%E9%80%A0%E4%B8%8E%E8%B5%8B%E5%80%BC">stack的拷贝构造与赋值</a></li>
+<li><a href="#stack%E7%9A%84%E6%95%B0%E6%8D%AE%E5%AD%98%E5%8F%96">stack的数据存取</a></li>
+<li><a href="#stack%E7%9A%84%E5%A4%A7%E5%B0%8F">stack的大小</a></li>
+</ul>
+</li>
+<li><a href="#2%E4%BE%8B%E9%A2%98">2.例题</a><ul>
+<li><a href="#7-2-%E6%8B%AC%E5%8F%B7%E5%8C%B9%E9%85%8D"><strong>7-2 括号匹配</strong></a></li>
+<li><a href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0">代码实现</a></li>
+<li><a href="#7-3-%E5%9B%9E%E6%96%87%E5%88%A4%E6%96%AD"><strong>7-3 回文判断</strong></a></li>
+<li><a href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0-1">代码实现</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+
+<p>[TOC]</p>
+<h2><span id="1基础知识">1.基础知识</span></h2><h3><span id="头文件"><strong>头文件</strong></span></h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include&lt;stack&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3><span id="常用操作"><strong>常用操作</strong></span></h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">stack&lt;int&gt; q;	//以int型为例</span><br><span class="line">int x;</span><br><span class="line">q.push(x);		//将x压入栈顶</span><br><span class="line">q.top();		//返回栈顶的元素</span><br><span class="line">q.pop();		//删除栈顶的元素</span><br><span class="line">q.size();		//返回栈中元素的个数</span><br><span class="line">q.empty();		//检查栈是否为空,若为空返回true,否则返回false</span><br></pre></td></tr></table></figure>
+
+<h3><span id="stack对象的默认构造">stack对象的默认构造</span></h3><p>stack对象的默认构造形式： stack <t> stkT;  </t></p>
+<p>尖括号里面还可以设置指针或者其他数据类型。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">stack &lt;int&gt; stkInt;            //一个存放int的stack容器。</span><br><span class="line"></span><br><span class="line">stack &lt;float&gt; stkFloat;     //一个存放float的stack容器。</span><br><span class="line"></span><br><span class="line">stack &lt;string&gt; stkString;     //一个存放string的stack容器。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3><span id="stack的出栈和进栈">stack的出栈和进栈</span></h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">stack.push(elem);            //往栈头添加元素</span><br><span class="line"></span><br><span class="line">stack.pop();                     //往栈头移除第一个元素</span><br></pre></td></tr></table></figure>
+
+<h3><span id="stack的拷贝构造与赋值">stack的拷贝构造与赋值</span></h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">stack(const stack &amp;stk);                  //拷贝构造函数</span><br><span class="line"></span><br><span class="line">stack&amp; operator = (const stack &amp;stk);          //重载等号操作符</span><br><span class="line"></span><br><span class="line">stack&lt;int&gt;stkIntB(stkIntA);            //拷贝构造</span><br><span class="line">stack&lt;int&gt;stkIntC;</span><br><span class="line">stkIntC = stkIntA;                     //赋值</span><br></pre></td></tr></table></figure>
+
+<h3><span id="stack的数据存取">stack的数据存取</span></h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">stack.top();     //返回最后一个压入栈元素</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">stack&lt;int&gt; stkIntA;</span><br><span class="line"></span><br><span class="line">stkIntA.push(1);</span><br><span class="line"></span><br><span class="line">stkIntA.push(3);</span><br><span class="line"></span><br><span class="line">stkIntA.push(5);</span><br><span class="line"></span><br><span class="line">stkIntA.push(7);</span><br><span class="line"></span><br><span class="line">stkIntA.push(9);</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">int iTop = stkIntA.top(); //9</span><br><span class="line"></span><br><span class="line">stkIntA.top() = 19; //19</span><br></pre></td></tr></table></figure>
+
+<h3><span id="stack的大小">stack的大小</span></h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">stack.empty();                    //判断堆栈是否为空</span><br><span class="line"></span><br><span class="line">stack.size();                        //返回堆栈的大小</span><br></pre></td></tr></table></figure>
+
+
+
+<h2><span id="2例题">2.例题</span></h2><h3><span id="7-2-括号匹配"><strong>7-2 括号匹配</strong></span></h3><p>给定一串字符，不超过100个字符，可能包括括号、数字、字母、标点符号、空格，编程检查这一串字符中的( ) ,[ ],{ }是否匹配。</p>
+<p><strong>输入格式:</strong></p>
+<p>输入在一行中给出一行字符串，不超过100个字符，可能包括括号、数字、字母、标点符号、空格。</p>
+<p><strong>输出格式:</strong></p>
+<p>如果括号配对，输出yes，否则输出no。</p>
+<p><strong>输入样例1:</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sin(10+20)</span><br></pre></td></tr></table></figure>
+
+<p><strong>输出样例1:</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yes</span><br></pre></td></tr></table></figure>
+
+<p><strong>输入样例2:</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;[&#125;]</span><br></pre></td></tr></table></figure>
+
+<p><strong>输出样例2:</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">no</span><br></pre></td></tr></table></figure>
+
+<p><strong>输入样例3:</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">(()())</span><br></pre></td></tr></table></figure>
+
+<p><strong>输出样例3:</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yes</span><br></pre></td></tr></table></figure>
+
+<h3><span id="代码实现">代码实现</span></h3><p>c&#x2F;c++ strlen(str)和str.length()和str.size()都可以求字符串长度。<br>其中**str.length()<strong>和</strong>str.size()**是用于求string类对象的成员函数<br>**strlen(str)*<em>是用于求字符数组的长度，其参数是char</em>。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#include&lt;stack&gt; //stack头文件</span><br><span class="line">int judge(string s)&#123;</span><br><span class="line">    stack&lt;char&gt;stk;//设置一个存放char的stack容器</span><br><span class="line">    for(int i=0;i&lt;s.length();i++)&#123;</span><br><span class="line">        switch(s[i])&#123;</span><br><span class="line">                case&#x27;(&#x27;:</span><br><span class="line">                   stk.push(s[i]);//左括号，进栈</span><br><span class="line">                break;</span><br><span class="line">                case&#x27;[&#x27;:</span><br><span class="line">                   stk.push(s[i]);</span><br><span class="line">                break;</span><br><span class="line">                case&#x27;&#123;&#x27;:</span><br><span class="line">                   stk.push(s[i]);</span><br><span class="line">                break;</span><br><span class="line">                case&#x27;)&#x27;:</span><br><span class="line">                   if(stk.empty()) return 0;//如果栈空，返回0</span><br><span class="line">                   if (stk.top() == &#x27;(&#x27;) stk.pop();</span><br><span class="line">                   //如果栈顶是左括号，配对成功，将其出栈，进行下一步</span><br><span class="line">                   else return 0;</span><br><span class="line">                break;</span><br><span class="line">                case&#x27;]&#x27;:</span><br><span class="line">                   if(stk.empty()) return 0;</span><br><span class="line">                   if (stk.top() == &#x27;[&#x27;) stk.pop();</span><br><span class="line">                   else return 0;</span><br><span class="line">                break;</span><br><span class="line">                case&#x27;&#125;&#x27;:</span><br><span class="line">                   if(stk.empty()) return 0;</span><br><span class="line">                   if (stk.top() == &#x27;&#123;&#x27;) stk.pop();</span><br><span class="line">                   else return 0;</span><br><span class="line">                break;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return stk.empty();//最终若括号一一配对，栈空，返回1值</span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">    string s;</span><br><span class="line">    getline(cin,s);</span><br><span class="line">    if(judge(s)==1)&#123;</span><br><span class="line">        cout&lt;&lt;&quot;yes&quot;&lt;&lt;endl;</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        cout&lt;&lt;&quot;no&quot;&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3><span id="7-3-回文判断"><strong>7-3 回文判断</strong></span></h3><p>回文是指正读反读均相同的字符序列，如“abba”和“abdba”均是回文，但“good”不是回文。编写一个程序，使用栈判定给定的字符序列是否为回文。</p>
+<p>若用C++，可借助STL的容器实现。</p>
+<p><strong>输入格式:</strong></p>
+<p>输入待判断的字符序列，按回车键结束，字符序列长度&lt;20。</p>
+<p><strong>输出格式:</strong></p>
+<p>若字符序列是回文，输出“YES”；否则，输出“NO”。</p>
+<p><strong>输入样例:</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">abdba</span><br></pre></td></tr></table></figure>
+
+<p><strong>输出样例:</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">YES</span><br></pre></td></tr></table></figure>
+
+<h3><span id="代码实现">代码实现</span></h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#include&lt;stack&gt;</span><br><span class="line">int main()&#123;</span><br><span class="line">    string s;</span><br><span class="line">    int flag;</span><br><span class="line">    getline(cin,s);</span><br><span class="line">    stack&lt;char&gt;stk;</span><br><span class="line">    for(int i=0;i&lt;s.length();i++)&#123;</span><br><span class="line">        stk.push(s[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    for(int i=0;i&lt;s.length()/2;i++)&#123;</span><br><span class="line">        flag=0;</span><br><span class="line">        if(s[i]==stk.top())&#123;</span><br><span class="line">            stk.pop();</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            cout&lt;&lt;&quot;NO&quot;&lt;&lt;endl;</span><br><span class="line">            flag=1;</span><br><span class="line">            break;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    if(flag==0) cout&lt;&lt;&quot;YES&quot;&lt;&lt;endl;</span><br><span class="line">    return 0;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <tags>
+        <tag>STL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>《图解密码技术》 读书笔记</title>
+    <url>/2024/04/17/%E3%80%8A%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF%E3%80%8B-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h2><span id="基础概念">基础概念</span></h2><h3><span id="1-1-基本名词解释">1-1 基本名词解释</span></h3><p>1.密钥（key）：加密和解密所需的媒介。</p>
+<p>2.对称密码：在加密和解密时使用同一密钥的解密方式。</p>
+<p>3.公钥密码：在加密和解密时使用不同密钥的解密方式。又叫非对称密码。</p>
+<p>4.混合密码系统：结合了对称密码和非对称密码的优势。</p>
+<p>5.单向散列函数：是一种保证完整性的密码技术。</p>
+<p>为了防止软件被篡改，一些发布者会在发布软件的同时发布该软件的散列值，下载该软件的人自行下载散列值，如果后者与前者的值相等，说明下载的软件是正版的。</p>
+<p>6.消息认证码：是一种能够保证完整性和提供认证的密码技术。</p>
+<p>为了确认消息是否来自所期望的通信对象，可以使用消息认证码。</p>
+<p>7.数字签名：</p>
+<p>（1）伪装：第三方伪造发送者的身份传达消息。</p>
+<p>（2）篡改：消息在传输的过程中遭到第三方修改。</p>
+<p>（3）否认：发送者在事后推翻自己先前的主张。</p>
+<p>防止伪装、篡改、否认等威胁的技术，就是数字签名。</p>
+<p>8.伪随机数生成器</p>
+<p>9.隐写术：密码隐藏的是内容，而隐写术隐藏的是消息本身</p>
+<h2><span id="历史密码">历史密码</span></h2><h3><span id="2-1凯撒密码">2-1凯撒密码</span></h3><h4><span id="1概念">1.概念</span></h4><p>通过将明文中所使用的字母表按照一定的字数”平移“来进行加密的密码。</p>
+<p>如A→F，B→G</p>
+<p>在此例中，密钥为5</p>
+<h4><span id="2解密">2.解密</span></h4><p>将所有可能的密钥全部尝试一遍，这种方法称为<strong>暴力破解</strong>。由于这种方法的本质是从所有的密钥中找出正确的密钥，因此又称为<strong>穷举搜索</strong>。</p>
+<h3><span id="2-2简单替换密码">2-2简单替换密码</span></h3><h4><span id="1概念">1.概念</span></h4><p>将明文中所使用的字母表替换为另一套字母表的密码。</p>
+<h4><span id="2加密">2.加密</span></h4><p>依次将明文中的每一个字母按照替换表替换成另一个字母。</p>
+<p>如A→B，B→Z</p>
+<h4><span id="3解密">3.解密</span></h4><p>简单替换密码很难通过暴力破解来破译。</p>
+<p>一种密码能够使用的所有密钥的集合称为密钥空间。</p>
+<p>密钥空间越大，暴力破解越困难。</p>
+<p>计算：n!(n是密码所用到的字符的种类)</p>
+<p><strong>频率分析法</strong></p>
+<p>①明文中的字母的出现频率&#x3D;密文中的字母的出现频率</p>
+<p>②除了高频字母以外，低频字母也能够成为线索</p>
+<p>③搞清开头和结尾能够成为线索，搞清单词之间的分隔也能成为线索</p>
+<p>④密文越长越容易破译</p>
+<p>⑤同一个字母连续出现能够成为线索（这是因为在简单替换密码中，某个字母在替换表中所对应的另一个字母是固定的）</p>
+]]></content>
+      <tags>
+        <tag>读书笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>控制角色移动</title>
+    <url>/2024/03/19/unity-%E6%8E%A7%E5%88%B6%E8%A7%92%E8%89%B2%E7%A7%BB%E5%8A%A8/</url>
+    <content><![CDATA[<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">using System.Collections;</span><br><span class="line">using System.Collections.Generic;</span><br><span class="line">using UnityEngine;</span><br><span class="line">//控制角色移动、生命、动画等</span><br><span class="line">public class NewBehaviourScript : MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    public float speed = 5f;//移动速度</span><br><span class="line">    // Start is called before the first frame update</span><br><span class="line">    void Start()</span><br><span class="line">    &#123;</span><br><span class="line">        </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// Update is called once per frame</span><br><span class="line">void Update()</span><br><span class="line">&#123;</span><br><span class="line">    float moveX = Input.GetAxisRaw(&quot;Horizontal&quot;);//控制水平方向移动，A：-1，D：1,0</span><br><span class="line">    float moveY = Input.GetAxisRaw(&quot;Vertical&quot;);//控制垂直方向W1 S-1 0</span><br><span class="line"></span><br><span class="line">    Vector2 position = transform.position;</span><br><span class="line">    position.x +=moveX * speed * Time.deltaTime;</span><br><span class="line">    position.y +=moveY * speed * Time.deltaTime;</span><br><span class="line">    transform.position = position;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <tags>
+        <tag>unity2d</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>上标、下标的字符显示</title>
+    <url>/2024/04/02/%E4%B8%8A%E6%A0%87%E3%80%81%E4%B8%8B%E6%A0%87%E7%9A%84%E5%AD%97%E7%AC%A6%E6%98%BE%E7%A4%BA/</url>
+    <content><![CDATA[<h3><span id></span></h3><h3><span id="一-上标">一、上标</span></h3><h4><span id="1数字">1.数字</span></h4><p>¹²³⁴⁵⁶⁷⁸⁹⁰⁺⁻⁼˂˃⁽⁾˙*′˙ⁿº</p>
+<h4><span id="2字母">2.字母</span></h4><p>ᵃᵇᶜᵈᵉᶠᵍʰⁱʲᵏˡᵐⁿᵒᵖʳˢᵗᵘᵛʷˣʸᶻ</p>
+<p>ᴬᴮᒼᴰᴱᶠᴳᴴᴵᴶᴷᴸᴹᴺᴼᴾᴼ̴ᴿˢᵀᵁⱽᵂˣᵞᙆ</p>
+<h4><span id="3其他">3.其他</span></h4><p>ᵃ ᵇ ᶜ ᵈ ᵉ ᵍ ʰ ⁱ ʲ ᵏ ˡ ᵐ ⁿ ᵒ ᵖ ᵒ⃒ ʳ ˢ ᵗ ᵘ ᵛ ʷ ˣ ʸ ᙆ ᴬ ᴮ ᒼ ᴰ ᴱ ᴳ ᴴ ᴵ ᴶ ᴷ ᴸ ᴹ ᴺ ᴼ ᴾ ᴼ̴ ᴿ ˢ ᵀ ᵁ ᵂ ˣ ᵞ ᙆ ꝰ ˀ ˁ ˤ ꟸ ꭜ ʱ ꭝ ꭞ ʴ ʵ ʶ ꭟ ˠ ꟹ ᴭ ᴯ ᴲ ᴻ ᴽ ᵄ ᵅ ᵆ ᵊ ᵋ ᵌ ᵑ ᵓ ᵚ ᵝ ᵞ ᵟ ᵠ ᵡ ᵎ ᵔ ᵕ ᵙ ᵜ ᶛ ᶜ ᶝ ᶞ ᶟ ᶡ ᶣ ᶤ ᶥ ᶦ ᶧ ᶨ ᶩ ᶪ ᶫ ᶬ ᶭ ᶮ ᶯ ᶰ ᶱ ᶲ ᶳ ᶴ ᶵ ᶶ ᶷ ᶸ ᶹ ᶺ ᶼ ᶽ ᶾ ᶿ ꚜ ꚝ ჼ ᒃ ᕻ ᑦ ᒄ ᕪ ᑋ ᑊ ᔿ ᐢ ᣕ ᐤ ᣖ ᣴ ᣗ ᔆ ᙚ ᐡ ᘁ ᐜ ᕽ ᙆ ᙇ ᒼ ᣳ ᒢ ᒻ ᔿ ᐤ ᣖ ᣵ ᙚ ᐪ ᓑ ᘁ ᐜ ᕽ ᙆ ᙇ </p>
+<h3><span id="二-下标">二、下标</span></h3><h4><span id="1数字">1.数字</span></h4><p>₀ ₁ ₂ ₃ ₄ ₅ ₆ ₇ ₈ ₉ ₊ ₋ ₌ ₍ ₎ ₐ ₑ ₒ ₓ ₔ ₕ ₖ ₗ ₘ ₙ ₚ ₛ ₜ</p>
+<h4><span id="2字母">2.字母</span></h4><p>ₐ ₔ ₑ ₕ ᵢ ⱼ ₖ ₗ ₘ ₙ ₒ ₚ ᵣ ₛ ₜ ᵤ ᵥ ₓ ᙮ ᵤ ᵩ ᵦ ₗ ˪ ៳ ៷ ₒ ᵨ ₛ ៴ ᵤ ᵪ ᵧ</p>
+]]></content>
+      <tags>
+        <tag>素材</tag>
       </tags>
   </entry>
   <entry>
@@ -315,67 +476,83 @@
       </tags>
   </entry>
   <entry>
-    <title>控制角色移动</title>
-    <url>/2024/03/19/unity-%E6%8E%A7%E5%88%B6%E8%A7%92%E8%89%B2%E7%A7%BB%E5%8A%A8/</url>
-    <content><![CDATA[<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">using System.Collections;</span><br><span class="line">using System.Collections.Generic;</span><br><span class="line">using UnityEngine;</span><br><span class="line">//控制角色移动、生命、动画等</span><br><span class="line">public class NewBehaviourScript : MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    public float speed = 5f;//移动速度</span><br><span class="line">    // Start is called before the first frame update</span><br><span class="line">    void Start()</span><br><span class="line">    &#123;</span><br><span class="line">        </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// Update is called once per frame</span><br><span class="line">void Update()</span><br><span class="line">&#123;</span><br><span class="line">    float moveX = Input.GetAxisRaw(&quot;Horizontal&quot;);//控制水平方向移动，A：-1，D：1,0</span><br><span class="line">    float moveY = Input.GetAxisRaw(&quot;Vertical&quot;);//控制垂直方向W1 S-1 0</span><br><span class="line"></span><br><span class="line">    Vector2 position = transform.position;</span><br><span class="line">    position.x +=moveX * speed * Time.deltaTime;</span><br><span class="line">    position.y +=moveY * speed * Time.deltaTime;</span><br><span class="line">    transform.position = position;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    <title>二叉树</title>
+    <url>/2024/05/28/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%88%9B%E5%BB%BA%E5%92%8C%E9%81%8D%E5%8E%86/</url>
+    <content><![CDATA[<!-- toc -->
+
+<ul>
+<li><a href="#%E4%B8%80-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E9%81%8D%E5%8E%86%E5%92%8C%E5%BB%BA%E7%AB%8B">一、二叉树的遍历和建立</a><ul>
+<li><a href="#1%E5%AE%9A%E4%B9%89">1.定义</a></li>
+<li><a href="#2%E5%BB%BA%E7%AB%8B%E6%8C%89%E5%85%88%E5%BA%8F%E9%81%8D%E5%8E%86%E7%9A%84%E9%A1%BA%E5%BA%8F">2.建立（按先序遍历的顺序）</a></li>
+<li><a href="#3%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86">3.中序遍历</a></li>
+<li><a href="#4%E5%85%88%E5%BA%8F%E9%81%8D%E5%8E%86">4.先序遍历</a></li>
+<li><a href="#5%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86">5.后序遍历</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+
+<p>[TOC]</p>
+<h2><span id="一-二叉树的遍历和建立">一、二叉树的遍历和建立</span></h2><h3><span id="1定义">1.定义</span></h3><h4><span id="1顺序存储表示">（1）顺序存储表示</span></h4><p>仅适用于完全二叉树，层序存储</p>
+<p>深度k个结点的二叉树（无论完全与否）都需要长度2^k-1的一维数组</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#define MAXTSIZE 100</span><br><span class="line">typedef TElemType SqBiTree[MAXTSIZE]; //0号单元存储根结点</span><br><span class="line">SqBiTree bt;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="2链式存储表示">（2）链式存储表示</span></h4><p>这里注意data的数据类型是char！不然是返回不了结点的</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">typedef struct BiTNode&#123;</span><br><span class="line">	char data;</span><br><span class="line">	struct BiTNode *lchild,*rchild; //左右孩子指针 </span><br><span class="line">&#125;BiTNode,*BiTree;</span><br></pre></td></tr></table></figure>
+
+<h3><span id="2建立按先序遍历的顺序">2.建立（按先序遍历的顺序）</span></h3><ul>
+<li>读入单个字符ch；</li>
+<li>如果ch是#，看作空树，否则：</li>
+<li>申请新的结点空间T；</li>
+<li>把ch赋给T-&gt;data；</li>
+<li>递归创建左、右子树。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">void CreateBiTree(BiTree &amp;T)&#123;</span><br><span class="line">//按先序遍历的顺序建立二叉链表 </span><br><span class="line">	char ch;</span><br><span class="line">	cin&gt;&gt;ch;</span><br><span class="line">	if(ch == &#x27;#&#x27;) T=NULL; //递归结束</span><br><span class="line">	else&#123;</span><br><span class="line">		T = new BiTNode; //根结点 </span><br><span class="line">		T-&gt;data =ch;</span><br><span class="line">		CreateBiTree(T-&gt;lchild);//递归创建左子树 </span><br><span class="line">		CreateBiTree(T-&gt;rchild);//递归创建右子树 </span><br><span class="line">	&#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3><span id="3中序遍历">3.中序遍历</span></h3><p>若二叉树为空，则空操作，否则：</p>
+<ul>
+<li>中序遍历左子树；</li>
+<li>访问根结点；</li>
+<li>中序遍历右子树。</li>
+</ul>
+<h4><span id="1递归遍历">（1）递归遍历</span></h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">void InOrderTraverse11(BiTree T)&#123;</span><br><span class="line">//中序遍历的递归算法</span><br><span class="line">if(T)&#123;</span><br><span class="line">	InOrderTraverse(T-&gt;lchild);//中序遍历左子树</span><br><span class="line">	cout&lt;&lt;T-&gt;data;</span><br><span class="line">	InOrderTraverse(T-&gt;rchild);//中序遍历右子树</span><br><span class="line">&#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="2非递归遍历">（2）非递归遍历</span></h4><p>①对于STL下的stack容器，如果要使链表结点进出栈，就定义类似于</p>
+<p>stack&lt;BiTNode*&gt;stk; </p>
+<p>然后就可以照常使用了。</p>
+<p>②这一段的工作机制是：</p>
+<ul>
+<li>从根结点开始，遇到结点则将结点压栈；</li>
+<li>当遇到无左子树的结点时，将此结点弹栈且访问它并遍历它的右子树；</li>
+<li>若该结点为叶子结点，则继续弹栈，开始遍历它的父节点的右子树。</li>
+</ul>
+<p>③用了一个临时变量BiTNode* top来储存栈顶结点，存完以后stack出栈，top被访问，之后继续遍历</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">void InOrderTraverse12(BiTree T)&#123;</span><br><span class="line">//中序遍历的非递归算法（栈）</span><br><span class="line">stack&lt;BiTNode*&gt;stk; </span><br><span class="line">BiTNode *p;</span><br><span class="line">p = T;</span><br><span class="line">while (p || !stk.empty()) &#123;    </span><br><span class="line">// 遍历左子树    </span><br><span class="line">if(p) &#123;    </span><br><span class="line">  stk.push(p);    </span><br><span class="line">  p = p-&gt;lchild;    </span><br><span class="line">&#125;else&#123;    </span><br><span class="line">  BiTNode* top = stk.top();  // 临时变量存储栈顶元素  </span><br><span class="line">  stk.pop();    </span><br><span class="line">  cout &lt;&lt; top-&gt;data; // 访问根结点    </span><br><span class="line">  p = top-&gt;rchild; // 遍历右子树    </span><br><span class="line">&#125;    </span><br><span class="line">&#125;    </span><br><span class="line"></span><br><span class="line">&#125;  </span><br></pre></td></tr></table></figure>
+
+<h3><span id="4先序遍历">4.先序遍历</span></h3><h4><span id="1递归">（1）递归</span></h4><p>若二叉树为空，则空操作，否则：</p>
+<ul>
+<li>访问根结点；</li>
+<li>先序遍历左子树；</li>
+<li>先序遍历右子树。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">void InOrderTraverse21(BiTree T)&#123;</span><br><span class="line">//先序遍历的递归算法</span><br><span class="line">if(T)&#123;</span><br><span class="line">	cout&lt;&lt;T-&gt;data;</span><br><span class="line">	InOrderTraverse21(T-&gt;lchild);//先序遍历左子树</span><br><span class="line">	InOrderTraverse21(T-&gt;rchild);//先序遍历右子树</span><br><span class="line">&#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="2非递归">（2）非递归</span></h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">void InOrderTraverse22(BiTree T)&#123;</span><br><span class="line">//先序遍历的非递归算法（栈）</span><br><span class="line">stack&lt;BiTNode*&gt;stk; </span><br><span class="line">BiTNode *p;</span><br><span class="line">p = T;</span><br><span class="line">while (p || !stk.empty()) &#123;    </span><br><span class="line">// 遍历左子树    </span><br><span class="line">    if(p) &#123;</span><br><span class="line">	cout&lt;&lt;p-&gt;data;   //访问根结点 </span><br><span class="line">    stk.push(p);    //根结点进栈 </span><br><span class="line">    p = p-&gt;lchild;   //遍历左子树 </span><br><span class="line">    &#125;else&#123;</span><br><span class="line">	BiTNode* top = stk.top();    </span><br><span class="line">    stk.pop();       </span><br><span class="line">    p = top-&gt;rchild; // 遍历右子树    </span><br><span class="line">    &#125;    </span><br><span class="line">    &#125;    </span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<h3><span id="5后序遍历">5.后序遍历</span></h3><h4><span id="1递归">（1）递归</span></h4><p>若二叉树为空，则空操作，否则：</p>
+<ul>
+<li>后序遍历左子树；</li>
+<li>后序遍历右子树。</li>
+<li>访问根结点；</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">void InOrderTraverse31(BiTree T)&#123;</span><br><span class="line">//后序遍历的递归算法</span><br><span class="line">if(T)&#123;</span><br><span class="line">	InOrderTraverse31(T-&gt;lchild);//后序遍历左子树</span><br><span class="line">	InOrderTraverse31(T-&gt;rchild);//后序遍历右子树</span><br><span class="line">	cout&lt;&lt;T-&gt;data;</span><br><span class="line">&#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>三种遍历的输出为：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">请输入建立二叉链表的序列：</span><br><span class="line">ABC##DE#G##F###</span><br><span class="line">中序遍历的结果为：</span><br><span class="line">CBEGDFA</span><br><span class="line">先序遍历的结果为：</span><br><span class="line">ABCDEGF</span><br><span class="line">后序遍历的结果为：</span><br><span class="line">CGEFDBA</span><br></pre></td></tr></table></figure>
 
 ]]></content>
       <tags>
-        <tag>unity2d</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>《图解密码技术》 读书笔记</title>
-    <url>/2024/04/17/%E3%80%8A%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF%E3%80%8B-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h2><span id="基础概念">基础概念</span></h2><h3><span id="1-1-基本名词解释">1-1 基本名词解释</span></h3><p>1.密钥（key）：加密和解密所需的媒介。</p>
-<p>2.对称密码：在加密和解密时使用同一密钥的解密方式。</p>
-<p>3.公钥密码：在加密和解密时使用不同密钥的解密方式。又叫非对称密码。</p>
-<p>4.混合密码系统：结合了对称密码和非对称密码的优势。</p>
-<p>5.单向散列函数：是一种保证完整性的密码技术。</p>
-<p>为了防止软件被篡改，一些发布者会在发布软件的同时发布该软件的散列值，下载该软件的人自行下载散列值，如果后者与前者的值相等，说明下载的软件是正版的。</p>
-<p>6.消息认证码：是一种能够保证完整性和提供认证的密码技术。</p>
-<p>为了确认消息是否来自所期望的通信对象，可以使用消息认证码。</p>
-<p>7.数字签名：</p>
-<p>（1）伪装：第三方伪造发送者的身份传达消息。</p>
-<p>（2）篡改：消息在传输的过程中遭到第三方修改。</p>
-<p>（3）否认：发送者在事后推翻自己先前的主张。</p>
-<p>防止伪装、篡改、否认等威胁的技术，就是数字签名。</p>
-<p>8.伪随机数生成器</p>
-<p>9.隐写术：密码隐藏的是内容，而隐写术隐藏的是消息本身</p>
-<h2><span id="历史密码">历史密码</span></h2><h3><span id="2-1凯撒密码">2-1凯撒密码</span></h3><h4><span id="1概念">1.概念</span></h4><p>通过将明文中所使用的字母表按照一定的字数”平移“来进行加密的密码。</p>
-<p>如A→F，B→G</p>
-<p>在此例中，密钥为5</p>
-<h4><span id="2解密">2.解密</span></h4><p>将所有可能的密钥全部尝试一遍，这种方法称为<strong>暴力破解</strong>。由于这种方法的本质是从所有的密钥中找出正确的密钥，因此又称为<strong>穷举搜索</strong>。</p>
-<h3><span id="2-2简单替换密码">2-2简单替换密码</span></h3><h4><span id="1概念">1.概念</span></h4><p>将明文中所使用的字母表替换为另一套字母表的密码。</p>
-<h4><span id="2加密">2.加密</span></h4><p>依次将明文中的每一个字母按照替换表替换成另一个字母。</p>
-<p>如A→B，B→Z</p>
-<h4><span id="3解密">3.解密</span></h4><p>简单替换密码很难通过暴力破解来破译。</p>
-<p>一种密码能够使用的所有密钥的集合称为密钥空间。</p>
-<p>密钥空间越大，暴力破解越困难。</p>
-<p>计算：n!(n是密码所用到的字符的种类)</p>
-<p><strong>频率分析法</strong></p>
-<p>①明文中的字母的出现频率&#x3D;密文中的字母的出现频率</p>
-<p>②除了高频字母以外，低频字母也能够成为线索</p>
-<p>③搞清开头和结尾能够成为线索，搞清单词之间的分隔也能成为线索</p>
-<p>④密文越长越容易破译</p>
-<p>⑤同一个字母连续出现能够成为线索（这是因为在简单替换密码中，某个字母在替换表中所对应的另一个字母是固定的）</p>
-]]></content>
-      <tags>
-        <tag>读书笔记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>上标、下标的字符显示</title>
-    <url>/2024/04/02/%E4%B8%8A%E6%A0%87%E3%80%81%E4%B8%8B%E6%A0%87%E7%9A%84%E5%AD%97%E7%AC%A6%E6%98%BE%E7%A4%BA/</url>
-    <content><![CDATA[<h3><span id></span></h3><h3><span id="一-上标">一、上标</span></h3><h4><span id="1数字">1.数字</span></h4><p>¹²³⁴⁵⁶⁷⁸⁹⁰⁺⁻⁼˂˃⁽⁾˙*′˙ⁿº</p>
-<h4><span id="2字母">2.字母</span></h4><p>ᵃᵇᶜᵈᵉᶠᵍʰⁱʲᵏˡᵐⁿᵒᵖʳˢᵗᵘᵛʷˣʸᶻ</p>
-<p>ᴬᴮᒼᴰᴱᶠᴳᴴᴵᴶᴷᴸᴹᴺᴼᴾᴼ̴ᴿˢᵀᵁⱽᵂˣᵞᙆ</p>
-<h4><span id="3其他">3.其他</span></h4><p>ᵃ ᵇ ᶜ ᵈ ᵉ ᵍ ʰ ⁱ ʲ ᵏ ˡ ᵐ ⁿ ᵒ ᵖ ᵒ⃒ ʳ ˢ ᵗ ᵘ ᵛ ʷ ˣ ʸ ᙆ ᴬ ᴮ ᒼ ᴰ ᴱ ᴳ ᴴ ᴵ ᴶ ᴷ ᴸ ᴹ ᴺ ᴼ ᴾ ᴼ̴ ᴿ ˢ ᵀ ᵁ ᵂ ˣ ᵞ ᙆ ꝰ ˀ ˁ ˤ ꟸ ꭜ ʱ ꭝ ꭞ ʴ ʵ ʶ ꭟ ˠ ꟹ ᴭ ᴯ ᴲ ᴻ ᴽ ᵄ ᵅ ᵆ ᵊ ᵋ ᵌ ᵑ ᵓ ᵚ ᵝ ᵞ ᵟ ᵠ ᵡ ᵎ ᵔ ᵕ ᵙ ᵜ ᶛ ᶜ ᶝ ᶞ ᶟ ᶡ ᶣ ᶤ ᶥ ᶦ ᶧ ᶨ ᶩ ᶪ ᶫ ᶬ ᶭ ᶮ ᶯ ᶰ ᶱ ᶲ ᶳ ᶴ ᶵ ᶶ ᶷ ᶸ ᶹ ᶺ ᶼ ᶽ ᶾ ᶿ ꚜ ꚝ ჼ ᒃ ᕻ ᑦ ᒄ ᕪ ᑋ ᑊ ᔿ ᐢ ᣕ ᐤ ᣖ ᣴ ᣗ ᔆ ᙚ ᐡ ᘁ ᐜ ᕽ ᙆ ᙇ ᒼ ᣳ ᒢ ᒻ ᔿ ᐤ ᣖ ᣵ ᙚ ᐪ ᓑ ᘁ ᐜ ᕽ ᙆ ᙇ </p>
-<h3><span id="二-下标">二、下标</span></h3><h4><span id="1数字">1.数字</span></h4><p>₀ ₁ ₂ ₃ ₄ ₅ ₆ ₇ ₈ ₉ ₊ ₋ ₌ ₍ ₎ ₐ ₑ ₒ ₓ ₔ ₕ ₖ ₗ ₘ ₙ ₚ ₛ ₜ</p>
-<h4><span id="2字母">2.字母</span></h4><p>ₐ ₔ ₑ ₕ ᵢ ⱼ ₖ ₗ ₘ ₙ ₒ ₚ ᵣ ₛ ₜ ᵤ ᵥ ₓ ᙮ ᵤ ᵩ ᵦ ₗ ˪ ៳ ៷ ₒ ᵨ ₛ ៴ ᵤ ᵪ ᵧ</p>
-]]></content>
-      <tags>
-        <tag>素材</tag>
+        <tag>数据结构笔记</tag>
       </tags>
   </entry>
   <entry>
@@ -436,100 +613,64 @@
       </tags>
   </entry>
   <entry>
-    <title>stack容器基本知识</title>
-    <url>/2024/04/03/stack%E5%AE%B9%E5%99%A8%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/</url>
-    <content><![CDATA[<p>写作业的时候看到有人用stack容器做题，试了下效率起飞，二话不说记录一下XD</p>
-<!-- toc -->
+    <title>数据结构课设报告——用栈和队列做表达式求值</title>
+    <url>/2024/05/27/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AF%BE%E8%AE%BE%E6%8A%A5%E5%91%8A%E2%80%94%E2%80%94%E7%94%A8%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97%E5%81%9A%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%B1%82%E5%80%BC/</url>
+    <content><![CDATA[<!-- toc -->
 
 <ul>
-<li><a href="#1%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86">1.基础知识</a><ul>
-<li><a href="#%E5%A4%B4%E6%96%87%E4%BB%B6"><strong>头文件</strong></a></li>
-<li><a href="#%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C"><strong>常用操作</strong></a></li>
-<li><a href="#stack%E5%AF%B9%E8%B1%A1%E7%9A%84%E9%BB%98%E8%AE%A4%E6%9E%84%E9%80%A0">stack对象的默认构造</a></li>
-<li><a href="#stack%E7%9A%84%E5%87%BA%E6%A0%88%E5%92%8C%E8%BF%9B%E6%A0%88">stack的出栈和进栈</a></li>
-<li><a href="#stack%E7%9A%84%E6%8B%B7%E8%B4%9D%E6%9E%84%E9%80%A0%E4%B8%8E%E8%B5%8B%E5%80%BC">stack的拷贝构造与赋值</a></li>
-<li><a href="#stack%E7%9A%84%E6%95%B0%E6%8D%AE%E5%AD%98%E5%8F%96">stack的数据存取</a></li>
-<li><a href="#stack%E7%9A%84%E5%A4%A7%E5%B0%8F">stack的大小</a></li>
+<li><a href="#%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90">【案例分析】</a></li>
+<li><a href="#%E5%AE%9E%E9%AA%8C%E8%BF%87%E7%A8%8B">【实验过程】</a><ul>
+<li><a href="#1%E5%AE%9A%E4%B9%89">1.定义</a></li>
+<li><a href="#2%E7%94%A8map%E5%88%A4%E6%96%AD%E4%BC%98%E5%85%88%E7%BA%A7">2.用map判断优先级</a></li>
+<li><a href="#3%E5%A4%84%E7%90%86%E5%A4%9A%E4%BD%8D%E6%95%B0%E9%97%AE%E9%A2%98">3.处理多位数问题</a></li>
+<li><a href="#4%E5%A4%84%E7%90%86%E6%8B%AC%E5%8F%B7%E9%97%AE%E9%A2%98">4.处理括号问题</a></li>
+<li><a href="#5%E8%BE%93%E5%85%A5%E5%8E%BB%E6%8E%89%E7%A9%BA%E6%A0%BC">5.输入：去掉空格</a></li>
 </ul>
 </li>
-<li><a href="#2%E4%BE%8B%E9%A2%98">2.例题</a><ul>
-<li><a href="#7-2-%E6%8B%AC%E5%8F%B7%E5%8C%B9%E9%85%8D"><strong>7-2 括号匹配</strong></a></li>
-<li><a href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0">代码实现</a></li>
-<li><a href="#7-3-%E5%9B%9E%E6%96%87%E5%88%A4%E6%96%AD"><strong>7-3 回文判断</strong></a></li>
-<li><a href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0-1">代码实现</a></li>
-</ul>
-</li>
+<li><a href="#%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81">【完整代码】</a></li>
 </ul>
 <!-- tocstop -->
 
 <p>[TOC]</p>
-<h2><span id="1基础知识">1.基础知识</span></h2><h3><span id="头文件"><strong>头文件</strong></span></h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include&lt;stack&gt;</span><br></pre></td></tr></table></figure>
+<h2><span id="案例分析">【案例分析】</span></h2><p>已知表达式&#x3D;操作数+操作符，其中操作数是123这样的数字，操作符是运算符和界限符（如括号）。</p>
+<p>做实验前先理清：</p>
+<p>1.<strong>四则运算的优先性</strong>：先乘除后加减，括号优先，从左到右。</p>
+<p>2.<strong>中缀表达式转换成后缀表达式</strong>：</p>
+<ul>
+<li>遇到数字就直接输出到后缀表达式中，遇到操作符就判断其优先级，并将其压入栈中。</li>
+<li>如果栈顶元素的优先级大于等于当前操作符，则先将栈顶元素弹出并输出到后缀表达式中，再将当前操作符压入栈中。</li>
+<li>如果遇到了左括号，则直接将其压入栈中，如果遇到了右括号，则弹出栈中的元素，直到遇到了左括号为止，并将这些元素输出到后缀表达式中。</li>
+<li>最后，将栈中剩余的元素依次弹出，并输出到后缀表达式中。</li>
+</ul>
+<p>3.<strong>后缀表达式计算</strong>：遍历后缀表达式，如果遇到数字则直接入栈，如果遇到操作符，则弹出栈顶的两个元素，进行计算后将结果入栈。最后留在栈里的就是最终结果。</p>
+<h2><span id="实验过程">【实验过程】</span></h2><h3><span id="1定义">1.定义</span></h3><p>该段定义了结构体element，存放操作数num和操作符op，供stack和queue容器随时进出。</p>
+<p>并在里面定义了布尔变量flag，用于识别中缀表达式当前字符是操作数还是操作符。</p>
+<p>最后调用了map用于判断运算符的优先级。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">struct element&#123;</span><br><span class="line">double num; //存放操作数</span><br><span class="line">char op; //存放操作符</span><br><span class="line">bool flag; //true 表示操作数，false 表示操作符 </span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">string str; //输入的中缀表达式</span><br><span class="line">stack&lt;element&gt;s; //操作符栈</span><br><span class="line">queue&lt;element&gt;q; //后缀表达式队列</span><br><span class="line">map&lt;char,int&gt;op; //判断优先级,字符到整型的映射 </span><br></pre></td></tr></table></figure>
+
+<h3><span id="2用map判断优先级">2.用map判断优先级</span></h3><p>1&lt;2，先乘除后加减（括号另外考虑）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">map&lt;char,int&gt;op; //判断优先级,字符到整型的映射 </span><br><span class="line"></span><br><span class="line">op[&#x27;+&#x27;] = op[&#x27;-&#x27;] = 1;</span><br><span class="line">op[&#x27;*&#x27;] = op[&#x27;/&#x27;] = 2;</span><br></pre></td></tr></table></figure>
+
+<p>temp.op定义为操作符栈的当前操作符</p>
+<p>s.top().op是操作符栈的栈顶操作符</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">while(!s.empty() &amp;&amp; op[temp.op]&lt;=op[s.top().op])&#123; //当前操作符栈的优先级低于栈顶，并且栈不为空 </span><br><span class="line">  q.push(s.top());</span><br><span class="line">  s.pop();</span><br><span class="line"> &#125;</span><br><span class="line"> s.push(temp);</span><br><span class="line"> index++;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<h3><span id="3处理多位数问题">3.处理多位数问题</span></h3><p>一位数的方法：检测到当前读取的字符是“数字”，temp转为1，表示操作数，把字符转化成阿拉伯数并进队列。</p>
+<p>多位数的方法：读取到第一个数字后进行循环判断，<strong>一直到读取完毕或者遇到不是数字的操作符</strong>，若进入循环，那么此次读入的数为 前一个 * 10 + 现在的数字</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">if(str[index]&gt;=&#x27;0&#x27; &amp;&amp; str[index]&lt;=&#x27;9&#x27;)&#123; //当前读取的是数字</span><br><span class="line"> temp.flag = true;</span><br><span class="line"> temp.num = str[index++]-&#x27;0&#x27; ; //转化成数字</span><br><span class="line">   while(index&gt;str.size() &amp;&amp; str[index]&gt;=&#x27;0&#x27; &amp;&amp; str[index]&lt;&#x27;9&#x27;)&#123; //处理多位数 </span><br><span class="line">   temp.num = temp.num*10 + str[index]-&#x27;0&#x27;;</span><br><span class="line">   index++; //下一位 </span><br><span class="line"> &#125;</span><br><span class="line"> q.push(temp);//进后缀表达式队列 </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3><span id="4处理括号问题">4.处理括号问题</span></h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">if(str[index] ==&#x27;(&#x27;) &#123;</span><br><span class="line"> s.push(temp);//对左括号，直接进操作符栈</span><br><span class="line">  index++; //下一位</span><br><span class="line">  continue;</span><br><span class="line">&#125;else if(str[index]==&#x27;)&#x27;)&#123;</span><br><span class="line">	while(s.top().op!=&#x27;(&#x27;)&#123; //为右括号匹配左括号 </span><br><span class="line">		q.push(s.top()); </span><br><span class="line">	s.pop(); //出栈元素加入到队列</span><br><span class="line">   &#125;</span><br><span class="line"> s.pop();//将左括号出栈 </span><br><span class="line"> index++;</span><br><span class="line"> continue;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">temp.flag=false;</span><br><span class="line">temp.op=str[index];</span><br></pre></td></tr></table></figure>
+
+<h3><span id="5输入去掉空格">5.输入：去掉空格</span></h3><p>基于map</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">for(int i = 0; i &lt; str.size(); i++) &#123;		//去掉空格 </span><br><span class="line">	if(str[i] == &#x27; &#x27;) &#123;</span><br><span class="line">	str.erase(str.begin() + i);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125; </span><br></pre></td></tr></table></figure>
 
 
 
-<h3><span id="常用操作"><strong>常用操作</strong></span></h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">stack&lt;int&gt; q;	//以int型为例</span><br><span class="line">int x;</span><br><span class="line">q.push(x);		//将x压入栈顶</span><br><span class="line">q.top();		//返回栈顶的元素</span><br><span class="line">q.pop();		//删除栈顶的元素</span><br><span class="line">q.size();		//返回栈中元素的个数</span><br><span class="line">q.empty();		//检查栈是否为空,若为空返回true,否则返回false</span><br></pre></td></tr></table></figure>
-
-<h3><span id="stack对象的默认构造">stack对象的默认构造</span></h3><p>stack对象的默认构造形式： stack <t> stkT;  </t></p>
-<p>尖括号里面还可以设置指针或者其他数据类型。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">stack &lt;int&gt; stkInt;            //一个存放int的stack容器。</span><br><span class="line"></span><br><span class="line">stack &lt;float&gt; stkFloat;     //一个存放float的stack容器。</span><br><span class="line"></span><br><span class="line">stack &lt;string&gt; stkString;     //一个存放string的stack容器。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3><span id="stack的出栈和进栈">stack的出栈和进栈</span></h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">stack.push(elem);            //往栈头添加元素</span><br><span class="line"></span><br><span class="line">stack.pop();                     //往栈头移除第一个元素</span><br></pre></td></tr></table></figure>
-
-<h3><span id="stack的拷贝构造与赋值">stack的拷贝构造与赋值</span></h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">stack(const stack &amp;stk);                  //拷贝构造函数</span><br><span class="line"></span><br><span class="line">stack&amp; operator = (const stack &amp;stk);          //重载等号操作符</span><br><span class="line"></span><br><span class="line">stack&lt;int&gt;stkIntB(stkIntA);            //拷贝构造</span><br><span class="line">stack&lt;int&gt;stkIntC;</span><br><span class="line">stkIntC = stkIntA;                     //赋值</span><br></pre></td></tr></table></figure>
-
-<h3><span id="stack的数据存取">stack的数据存取</span></h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">stack.top();     //返回最后一个压入栈元素</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">stack&lt;int&gt; stkIntA;</span><br><span class="line"></span><br><span class="line">stkIntA.push(1);</span><br><span class="line"></span><br><span class="line">stkIntA.push(3);</span><br><span class="line"></span><br><span class="line">stkIntA.push(5);</span><br><span class="line"></span><br><span class="line">stkIntA.push(7);</span><br><span class="line"></span><br><span class="line">stkIntA.push(9);</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">int iTop = stkIntA.top(); //9</span><br><span class="line"></span><br><span class="line">stkIntA.top() = 19; //19</span><br></pre></td></tr></table></figure>
-
-<h3><span id="stack的大小">stack的大小</span></h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">stack.empty();                    //判断堆栈是否为空</span><br><span class="line"></span><br><span class="line">stack.size();                        //返回堆栈的大小</span><br></pre></td></tr></table></figure>
-
-
-
-<h2><span id="2例题">2.例题</span></h2><h3><span id="7-2-括号匹配"><strong>7-2 括号匹配</strong></span></h3><p>给定一串字符，不超过100个字符，可能包括括号、数字、字母、标点符号、空格，编程检查这一串字符中的( ) ,[ ],{ }是否匹配。</p>
-<p><strong>输入格式:</strong></p>
-<p>输入在一行中给出一行字符串，不超过100个字符，可能包括括号、数字、字母、标点符号、空格。</p>
-<p><strong>输出格式:</strong></p>
-<p>如果括号配对，输出yes，否则输出no。</p>
-<p><strong>输入样例1:</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sin(10+20)</span><br></pre></td></tr></table></figure>
-
-<p><strong>输出样例1:</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yes</span><br></pre></td></tr></table></figure>
-
-<p><strong>输入样例2:</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;[&#125;]</span><br></pre></td></tr></table></figure>
-
-<p><strong>输出样例2:</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">no</span><br></pre></td></tr></table></figure>
-
-<p><strong>输入样例3:</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">(()())</span><br></pre></td></tr></table></figure>
-
-<p><strong>输出样例3:</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yes</span><br></pre></td></tr></table></figure>
-
-<h3><span id="代码实现">代码实现</span></h3><p>c&#x2F;c++ strlen(str)和str.length()和str.size()都可以求字符串长度。<br>其中**str.length()<strong>和</strong>str.size()**是用于求string类对象的成员函数<br>**strlen(str)*<em>是用于求字符数组的长度，其参数是char</em>。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#include&lt;stack&gt; //stack头文件</span><br><span class="line">int judge(string s)&#123;</span><br><span class="line">    stack&lt;char&gt;stk;//设置一个存放char的stack容器</span><br><span class="line">    for(int i=0;i&lt;s.length();i++)&#123;</span><br><span class="line">        switch(s[i])&#123;</span><br><span class="line">                case&#x27;(&#x27;:</span><br><span class="line">                   stk.push(s[i]);//左括号，进栈</span><br><span class="line">                break;</span><br><span class="line">                case&#x27;[&#x27;:</span><br><span class="line">                   stk.push(s[i]);</span><br><span class="line">                break;</span><br><span class="line">                case&#x27;&#123;&#x27;:</span><br><span class="line">                   stk.push(s[i]);</span><br><span class="line">                break;</span><br><span class="line">                case&#x27;)&#x27;:</span><br><span class="line">                   if(stk.empty()) return 0;//如果栈空，返回0</span><br><span class="line">                   if (stk.top() == &#x27;(&#x27;) stk.pop();</span><br><span class="line">                   //如果栈顶是左括号，配对成功，将其出栈，进行下一步</span><br><span class="line">                   else return 0;</span><br><span class="line">                break;</span><br><span class="line">                case&#x27;]&#x27;:</span><br><span class="line">                   if(stk.empty()) return 0;</span><br><span class="line">                   if (stk.top() == &#x27;[&#x27;) stk.pop();</span><br><span class="line">                   else return 0;</span><br><span class="line">                break;</span><br><span class="line">                case&#x27;&#125;&#x27;:</span><br><span class="line">                   if(stk.empty()) return 0;</span><br><span class="line">                   if (stk.top() == &#x27;&#123;&#x27;) stk.pop();</span><br><span class="line">                   else return 0;</span><br><span class="line">                break;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return stk.empty();//最终若括号一一配对，栈空，返回1值</span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">    string s;</span><br><span class="line">    getline(cin,s);</span><br><span class="line">    if(judge(s)==1)&#123;</span><br><span class="line">        cout&lt;&lt;&quot;yes&quot;&lt;&lt;endl;</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        cout&lt;&lt;&quot;no&quot;&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h3><span id="7-3-回文判断"><strong>7-3 回文判断</strong></span></h3><p>回文是指正读反读均相同的字符序列，如“abba”和“abdba”均是回文，但“good”不是回文。编写一个程序，使用栈判定给定的字符序列是否为回文。</p>
-<p>若用C++，可借助STL的容器实现。</p>
-<p><strong>输入格式:</strong></p>
-<p>输入待判断的字符序列，按回车键结束，字符序列长度&lt;20。</p>
-<p><strong>输出格式:</strong></p>
-<p>若字符序列是回文，输出“YES”；否则，输出“NO”。</p>
-<p><strong>输入样例:</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">abdba</span><br></pre></td></tr></table></figure>
-
-<p><strong>输出样例:</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">YES</span><br></pre></td></tr></table></figure>
-
-<h3><span id="代码实现">代码实现</span></h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#include&lt;stack&gt;</span><br><span class="line">int main()&#123;</span><br><span class="line">    string s;</span><br><span class="line">    int flag;</span><br><span class="line">    getline(cin,s);</span><br><span class="line">    stack&lt;char&gt;stk;</span><br><span class="line">    for(int i=0;i&lt;s.length();i++)&#123;</span><br><span class="line">        stk.push(s[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    for(int i=0;i&lt;s.length()/2;i++)&#123;</span><br><span class="line">        flag=0;</span><br><span class="line">        if(s[i]==stk.top())&#123;</span><br><span class="line">            stk.pop();</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            cout&lt;&lt;&quot;NO&quot;&lt;&lt;endl;</span><br><span class="line">            flag=1;</span><br><span class="line">            break;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    if(flag==0) cout&lt;&lt;&quot;YES&quot;&lt;&lt;endl;</span><br><span class="line">    return 0;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2><span id="完整代码">【完整代码】</span></h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#include&lt;queue&gt;</span><br><span class="line">#include&lt;stack&gt;</span><br><span class="line">#include&lt;string&gt;</span><br><span class="line">#include&lt;map&gt; </span><br><span class="line"></span><br><span class="line">struct element&#123;</span><br><span class="line">double num; //存放操作数</span><br><span class="line">char op; //存放操作符</span><br><span class="line">bool flag; //true 表示操作数，false 表示操作符 </span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">string str; //输入的中缀表达式</span><br><span class="line">stack&lt;element&gt;s; //操作符栈</span><br><span class="line">queue&lt;element&gt;q; //后缀表达式队列</span><br><span class="line">map&lt;char,int&gt;op; //判断优先级,字符到整型的映射 </span><br><span class="line"></span><br><span class="line">int suffix()&#123;</span><br><span class="line">//将中缀表达式str转换成后缀表达式 </span><br><span class="line">element temp;</span><br><span class="line">int index = 0; //当前位置 </span><br><span class="line">while(index &lt; str.size()) &#123;</span><br><span class="line">	</span><br><span class="line">if(str[index]&gt;=&#x27;0&#x27; &amp;&amp; str[index]&lt;=&#x27;9&#x27;)&#123; //当前读取的是数字</span><br><span class="line"> temp.flag = true;</span><br><span class="line"> temp.num = str[index++]-&#x27;0&#x27; ; //转化成数字</span><br><span class="line">  while(index&lt;str.size() &amp;&amp; str[index]&gt;=&#x27;0&#x27; &amp;&amp; str[index]&lt;&#x27;9&#x27;)&#123; //处理多位数 </span><br><span class="line">   temp.num = temp.num*10 + str[index]-&#x27;0&#x27;;</span><br><span class="line">   index++; //下一位 </span><br><span class="line"> &#125;</span><br><span class="line"> q.push(temp);//进后缀表达式队列 </span><br><span class="line">&#125;else&#123;</span><br><span class="line"> temp.flag = false; //当前读取的是符号</span><br><span class="line"> temp.op = str[index];</span><br><span class="line"></span><br><span class="line"> if(str[index] ==&#x27;(&#x27;) &#123;</span><br><span class="line">  s.push(temp);//对左括号，直接进操作符栈</span><br><span class="line">   index++; //下一位</span><br><span class="line">   continue;</span><br><span class="line"> &#125;else if(str[index]==&#x27;)&#x27;)&#123;</span><br><span class="line"> 	while(s.top().op!=&#x27;(&#x27;)&#123; //为右括号匹配左括号 </span><br><span class="line"> 		q.push(s.top()); </span><br><span class="line">		s.pop(); //出栈元素加入到队列</span><br><span class="line">    &#125;</span><br><span class="line">  s.pop();//将左括号出栈 </span><br><span class="line">  index++;</span><br><span class="line">  continue;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> temp.flag=false;</span><br><span class="line"> temp.op=str[index];</span><br><span class="line"></span><br><span class="line"> while(!s.empty() &amp;&amp; op[temp.op]&lt;=op[s.top().op])&#123; //当前操作符栈的优先级低于栈顶，并且栈不为空 </span><br><span class="line">  q.push(s.top());</span><br><span class="line">  s.pop();</span><br><span class="line"> &#125;</span><br><span class="line"> s.push(temp);</span><br><span class="line"> index++;</span><br><span class="line">&#125; </span><br><span class="line">&#125;</span><br><span class="line">while(!s.empty())&#123;</span><br><span class="line"> q.push(s.top());</span><br><span class="line"> s.pop();</span><br><span class="line">&#125;</span><br><span class="line">return 1;</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line">double cal()&#123;</span><br><span class="line">double top1,top2;</span><br><span class="line">element cur,temp;</span><br><span class="line">while(!q.empty())&#123; //后缀表达式队列从头依次读取</span><br><span class="line"> cur = q.front(); //cur记录队首</span><br><span class="line"> q.pop(); //出队列 </span><br><span class="line"> if(cur.flag==true)&#123;</span><br><span class="line">   s.push(cur); //对操作数入栈 </span><br><span class="line"> &#125;else&#123;//遇到操作符，对栈里的操作数出栈 </span><br><span class="line">   top1 = s.top().num;</span><br><span class="line">   s.pop();</span><br><span class="line">   top2 = s.top().num;</span><br><span class="line">   s.pop();</span><br><span class="line">   temp.flag=true; //记录运算结果 </span><br><span class="line">   if(cur.op == &#x27;+&#x27;) temp.num = top2+top1;</span><br><span class="line">   if(cur.op == &#x27;-&#x27;) temp.num = top2-top1;</span><br><span class="line">   if(cur.op == &#x27;*&#x27;) temp.num = top2*top1;</span><br><span class="line">   if(cur.op == &#x27;/&#x27;) temp.num = top2/top1;</span><br><span class="line">   s.push(temp);//计算结果进栈 </span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">return s.top().num;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">	op[&#x27;+&#x27;] = op[&#x27;-&#x27;] = 1;</span><br><span class="line">	op[&#x27;*&#x27;] = op[&#x27;/&#x27;] = 2;</span><br><span class="line">	getline(cin,str);</span><br><span class="line">	while(!s.empty())&#123;</span><br><span class="line">		s.pop(); //清空 </span><br><span class="line">	&#125;</span><br><span class="line">	for(int i = 0; i &lt; str.size(); i++) &#123;		//去掉空格 </span><br><span class="line">	if(str[i] == &#x27; &#x27;) &#123;</span><br><span class="line">	str.erase(str.begin() + i);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125; </span><br><span class="line">	suffix();</span><br><span class="line">	cout&lt;&lt;&quot;计算结果为：&quot;&lt;&lt;cal()&lt;&lt;endl;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 ]]></content>
       <tags>
-        <tag>STL</tag>
+        <tag>数据结构笔记</tag>
       </tags>
   </entry>
   <entry>
@@ -713,60 +854,6 @@ system(&quot;cls&quot;);
 return 0;
 &#125;
 </code></pre>
-]]></content>
-      <tags>
-        <tag>数据结构笔记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>数据结构课设报告——用栈和队列做表达式求值</title>
-    <url>/2024/05/27/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AF%BE%E8%AE%BE%E6%8A%A5%E5%91%8A%E2%80%94%E2%80%94%E7%94%A8%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97%E5%81%9A%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%B1%82%E5%80%BC/</url>
-    <content><![CDATA[<!-- toc -->
-
-<ul>
-<li><a href="#%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90">【案例分析】</a></li>
-<li><a href="#%E5%AE%9E%E9%AA%8C%E8%BF%87%E7%A8%8B">【实验过程】</a></li>
-<li><a href="#%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81">【完整代码】</a></li>
-</ul>
-<!-- tocstop -->
-
-<p>[TOC]</p>
-<h3><span id="案例分析">【案例分析】</span></h3><p>已知表达式&#x3D;操作数+操作符，其中操作数是123这样的数字，操作符是运算符和界限符（如括号）。</p>
-<p>做实验前先理清：</p>
-<p>1.<strong>四则运算的优先性</strong>：先乘除后加减，括号优先，从左到右。</p>
-<p>2.<strong>中缀表达式转换成后缀表达式</strong>：</p>
-<ul>
-<li>遇到数字就直接输出到后缀表达式中，遇到操作符就判断其优先级，并将其压入栈中。</li>
-<li>如果栈顶元素的优先级大于等于当前操作符，则先将栈顶元素弹出并输出到后缀表达式中，再将当前操作符压入栈中。</li>
-<li>如果遇到了左括号，则直接将其压入栈中，如果遇到了右括号，则弹出栈中的元素，直到遇到了左括号为止，并将这些元素输出到后缀表达式中。</li>
-<li>最后，将栈中剩余的元素依次弹出，并输出到后缀表达式中。</li>
-</ul>
-<p>3.<strong>后缀表达式计算</strong>：遍历后缀表达式，如果遇到数字则直接入栈，如果遇到操作符，则弹出栈顶的两个元素，进行计算后将结果入栈。最后留在栈里的就是最终结果。</p>
-<h3><span id="实验过程">【实验过程】</span></h3><h4><span id="1定义">1.定义</span></h4><p>该段定义了结构体element，存放操作数num和操作符op，供stack和queue容器随时进出。</p>
-<p>并在里面定义了布尔变量flag，用于识别中缀表达式当前字符是操作数还是操作符。</p>
-<p>最后调用了map用于判断运算符的优先级。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">struct element&#123;</span><br><span class="line">double num; //存放操作数</span><br><span class="line">char op; //存放操作符</span><br><span class="line">bool flag; //true 表示操作数，false 表示操作符 </span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">string str; //输入的中缀表达式</span><br><span class="line">stack&lt;element&gt;s; //操作符栈</span><br><span class="line">queue&lt;element&gt;q; //后缀表达式队列</span><br><span class="line">map&lt;char,int&gt;op; //判断优先级,字符到整型的映射 </span><br></pre></td></tr></table></figure>
-
-<h4><span id="2用map判断优先级">2.用map判断优先级</span></h4><p>1&lt;2，先乘除后加减（括号另外考虑）</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">map&lt;char,int&gt;op; //判断优先级,字符到整型的映射 </span><br><span class="line"></span><br><span class="line">op[&#x27;+&#x27;] = op[&#x27;-&#x27;] = 1;</span><br><span class="line">op[&#x27;*&#x27;] = op[&#x27;/&#x27;] = 2;</span><br></pre></td></tr></table></figure>
-
-<p>temp.op定义为操作符栈的当前操作符</p>
-<p>s.top().op是操作符栈的栈顶操作符</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">while(!s.empty() &amp;&amp; op[temp.op]&lt;=op[s.top().op])&#123; //当前操作符栈的优先级低于栈顶，并且栈不为空 </span><br><span class="line">  q.push(s.top());</span><br><span class="line">  s.pop();</span><br><span class="line"> &#125;</span><br><span class="line"> s.push(temp);</span><br><span class="line"> index++;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
-
-<h4><span id="3处理多位数问题">3.处理多位数问题</span></h4><p>一位数的方法：检测到当前读取的字符是“数字”，temp转为1，表示操作数，把字符转化成阿拉伯数并进队列。</p>
-<p>多位数的方法：读取到第一个数字后进行循环判断，<strong>一直到读取完毕或者遇到不是数字的操作符</strong>，若进入循环，那么此次读入的数为 前一个 * 10 + 现在的数字</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">if(str[index]&gt;=&#x27;0&#x27; &amp;&amp; str[index]&lt;=&#x27;9&#x27;)&#123; //当前读取的是数字</span><br><span class="line"> temp.flag = true;</span><br><span class="line"> temp.num = str[index++]-&#x27;0&#x27; ; //转化成数字</span><br><span class="line">   while(index&gt;str.size() &amp;&amp; str[index]&gt;=&#x27;0&#x27; &amp;&amp; str[index]&lt;&#x27;9&#x27;)&#123; //处理多位数 </span><br><span class="line">   temp.num = temp.num*10 + str[index]-&#x27;0&#x27;;</span><br><span class="line">   index++; //下一位 </span><br><span class="line"> &#125;</span><br><span class="line"> q.push(temp);//进后缀表达式队列 </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4><span id="4处理括号问题">4.处理括号问题</span></h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">if(str[index] ==&#x27;(&#x27;) &#123;</span><br><span class="line"> s.push(temp);//对左括号，直接进操作符栈</span><br><span class="line">  index++; //下一位</span><br><span class="line">  continue;</span><br><span class="line">&#125;else if(str[index]==&#x27;)&#x27;)&#123;</span><br><span class="line">	while(s.top().op!=&#x27;(&#x27;)&#123; //为右括号匹配左括号 </span><br><span class="line">		q.push(s.top()); </span><br><span class="line">	s.pop(); //出栈元素加入到队列</span><br><span class="line">   &#125;</span><br><span class="line"> s.pop();//将左括号出栈 </span><br><span class="line"> index++;</span><br><span class="line"> continue;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">temp.flag=false;</span><br><span class="line">temp.op=str[index];</span><br></pre></td></tr></table></figure>
-
-<h4><span id="5输入去掉空格">5.输入：去掉空格</span></h4><p>基于map</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">for(int i = 0; i &lt; str.size(); i++) &#123;		//去掉空格 </span><br><span class="line">	if(str[i] == &#x27; &#x27;) &#123;</span><br><span class="line">	str.erase(str.begin() + i);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125; </span><br></pre></td></tr></table></figure>
-
-
-
-<h3><span id="完整代码">【完整代码】</span></h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#include&lt;queue&gt;</span><br><span class="line">#include&lt;stack&gt;</span><br><span class="line">#include&lt;string&gt;</span><br><span class="line">#include&lt;map&gt; </span><br><span class="line"></span><br><span class="line">struct element&#123;</span><br><span class="line">double num; //存放操作数</span><br><span class="line">char op; //存放操作符</span><br><span class="line">bool flag; //true 表示操作数，false 表示操作符 </span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">string str; //输入的中缀表达式</span><br><span class="line">stack&lt;element&gt;s; //操作符栈</span><br><span class="line">queue&lt;element&gt;q; //后缀表达式队列</span><br><span class="line">map&lt;char,int&gt;op; //判断优先级,字符到整型的映射 </span><br><span class="line"></span><br><span class="line">int suffix()&#123;</span><br><span class="line">//将中缀表达式str转换成后缀表达式 </span><br><span class="line">element temp;</span><br><span class="line">int index = 0; //当前位置 </span><br><span class="line">while(index &lt; str.size()) &#123;</span><br><span class="line">	</span><br><span class="line">if(str[index]&gt;=&#x27;0&#x27; &amp;&amp; str[index]&lt;=&#x27;9&#x27;)&#123; //当前读取的是数字</span><br><span class="line"> temp.flag = true;</span><br><span class="line"> temp.num = str[index++]-&#x27;0&#x27; ; //转化成数字</span><br><span class="line">  while(index&lt;str.size() &amp;&amp; str[index]&gt;=&#x27;0&#x27; &amp;&amp; str[index]&lt;&#x27;9&#x27;)&#123; //处理多位数 </span><br><span class="line">   temp.num = temp.num*10 + str[index]-&#x27;0&#x27;;</span><br><span class="line">   index++; //下一位 </span><br><span class="line"> &#125;</span><br><span class="line"> q.push(temp);//进后缀表达式队列 </span><br><span class="line">&#125;else&#123;</span><br><span class="line"> temp.flag = false; //当前读取的是符号</span><br><span class="line"> temp.op = str[index];</span><br><span class="line"></span><br><span class="line"> if(str[index] ==&#x27;(&#x27;) &#123;</span><br><span class="line">  s.push(temp);//对左括号，直接进操作符栈</span><br><span class="line">   index++; //下一位</span><br><span class="line">   continue;</span><br><span class="line"> &#125;else if(str[index]==&#x27;)&#x27;)&#123;</span><br><span class="line"> 	while(s.top().op!=&#x27;(&#x27;)&#123; //为右括号匹配左括号 </span><br><span class="line"> 		q.push(s.top()); </span><br><span class="line">		s.pop(); //出栈元素加入到队列</span><br><span class="line">    &#125;</span><br><span class="line">  s.pop();//将左括号出栈 </span><br><span class="line">  index++;</span><br><span class="line">  continue;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> temp.flag=false;</span><br><span class="line"> temp.op=str[index];</span><br><span class="line"></span><br><span class="line"> while(!s.empty() &amp;&amp; op[temp.op]&lt;=op[s.top().op])&#123; //当前操作符栈的优先级低于栈顶，并且栈不为空 </span><br><span class="line">  q.push(s.top());</span><br><span class="line">  s.pop();</span><br><span class="line"> &#125;</span><br><span class="line"> s.push(temp);</span><br><span class="line"> index++;</span><br><span class="line">&#125; </span><br><span class="line">&#125;</span><br><span class="line">while(!s.empty())&#123;</span><br><span class="line"> q.push(s.top());</span><br><span class="line"> s.pop();</span><br><span class="line">&#125;</span><br><span class="line">return 1;</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line">double cal()&#123;</span><br><span class="line">double top1,top2;</span><br><span class="line">element cur,temp;</span><br><span class="line">while(!q.empty())&#123; //后缀表达式队列从头依次读取</span><br><span class="line"> cur = q.front(); //cur记录队首</span><br><span class="line"> q.pop(); //出队列 </span><br><span class="line"> if(cur.flag==true)&#123;</span><br><span class="line">   s.push(cur); //对操作数入栈 </span><br><span class="line"> &#125;else&#123;//遇到操作符，对栈里的操作数出栈 </span><br><span class="line">   top1 = s.top().num;</span><br><span class="line">   s.pop();</span><br><span class="line">   top2 = s.top().num;</span><br><span class="line">   s.pop();</span><br><span class="line">   temp.flag=true; //记录运算结果 </span><br><span class="line">   if(cur.op == &#x27;+&#x27;) temp.num = top2+top1;</span><br><span class="line">   if(cur.op == &#x27;-&#x27;) temp.num = top2-top1;</span><br><span class="line">   if(cur.op == &#x27;*&#x27;) temp.num = top2*top1;</span><br><span class="line">   if(cur.op == &#x27;/&#x27;) temp.num = top2/top1;</span><br><span class="line">   s.push(temp);//计算结果进栈 </span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">return s.top().num;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">	op[&#x27;+&#x27;] = op[&#x27;-&#x27;] = 1;</span><br><span class="line">	op[&#x27;*&#x27;] = op[&#x27;/&#x27;] = 2;</span><br><span class="line">	getline(cin,str);</span><br><span class="line">	while(!s.empty())&#123;</span><br><span class="line">		s.pop(); //清空 </span><br><span class="line">	&#125;</span><br><span class="line">	for(int i = 0; i &lt; str.size(); i++) &#123;		//去掉空格 </span><br><span class="line">	if(str[i] == &#x27; &#x27;) &#123;</span><br><span class="line">	str.erase(str.begin() + i);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125; </span><br><span class="line">	suffix();</span><br><span class="line">	cout&lt;&lt;&quot;计算结果为：&quot;&lt;&lt;cal()&lt;&lt;endl;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 ]]></content>
       <tags>
         <tag>数据结构笔记</tag>
@@ -1022,6 +1109,92 @@ return 0;
 ]]></content>
       <tags>
         <tag>电子电路基础</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>队列的表示和操作实现</title>
+    <url>/2024/05/26/%E9%98%9F%E5%88%97%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E6%93%8D%E4%BD%9C%E5%AE%9E%E7%8E%B0/</url>
+    <content><![CDATA[<!-- toc -->
+
+<ul>
+<li><a href="#%E4%B8%80-%E5%BE%AA%E7%8E%AF%E9%98%9F%E5%88%97%E9%98%9F%E5%88%97%E7%9A%84%E9%A1%BA%E5%BA%8F%E5%AD%98%E5%82%A8">一、循环队列（队列的顺序存储）</a></li>
+<li><a href="#%E4%BA%8C-%E9%93%BE%E6%A0%88">二、链栈</a></li>
+</ul>
+<!-- tocstop -->
+
+<p>[TOC]</p>
+<h3><span id="一-循环队列队列的顺序存储">一、循环队列（队列的顺序存储）</span></h3><p>如果用户的应用程序中设有循环队列，就必须为它设定一个最大队列长度。</p>
+<h4><span id="1定义">1.定义</span></h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#define MAXQSIZE 100 //队列可能达到的长度</span><br><span class="line"></span><br><span class="line">typedef struct&#123;</span><br><span class="line"></span><br><span class="line">int *base; //存储空间的基地址</span><br><span class="line"></span><br><span class="line">int front; //头指针，若队列不空，指向队列头元素（实位）</span><br><span class="line"></span><br><span class="line">int rear; //尾指针，若队列不空，指向队列尾元素的下一个位置（虚位）</span><br><span class="line"></span><br><span class="line">&#125;SqQueue;</span><br><span class="line"></span><br><span class="line">SqQueue Q;</span><br></pre></td></tr></table></figure>
+
+<h5><span id="顺序队列非循环队列">顺序队列——非循环队列</span></h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">初始化队列：Q.front=Q.rear=0;</span><br><span class="line"></span><br><span class="line">入队：新元素按 rear 指示位置加入，再将队尾指针加一，即</span><br><span class="line">Q.base[Q.rear] = e;</span><br><span class="line">Q.rear = Q.rear+1;</span><br><span class="line"></span><br><span class="line">出队：将front指示的元素取出，再将队头指针加一，即 </span><br><span class="line">e=Q.base[O.front];</span><br><span class="line">Q.front= Q.front+ 1;</span><br><span class="line"></span><br><span class="line">队空：Q.front==Q.rear;</span><br><span class="line"></span><br><span class="line">队满：Q.rear-Q.front==MAXQSIZE;</span><br><span class="line"></span><br><span class="line">求队长：Q.rear-Q.front;</span><br></pre></td></tr></table></figure>
+
+<p>存在“假上溢”的现象：<u>因数组越界而导致的程序非法操作错误，并且此时队列的实际可用空间并未占满。</u></p>
+<h5><span id="循环队列">循环队列</span></h5><p>防假上溢：少用一个元素空间，即队列空间大小为m时，有m-1个元素就认为是队满。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">队列初始化： Q.front = Q.rear =0;</span><br><span class="line"></span><br><span class="line">队空：Q.front == Q.rear;</span><br><span class="line"></span><br><span class="line">队满：(Q.rear + 1)%MAXQSIZE ==Q.front;</span><br><span class="line"></span><br><span class="line">入队：（1）队列不满，新元素e插入Q.rear所指的位置</span><br><span class="line">      Q.base[Q.rear] = e;</span><br><span class="line">      （2）Q.rear = (Q.rear+1)%MAXQSIZE;</span><br><span class="line">出队：（1）队列不空，删除Q.front所指的元素</span><br><span class="line">      e = Q.base[Q.front];</span><br><span class="line">     （2）Q.front = (Q.front+1)%MAXQSIZE;</span><br><span class="line">求队长：</span><br><span class="line">(Q.rear - Q.front + MAXQSIZE)%MAXQSIZE;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="2初始化">2.初始化</span></h4><ul>
+<li>分配一个最大容量为MAXQSIZE的存储空间Q.base &#x3D; new int[]</li>
+<li>判断分配失败</li>
+<li>否则将头指针和尾指针置为0，表示队列为空</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int InitQueue(SqQueue &amp;Q)&#123;</span><br><span class="line">//构造一个空队列</span><br><span class="line"></span><br><span class="line">Q.base = new int[MAXQSIZE]; //分配存储空间</span><br><span class="line"></span><br><span class="line">if(!Q.base) return -1; //分配失败</span><br><span class="line"></span><br><span class="line">Q.front = Q.rear=0; //头指针、尾指针置为0，表示队列为空</span><br><span class="line"></span><br><span class="line">return 1;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="3入队">3.入队</span></h4><ul>
+<li>判断队满</li>
+<li>否则将新元素插入队尾</li>
+<li>队尾指针+1</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int EnQueue(SqQueue &amp;Q,int e)&#123;</span><br><span class="line">//插入元素e为Q的新队尾元素</span><br><span class="line"></span><br><span class="line">if((Q.rear+1)%MAXQSIZE==Q.front)</span><br><span class="line">//尾指针在循环意义上+1后等于头指针，表示队满</span><br><span class="line"></span><br><span class="line">return -1;</span><br><span class="line"></span><br><span class="line">Q.base[Q.rear] = e; //新元素插入队尾</span><br><span class="line"></span><br><span class="line">Q.rear = (Q.rear+1)%MAXQSIZE; //队尾指针+1</span><br><span class="line"></span><br><span class="line">return 1;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="4出队">4.出队</span></h4><ul>
+<li>判断队空</li>
+<li>否则保存队头元素</li>
+<li>队头指针+1</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int DeQueue(SqQueue &amp;Q,int &amp;e)&#123;</span><br><span class="line">//删除Q的队头元素，用e返回其值</span><br><span class="line"></span><br><span class="line">if(Q.front == Q.rear) return -1;//队空</span><br><span class="line"></span><br><span class="line">e = Q.base[Q.front]; //保存队头元素</span><br><span class="line"></span><br><span class="line">Q.front = (Q.front + 1 )%MAXQSIZE； //队头指针+1</span><br><span class="line"></span><br><span class="line">return 1;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="5取队头元素">5.取队头元素</span></h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int GetHead(SqQueue Q)&#123;</span><br><span class="line">//返回Q的队头元素，不修改队头指针</span><br><span class="line"></span><br><span class="line">if(Q.front!=Q.rear) //非空</span><br><span class="line"></span><br><span class="line">return Q.base[Q.front];//返回队头</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3><span id="二-链栈">二、链栈</span></h3><p>采用链式存储结构实现的队列称为<strong>链队列</strong>。</p>
+<p>为了使操作更加方便，将队头指针指向链队列的头结点，而队尾指针指向终端结点。 </p>
+<p><strong>空队列时，front和rear都指向头结点，即front&#x3D;&#x3D;rear</strong></p>
+<h4><span id="1定义">1.定义</span></h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">typedef struct QNode&#123;</span><br><span class="line">int data;</span><br><span class="line">struct QNode *next;</span><br><span class="line">&#125;QNode,*QueuePtr;</span><br><span class="line"></span><br><span class="line">typedef struct &#123;</span><br><span class="line">QueuePtr front; //队头指针</span><br><span class="line">QueuePtr rear; //队尾指针</span><br><span class="line">&#125;LinkQueue;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2024/05/26/%E9%98%9F%E5%88%97%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E6%93%8D%E4%BD%9C%E5%AE%9E%E7%8E%B0/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526020235.png" alt="微信截图_20240526020235"></p>
+<h4><span id="2初始化">2.初始化</span></h4><p>构造一个只有一个头结点的空队。</p>
+<ul>
+<li>生成新结点作为头结点，队头和队尾指针指向此结点</li>
+<li>头结点的指针域置空</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int InitQueue(LinkQueue &amp;Q)&#123;</span><br><span class="line"></span><br><span class="line">//构造一个空队列Q</span><br><span class="line"></span><br><span class="line">Q.front = Q.rear =new QNode;  //生成新结点作为头结点，队头和队尾指针指向此结点</span><br><span class="line"></span><br><span class="line">Q.front-&gt;next = NULL; //头结点的指针域置空</span><br><span class="line"></span><br><span class="line">return 1;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="3入队">3.入队</span></h4><p><strong>链队在入队前不需要判断队满，需要为入队元素分配结点空间。</strong></p>
+<ul>
+<li>为入队元素分配结点空间，用指针p指向</li>
+<li>将新结点数据域置为e</li>
+<li>将新结点插入到队尾</li>
+<li>修改队尾指针为p</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int EnQueue(LinkQueue &amp;Q,int e)&#123;</span><br><span class="line">//插入元素e为Q的新队尾元素</span><br><span class="line"></span><br><span class="line">p = new QNode; //分配新结点</span><br><span class="line"></span><br><span class="line">p-&gt;data = e; //把p的数据域置为e</span><br><span class="line"></span><br><span class="line">p-&gt;next = NULL; Q.rear-&gt;next = p;//把新结点插到队尾</span><br><span class="line"></span><br><span class="line">Q.rear = p; //修改队尾指针</span><br><span class="line"></span><br><span class="line">return 1;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="4出队">4.出队</span></h4><p><strong>链队在出队前需要判断队列是否为空，不同的是，链队在出队后需要放出队头元素的所占空间。</strong></p>
+<ul>
+<li>判断队空</li>
+<li>否则临时保存队头元素的空间，等待释放</li>
+<li>修改头结点的指针域，指向下一个结点</li>
+<li>判断出队元素是否为最后一个元素，若是，则将队尾指针重新赋值，指向头结点</li>
+<li>释放原队头元素</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int DeQueue(LinkQueue &amp;Q,int &amp;e)&#123;</span><br><span class="line">//删除Q的队头元素，用e返回其值</span><br><span class="line"></span><br><span class="line">if(Q.front==Q.rear) retrun -1; //队空</span><br><span class="line"></span><br><span class="line">p = Q.front-&gt;next; //p指向队头元素</span><br><span class="line"></span><br><span class="line">e = p-&gt;data; //e保存队头元素的值</span><br><span class="line"></span><br><span class="line">Q.front-&gt;next = p-&gt;next;  //修改头结点的指针域</span><br><span class="line"></span><br><span class="line">if(Q.rear == p) Q.rear = Q.front; //最后一个元素被删，队尾指针指向头结点</span><br><span class="line"></span><br><span class="line">free(p); //释放原队头元素</span><br><span class="line"></span><br><span class="line">return 1;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>5.求队头元素</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int GetHead(LinkQueue Q)&#123;</span><br><span class="line">//返回Q的队头元素，不修改队头指针</span><br><span class="line"></span><br><span class="line">if(Q.front!=Q.rear)</span><br><span class="line"></span><br><span class="line">return Q.front-&gt;next-&gt;data;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <tags>
+        <tag>数据结构笔记</tag>
       </tags>
   </entry>
   <entry>
@@ -1283,84 +1456,6 @@ return 0;
       </tags>
   </entry>
   <entry>
-    <title>高等数学下笔记</title>
-    <url>/2024/03/25/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E4%B8%8B%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<!-- toc -->
-
-<ul>
-<li><a href="#8-%E5%90%91%E9%87%8F%E4%BB%A3%E6%95%B0%E4%B8%8E%E7%A9%BA%E9%97%B4%E8%A7%A3%E6%9E%90%E5%87%A0%E4%BD%95">8 - 向量代数与空间解析几何</a><ul>
-<li><a href="#8-1-%E5%90%91%E9%87%8F%E5%8F%8A%E5%85%B6%E7%BA%BF%E6%80%A7%E8%BF%90%E7%AE%97">8-1 向量及其线性运算</a></li>
-<li><a href="#8-2-%E7%A9%BA%E9%97%B4%E7%9B%B4%E8%A7%92%E5%9D%90%E6%A0%87%E7%B3%BB">8-2 空间直角坐标系</a></li>
-<li><a href="#8-3-%E5%90%91%E9%87%8F%E7%9A%84%E7%BB%BC%E5%90%88%E6%80%A7%E8%B4%A8%E5%92%8C%E8%BF%90%E7%AE%97">8-3 向量的综合性质和运算</a></li>
-<li><a href="#8-4-%E6%95%B0%E9%87%8F%E7%A7%AF-%E5%90%91%E9%87%8F%E7%A7%AF">8-4 数量积、向量积</a></li>
-<li><a href="#8-5-%E5%B9%B3%E9%9D%A2%E5%8F%8A%E5%85%B6%E6%96%B9%E7%A8%8B">8-5 平面及其方程</a></li>
-<li><a href="#8-6-%E7%A9%BA%E9%97%B4%E7%9B%B4%E7%BA%BF%E5%8F%8A%E5%85%B6%E6%96%B9%E7%A8%8B">8-6 空间直线及其方程</a></li>
-</ul>
-</li>
-</ul>
-<!-- tocstop -->
-
-<p>[TOC]</p>
-<h2><span id="8-向量代数与空间解析几何">8 - 向量代数与空间解析几何</span></h2><h3><span id="8-1-向量及其线性运算">8-1 向量及其线性运算</span></h3><p>1.由三角形两边之和大于第三边，有：|<strong>a</strong> + <strong>b</strong>|&lt;&#x3D;|<strong>a</strong>|+|<strong>b</strong>|; |<strong>a</strong> - <strong>b</strong>|&lt;&#x3D;|<strong>a</strong>|+|<strong>b</strong>|</p>
-<p>2.数乘：|λ<strong>a</strong>| &#x3D; |λ||<strong>a</strong>|</p>
-<p>3.单位向量<strong>e</strong>&#x3D;<strong>a</strong>&#x2F;|<strong>a</strong>|</p>
-<p>4.<strong>a</strong>&#x2F;&#x2F;<strong>b</strong>等价于<strong>b</strong>&#x3D;λ<strong>a</strong>（<strong>a</strong>!&#x3D;0）</p>
-<h3><span id="8-2-空间直角坐标系">8-2 空间直角坐标系</span></h3><img src="/2024/03/25/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E4%B8%8B%E7%AC%94%E8%AE%B0/be8b438d8dab4f26425537c8e52ffa4.png" alt="be8b438d8dab4f26425537c8e52ffa4" style="zoom:80%;">
-
-<img src="/2024/03/25/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E4%B8%8B%E7%AC%94%E8%AE%B0/ed720f4486e49cb4f94f47c876630bf.png" alt="ed720f4486e49cb4f94f47c876630bf" style="zoom:80%;">
-
-<p>向量OF（x，y，z）是点O关于点F的向径，<u>求点F的坐标就是求向量OP的坐标</u></p>
-<p>①若点F在yoz面上，x&#x3D;0；</p>
-<p>②点F在zox面上，y&#x3D;0；点F在xoy面上，z&#x3D;0；</p>
-<p>③点F在x轴上，y&#x3D;z&#x3D;0；</p>
-<p>④点F在y轴上，z&#x3D;x&#x3D;0；点F在z轴上，x&#x3D;y&#x3D;0；</p>
-<p>⑤点F为原点，x&#x3D;y&#x3D;z&#x3D;0。</p>
-<h3><span id="8-3-向量的综合性质和运算">8-3 向量的综合性质和运算</span></h3><img src="/2024/03/25/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E4%B8%8B%E7%AC%94%E8%AE%B0/微信截图_20240326011004.png" alt="微信截图_20240326011004" style="zoom:80%;">
-
-<h4><span id="题型"><strong>题型：</strong></span></h4><h5><span id="1向量模的坐标表达式">1.向量模的坐标表达式</span></h5><h5><span id="2两点距离公式">2.两点距离公式：</span></h5><p>求证三角形的类型（等腰、直角、等边）</p>
-<p>求已知向量的定向单位向量</p>
-<p>求与某几点等距离的点</p>
-<h5><span id="3方向角与方向余弦">3.方向角与方向余弦：</span></h5><p>已知角度求点的坐标</p>
-<p>已知向量求方向角、余弦和模</p>
-<h5><span id="4投影">4.投影</span></h5><p>已知向量求向量在某轴上的投影</p>
-<p>已知投影求向量</p>
-<h3><span id="8-4-数量积-向量积">8-4 数量积、向量积</span></h3><img src="/2024/03/25/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E4%B8%8B%E7%AC%94%E8%AE%B0/微信截图_20240326013200.png" alt="微信截图_20240326013200" style="zoom:80%;">
-
-<h4><span id="题型"><strong>题型</strong>：</span></h4><p>1.用数量积公式求夹角、投影</p>
-<p>2.用向量积求三角形面积（用到正弦）</p>
-<p>3.用数量积、向量积定义证垂直或平行</p>
-<p>4.（多用）用向量积求平面方程</p>
-<h3><span id="8-5-平面及其方程">8-5 平面及其方程</span></h3><h4><span id="1平面的点法式方程">1.平面的点法式方程</span></h4><p><strong>A（x-x₀）+B（y-y₀）+C（z-z₀）&#x3D;0</strong></p>
-<p>其中<strong>n</strong>&#x3D;（A,B,C），M₀&#x3D;（x₀，y₀，z₀）</p>
-<h4><span id="2平面的一般方程">2.平面的一般方程</span></h4><p><strong>Ax0 + By0 + Cz0 +D&#x3D;0</strong></p>
-<p><strong>n</strong>&#x3D;（A,B,C）</p>
-<p>①<strong>D&#x3D;0</strong>时，方程表示一个通过<strong>原点</strong>的平面</p>
-<p>②<strong>A&#x3D;0</strong>时，<strong>n</strong>垂直于x轴，方程表示一个平行于（或包含）<strong>x轴</strong>的平面；<strong>B&#x3D;0，C&#x3D;0</strong>同理</p>
-<p>③<strong>A&#x3D;B&#x3D;0</strong>，<strong>n</strong>同时垂直x轴和y轴，方程表示一个平行于（或重合）<strong>x0y面</strong>的平面；<strong>A&#x3D;C&#x3D;0,B&#x3D;C&#x3D;0</strong>同理</p>
-<h4><span id="3平面的截距式方程">3.平面的截距式方程</span></h4><p><strong>x&#x2F;a + y&#x2F;b + z&#x2F;c &#x3D; 1</strong></p>
-<p>a、b、c分别是平面在xyz轴上的截距</p>
-<h4><span id="4两平面夹角-点到平面距离">4.两平面夹角、点到平面距离</span></h4><p><strong>两平面互相垂直</strong>相当于<strong>A₁A₂ + B₁B₂ + C₁C₂ &#x3D; 0</strong></p>
-<p><strong>两平面互相平行或重合</strong>相当于<strong>A₁&#x2F;A₂ &#x3D; B₁&#x2F;B₂ &#x3D; C₁&#x2F;C₂</strong></p>
-<img src="/2024/03/25/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E4%B8%8B%E7%AC%94%E8%AE%B0/微信截图_20240326015143.png" alt="微信截图_20240326015143" style="zoom:80%;">
-
-
-
-<h3><span id="8-6-空间直线及其方程">8-6 空间直线及其方程</span></h3><h4><span id="1直线的点向式方程对称式方程">1.直线的点向式方程（对称式方程）</span></h4><p>其中，<strong>s</strong>&#x3D;(m,n,p)，M₀&#x3D;(x₀,y₀,z₀)</p>
-<p>要素：①方向向量 ②点</p>
-<h4><span id="2直线的参数方程">2.直线的参数方程</span></h4><h4><span id="3直线的一般方程">3.直线的一般方程</span></h4><p>表现为两个平面的交线</p>
-<h4><span id="4线面角">4.线面角</span></h4><p>范围是【0，90°】</p>
-<img src="/2024/03/25/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E4%B8%8B%E7%AC%94%E8%AE%B0/微信截图_20240326015259.png" alt="微信截图_20240326015259" style="zoom:80%;">
-
-<h4><span id="5线线角">5.线线角</span></h4><p>和面面角公式相同，用cos</p>
-<h4><span id="6性质">6.性质</span></h4><p><strong>两直线相互垂直（包括异面、相交）</strong>相当于 <strong>m₁m₂ + n₁n₂ + p₁p₂ &#x3D; 0</strong></p>
-<p><strong>两直线互相平行或重合</strong> 相当于 <strong>m₁&#x2F;m₂ &#x3D; n₁&#x2F;n₂ &#x3D; p₁&#x2F;p₂</strong></p>
-<p><strong>直线与平面平行或直线在平面上</strong> 相当于 <strong>Am + Bn + Cp &#x3D;0</strong></p>
-]]></content>
-      <tags>
-        <tag>高等数学</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>电路的一般分析方法</title>
     <url>/2024/03/14/%E7%94%B5%E5%AD%90%E7%94%B5%E8%B7%AF%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<!-- toc -->
@@ -1548,89 +1643,81 @@ return 0;
       </tags>
   </entry>
   <entry>
-    <title>队列的表示和操作实现</title>
-    <url>/2024/05/26/%E9%98%9F%E5%88%97%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E6%93%8D%E4%BD%9C%E5%AE%9E%E7%8E%B0/</url>
+    <title>高等数学下笔记</title>
+    <url>/2024/03/25/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E4%B8%8B%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<!-- toc -->
 
 <ul>
-<li><a href="#%E4%B8%80-%E5%BE%AA%E7%8E%AF%E9%98%9F%E5%88%97%E9%98%9F%E5%88%97%E7%9A%84%E9%A1%BA%E5%BA%8F%E5%AD%98%E5%82%A8">一、循环队列（队列的顺序存储）</a></li>
-<li><a href="#%E4%BA%8C-%E9%93%BE%E6%A0%88">二、链栈</a></li>
+<li><a href="#8-%E5%90%91%E9%87%8F%E4%BB%A3%E6%95%B0%E4%B8%8E%E7%A9%BA%E9%97%B4%E8%A7%A3%E6%9E%90%E5%87%A0%E4%BD%95">8 - 向量代数与空间解析几何</a><ul>
+<li><a href="#8-1-%E5%90%91%E9%87%8F%E5%8F%8A%E5%85%B6%E7%BA%BF%E6%80%A7%E8%BF%90%E7%AE%97">8-1 向量及其线性运算</a></li>
+<li><a href="#8-2-%E7%A9%BA%E9%97%B4%E7%9B%B4%E8%A7%92%E5%9D%90%E6%A0%87%E7%B3%BB">8-2 空间直角坐标系</a></li>
+<li><a href="#8-3-%E5%90%91%E9%87%8F%E7%9A%84%E7%BB%BC%E5%90%88%E6%80%A7%E8%B4%A8%E5%92%8C%E8%BF%90%E7%AE%97">8-3 向量的综合性质和运算</a></li>
+<li><a href="#8-4-%E6%95%B0%E9%87%8F%E7%A7%AF-%E5%90%91%E9%87%8F%E7%A7%AF">8-4 数量积、向量积</a></li>
+<li><a href="#8-5-%E5%B9%B3%E9%9D%A2%E5%8F%8A%E5%85%B6%E6%96%B9%E7%A8%8B">8-5 平面及其方程</a></li>
+<li><a href="#8-6-%E7%A9%BA%E9%97%B4%E7%9B%B4%E7%BA%BF%E5%8F%8A%E5%85%B6%E6%96%B9%E7%A8%8B">8-6 空间直线及其方程</a></li>
+</ul>
+</li>
 </ul>
 <!-- tocstop -->
 
 <p>[TOC]</p>
-<h3><span id="一-循环队列队列的顺序存储">一、循环队列（队列的顺序存储）</span></h3><p>如果用户的应用程序中设有循环队列，就必须为它设定一个最大队列长度。</p>
-<h4><span id="1定义">1.定义</span></h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#define MAXQSIZE 100 //队列可能达到的长度</span><br><span class="line"></span><br><span class="line">typedef struct&#123;</span><br><span class="line"></span><br><span class="line">int *base; //存储空间的基地址</span><br><span class="line"></span><br><span class="line">int front; //头指针，若队列不空，指向队列头元素（实位）</span><br><span class="line"></span><br><span class="line">int rear; //尾指针，若队列不空，指向队列尾元素的下一个位置（虚位）</span><br><span class="line"></span><br><span class="line">&#125;SqQueue;</span><br><span class="line"></span><br><span class="line">SqQueue Q;</span><br></pre></td></tr></table></figure>
+<h2><span id="8-向量代数与空间解析几何">8 - 向量代数与空间解析几何</span></h2><h3><span id="8-1-向量及其线性运算">8-1 向量及其线性运算</span></h3><p>1.由三角形两边之和大于第三边，有：|<strong>a</strong> + <strong>b</strong>|&lt;&#x3D;|<strong>a</strong>|+|<strong>b</strong>|; |<strong>a</strong> - <strong>b</strong>|&lt;&#x3D;|<strong>a</strong>|+|<strong>b</strong>|</p>
+<p>2.数乘：|λ<strong>a</strong>| &#x3D; |λ||<strong>a</strong>|</p>
+<p>3.单位向量<strong>e</strong>&#x3D;<strong>a</strong>&#x2F;|<strong>a</strong>|</p>
+<p>4.<strong>a</strong>&#x2F;&#x2F;<strong>b</strong>等价于<strong>b</strong>&#x3D;λ<strong>a</strong>（<strong>a</strong>!&#x3D;0）</p>
+<h3><span id="8-2-空间直角坐标系">8-2 空间直角坐标系</span></h3><img src="/2024/03/25/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E4%B8%8B%E7%AC%94%E8%AE%B0/be8b438d8dab4f26425537c8e52ffa4.png" alt="be8b438d8dab4f26425537c8e52ffa4" style="zoom:80%;">
 
-<h5><span id="顺序队列非循环队列">顺序队列——非循环队列</span></h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">初始化队列：Q.front=Q.rear=0;</span><br><span class="line"></span><br><span class="line">入队：新元素按 rear 指示位置加入，再将队尾指针加一，即</span><br><span class="line">Q.base[Q.rear] = e;</span><br><span class="line">Q.rear = Q.rear+1;</span><br><span class="line"></span><br><span class="line">出队：将front指示的元素取出，再将队头指针加一，即 </span><br><span class="line">e=Q.base[O.front];</span><br><span class="line">Q.front= Q.front+ 1;</span><br><span class="line"></span><br><span class="line">队空：Q.front==Q.rear;</span><br><span class="line"></span><br><span class="line">队满：Q.rear-Q.front==MAXQSIZE;</span><br><span class="line"></span><br><span class="line">求队长：Q.rear-Q.front;</span><br></pre></td></tr></table></figure>
+<img src="/2024/03/25/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E4%B8%8B%E7%AC%94%E8%AE%B0/ed720f4486e49cb4f94f47c876630bf.png" alt="ed720f4486e49cb4f94f47c876630bf" style="zoom:80%;">
 
-<p>存在“假上溢”的现象：<u>因数组越界而导致的程序非法操作错误，并且此时队列的实际可用空间并未占满。</u></p>
-<h5><span id="循环队列">循环队列</span></h5><p>防假上溢：少用一个元素空间，即队列空间大小为m时，有m-1个元素就认为是队满。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">队列初始化： Q.front = Q.rear =0;</span><br><span class="line"></span><br><span class="line">队空：Q.front == Q.rear;</span><br><span class="line"></span><br><span class="line">队满：(Q.rear + 1)%MAXQSIZE ==Q.front;</span><br><span class="line"></span><br><span class="line">入队：（1）队列不满，新元素e插入Q.rear所指的位置</span><br><span class="line">      Q.base[Q.rear] = e;</span><br><span class="line">      （2）Q.rear = (Q.rear+1)%MAXQSIZE;</span><br><span class="line">出队：（1）队列不空，删除Q.front所指的元素</span><br><span class="line">      e = Q.base[Q.front];</span><br><span class="line">     （2）Q.front = (Q.front+1)%MAXQSIZE;</span><br><span class="line">求队长：</span><br><span class="line">(Q.rear - Q.front + MAXQSIZE)%MAXQSIZE;</span><br></pre></td></tr></table></figure>
+<p>向量OF（x，y，z）是点O关于点F的向径，<u>求点F的坐标就是求向量OP的坐标</u></p>
+<p>①若点F在yoz面上，x&#x3D;0；</p>
+<p>②点F在zox面上，y&#x3D;0；点F在xoy面上，z&#x3D;0；</p>
+<p>③点F在x轴上，y&#x3D;z&#x3D;0；</p>
+<p>④点F在y轴上，z&#x3D;x&#x3D;0；点F在z轴上，x&#x3D;y&#x3D;0；</p>
+<p>⑤点F为原点，x&#x3D;y&#x3D;z&#x3D;0。</p>
+<h3><span id="8-3-向量的综合性质和运算">8-3 向量的综合性质和运算</span></h3><img src="/2024/03/25/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E4%B8%8B%E7%AC%94%E8%AE%B0/微信截图_20240326011004.png" alt="微信截图_20240326011004" style="zoom:80%;">
 
-<h4><span id="2初始化">2.初始化</span></h4><ul>
-<li>分配一个最大容量为MAXQSIZE的存储空间Q.base &#x3D; new int[]</li>
-<li>判断分配失败</li>
-<li>否则将头指针和尾指针置为0，表示队列为空</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int InitQueue(SqQueue &amp;Q)&#123;</span><br><span class="line">//构造一个空队列</span><br><span class="line"></span><br><span class="line">Q.base = new int[MAXQSIZE]; //分配存储空间</span><br><span class="line"></span><br><span class="line">if(!Q.base) return -1; //分配失败</span><br><span class="line"></span><br><span class="line">Q.front = Q.rear=0; //头指针、尾指针置为0，表示队列为空</span><br><span class="line"></span><br><span class="line">return 1;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4><span id="题型"><strong>题型：</strong></span></h4><h5><span id="1向量模的坐标表达式">1.向量模的坐标表达式</span></h5><h5><span id="2两点距离公式">2.两点距离公式：</span></h5><p>求证三角形的类型（等腰、直角、等边）</p>
+<p>求已知向量的定向单位向量</p>
+<p>求与某几点等距离的点</p>
+<h5><span id="3方向角与方向余弦">3.方向角与方向余弦：</span></h5><p>已知角度求点的坐标</p>
+<p>已知向量求方向角、余弦和模</p>
+<h5><span id="4投影">4.投影</span></h5><p>已知向量求向量在某轴上的投影</p>
+<p>已知投影求向量</p>
+<h3><span id="8-4-数量积-向量积">8-4 数量积、向量积</span></h3><img src="/2024/03/25/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E4%B8%8B%E7%AC%94%E8%AE%B0/微信截图_20240326013200.png" alt="微信截图_20240326013200" style="zoom:80%;">
 
-<h4><span id="3入队">3.入队</span></h4><ul>
-<li>判断队满</li>
-<li>否则将新元素插入队尾</li>
-<li>队尾指针+1</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int EnQueue(SqQueue &amp;Q,int e)&#123;</span><br><span class="line">//插入元素e为Q的新队尾元素</span><br><span class="line"></span><br><span class="line">if((Q.rear+1)%MAXQSIZE==Q.front)</span><br><span class="line">//尾指针在循环意义上+1后等于头指针，表示队满</span><br><span class="line"></span><br><span class="line">return -1;</span><br><span class="line"></span><br><span class="line">Q.base[Q.rear] = e; //新元素插入队尾</span><br><span class="line"></span><br><span class="line">Q.rear = (Q.rear+1)%MAXQSIZE; //队尾指针+1</span><br><span class="line"></span><br><span class="line">return 1;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4><span id="题型"><strong>题型</strong>：</span></h4><p>1.用数量积公式求夹角、投影</p>
+<p>2.用向量积求三角形面积（用到正弦）</p>
+<p>3.用数量积、向量积定义证垂直或平行</p>
+<p>4.（多用）用向量积求平面方程</p>
+<h3><span id="8-5-平面及其方程">8-5 平面及其方程</span></h3><h4><span id="1平面的点法式方程">1.平面的点法式方程</span></h4><p><strong>A（x-x₀）+B（y-y₀）+C（z-z₀）&#x3D;0</strong></p>
+<p>其中<strong>n</strong>&#x3D;（A,B,C），M₀&#x3D;（x₀，y₀，z₀）</p>
+<h4><span id="2平面的一般方程">2.平面的一般方程</span></h4><p><strong>Ax0 + By0 + Cz0 +D&#x3D;0</strong></p>
+<p><strong>n</strong>&#x3D;（A,B,C）</p>
+<p>①<strong>D&#x3D;0</strong>时，方程表示一个通过<strong>原点</strong>的平面</p>
+<p>②<strong>A&#x3D;0</strong>时，<strong>n</strong>垂直于x轴，方程表示一个平行于（或包含）<strong>x轴</strong>的平面；<strong>B&#x3D;0，C&#x3D;0</strong>同理</p>
+<p>③<strong>A&#x3D;B&#x3D;0</strong>，<strong>n</strong>同时垂直x轴和y轴，方程表示一个平行于（或重合）<strong>x0y面</strong>的平面；<strong>A&#x3D;C&#x3D;0,B&#x3D;C&#x3D;0</strong>同理</p>
+<h4><span id="3平面的截距式方程">3.平面的截距式方程</span></h4><p><strong>x&#x2F;a + y&#x2F;b + z&#x2F;c &#x3D; 1</strong></p>
+<p>a、b、c分别是平面在xyz轴上的截距</p>
+<h4><span id="4两平面夹角-点到平面距离">4.两平面夹角、点到平面距离</span></h4><p><strong>两平面互相垂直</strong>相当于<strong>A₁A₂ + B₁B₂ + C₁C₂ &#x3D; 0</strong></p>
+<p><strong>两平面互相平行或重合</strong>相当于<strong>A₁&#x2F;A₂ &#x3D; B₁&#x2F;B₂ &#x3D; C₁&#x2F;C₂</strong></p>
+<img src="/2024/03/25/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E4%B8%8B%E7%AC%94%E8%AE%B0/微信截图_20240326015143.png" alt="微信截图_20240326015143" style="zoom:80%;">
 
-<h4><span id="4出队">4.出队</span></h4><ul>
-<li>判断队空</li>
-<li>否则保存队头元素</li>
-<li>队头指针+1</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int DeQueue(SqQueue &amp;Q,int &amp;e)&#123;</span><br><span class="line">//删除Q的队头元素，用e返回其值</span><br><span class="line"></span><br><span class="line">if(Q.front == Q.rear) return -1;//队空</span><br><span class="line"></span><br><span class="line">e = Q.base[Q.front]; //保存队头元素</span><br><span class="line"></span><br><span class="line">Q.front = (Q.front + 1 )%MAXQSIZE； //队头指针+1</span><br><span class="line"></span><br><span class="line">return 1;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4><span id="5取队头元素">5.取队头元素</span></h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int GetHead(SqQueue Q)&#123;</span><br><span class="line">//返回Q的队头元素，不修改队头指针</span><br><span class="line"></span><br><span class="line">if(Q.front!=Q.rear) //非空</span><br><span class="line"></span><br><span class="line">return Q.base[Q.front];//返回队头</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
+<h3><span id="8-6-空间直线及其方程">8-6 空间直线及其方程</span></h3><h4><span id="1直线的点向式方程对称式方程">1.直线的点向式方程（对称式方程）</span></h4><p>其中，<strong>s</strong>&#x3D;(m,n,p)，M₀&#x3D;(x₀,y₀,z₀)</p>
+<p>要素：①方向向量 ②点</p>
+<h4><span id="2直线的参数方程">2.直线的参数方程</span></h4><h4><span id="3直线的一般方程">3.直线的一般方程</span></h4><p>表现为两个平面的交线</p>
+<h4><span id="4线面角">4.线面角</span></h4><p>范围是【0，90°】</p>
+<img src="/2024/03/25/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E4%B8%8B%E7%AC%94%E8%AE%B0/微信截图_20240326015259.png" alt="微信截图_20240326015259" style="zoom:80%;">
 
-<h3><span id="二-链栈">二、链栈</span></h3><p>采用链式存储结构实现的队列称为<strong>链队列</strong>。</p>
-<p>为了使操作更加方便，将队头指针指向链队列的头结点，而队尾指针指向终端结点。 </p>
-<p><strong>空队列时，front和rear都指向头结点，即front&#x3D;&#x3D;rear</strong></p>
-<h4><span id="1定义">1.定义</span></h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">typedef struct QNode&#123;</span><br><span class="line">int data;</span><br><span class="line">struct QNode *next;</span><br><span class="line">&#125;QNode,*QueuePtr;</span><br><span class="line"></span><br><span class="line">typedef struct &#123;</span><br><span class="line">QueuePtr front; //队头指针</span><br><span class="line">QueuePtr rear; //队尾指针</span><br><span class="line">&#125;LinkQueue;</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2024/05/26/%E9%98%9F%E5%88%97%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E6%93%8D%E4%BD%9C%E5%AE%9E%E7%8E%B0/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526020235.png" alt="微信截图_20240526020235"></p>
-<h4><span id="2初始化">2.初始化</span></h4><p>构造一个只有一个头结点的空队。</p>
-<ul>
-<li>生成新结点作为头结点，队头和队尾指针指向此结点</li>
-<li>头结点的指针域置空</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int InitQueue(LinkQueue &amp;Q)&#123;</span><br><span class="line"></span><br><span class="line">//构造一个空队列Q</span><br><span class="line"></span><br><span class="line">Q.front = Q.rear =new QNode;  //生成新结点作为头结点，队头和队尾指针指向此结点</span><br><span class="line"></span><br><span class="line">Q.front-&gt;next = NULL; //头结点的指针域置空</span><br><span class="line"></span><br><span class="line">return 1;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4><span id="3入队">3.入队</span></h4><p><strong>链队在入队前不需要判断队满，需要为入队元素分配结点空间。</strong></p>
-<ul>
-<li>为入队元素分配结点空间，用指针p指向</li>
-<li>将新结点数据域置为e</li>
-<li>将新结点插入到队尾</li>
-<li>修改队尾指针为p</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int EnQueue(LinkQueue &amp;Q,int e)&#123;</span><br><span class="line">//插入元素e为Q的新队尾元素</span><br><span class="line"></span><br><span class="line">p = new QNode; //分配新结点</span><br><span class="line"></span><br><span class="line">p-&gt;data = e; //把p的数据域置为e</span><br><span class="line"></span><br><span class="line">p-&gt;next = NULL; Q.rear-&gt;next = p;//把新结点插到队尾</span><br><span class="line"></span><br><span class="line">Q.rear = p; //修改队尾指针</span><br><span class="line"></span><br><span class="line">return 1;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4><span id="4出队">4.出队</span></h4><p><strong>链队在出队前需要判断队列是否为空，不同的是，链队在出队后需要放出队头元素的所占空间。</strong></p>
-<ul>
-<li>判断队空</li>
-<li>否则临时保存队头元素的空间，等待释放</li>
-<li>修改头结点的指针域，指向下一个结点</li>
-<li>判断出队元素是否为最后一个元素，若是，则将队尾指针重新赋值，指向头结点</li>
-<li>释放原队头元素</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int DeQueue(LinkQueue &amp;Q,int &amp;e)&#123;</span><br><span class="line">//删除Q的队头元素，用e返回其值</span><br><span class="line"></span><br><span class="line">if(Q.front==Q.rear) retrun -1; //队空</span><br><span class="line"></span><br><span class="line">p = Q.front-&gt;next; //p指向队头元素</span><br><span class="line"></span><br><span class="line">e = p-&gt;data; //e保存队头元素的值</span><br><span class="line"></span><br><span class="line">Q.front-&gt;next = p-&gt;next;  //修改头结点的指针域</span><br><span class="line"></span><br><span class="line">if(Q.rear == p) Q.rear = Q.front; //最后一个元素被删，队尾指针指向头结点</span><br><span class="line"></span><br><span class="line">free(p); //释放原队头元素</span><br><span class="line"></span><br><span class="line">return 1;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>5.求队头元素</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int GetHead(LinkQueue Q)&#123;</span><br><span class="line">//返回Q的队头元素，不修改队头指针</span><br><span class="line"></span><br><span class="line">if(Q.front!=Q.rear)</span><br><span class="line"></span><br><span class="line">return Q.front-&gt;next-&gt;data;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<h4><span id="5线线角">5.线线角</span></h4><p>和面面角公式相同，用cos</p>
+<h4><span id="6性质">6.性质</span></h4><p><strong>两直线相互垂直（包括异面、相交）</strong>相当于 <strong>m₁m₂ + n₁n₂ + p₁p₂ &#x3D; 0</strong></p>
+<p><strong>两直线互相平行或重合</strong> 相当于 <strong>m₁&#x2F;m₂ &#x3D; n₁&#x2F;n₂ &#x3D; p₁&#x2F;p₂</strong></p>
+<p><strong>直线与平面平行或直线在平面上</strong> 相当于 <strong>Am + Bn + Cp &#x3D;0</strong></p>
 ]]></content>
       <tags>
-        <tag>数据结构笔记</tag>
+        <tag>高等数学</tag>
       </tags>
   </entry>
   <entry>
