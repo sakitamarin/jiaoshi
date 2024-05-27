@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="John Doe">
+
+
+
+
+
+
+
+<title>c++ map使用方法 | Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/menu.js"></script>
+    
+
+
+
+
+
+
+
+    <script src='https://unpkg.com/valine@1.4.16/dist/Valine.min.js'></script>
+
+
+
+
+  <!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.1.1"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            首页
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">主页</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">归档</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/categories/gallery/">画廊</a>
+              </li> 
+                   
+          
+          
+            <li class="menu-item search-btn">
+              <a href="#">Search</a>
+            </li>
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+                
+                    <span class="post-tag">
+                        <a href="/tags/STL/">
+                            STL
+                        </a>
+                    </span>    
+                           
+            
+        </div>
+        <div class="post-title">
+            
+            
+                c++ map使用方法
+            
+            
+        </div>
+        <span class="post-date">
+            May 27, 2024
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <p>在浏览器上搜了一下相关的博文，整理了一部分相对基础的内容，有点难懂的另一部分等以后遇到案例了再重新整理</p>
+<h2><span id="一-说明">一、说明</span></h2><h3><span id="1名词解释">1.名词解释</span></h3><ul>
+<li><p>map是STL的一个关联容器，它以&lt;key,value&gt;一对一的形式存储，且map的内部自建一个红黑树，使得其可以自动排序(在map内部一切都是有序的)</p>
+</li>
+<li><p>key可以时任意的数据类型，比如int,char，包括用户自定义数据类型</p>
+</li>
+<li><p>value是该key对应的存储的值</p>
+</li>
+</ul>
+<p><img src="/2024/05/27/c-map%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/8697326-1c3bfc38aacd4611.webp" alt="8697326-1c3bfc38aacd4611"></p>
+<h3><span id="2定义">2.定义</span></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">map&lt;typename1, typename2&gt; mp;</span><br><span class="line">//例子</span><br><span class="line">map&lt;int string&gt; mis;</span><br><span class="line">map&lt;string, string&gt;mss;</span><br><span class="line">map&lt;float,int&gt; mfi;</span><br><span class="line">map&lt;double,long&gt; mdl;</span><br><span class="line">map&lt;person, int&gt;mpi;//创建一个key为person型、value为int类型的map对象</span><br><span class="line">map&lt;string, int&gt; mp;</span><br></pre></td></tr></table></figure>
+
+<p>注：如果是字符串到整型的映射，必须使用<strong>string</strong>而不能使用char数组。</p>
+<h3><span id="3元素的访问">3.元素的访问</span></h3><h4><span id="1通过下标访问">（1）通过下标访问</span></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;map&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">map&lt;char, int&gt; mp;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    mp[&#x27;a&#x27;]=1;</span><br><span class="line">    mp[&#x27;c&#x27;]=2;    </span><br><span class="line">    cout&lt;&lt;mp[&#x27;c&#x27;];</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">返回：2</span><br></pre></td></tr></table></figure>
+
+<h4><span id="2通过迭代器访问">（2）通过迭代器访问</span></h4><p>定义迭代器：</p>
+<p>map&lt;typename1, typename2&gt;::iterator it;</p>
+<p>map可以使用it-&gt;first来访问键，使用it-&gt;second来访问值。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;map&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">map&lt;char, int&gt; mp;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    mp[&#x27;a&#x27;]=1;</span><br><span class="line">    mp[&#x27;c&#x27;]=2;    </span><br><span class="line">    mp[&#x27;b&#x27;]=3;</span><br><span class="line">    for(map&lt;char, int&gt;::iterator it=mp.begin();it!=mp.end();it++)&#123;</span><br><span class="line">        cout&lt;&lt;it-&gt;first&lt;&lt;&quot; &quot;&lt;&lt;it-&gt;second&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line">返回：</span><br><span class="line">a 1</span><br><span class="line">b 3</span><br><span class="line">c 2</span><br></pre></td></tr></table></figure>
+
+<p><strong>map会以键从小到大的顺序自动排序</strong>，这种方法可以用于遍历</p>
+<h2><span id="二-常用函数">二、常用函数</span></h2><h3><span id="1find">1.find()</span></h3><p>find（key）返回键值为key的映射的迭代器，时间复杂度为O（logN），N为map中映射的个数。</p>
+<p>如果find()找不到，将返回NULL</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line"> #include &lt;map&gt;</span><br><span class="line"> using namespace std;</span><br><span class="line"> map&lt;char, int&gt; mp;</span><br><span class="line"> int main()</span><br><span class="line"> &#123;</span><br><span class="line">     mp[&#x27;a&#x27;]=1;</span><br><span class="line">     mp[&#x27;c&#x27;]=2;    </span><br><span class="line">     mp[&#x27;b&#x27;]=3;</span><br><span class="line">     map&lt;char, int&gt;::iterator it=mp.find(&#x27;c&#x27;);</span><br><span class="line">     cout&lt;&lt;it-&gt;first&lt;&lt;&quot; &quot;&lt;&lt;it-&gt;second;</span><br><span class="line">     return 0;</span><br><span class="line"> &#125;</span><br><span class="line">输出结果：</span><br><span class="line">c 2</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">当map的第一个元素是int类型时候，可以这样操作</span><br><span class="line"></span><br><span class="line">map&lt;int, int&gt;mp1;</span><br><span class="line">int sum = 100;</span><br><span class="line">sum += mp1[10];//mp1中不存在关键字10，所以mp1返回的值为0，sum累加后是100</span><br><span class="line"></span><br><span class="line">map&lt;int,int&gt; mp2;</span><br><span class="line">mp2[20]++;//因关键字20不存在，增加一个关键字20，其值从0自增到1， 效果相当于mp2增加一个元素&lt;20,1&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3><span id="2erase">2.erase()</span></h3><p>erase()可以删除单个元素，也可以删除一个区间的所有元素。</p>
+<h4><span id="1删除单个元素">（1）删除单个元素</span></h4><p>mp.erase(it)，it为需要删除的元素的迭代器，时间复杂度为O(1)。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"> #include &lt;iostream&gt;</span><br><span class="line"> #include &lt;map&gt;</span><br><span class="line"> using namespace std;</span><br><span class="line"> map&lt;char, int&gt; mp;</span><br><span class="line"> int main()</span><br><span class="line"> &#123;</span><br><span class="line">     mp[&#x27;a&#x27;]=1;</span><br><span class="line">     mp[&#x27;c&#x27;]=2;    </span><br><span class="line">     mp[&#x27;b&#x27;]=3;</span><br><span class="line">     map&lt;char, int&gt;::iterator it=mp.find(&#x27;c&#x27;);</span><br><span class="line">     mp.erase(it);</span><br><span class="line">     for(map&lt;char, int&gt;::iterator it=mp.begin();it!=mp.end();it++)&#123;</span><br><span class="line">             cout&lt;&lt;it-&gt;first&lt;&lt;&quot; &quot;&lt;&lt;it-&gt;second&lt;&lt;endl;</span><br><span class="line">     &#125;</span><br><span class="line">     return 0;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line">输出结果：</span><br><span class="line">a 1</span><br><span class="line"></span><br><span class="line">b 3</span><br></pre></td></tr></table></figure>
+
+<p>mp.erase(key)，key为欲删除的映射的键。时间复杂度为O(logN)，N为map内元素的个数。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"> #include &lt;iostream&gt;</span><br><span class="line"> #include &lt;map&gt;</span><br><span class="line"> using namespace std;</span><br><span class="line"> map&lt;char, int&gt; mp;</span><br><span class="line"> int main()</span><br><span class="line"> &#123;</span><br><span class="line">     mp[&#x27;a&#x27;]=1;</span><br><span class="line">     mp[&#x27;c&#x27;]=2;    </span><br><span class="line">     mp[&#x27;b&#x27;]=3;</span><br><span class="line">     mp.erase(&#x27;c&#x27;);</span><br><span class="line">     for(map&lt;char, int&gt;::iterator it=mp.begin();it!=mp.end();it++)&#123;</span><br><span class="line">             cout&lt;&lt;it-&gt;first&lt;&lt;&quot; &quot;&lt;&lt;it-&gt;second&lt;&lt;endl;</span><br><span class="line">     &#125;</span><br><span class="line">     return 0;</span><br><span class="line"> &#125;</span><br><span class="line">输出结果：</span><br><span class="line">a 1</span><br><span class="line"></span><br><span class="line">b 3</span><br></pre></td></tr></table></figure>
+
+<h4><span id="2删除一个区间内的所有元素">（2）删除一个区间内的所有元素</span></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line"> #include &lt;map&gt;</span><br><span class="line"> using namespace std;</span><br><span class="line"> map&lt;char, int&gt; mp;</span><br><span class="line"> int main()</span><br><span class="line"> &#123;</span><br><span class="line">     mp[&#x27;a&#x27;]=1;</span><br><span class="line">     mp[&#x27;c&#x27;]=2;    </span><br><span class="line">     mp[&#x27;b&#x27;]=3;</span><br><span class="line">     map&lt;char, int&gt;::iterator it=mp.find(&#x27;c&#x27;);    //令it指向键为c的值 </span><br><span class="line">     mp.erase(it, mp.end());    //删除it之后的所有映射 </span><br><span class="line">     for(map&lt;char, int&gt;::iterator it=mp.begin();it!=mp.end();it++)&#123;</span><br><span class="line">             cout&lt;&lt;it-&gt;first&lt;&lt;&quot; &quot;&lt;&lt;it-&gt;second&lt;&lt;endl;</span><br><span class="line">     &#125;</span><br><span class="line">     return 0;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line">输出结果：</span><br><span class="line">a 1</span><br><span class="line"></span><br><span class="line">b 3　</span><br></pre></td></tr></table></figure>
+
+<h3><span id="3size">3.size()</span></h3><p>size()用来获得map中映射的对数，时间复杂度为O(1)。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"> #include &lt;iostream&gt;</span><br><span class="line"> #include &lt;map&gt;</span><br><span class="line"> using namespace std;</span><br><span class="line"> map&lt;char, int&gt; mp;</span><br><span class="line"> int main()</span><br><span class="line"> &#123;</span><br><span class="line">     mp[&#x27;a&#x27;]=1;</span><br><span class="line">     mp[&#x27;c&#x27;]=2;    </span><br><span class="line">     mp[&#x27;b&#x27;]=3;</span><br><span class="line">     cout&lt;&lt;mp.size();</span><br><span class="line">     return 0;</span><br><span class="line"> &#125;</span><br><span class="line">输出结果：</span><br><span class="line">3</span><br></pre></td></tr></table></figure>
+
+<h3><span id="4clear">4.clear()</span></h3><p>clear()用来清除map中的所有元素，时间复杂度为O(N)。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"> #include &lt;iostream&gt;</span><br><span class="line"> #include &lt;map&gt;</span><br><span class="line"> using namespace std;</span><br><span class="line"> map&lt;char, int&gt; mp;</span><br><span class="line"> int main()</span><br><span class="line"> &#123;</span><br><span class="line">     mp[&#x27;a&#x27;]=1;</span><br><span class="line">     mp[&#x27;c&#x27;]=2;    </span><br><span class="line">     mp[&#x27;b&#x27;]=3;</span><br><span class="line">     mp.clear();    //清空map </span><br><span class="line">     cout&lt;&lt;mp.size();</span><br><span class="line">     return 0;</span><br><span class="line"> &#125;</span><br><span class="line">输出结果：</span><br><span class="line">0</span><br></pre></td></tr></table></figure>
+
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+                <div class="icon arrow-left"></div>
+                <div class="post-link">
+                    <a href="/2024/05/27/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AF%BE%E8%AE%BE%E6%8A%A5%E5%91%8A%E2%80%94%E2%80%94%E7%94%A8%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97%E5%81%9A%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%B1%82%E5%80%BC/">Prev</a>
+                </div>
+            
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+    
+        <div id="vcomments"></div>
+        <script>
+            var META = ['nick', 'mail', 'link'];
+            var meta = 'nick,mail';
+            meta = meta.split(',').filter(item => {
+                return META.includes(item);
+            });
+            new Valine({
+                el: '#vcomments',
+                appId: 'f131VXTFNbI57QRvg5lJFtbq-MdYXbMMI',
+                appKey: 'd1GENolYcYpRMO2FbRRbarov',
+                lang: 'zh-CN',
+                placeholder: 'Say something',
+                avatar: 'mp',
+                meta: meta
+            })
+        </script>    
+     
+
+     
+    
+    
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    
+      <div class="search-popup">
+    <div class="search-popup-overlay">  
+    </div>
+    <div class="search-popup-window" >
+        <div class="search-header">
+            <div class="search-input-container">
+              <input autocomplete="off" autocapitalize="off" maxlength="80"
+                     placeholder="Search Anything" spellcheck="false"
+                     type="search" class="search-input">
+            </div>
+            <div class="search-close-btn">
+                <div class="icon close-btn"></div>
+            </div>
+        </div>
+        <div class="search-result-container">
+        </div>
+    </div>
+</div>
+
+<script>
+    const searchConfig = {
+        path             : "/search.xml",
+        top_n_per_article: "1",
+        unescape         : "false",
+        trigger: "auto",
+        preload: "false"
+    }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js"></script>
+<script src="/js/search.js"></script>
+    
+    
+
+  </body>
+</html>
