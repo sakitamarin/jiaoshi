@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="John Doe">
+
+
+
+
+
+
+
+<title>【python】数据采集的基本知识 | Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/menu.js"></script>
+    
+
+
+
+
+
+
+
+    <script src='https://unpkg.com/valine@1.4.16/dist/Valine.min.js'></script>
+
+
+
+
+  <!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.1.1"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            首页
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">主页</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">归档</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/categories/gallery/">画廊</a>
+              </li> 
+                   
+          
+          
+            <li class="menu-item search-btn">
+              <a href="#">Search</a>
+            </li>
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+                
+                    <span class="post-tag">
+                        <a href="/tags/python/">
+                            python
+                        </a>
+                    </span>    
+                           
+            
+        </div>
+        <div class="post-title">
+            
+            
+                【python】数据采集的基本知识
+            
+            
+        </div>
+        <span class="post-date">
+            May 29, 2024
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <p>记录了在书上看到的一些方法，大体有用，不过代码本身有点老</p>
+<!-- toc -->
+
+<ul>
+<li><a href="#%E4%BD%BF%E7%94%A8request%E5%BA%93%E8%AF%B7%E6%B1%82%E7%BD%91%E7%AB%99">使用request库请求网站</a><ul>
+<li><a href="#%E4%B8%80-%E7%88%AC%E8%99%AB%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86">一、爬虫的基本原理</a></li>
+<li><a href="#%E4%BA%8C-%E4%BD%BF%E7%94%A8get%E6%96%B9%E5%BC%8F%E6%8A%93%E5%8F%96%E6%95%B0%E6%8D%AE">二、使用GET方式抓取数据</a></li>
+<li><a href="#%E4%B8%89-%E4%BD%BF%E7%94%A8post%E6%96%B9%E5%BC%8F%E6%8A%93%E5%8F%96%E6%95%B0%E6%8D%AE">三、使用POST方式抓取数据</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BD%BF%E7%94%A8beautiful-soup%E8%A7%A3%E6%9E%90%E7%BD%91%E9%A1%B5">使用Beautiful Soup解析网页</a></li>
+</ul>
+<!-- tocstop -->
+
+<p>[TOC]</p>
+<h2><span id="使用request库请求网站">使用request库请求网站</span></h2><h3><span id="一-爬虫的基本原理">一、爬虫的基本原理</span></h3><h4><span id="1网页请求的过程">1.网页请求的过程</span></h4><p>（1）Request（请求）</p>
+<p>（2）Response（相应）</p>
+<h4><span id="2网页请求的方式">2.网页请求的方式</span></h4><p>（1）GET：参数设置在URL中，是大多数网站的使用方式，只需一次发送和返回，响应速度快</p>
+<p>（2）POST：通过request body传递参数，相比GET，可发送请求的信息大</p>
+<h3><span id="二-使用get方式抓取数据">二、使用GET方式抓取数据</span></h3><p>复制任意一条首页首条新闻的标题，在源码页面按ctrl+F调出搜索框，将标题粘贴到搜索框，按回车。</p>
+<p>标题在源码可以被搜索到，请求对象是www.***.cn，请求方式是GET。</p>
+<p>确定好请求对象和方式后，输入代码。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import requests #导入reques包</span><br><span class="line">url=&#x27;https://www3.nhk.or.jp/news/&#x27; #这里选择的是NHK新闻网</span><br><span class="line">strhtml=requests.get(url) #GET方式，并把获取到的数据保存在strhtml变量</span><br><span class="line">print(strhtml.text)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2024/05/29/%E3%80%90python%E3%80%91%E6%95%B0%E6%8D%AE%E9%87%87%E9%9B%86%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240529161828.png" alt="微信截图_20240529161828"></p>
+<h3><span id="三-使用post方式抓取数据">三、使用POST方式抓取数据</span></h3><p>进入某翻译页面，按快捷键ctrl+shift+i进入开发者模式（F12也可以），在翻译页面输入文本并点击翻译。</p>
+<p>在开发者模式中点击“网络”→“XHR”，在“负载”中找到翻译数据，单击“标头”，发现请求数据的方式为POST。</p>
+<p>找到数据所在之处并且明确请求方式之后，接下来开始写代码。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">import json</span><br><span class="line">import requests</span><br><span class="line"></span><br><span class="line"># POST请求的目标URL</span><br><span class="line">def get_translate_date(word=None):</span><br><span class="line">    url = &quot;https://dict.youdao.com/webtranslate&quot;</span><br><span class="line">    Form_data = &#123;</span><br><span class="line">        &quot;type&quot;:&quot;AUTO&quot;,</span><br><span class="line">        &quot;i&quot;:&quot;i love python&quot;,</span><br><span class="line">        &quot;doctype&quot;:&quot;json&quot;,</span><br><span class="line">        &quot;xmlVersion&quot;:&quot;1.8&quot;,</span><br><span class="line">        &quot;keyfrom&quot;:&quot;fanyi.web&quot;,</span><br><span class="line">        &quot;ue&quot;:&quot;UTF-8&quot;,</span><br><span class="line">        &quot;action&quot;:&quot;FY_BY_ENTER&quot;,</span><br><span class="line">        &quot;typoResult&quot;:&quot;true&quot;</span><br><span class="line">&#125;</span><br><span class="line">    #使用requests.post请求表单数据</span><br><span class="line">    response = requests.post(url, data=Form_data)</span><br><span class="line">    #将字符串格式转换成json格式的数据，并提取打印</span><br><span class="line">    content = json.loads(response.text)</span><br><span class="line">    print(content[&#x27;translateResult&#x27;][0][0][&#x27;tgt&#x27;])</span><br><span class="line"></span><br><span class="line">get_translate_date(&#x27;好的&#x27;)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2><span id="使用beautiful-soup解析网页">使用Beautiful Soup解析网页</span></h2><p>抓取到源码后，下一步是提取数据。</p>
+<p>用选择器（select）定位数据：把鼠标光标移动到要定位的标题-右键-检查-复制selector</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#调用bs4库</span><br><span class="line">from bs4 import BeautifulSoup</span><br><span class="line"></span><br><span class="line">import requests</span><br><span class="line">url=(&#x27;https://www3.nhk.or.jp/shutoken-news/nhk_shutoken.xml?_=1716982796021&#x27;)</span><br><span class="line">strhtml=requests.get(url)</span><br><span class="line">print(strhtml.text)</span><br><span class="line"></span><br><span class="line">#使用lxml解析网页文档</span><br><span class="line">soup=BeautifulSoup(strhtml.text,&#x27;lxml&#x27;)</span><br><span class="line">data=soup.select(&#x27;#main &gt; article.module.module--news-main.index-main &gt; &#x27;</span><br><span class="line">                 &#x27;section &gt; div.content--header &gt; div &gt; h1 &gt; a &gt; em&#x27;)</span><br><span class="line">print(data)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2024/05/29/%E3%80%90python%E3%80%91%E6%95%B0%E6%8D%AE%E9%87%87%E9%9B%86%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240529195222.png" alt="微信截图_20240529195222"></p>
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+                <div class="icon arrow-left"></div>
+                <div class="post-link">
+                    <a href="/2024/05/31/%E4%B8%B2%E5%92%8C%E6%95%B0%E7%BB%84/">Prev</a>
+                </div>
+            
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2024/05/28/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%88%9B%E5%BB%BA%E5%92%8C%E9%81%8D%E5%8E%86/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+    
+        <div id="vcomments"></div>
+        <script>
+            var META = ['nick', 'mail', 'link'];
+            var meta = 'nick,mail';
+            meta = meta.split(',').filter(item => {
+                return META.includes(item);
+            });
+            new Valine({
+                el: '#vcomments',
+                appId: 'f131VXTFNbI57QRvg5lJFtbq-MdYXbMMI',
+                appKey: 'd1GENolYcYpRMO2FbRRbarov',
+                lang: 'zh-CN',
+                placeholder: 'Say something',
+                avatar: 'mp',
+                meta: meta
+            })
+        </script>    
+     
+
+     
+    
+    
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    
+      <div class="search-popup">
+    <div class="search-popup-overlay">  
+    </div>
+    <div class="search-popup-window" >
+        <div class="search-header">
+            <div class="search-input-container">
+              <input autocomplete="off" autocapitalize="off" maxlength="80"
+                     placeholder="Search Anything" spellcheck="false"
+                     type="search" class="search-input">
+            </div>
+            <div class="search-close-btn">
+                <div class="icon close-btn"></div>
+            </div>
+        </div>
+        <div class="search-result-container">
+        </div>
+    </div>
+</div>
+
+<script>
+    const searchConfig = {
+        path             : "/search.xml",
+        top_n_per_article: "1",
+        unescape         : "false",
+        trigger: "auto",
+        preload: "false"
+    }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js"></script>
+<script src="/js/search.js"></script>
+    
+    
+
+  </body>
+</html>

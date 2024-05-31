@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="John Doe">
+
+
+
+
+
+
+
+<title>数字逻辑电路基础 | Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/menu.js"></script>
+    
+
+
+
+
+
+
+
+    <script src='https://unpkg.com/valine@1.4.16/dist/Valine.min.js'></script>
+
+
+
+
+  <!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.1.1"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            首页
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">主页</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">归档</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/categories/gallery/">画廊</a>
+              </li> 
+                   
+          
+          
+            <li class="menu-item search-btn">
+              <a href="#">Search</a>
+            </li>
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+                
+                    <span class="post-tag">
+                        <a href="/tags/%E7%94%B5%E5%AD%90%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80/">
+                            电子电路基础
+                        </a>
+                    </span>    
+                           
+            
+        </div>
+        <div class="post-title">
+            
+            
+                数字逻辑电路基础
+            
+            
+        </div>
+        <span class="post-date">
+            Jun 1, 2024
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <!-- toc -->
+
+<ul>
+<li><a href="#%E4%B8%80-%E6%95%B0%E5%88%B6-%E7%BC%96%E7%A0%81%E4%B8%8E%E9%80%BB%E8%BE%91%E4%BB%A3%E6%95%B0">一、数制、编码与逻辑代数</a><ul>
+<li><a href="#1%E6%95%B0%E5%88%B6%E7%9A%84%E8%BD%AC%E5%8C%96">1.数制的转化</a></li>
+<li><a href="#2%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%95%B0%E7%9A%84%E7%BC%96%E7%A0%81">2.二进制数的编码</a></li>
+<li><a href="#3%E9%80%BB%E8%BE%91%E4%BB%A3%E6%95%B0%E7%9A%84%E5%9F%BA%E6%9C%AC%E9%80%BB%E8%BE%91">3.逻辑代数的基本逻辑</a></li>
+<li><a href="#4%E9%80%BB%E8%BE%91%E5%87%BD%E6%95%B0">4.逻辑函数</a></li>
+<li><a href="#5%E5%8D%A1%E8%AF%BA%E5%9B%BE">&#x3D;&#x3D;5.卡诺图&#x3D;&#x3D;</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BA%8C-%E9%9B%86%E6%88%90%E9%80%BB%E8%BE%91%E9%97%A8%E7%94%B5%E8%B7%AF">二、集成逻辑门电路</a><ul>
+<li><a href="#1%E6%99%B6%E4%BD%93%E4%BA%8C%E6%9E%81%E7%AE%A1%E7%9A%84%E5%BC%80%E5%85%B3%E7%89%B9%E6%80%A7">1.晶体二极管的开关特性</a></li>
+<li><a href="#2%E6%99%B6%E4%BD%93%E7%AE%A1%E7%9A%84%E5%BC%80%E5%85%B3%E7%89%B9%E6%80%A7">2.晶体管的开关特性</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+
+<p>[TOC]</p>
+<h2><span id="一-数制-编码与逻辑代数">一、数制、编码与逻辑代数</span></h2><h3><span id="1数制的转化">1.数制的转化</span></h3><p>B二进制，O八进制，D十进制，H十六进制</p>
+<h3><span id="2二进制数的编码">2.二进制数的编码</span></h3><h4><span id="代码"><strong>代码</strong></span></h4><p>数值和文字符号可以用多位二进制表示，前一类表示数值的大小，后一类表示不同的符号，这种多位二进制叫做代码。</p>
+<h4><span id="编码">编码</span></h4><p>按照一定的规则组合的代码，并赋予一定的含义。</p>
+<h4><span id="bcd码">BCD码</span></h4><p>把十进制的每一位用多位二进制来表示，将此称为二进制编码的十进制数码，简称BCD码。</p>
+<h4><span id="18421码">（1）8421码</span></h4><ul>
+<li>有权：(N)ᴰ &#x3D; 8a₃ +4a₂ +2a₁ + 1a₀</li>
+<li>有奇偶性：奇数的最低位为1.偶数的最低位为0</li>
+<li>例子：(92.35)ᴰ &#x3D; (1001 0010 . 0011 0101)8421</li>
+</ul>
+<h4><span id="22421码">（2）2421码</span></h4><ul>
+<li>各位的权值是2、4、2、1</li>
+<li>例子：(652.37)ᴰ &#x3D; (1100 1011 0010 . 0011 1101)2421</li>
+</ul>
+<h4><span id="3余3码">（3）余3码</span></h4><ul>
+<li>是由8421码加3（0011）得来的</li>
+<li>无权</li>
+</ul>
+<h4><span id="4字符编码">（4）字符编码</span></h4><p>字符编码就是对可显示、不可显示的字符或控制字符的编码，以便信息的交换、处理、存储和数据传输的格式控制。</p>
+<h3><span id="3逻辑代数的基本逻辑">3.逻辑代数的基本逻辑</span></h3><h4><span id="1与">（1）与</span></h4><ul>
+<li>符号</li>
+</ul>
+<p><img src="/2024/06/01/%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80/20190524142450218.png" alt="20190524142450218"></p>
+<ul>
+<li>表达式</li>
+</ul>
+<p><img src="/2024/06/01/%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80/20190524142516260.png" alt="20190524142516260"></p>
+<h4><span id="2或">（2）或<img src="/2024/06/01/%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80/20190524142634125.png" alt="20190524142634125"></span></h4><p><img src="/2024/06/01/%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80/20190524142538549.png" alt="20190524142538549"></p>
+<ul>
+<li>表达式：F&#x3D;A+B</li>
+</ul>
+<h4><span id="3非">（3）非</span></h4><p><img src="/2024/06/01/%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80/20190524142615458.png" alt="20190524142615458"></p>
+<p><img src="/2024/06/01/%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80/20190524142634125-1717175618792-6.png" alt="20190524142634125"></p>
+<h4><span id="4异或">（4）异或</span></h4><p><img src="/2024/06/01/%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80/20190524142702131.png" alt="20190524142702131"></p>
+<h4><span id="5同或">（5）同或</span></h4><p><img src="/2024/06/01/%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80/20190524142715410.png" alt="20190524142715410"></p>
+<h3><span id="4逻辑函数">4.逻辑函数</span></h3><p>函数表达式一般化简成 <strong>与-或式</strong> ，其最简应满足的两个条件：<br>1）表达式中“与”项的个数最少；<br>2）在满足1）的前提下，每个“与”项中的变量个数最少。</p>
+<h4><span id="1与或表达式积之和-或与表达式和之积">（1）与或表达式（积之和）、或与表达式（和之积）</span></h4><p><img src="/2024/06/01/%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240601012350.png" alt="微信截图_20240601012350"></p>
+<h4><span id="x3dx3d2常用公式x3dx3d">&#x3D;&#x3D;（2）常用公式&#x3D;&#x3D;</span></h4><p><img src="/2024/06/01/%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240601012515.png" alt="微信截图_20240601012515"></p>
+<h4><span id="3逻辑代数中的一些特殊规律">（3）逻辑代数中的一些特殊规律</span></h4><p><img src="/2024/06/01/%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240601012954.png" alt="微信截图_20240601012954"></p>
+<h3><span id="x3dx3d5卡诺图x3dx3d">&#x3D;&#x3D;5.卡诺图&#x3D;&#x3D;</span></h3><ul>
+<li>圈的个数必须是2的幂次</li>
+<li>“1”相邻对称</li>
+<li>至少有一个“1”是新的</li>
+<li>每个“1”至少圈一次</li>
+</ul>
+<p><img src="/2024/06/01/%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80/20200329101822678.png" alt="20200329101822678"></p>
+<h2><span id="二-集成逻辑门电路">二、集成逻辑门电路</span></h2><p>一个理想的开关元件应该具备：</p>
+<ul>
+<li><strong>在接通状态时，其接通电阻为0；</strong></li>
+<li><strong>在断开状态下，阻抗为无穷大，流过开关的电流为0；</strong></li>
+<li><strong>断开和接通之间的转换能在瞬间完成，即开关时间为0。</strong></li>
+</ul>
+<h3><span id="1晶体二极管的开关特性">1.晶体二极管的开关特性</span></h3><p>晶体二极管由PN结构成，具备<strong>单向导电特性</strong>。</p>
+<h3><span id="2晶体管的开关特性">2.晶体管的开关特性</span></h3><p><img src="/2024/06/01/%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E7%94%B5%E8%B7%AF%E5%9F%BA%E7%A1%80/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240601014239.png" alt="微信图片_20240601014239"></p>
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2024/05/31/%E4%B8%B2%E5%92%8C%E6%95%B0%E7%BB%84/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+    
+        <div id="vcomments"></div>
+        <script>
+            var META = ['nick', 'mail', 'link'];
+            var meta = 'nick,mail';
+            meta = meta.split(',').filter(item => {
+                return META.includes(item);
+            });
+            new Valine({
+                el: '#vcomments',
+                appId: 'f131VXTFNbI57QRvg5lJFtbq-MdYXbMMI',
+                appKey: 'd1GENolYcYpRMO2FbRRbarov',
+                lang: 'zh-CN',
+                placeholder: 'Say something',
+                avatar: 'mp',
+                meta: meta
+            })
+        </script>    
+     
+
+     
+    
+    
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    
+      <div class="search-popup">
+    <div class="search-popup-overlay">  
+    </div>
+    <div class="search-popup-window" >
+        <div class="search-header">
+            <div class="search-input-container">
+              <input autocomplete="off" autocapitalize="off" maxlength="80"
+                     placeholder="Search Anything" spellcheck="false"
+                     type="search" class="search-input">
+            </div>
+            <div class="search-close-btn">
+                <div class="icon close-btn"></div>
+            </div>
+        </div>
+        <div class="search-result-container">
+        </div>
+    </div>
+</div>
+
+<script>
+    const searchConfig = {
+        path             : "/search.xml",
+        top_n_per_article: "1",
+        unescape         : "false",
+        trigger: "auto",
+        preload: "false"
+    }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js"></script>
+<script src="/js/search.js"></script>
+    
+    
+
+  </body>
+</html>
