@@ -155,12 +155,20 @@
 <li><a href="#%E4%B8%89-%E4%BD%BF%E7%94%A8post%E6%96%B9%E5%BC%8F%E6%8A%93%E5%8F%96%E6%95%B0%E6%8D%AE">三、使用POST方式抓取数据</a></li>
 </ul>
 </li>
-<li><a href="#%E4%BD%BF%E7%94%A8beautiful-soup%E8%A7%A3%E6%9E%90%E7%BD%91%E9%A1%B5">使用Beautiful Soup解析网页</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8beautiful-soup%E8%A7%A3%E6%9E%90%E7%BD%91%E9%A1%B5">使用Beautiful Soup解析网页</a><ul>
+<li><a href="#1%E7%94%A8get%E6%8A%93%E5%8F%96%E6%95%B0%E6%8D%AE">1.用get抓取数据</a></li>
+<li><a href="#2%E6%8F%90%E5%8F%96%E6%95%B0%E6%8D%AE">2.提取数据</a></li>
+<li><a href="#3%E5%A4%84%E7%90%86%E7%BD%91%E9%A1%B5%E7%BC%96%E7%A0%81%E9%97%AE%E9%A2%98">3.处理网页编码问题</a></li>
+<li><a href="#4%E5%A4%84%E7%90%86%E7%BD%91%E7%BB%9C%E5%BC%82%E5%B8%B8">4.处理网络异常</a></li>
+<li><a href="#5%E7%BD%91%E9%A1%B5%E6%95%B0%E6%8D%AE%E6%8F%90%E5%8F%96%E6%8A%80%E5%B7%A7">5.网页数据提取技巧</a></li>
+<li><a href="#6%E6%95%B0%E6%8D%AE%E6%B8%85%E6%B4%97">6.数据清洗</a></li>
+</ul>
+</li>
 </ul>
 <!-- tocstop -->
 
 <p>[TOC]</p>
-<h2><span id="使用request库请求网站">使用request库请求网站</span></h2><h3><span id="一-爬虫的基本原理">一、爬虫的基本原理</span></h3><h4><span id="1网页请求的过程">1.网页请求的过程</span></h4><p>（1）Request（请求）</p>
+<h1><span id="使用request库请求网站">使用request库请求网站</span></h1><h3><span id="一-爬虫的基本原理">一、爬虫的基本原理</span></h3><h4><span id="1网页请求的过程">1.网页请求的过程</span></h4><p>（1）Request（请求）</p>
 <p>（2）Response（相应）</p>
 <h4><span id="2网页请求的方式">2.网页请求的方式</span></h4><p>（1）GET：参数设置在URL中，是大多数网站的使用方式，只需一次发送和返回，响应速度快</p>
 <p>（2）POST：通过request body传递参数，相比GET，可发送请求的信息大</p>
@@ -177,11 +185,55 @@
 
 
 
-<h2><span id="使用beautiful-soup解析网页">使用Beautiful Soup解析网页</span></h2><p>抓取到源码后，下一步是提取数据。</p>
-<p>用选择器（select）定位数据：把鼠标光标移动到要定位的标题-右键-检查-复制selector</p>
+<h1><span id="使用beautiful-soup解析网页">使用Beautiful Soup解析网页</span></h1><h3><span id="1用get抓取数据">1.用get抓取数据</span></h3><h3><span id="2提取数据">2.提取数据</span></h3><p>用选择器（select）定位数据：把鼠标光标移动到要定位的标题-右键-检查-复制selector</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#调用bs4库</span><br><span class="line">from bs4 import BeautifulSoup</span><br><span class="line"></span><br><span class="line">import requests</span><br><span class="line">url=(&#x27;https://www3.nhk.or.jp/shutoken-news/nhk_shutoken.xml?_=1716982796021&#x27;)</span><br><span class="line">strhtml=requests.get(url)</span><br><span class="line">print(strhtml.text)</span><br><span class="line"></span><br><span class="line">#使用lxml解析网页文档</span><br><span class="line">soup=BeautifulSoup(strhtml.text,&#x27;lxml&#x27;)</span><br><span class="line">data=soup.select(&#x27;#main &gt; article.module.module--news-main.index-main &gt; &#x27;</span><br><span class="line">                 &#x27;section &gt; div.content--header &gt; div &gt; h1 &gt; a &gt; em&#x27;)</span><br><span class="line">print(data)</span><br></pre></td></tr></table></figure>
 
 <p><img src="/2024/05/29/%E3%80%90python%E3%80%91%E6%95%B0%E6%8D%AE%E9%87%87%E9%9B%86%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240529195222.png" alt="微信截图_20240529195222"></p>
+<h3><span id="3处理网页编码问题">3.处理网页编码问题</span></h3><p>当爬取网页时，经常会遇到不同网页使用不同编码格式的情况。在处理网页编码问题时，我们可以使用 Requests 库的编码自动识别功能。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 处理网页编码问题</span><br><span class="line">response.encoding = response.apparent_encoding</span><br><span class="line">print(response.text)</span><br></pre></td></tr></table></figure>
+
+<h3><span id="4处理网络异常">4.处理网络异常</span></h3><p>在实际应用中，网络异常是常见的情况。为了保证爬虫的稳定性，应该对网络异常进行适当处理。我们可以使用 Try-Except 来捕获异常情况</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">try:</span><br><span class="line">    response = requests.get(url)</span><br><span class="line">    response.raise_for_status()</span><br><span class="line">except requests.exceptions.RequestException as e:</span><br><span class="line">    print(&quot;Error: %s&quot; % e)</span><br></pre></td></tr></table></figure>
+
+
+
+<h3><span id="5网页数据提取技巧">5.网页数据提取技巧</span></h3><h4><span id="1提取文本信息">（1）提取文本信息</span></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">from bs4 import BeautifulSoup</span><br><span class="line">import requests</span><br><span class="line"></span><br><span class="line">url = &#x27;https://example.com&#x27;</span><br><span class="line">response = requests.get(url)</span><br><span class="line">soup = BeautifulSoup(response.content, &#x27;html.parser&#x27;)</span><br><span class="line">text = soup.get_text()</span><br><span class="line">print(text)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4><span id="2提取图片信息">（2）提取图片信息</span></h4><p>将输出网页中所有图片的链接地址</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">from bs4 import BeautifulSoup</span><br><span class="line">import requests</span><br><span class="line"></span><br><span class="line">url = &#x27;https://example.com&#x27;</span><br><span class="line">response = requests.get(url)</span><br><span class="line">soup = BeautifulSoup(response.content, &#x27;html.parser&#x27;)</span><br><span class="line">images = soup.find_all(&#x27;img&#x27;)</span><br><span class="line">for img in images:</span><br><span class="line">    print(img[&#x27;src&#x27;])</span><br></pre></td></tr></table></figure>
+
+<h4><span id="3提取表格信息">（3）提取表格信息</span></h4><p>按行或按列提取表格数据中的内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">from bs4 import BeautifulSoup</span><br><span class="line">import requests</span><br><span class="line"></span><br><span class="line">url = &#x27;https://example.com&#x27;</span><br><span class="line">response = requests.get(url)</span><br><span class="line">soup = BeautifulSoup(response.content, &#x27;html.parser&#x27;)</span><br><span class="line">table = soup.find(&#x27;table&#x27;)</span><br><span class="line">rows = table.find_all(&#x27;tr&#x27;)</span><br><span class="line">for row in rows:</span><br><span class="line">    cells = row.find_all(&#x27;td&#x27;)</span><br><span class="line">    for cell in cells:</span><br><span class="line">        print(cell.text)</span><br></pre></td></tr></table></figure>
+
+<h4><span id="4将数据保存在文件">（4）将数据保存在文件</span></h4><p>将数据保存到名为 <code>data.txt</code> 的文本文件中</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">data = [&#x27;data1&#x27;, &#x27;data2&#x27;, &#x27;data3&#x27;]</span><br><span class="line"></span><br><span class="line">with open(&#x27;data.txt&#x27;, &#x27;w&#x27;) as file:</span><br><span class="line">    for item in data:</span><br><span class="line">        file.write(item + &#x27;\n&#x27;)</span><br></pre></td></tr></table></figure>
+
+<h4><span id="5将数据保存在数据库">（5）将数据保存在数据库</span></h4><p>数据存储到名为 <code>data.db</code> 的 SQLite 数据库表</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">import sqlite3</span><br><span class="line"></span><br><span class="line">conn = sqlite3.connect(&#x27;data.db&#x27;)</span><br><span class="line">cursor = conn.cursor()</span><br><span class="line"></span><br><span class="line">cursor.execute(&#x27;&#x27;&#x27;CREATE TABLE IF NOT EXISTS data_table (data text)&#x27;&#x27;&#x27;)</span><br><span class="line"></span><br><span class="line">data = [&#x27;data1&#x27;, &#x27;data2&#x27;, &#x27;data3&#x27;]</span><br><span class="line"></span><br><span class="line">for item in data:</span><br><span class="line">    cursor.execute(&quot;INSERT INTO data_table (data) VALUES (?)&quot;, (item,))</span><br><span class="line"></span><br><span class="line">conn.commit()</span><br><span class="line">conn.close()</span><br></pre></td></tr></table></figure>
+
+<h4><span id="6将数据保存在表格中">（6）将数据保存在表格中</span></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line"></span><br><span class="line">data = &#123;&#x27;A&#x27;: [1, 2, 3], &#x27;B&#x27;: [&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;]&#125;</span><br><span class="line">df = pd.DataFrame(data)</span><br><span class="line"></span><br><span class="line">df.to_excel(&#x27;data.xlsx&#x27;, index=False)</span><br></pre></td></tr></table></figure>
+
+
+
+<h3><span id="6数据清洗">6.数据清洗</span></h3><h4><span id="处理提取数据中的异常情况">处理提取数据中的异常情况</span></h4><p>在爬虫过程中，数据有可能存在缺失、重复或异常格式等问题，需要进行各种异常情况处理，以下是一些常见的数据异常情况处理方法：</p>
+<ul>
+<li>数据去重：使用集合或字典对数据进行去重处理。</li>
+<li>缺失值处理：填充缺失值、删除缺失值、插值填充等方法。</li>
+<li>异常值处理：判断异常值的范围或利用异常检测算法进行处理。</li>
+</ul>
+<h4><span id="数据清洗技巧">数据清洗技巧</span></h4><p>数据清洗是数据分析中至关重要的一环，有效的数据清洗可以提高数据质量和分析结果的准确性。以下是一些数据清洗的常用技巧：</p>
+<ul>
+<li>删除重复数据：通过唯一标识符或全部字段的对比删除重复数据。</li>
+<li>处理缺失值：填充缺失值、删除缺失值或使用聚合值填充方法。</li>
+<li>格式统一化：统一日期格式、字符串格式等，方便后续分析。</li>
+<li>异常值处理：判断异常值的来源及处理方式，避免对结果产生误导。</li>
+</ul>
+<h4><span id="使用正则表达式辅助数据清洗">使用正则表达式辅助数据清洗</span></h4><p>正则表达式在数据清洗中起到了关键的作用，它可以帮助我们快速匹配和提取符合规则的数据。以下是一些正则表达式在数据清洗中的应用场景：</p>
+<ul>
+<li>提取文本中的特定模式数据，如手机号码、邮箱地址等。</li>
+<li>对文本进行分割、替换和匹配，提取需要的信息。</li>
+<li>清洗特殊字符，去除无效信息或格式化数据。</li>
+</ul>
 
 </div> 
 
