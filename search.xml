@@ -73,6 +73,24 @@
       </tags>
   </entry>
   <entry>
+    <title>Hello World</title>
+    <url>/2024/03/11/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2><span id="quick-start">Quick Start</span></h2><h3><span id="create-a-new-post">Create a new post</span></h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3><span id="run-server">Run server</span></h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3><span id="generate-static-files">Generate static files</span></h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3><span id="deploy-to-remote-sites">Deploy to remote sites</span></h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
     <title>c++队列queue用法</title>
     <url>/2024/05/26/c-%E9%98%9F%E5%88%97queue%E7%94%A8%E6%B3%95/</url>
     <content><![CDATA[<!-- toc -->
@@ -125,24 +143,6 @@
       <tags>
         <tag>STL</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/2024/03/11/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2><span id="quick-start">Quick Start</span></h2><h3><span id="create-a-new-post">Create a new post</span></h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3><span id="run-server">Run server</span></h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3><span id="generate-static-files">Generate static files</span></h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3><span id="deploy-to-remote-sites">Deploy to remote sites</span></h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
   </entry>
   <entry>
     <title>stack容器基本知识</title>
@@ -252,6 +252,60 @@
       </tags>
   </entry>
   <entry>
+    <title>《图解密码技术》 读书笔记</title>
+    <url>/2024/04/17/%E3%80%8A%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF%E3%80%8B-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h2><span id="基础概念">基础概念</span></h2><h3><span id="1-1-基本名词解释">1-1 基本名词解释</span></h3><p>1.密钥（key）：加密和解密所需的媒介。</p>
+<p>2.对称密码：在加密和解密时使用同一密钥的解密方式。</p>
+<p>3.公钥密码：在加密和解密时使用不同密钥的解密方式。又叫非对称密码。</p>
+<p>4.混合密码系统：结合了对称密码和非对称密码的优势。</p>
+<p>5.单向散列函数：是一种保证完整性的密码技术。</p>
+<p>为了防止软件被篡改，一些发布者会在发布软件的同时发布该软件的散列值，下载该软件的人自行下载散列值，如果后者与前者的值相等，说明下载的软件是正版的。</p>
+<p>6.消息认证码：是一种能够保证完整性和提供认证的密码技术。</p>
+<p>为了确认消息是否来自所期望的通信对象，可以使用消息认证码。</p>
+<p>7.数字签名：</p>
+<p>（1）伪装：第三方伪造发送者的身份传达消息。</p>
+<p>（2）篡改：消息在传输的过程中遭到第三方修改。</p>
+<p>（3）否认：发送者在事后推翻自己先前的主张。</p>
+<p>防止伪装、篡改、否认等威胁的技术，就是数字签名。</p>
+<p>8.伪随机数生成器</p>
+<p>9.隐写术：密码隐藏的是内容，而隐写术隐藏的是消息本身</p>
+<h2><span id="历史密码">历史密码</span></h2><h3><span id="2-1凯撒密码">2-1凯撒密码</span></h3><h4><span id="1概念">1.概念</span></h4><p>通过将明文中所使用的字母表按照一定的字数”平移“来进行加密的密码。</p>
+<p>如A→F，B→G</p>
+<p>在此例中，密钥为5</p>
+<h4><span id="2解密">2.解密</span></h4><p>将所有可能的密钥全部尝试一遍，这种方法称为<strong>暴力破解</strong>。由于这种方法的本质是从所有的密钥中找出正确的密钥，因此又称为<strong>穷举搜索</strong>。</p>
+<h3><span id="2-2简单替换密码">2-2简单替换密码</span></h3><h4><span id="1概念">1.概念</span></h4><p>将明文中所使用的字母表替换为另一套字母表的密码。</p>
+<h4><span id="2加密">2.加密</span></h4><p>依次将明文中的每一个字母按照替换表替换成另一个字母。</p>
+<p>如A→B，B→Z</p>
+<h4><span id="3解密">3.解密</span></h4><p>简单替换密码很难通过暴力破解来破译。</p>
+<p>一种密码能够使用的所有密钥的集合称为密钥空间。</p>
+<p>密钥空间越大，暴力破解越困难。</p>
+<p>计算：n!(n是密码所用到的字符的种类)</p>
+<p><strong>频率分析法</strong></p>
+<p>①明文中的字母的出现频率&#x3D;密文中的字母的出现频率</p>
+<p>②除了高频字母以外，低频字母也能够成为线索</p>
+<p>③搞清开头和结尾能够成为线索，搞清单词之间的分隔也能成为线索</p>
+<p>④密文越长越容易破译</p>
+<p>⑤同一个字母连续出现能够成为线索（这是因为在简单替换密码中，某个字母在替换表中所对应的另一个字母是固定的）</p>
+]]></content>
+      <tags>
+        <tag>读书笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>上标、下标的字符显示</title>
+    <url>/2024/04/02/%E4%B8%8A%E6%A0%87%E3%80%81%E4%B8%8B%E6%A0%87%E7%9A%84%E5%AD%97%E7%AC%A6%E6%98%BE%E7%A4%BA/</url>
+    <content><![CDATA[<h3><span id></span></h3><h3><span id="一-上标">一、上标</span></h3><h4><span id="1数字">1.数字</span></h4><p>¹²³⁴⁵⁶⁷⁸⁹⁰⁺⁻⁼˂˃⁽⁾˙*′˙ⁿº</p>
+<h4><span id="2字母">2.字母</span></h4><p>ᵃᵇᶜᵈᵉᶠᵍʰⁱʲᵏˡᵐⁿᵒᵖʳˢᵗᵘᵛʷˣʸᶻ</p>
+<p>ᴬᴮᒼᴰᴱᶠᴳᴴᴵᴶᴷᴸᴹᴺᴼᴾᴼ̴ᴿˢᵀᵁⱽᵂˣᵞᙆ</p>
+<h4><span id="3其他">3.其他</span></h4><p>ᵃ ᵇ ᶜ ᵈ ᵉ ᵍ ʰ ⁱ ʲ ᵏ ˡ ᵐ ⁿ ᵒ ᵖ ᵒ⃒ ʳ ˢ ᵗ ᵘ ᵛ ʷ ˣ ʸ ᙆ ᴬ ᴮ ᒼ ᴰ ᴱ ᴳ ᴴ ᴵ ᴶ ᴷ ᴸ ᴹ ᴺ ᴼ ᴾ ᴼ̴ ᴿ ˢ ᵀ ᵁ ᵂ ˣ ᵞ ᙆ ꝰ ˀ ˁ ˤ ꟸ ꭜ ʱ ꭝ ꭞ ʴ ʵ ʶ ꭟ ˠ ꟹ ᴭ ᴯ ᴲ ᴻ ᴽ ᵄ ᵅ ᵆ ᵊ ᵋ ᵌ ᵑ ᵓ ᵚ ᵝ ᵞ ᵟ ᵠ ᵡ ᵎ ᵔ ᵕ ᵙ ᵜ ᶛ ᶜ ᶝ ᶞ ᶟ ᶡ ᶣ ᶤ ᶥ ᶦ ᶧ ᶨ ᶩ ᶪ ᶫ ᶬ ᶭ ᶮ ᶯ ᶰ ᶱ ᶲ ᶳ ᶴ ᶵ ᶶ ᶷ ᶸ ᶹ ᶺ ᶼ ᶽ ᶾ ᶿ ꚜ ꚝ ჼ ᒃ ᕻ ᑦ ᒄ ᕪ ᑋ ᑊ ᔿ ᐢ ᣕ ᐤ ᣖ ᣴ ᣗ ᔆ ᙚ ᐡ ᘁ ᐜ ᕽ ᙆ ᙇ ᒼ ᣳ ᒢ ᒻ ᔿ ᐤ ᣖ ᣵ ᙚ ᐪ ᓑ ᘁ ᐜ ᕽ ᙆ ᙇ </p>
+<h3><span id="二-下标">二、下标</span></h3><h4><span id="1数字">1.数字</span></h4><p>₀ ₁ ₂ ₃ ₄ ₅ ₆ ₇ ₈ ₉ ₊ ₋ ₌ ₍ ₎ ₐ ₑ ₒ ₓ ₔ ₕ ₖ ₗ ₘ ₙ ₚ ₛ ₜ</p>
+<h4><span id="2字母">2.字母</span></h4><p>ₐ ₔ ₑ ₕ ᵢ ⱼ ₖ ₗ ₘ ₙ ₒ ₚ ᵣ ₛ ₜ ᵤ ᵥ ₓ ᙮ ᵤ ᵩ ᵦ ₗ ˪ ៳ ៷ ₒ ᵨ ₛ ៴ ᵤ ᵪ ᵧ</p>
+]]></content>
+      <tags>
+        <tag>素材</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>【python】数据采集的基本知识</title>
     <url>/2024/05/29/%E3%80%90python%E3%80%91%E6%95%B0%E6%8D%AE%E9%87%87%E9%9B%86%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/</url>
     <content><![CDATA[<p>记录了在书上看到的一些方法，大体有用，不过代码本身有点老</p>
@@ -346,268 +400,6 @@
 ]]></content>
       <tags>
         <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>《图解密码技术》 读书笔记</title>
-    <url>/2024/04/17/%E3%80%8A%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF%E3%80%8B-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h2><span id="基础概念">基础概念</span></h2><h3><span id="1-1-基本名词解释">1-1 基本名词解释</span></h3><p>1.密钥（key）：加密和解密所需的媒介。</p>
-<p>2.对称密码：在加密和解密时使用同一密钥的解密方式。</p>
-<p>3.公钥密码：在加密和解密时使用不同密钥的解密方式。又叫非对称密码。</p>
-<p>4.混合密码系统：结合了对称密码和非对称密码的优势。</p>
-<p>5.单向散列函数：是一种保证完整性的密码技术。</p>
-<p>为了防止软件被篡改，一些发布者会在发布软件的同时发布该软件的散列值，下载该软件的人自行下载散列值，如果后者与前者的值相等，说明下载的软件是正版的。</p>
-<p>6.消息认证码：是一种能够保证完整性和提供认证的密码技术。</p>
-<p>为了确认消息是否来自所期望的通信对象，可以使用消息认证码。</p>
-<p>7.数字签名：</p>
-<p>（1）伪装：第三方伪造发送者的身份传达消息。</p>
-<p>（2）篡改：消息在传输的过程中遭到第三方修改。</p>
-<p>（3）否认：发送者在事后推翻自己先前的主张。</p>
-<p>防止伪装、篡改、否认等威胁的技术，就是数字签名。</p>
-<p>8.伪随机数生成器</p>
-<p>9.隐写术：密码隐藏的是内容，而隐写术隐藏的是消息本身</p>
-<h2><span id="历史密码">历史密码</span></h2><h3><span id="2-1凯撒密码">2-1凯撒密码</span></h3><h4><span id="1概念">1.概念</span></h4><p>通过将明文中所使用的字母表按照一定的字数”平移“来进行加密的密码。</p>
-<p>如A→F，B→G</p>
-<p>在此例中，密钥为5</p>
-<h4><span id="2解密">2.解密</span></h4><p>将所有可能的密钥全部尝试一遍，这种方法称为<strong>暴力破解</strong>。由于这种方法的本质是从所有的密钥中找出正确的密钥，因此又称为<strong>穷举搜索</strong>。</p>
-<h3><span id="2-2简单替换密码">2-2简单替换密码</span></h3><h4><span id="1概念">1.概念</span></h4><p>将明文中所使用的字母表替换为另一套字母表的密码。</p>
-<h4><span id="2加密">2.加密</span></h4><p>依次将明文中的每一个字母按照替换表替换成另一个字母。</p>
-<p>如A→B，B→Z</p>
-<h4><span id="3解密">3.解密</span></h4><p>简单替换密码很难通过暴力破解来破译。</p>
-<p>一种密码能够使用的所有密钥的集合称为密钥空间。</p>
-<p>密钥空间越大，暴力破解越困难。</p>
-<p>计算：n!(n是密码所用到的字符的种类)</p>
-<p><strong>频率分析法</strong></p>
-<p>①明文中的字母的出现频率&#x3D;密文中的字母的出现频率</p>
-<p>②除了高频字母以外，低频字母也能够成为线索</p>
-<p>③搞清开头和结尾能够成为线索，搞清单词之间的分隔也能成为线索</p>
-<p>④密文越长越容易破译</p>
-<p>⑤同一个字母连续出现能够成为线索（这是因为在简单替换密码中，某个字母在替换表中所对应的另一个字母是固定的）</p>
-]]></content>
-      <tags>
-        <tag>读书笔记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>串的存储和表现</title>
-    <url>/2024/05/31/%E4%B8%B2%E5%92%8C%E6%95%B0%E7%BB%84/</url>
-    <content><![CDATA[<!-- toc -->
-
-<ul>
-<li><a href="#%E4%B8%80-%E4%B8%B2%E7%9A%84%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84">一、串的存储结构</a><ul>
-<li><a href="#1%E9%A1%BA%E5%BA%8F%E5%AD%98%E5%82%A8">1.顺序存储</a></li>
-<li><a href="#2%E9%93%BE%E5%BC%8F%E5%AD%98%E5%82%A8">2.链式存储</a></li>
-</ul>
-</li>
-<li><a href="#%E4%BA%8C-%E4%B8%B2%E7%9A%84%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D%E7%AE%97%E6%B3%95">二、串的模式匹配算法</a><ul>
-<li><a href="#1bf%E7%AE%97%E6%B3%95">1.BF算法</a></li>
-<li><a href="#2kmp%E7%AE%97%E6%B3%95">2.KMP算法</a></li>
-</ul>
-</li>
-</ul>
-<!-- tocstop -->
-
-<p>[TOC]</p>
-<h2><span id="一-串的存储结构">一、串的存储结构</span></h2><h3><span id="1顺序存储">1.顺序存储</span></h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#define MAXLEN 255 //串的最大长度</span><br><span class="line">typedef struct&#123;</span><br><span class="line">//串的定长顺序存储结构</span><br><span class="line">char ch[MAXLEN+1]; //存储串的一位数组，下标0的分量闲置不用</span><br><span class="line">int length; //串的当前长度</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">typedef struct&#123;</span><br><span class="line">//串的堆式顺序存储结构</span><br><span class="line">char *ch; //若是非空串，则按串长分配存储区，否则ch为NULL</span><br><span class="line">int length;</span><br><span class="line">&#125;HString;</span><br></pre></td></tr></table></figure>
-
-<h3><span id="2链式存储">2.链式存储</span></h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#define CHUNKSIZE 80</span><br><span class="line">typedef struct Chunk&#123;</span><br><span class="line">char ch[CHUNKSIZE];</span><br><span class="line">struct Chunk *next;</span><br><span class="line">&#125;Chunk;</span><br><span class="line">typedef struct&#123;</span><br><span class="line">Chunk *head,*tail; //串的头、尾指针</span><br><span class="line">int length; //串的当前长度</span><br><span class="line">&#125;LString;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2><span id="二-串的模式匹配算法">二、串的模式匹配算法</span></h2><h3><span id="1bf算法">1.BF算法</span></h3><ul>
-<li><p>分别利用计数指针i和j，指示主串S和模式T中当前正待比较的字符位置，i初值为pos，j初值为0；</p>
-</li>
-<li><p>如果两个串均未比较到串尾，即i和j均分别小于等于S和T的长度时，循环执行操作：</p>
-</li>
-<li><p>S.ch[i]和T.ch[i]比较，若相等，则i和j分别指示串中下一个位置，继续比较后续字符；</p>
-</li>
-<li><p>若不等，指针后退重新匹配，从主串的下一个字符（i&#x3D;i-j+2）起再重新和模式的第一个字符(j&#x3D;0)比较；</p>
-</li>
-<li><p>如果j&gt;length，说明模式T的每个字符依次和主串S中的一个连续的字符序列相等，则匹配成功，返回和模式T中第一个字符相等的字符在主串S中的符号（i-T.length），否则不成功，返回0。</p>
-</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//算法4.1　BF算法</span><br><span class="line">int Index(SString S, SString T, int pos)</span><br><span class="line">&#123;</span><br><span class="line">	//返回模式T在主串S中第pos个字符之后第s一次出现的位置。若不存在，则返回值为0</span><br><span class="line">	//其中，T非空，1≤pos≤StrLength(S)</span><br><span class="line">	int i = pos;</span><br><span class="line">	int j = 1;</span><br><span class="line">	while(i &lt;= S[0]&amp;&amp;j &lt;= T[0])</span><br><span class="line">	&#123;</span><br><span class="line">		if(S[i]==T[j])</span><br><span class="line">		&#123;</span><br><span class="line">			++i;</span><br><span class="line">			++j;</span><br><span class="line">		&#125; //继续比较后继字符</span><br><span class="line">		else</span><br><span class="line">		&#123;</span><br><span class="line">			i=i-j+2;</span><br><span class="line">			j=1;</span><br><span class="line">		&#125; //指针后退重新开始匹配</span><br><span class="line">	&#125;</span><br><span class="line">	if (j &gt; T[0])</span><br><span class="line">		return i - T[0];</span><br><span class="line">	else</span><br><span class="line">		return 0;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;//Index</span><br></pre></td></tr></table></figure>
-
-<p>最好情况下的平均时间复杂度是O(n+m);</p>
-<p>最坏情况下的平均时间复杂度是O(n*m).</p>
-<h3><span id="2kmp算法">2.KMP算法</span></h3><p>特点：指针不需要回溯</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//算法4.2　KMP算法</span><br><span class="line">int Index_KMP(SString S, SString T, int pos, int next[])</span><br><span class="line">&#123; 	// 利用模式串T的next函数求T在主串S中第pos个字符之后的位置的KMP算法</span><br><span class="line">	//其中，T非空，1≤pos≤StrLength(S)</span><br><span class="line">	int i = pos, j = 1;</span><br><span class="line">	while (i &lt;= S[0] &amp;&amp; j &lt;= T[0])</span><br><span class="line">		if (j == 0 || S[i] == T[j]) // 继续比较后继字</span><br><span class="line">		&#123;</span><br><span class="line">			++i;</span><br><span class="line">			++j;</span><br><span class="line">		&#125;</span><br><span class="line">		else</span><br><span class="line">			j = next[j]; // 模式串向右移动</span><br><span class="line">	if (j &gt; T[0]) // 匹配成功</span><br><span class="line">		return i - T[0];</span><br><span class="line">	else</span><br><span class="line">		return 0;</span><br><span class="line">&#125;//Index_KMP</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//算法4.3　计算next函数值</span><br><span class="line">void get_next(SString T, int next[])</span><br><span class="line">&#123; //求模式串T的next函数值并存入数组next</span><br><span class="line">	int i = 1, j = 0;</span><br><span class="line">	next[1] = 0;</span><br><span class="line">	while (i &lt; T[0])</span><br><span class="line">		if (j == 0 || T[i] == T[j])</span><br><span class="line">		&#123;</span><br><span class="line">			++i;</span><br><span class="line">			++j;</span><br><span class="line">			next[i] = j;</span><br><span class="line">		&#125;</span><br><span class="line">		else</span><br><span class="line">			j = next[j];</span><br><span class="line">&#125;//get_next</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <tags>
-        <tag>数据结构</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【离散数学】集合、关系</title>
-    <url>/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/</url>
-    <content><![CDATA[<!-- toc -->
-
-<ul>
-<li><a href="#%E4%B8%80-%E9%9B%86%E5%90%88%E7%9A%84%E6%A6%82%E5%BF%B5%E5%92%8C%E8%A1%A8%E7%A4%BA">一、集合的概念和表示</a><ul>
-<li><a href="#%E5%90%8D%E8%AF%8D%E8%A7%A3%E9%87%8A">名词解释</a></li>
-</ul>
-</li>
-<li><a href="#%E4%BA%8C-%E9%9B%86%E5%90%88%E8%BF%90%E7%AE%97">二、集合运算</a><ul>
-<li><a href="#1%E8%BF%90%E7%AE%97">1.运算</a></li>
-<li><a href="#2%E6%80%A7%E8%B4%A8">2.性质</a></li>
-</ul>
-</li>
-<li><a href="#%E4%B8%89-%E5%8C%85%E5%90%AB%E6%8E%92%E6%96%A5%E5%8E%9F%E7%90%86">三、包含排斥原理</a><ul>
-<li><a href="#1%E6%A6%82%E5%BF%B5">1.概念</a></li>
-<li><a href="#2%E4%BE%8B%E9%A2%98">2.例题</a></li>
-</ul>
-</li>
-<li><a href="#%E5%9B%9B-%E5%BA%8F%E5%81%B6%E4%B8%8E%E7%AC%9B%E5%8D%A1%E5%B0%94%E7%A7%AF">四、序偶与笛卡尔积</a><ul>
-<li><a href="#1%E5%90%8D%E8%AF%8D%E8%A7%A3%E9%87%8A%E5%92%8C%E5%8E%9F%E7%90%86">1.名词解释和原理</a></li>
-<li><a href="#2%E4%BE%8B%E9%A2%98-1">2.例题</a></li>
-</ul>
-</li>
-<li><a href="#%E4%BA%94-%E5%85%B3%E7%B3%BB%E5%8F%8A%E5%85%B6%E8%A1%A8%E7%A4%BA">五、关系及其表示</a><ul>
-<li><a href="#1%E5%90%8D%E8%AF%8D%E8%A7%A3%E9%87%8A%E5%92%8C%E5%8E%9F%E7%90%86-1">1.名词解释和原理</a></li>
-<li><a href="#2%E4%BE%8B%E9%A2%98-2">2.例题</a></li>
-</ul>
-</li>
-<li><a href="#%E5%85%AD-%E5%85%B3%E7%B3%BB%E7%9A%84%E6%80%A7%E8%B4%A8">六、关系的性质</a><ul>
-<li><a href="#%E5%90%8D%E8%AF%8D%E8%A7%A3%E9%87%8A-1">名词解释</a></li>
-<li><a href="#%E4%BE%8B%E9%A2%98">例题</a></li>
-</ul>
-</li>
-<li><a href="#%E4%B8%83-%E5%A4%8D%E5%90%88%E5%85%B3%E7%B3%BB%E5%92%8C%E9%80%86%E5%85%B3%E7%B3%BB">七、复合关系和逆关系</a><ul>
-<li><a href="#1%E5%90%8D%E8%AF%8D%E5%92%8C%E5%AE%9A%E7%90%86">1.名词和定理</a></li>
-<li><a href="#2%E4%BE%8B%E9%A2%98-3">2.例题</a></li>
-</ul>
-</li>
-<li><a href="#%E5%85%AB-%E9%97%AD%E5%8C%85%E8%BF%90%E7%AE%97">八、闭包运算</a></li>
-</ul>
-<!-- tocstop -->
-
-<p>[TOC]</p>
-<h2><span id="一-集合的概念和表示">一、集合的概念和表示</span></h2><h3><span id="名词解释">名词解释</span></h3><h4><span id="集合">集合</span></h4><p>把具有共同性质的一些东西汇集成一个整体，就形成一个集合。</p>
-<h4><span id="元素">元素</span></h4><p>汇集成集合的事物叫元素。</p>
-<p>描述：元素x属于集合A</p>
-<p>记作：x∈A</p>
-<h4><span id="子集">子集</span></h4><p>描述：A集合是B集合的子集</p>
-<p>记作：A ⊆ B</p>
-<h4><span id="真子集">真子集</span></h4><p>描述 : A集合是B集合的子集 , 并且 A &#x3D;̸ B，则称A集合是B集合的真子集</p>
-<p>记作 : A ⊂ B</p>
-<p><u>真包含关系的性质：</u></p>
-<ul>
-<li><strong>反自反性</strong>: A ⊄ A</li>
-<li><strong>反对称性</strong>: 如果 A ⊂ B，那么 B ⊄ A</li>
-<li><strong>传递性</strong>: 如果 A ⊂ B, 并且 B ⊂ C, 那么 A ⊂ C</li>
-</ul>
-<h4><span id="非真子集">非真子集</span></h4><p>描述 : 存在元素x是集合A的元素，不是集合B的元素，并且A、B不相等，则称A集合不是B集合的真子集</p>
-<p>记作 : A ⊄ B</p>
-<h4><span id="空集">空集</span></h4><p>描述 : 没有任何元素的集合 , 称为空集合 , 简称为空集 </p>
-<p>记作 : ∅</p>
-<ul>
-<li>x无解→空集</li>
-<li>空集是一切集合的子集</li>
-<li>空集是唯一的</li>
-<li>{∅} ≠ ∅</li>
-<li>对任何一个集合A，∅ ⊆ A</li>
-</ul>
-<h4><span id="全集">全集</span></h4><p>限定所讨论的集合 , 都是某个集合的子集 , 则称该集合为全集 , 记作 E</p>
-<h4><span id="幂集">幂集</span></h4><p>描述 : A集合的全体子集组成的集合称为 A的幂集 ;</p>
-<p>记作 : P ( A )</p>
-<p>幂集个数定理 : 集合 A中的元素个数∣ A ∣ &#x3D; n ，则 A的 幂集个数 ∣ P ( A ) ∣ &#x3D; 2ⁿ</p>
-<h4><span id="外延性原理">外延性原理</span></h4><p>两个集合是相等的，当且仅当它们有相同的成员。（两个集合A和B相等，记作A &#x3D; B）</p>
-<p>集合A和集合B相等的充分必要条件是这两个集合互为子集。</p>
-<h2><span id="二-集合运算">二、集合运算</span></h2><h3><span id="1运算">1.运算</span></h3><p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240526213445.png" alt="微信图片_20240526213445"></p>
-<h3><span id="2性质">2.性质</span></h3><p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/e2067441ba7746f0b650c1e43d9e64ef.png" alt="在这里插入图片描述"></p>
-<p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/87c29f238b2a41818fd3187d7829d652.png" alt="在这里插入图片描述"></p>
-<p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/dd8be408e0b24359b25f7ddefbf425eb.png" alt="在这里插入图片描述"></p>
-<p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/5dda146382eb4276a8a6ec029c2d4b42.png" alt="在这里插入图片描述"></p>
-<p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/8fdd73e243d841179f607fba34a9e141.png" alt="在这里插入图片描述"></p>
-<p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/255afd2714574225b2e84a5f04b48c5e.png" alt="在这里插入图片描述"></p>
-<p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/80456386fbfb4c72b4f4144838eea10d.png" alt="在这里插入图片描述"></p>
-<p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/0da7a50fde1f474d8f18293ee9f488ef.png" alt="在这里插入图片描述"></p>
-<h2><span id="三-包含排斥原理">三、包含排斥原理</span></h2><h3><span id="1概念">1.概念</span></h3><p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240526213441.png" alt="微信图片_20240526213441"></p>
-<p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/7d8cec1b0d80461b967e6d29f39c7288.png" alt="在这里插入图片描述"></p>
-<p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/97dfee6601d240678de51b656d2e2269.png" alt="在这里插入图片描述"></p>
-<p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/d260fc358e8a4abfbec140f60d714566.png" alt="在这里插入图片描述"></p>
-<h3><span id="2例题">2.例题</span></h3><p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526212553.png" alt="微信截图_20240526212553"></p>
-<h2><span id="四-序偶与笛卡尔积">四、序偶与笛卡尔积</span></h2><h3><span id="1名词解释和原理">1.名词解释和原理</span></h3><h4><span id="序偶">序偶</span></h4><p>有序二元组的称呼，可以看作一个有顺序的集合，记作&lt;A,B&gt;</p>
-<p>序偶不同于集合的是序偶是有顺序的，&lt;A,B&gt; !&#x3D; &lt;B,A&gt;</p>
-<h4><span id="n元组">n元组</span></h4><p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526212700.png" alt="微信截图_20240526212700"></p>
-<h4><span id="笛卡尔积">笛卡尔积</span></h4><p>A与B是集合，那么A与B的笛卡尔积相当于A X B，表示&lt;a,b&gt;,其中：a∈A ,b∈B</p>
-<p>笛卡尔积一般不满足交换律和结合律（并、交差运算除外）</p>
-<p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526215607.png" alt="微信截图_20240526215607"></p>
-<p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526215637.png" alt="微信截图_20240526215637"></p>
-<h3><span id="2例题">2.例题</span></h3><p>笛卡尔积的计算</p>
-<p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526215742.png" alt="微信截图_20240526215742"></p>
-<h2><span id="五-关系及其表示">五、关系及其表示</span></h2><h3><span id="1名词解释和原理">1.名词解释和原理</span></h3><h4><span id="关系">关系</span></h4><p>对于一个二元关系R，R里面的任意一个序偶&lt;x,y&gt;可以记作**&lt;x,y&gt;∈R **或 <strong>xRy</strong></p>
-<p>A X B的子集R称为一个从A到B的二元关系</p>
-<h4><span id="前域-值域-域">前域、值域、域</span></h4><p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526220618.png" alt="微信截图_20240526220618"></p>
-<h4><span id="空关系">空关系</span></h4><p>A X B的平凡子集∅，称为A到B的空关系。</p>
-<h4><span id="全域关系">全域关系</span></h4><p>A X B的平凡子集A X B称为A到B的全域关系。</p>
-<h4><span id="恒等关系">恒等关系</span></h4><p>设Iₓ是X上的二元关系，且满足Iₓ &#x3D; {&lt;x,x&gt;|x∈X}，则称Iₓ是X上的恒等关系。</p>
-<h4><span id="关系矩阵"><strong>关系矩阵</strong></span></h4><p>我们有两个有限集合：X &#x3D; {x₁,x₂,x₃,……,xₘ}，Y&#x3D;{y₁,y₂,y₃,……,yₙ}，R是X到Y上的一个二元关系，那么就有相应的关系矩阵：M &#x3D; [rᵢ ⱼ]ₘₓₙ</p>
-<p>rᵢ ⱼ&#x3D;1当且仅当&lt;aᵢ,bⱼ&gt;∈R</p>
-<p>rᵢ ⱼ&#x3D;0当且仅当&lt;aᵢ,bⱼ&gt;!∈R</p>
-<p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526221913.png" alt="微信截图_20240526221913"></p>
-<h4><span id="关系图">关系图</span></h4><p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526222016.png" alt="微信截图_20240526222016"></p>
-<h3><span id="2例题">2.例题</span></h3><h4><span id="关系矩阵的表示">关系矩阵的表示</span></h4><p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526221828.png" alt="微信截图_20240526221828"></p>
-<h4><span id="笛卡尔积的幂集算法">笛卡尔积的幂集算法</span></h4><p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240526221238.png" alt="微信图片_20240526221238"></p>
-<h4><span id="关系图的表示">关系图的表示</span></h4><p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526222107.png" alt="微信截图_20240526222107"></p>
-<h2><span id="六-关系的性质">六、关系的性质</span></h2><h3><span id="名词解释">名词解释</span></h3><h4><span id="自反的关系">自反的关系</span></h4><p>R是集合X上面的二元关系，如果对于每一个x ∈A,有xRx，即&lt;x,x&gt;∈R，就称R是自反的。</p>
-<p>设集合S非空，S上的关系可以是自反的，是反自反的，也可以两者都不是。</p>
-<p>Y是自反的，则：</p>
-<ul>
-<li>Iₓ ⊆ Y；（集合X上的恒等关系是自反关系，但自反关系却不一定是恒等关系）</li>
-<li>Mᵧ主对角线上的元素都是1；</li>
-<li>Gᵧ的每个结点均有环。</li>
-</ul>
-<h4><span id="反自反关系">反自反关系</span></h4><p>R是集合X上面的二元关系，如果对于每一个x ∈A,有xRx，即&lt;x,x&gt;!∈R，就称R是自反的。</p>
-<p>Y是反自反的，则：</p>
-<ul>
-<li>Iₓ ∩ Y &#x3D;∅；</li>
-<li>Mᵧ主对角线上的元素都是0；</li>
-<li>Gᵧ的每个结点均无环。</li>
-</ul>
-<h4><span id="对称关系">对称关系</span></h4><p>对于关系里面x,y ∈ X，每当xRy，就有yRx，就X上面关系R是对称的。</p>
-<p>Y是对称的，则：</p>
-<ul>
-<li>Mᵧ是对称的；</li>
-<li>Gᵧ中任何两个结点之间若有有向边，必有两条方向相反的有向边。</li>
-</ul>
-<h4><span id="反对称关系">反对称关系</span></h4><p>对于关系里面x,y ∈ X，每当xRy和yRx，就有x&#x3D;y，就X上面关系R是反对称的。</p>
-<ul>
-<li>关系矩阵以对角线对称的元素不能同时为1，(但可为对称阵，同时为0)。</li>
-<li>关系图中如果两个结点之间有有向弧，则不能成对出现。</li>
-</ul>
-<h4><span id="传递关系">传递关系</span></h4><p>对于x, y, z ∈ X，每当xRy, yRz时就有xRz,就称R在X上是传递的。</p>
-<h4><span id="特殊关系的性质">特殊关系的性质</span></h4><p><strong>空关系</strong>： 反自反性，对称性，反对称性，传递性<br><strong>全域关系</strong>：自反性，对称性，传递性<br><strong>恒等关系</strong>：自反性，对称性，传递性</p>
-<h4><span id="总结">总结</span></h4><ul>
-<li>自反性：应该含有所有&lt;x, x&gt;<br>对称性：如果有&lt;x, y&gt;就应该有&lt;y, x&gt;<br>传递性：如果有&lt;x, y&gt;和&lt;y, z&gt;就应该有&lt;x, z&gt;</li>
-<li>反自反性：不应该含有任何&lt;x, x&gt;<br>反对称性：如果有&lt;x, y&gt;就不应该有&lt;y, x&gt;</li>
-</ul>
-<h3><span id="例题">例题</span></h3><p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526231540.png" alt="微信截图_20240526231540"></p>
-<p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526233116.png" alt="微信截图_20240526233116"></p>
-<h2><span id="七-复合关系和逆关系">七、复合关系和逆关系</span></h2><h3><span id="1名词和定理">1.名词和定理</span></h3><h4><span id="复合关系">复合关系</span></h4><p>R是X到Y的关系，S是Y到Z的关系，则R和S的复合关系R°S称为R和S的复合关系，表示为: </p>
-<p>RoS&#x3D;{&lt;x,z&gt;|x∈X且z∈Z(y∈Y ,&lt;x, y&gt;∈R且&lt;y,z&gt; ∈S)}</p>
-<p>复合关系相当于一个个元素进行传递，看是否满足传递关系。</p>
-<h4><span id="逆关系">逆关系</span></h4><p>R是X到Y的二元关系，把R中每一序偶的元素次序颠倒，得到的关系称为R的逆关系，记作Rᶜ</p>
-<ul>
-<li>xRy &#x3D;&#x3D; xRᶜy</li>
-<li>互换R的关系矩阵的行和列，即得Rᶜ的关系矩阵（转置）</li>
-<li>颠倒R的关系图中每条弧线的箭头方向，即得Rᶜ的关系图</li>
-<li>空关系的逆是空关系</li>
-<li>R&#x3D;Rᶜ，则说明R是对称的</li>
-</ul>
-<p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526235030.png" alt="微信截图_20240526235030"></p>
-<p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526235224.png" alt="微信截图_20240526235224"></p>
-<h4><span id="复合关系的结合律">复合关系的结合律</span></h4><p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526233655.png" alt="微信截图_20240526233655"></p>
-<h4><span id="复合关系的幂集">复合关系的幂集</span></h4><p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526234315.png" alt="微信截图_20240526234315"></p>
-<h4><span id="复合关系的矩阵表示">复合关系的矩阵表示</span></h4><p>（1）布尔加法 &#x3D;&#x3D; or</p>
-<p>（2）布尔乘法 &#x3D;&#x3D; and</p>
-<h3><span id="2例题">2.例题</span></h3><h4><span id="复合关系的矩阵表示">复合关系的矩阵表示</span></h4><p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526234530.png" alt="微信截图_20240526234530"></p>
-<h2><span id="八-闭包运算">八、闭包运算</span></h2>]]></content>
-      <tags>
-        <tag>离散数学</tag>
       </tags>
   </entry>
   <entry>
@@ -787,60 +579,225 @@
       </tags>
   </entry>
   <entry>
-    <title>半导体器件的基本特性</title>
-    <url>/2024/04/23/%E5%8D%8A%E5%AF%BC%E4%BD%93%E5%99%A8%E4%BB%B6%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%89%B9%E6%80%A7/</url>
-    <content><![CDATA[<h2><span id="半导体">半导体</span></h2><p>根据导电性能，物质分为：导体、绝缘体和半导体。</p>
-<p>物质的导电特性取决于物质的原子结构。</p>
-<p>常见的半导体：硅（Si）、锗（Ge），四价元素。</p>
-<h3><span id="1本征半导体">1.<strong>本征半导体</strong></span></h3><ul>
-<li>完全纯净的、结构完整的半导体。</li>
-<li>在本征半导体中，自由电子和空穴<strong>成对产生，浓度相等</strong>。</li>
+    <title>串的存储和表现</title>
+    <url>/2024/05/31/%E4%B8%B2%E5%92%8C%E6%95%B0%E7%BB%84/</url>
+    <content><![CDATA[<!-- toc -->
+
+<ul>
+<li><a href="#%E4%B8%80-%E4%B8%B2%E7%9A%84%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84">一、串的存储结构</a><ul>
+<li><a href="#1%E9%A1%BA%E5%BA%8F%E5%AD%98%E5%82%A8">1.顺序存储</a></li>
+<li><a href="#2%E9%93%BE%E5%BC%8F%E5%AD%98%E5%82%A8">2.链式存储</a></li>
 </ul>
-<h3><span id="2n型半导体">2.N型半导体</span></h3><ul>
-<li>在本侦半导体中加入“<strong>五价元素</strong>”。</li>
-<li>靠自由电子导电。</li>
-<li>对外呈<strong>电中性</strong>。</li>
-<li>N型半导体中含有<strong>较高</strong>的自由电子浓度，<strong>自由电子</strong>是<strong>多数载流子（多子）</strong>，空穴浓度较低，是少数载流子（少子）。</li>
-<li>多数载流子浓度越高，导电性能越强。</li>
+</li>
+<li><a href="#%E4%BA%8C-%E4%B8%B2%E7%9A%84%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D%E7%AE%97%E6%B3%95">二、串的模式匹配算法</a><ul>
+<li><a href="#1bf%E7%AE%97%E6%B3%95">1.BF算法</a></li>
+<li><a href="#2kmp%E7%AE%97%E6%B3%95">2.KMP算法</a></li>
 </ul>
-<h3><span id="3p型半导体">3.P型半导体</span></h3><ul>
-<li>在本征半导体中掺入“<strong>三价元素</strong>”。</li>
-<li>对外呈<strong>电中性</strong>。</li>
-<li><strong>空穴</strong>为<strong>多数载流子</strong>，而自由电子为少数载流子。</li>
+</li>
 </ul>
-<h3><span id="4载流子的运动">4.载流子的运动</span></h3><ul>
-<li><strong>漂移运动</strong>： 在<strong>电场</strong>的作用下，载流子的运动称为“漂移运动”，由漂移运动产生的电流为<strong>漂移电流</strong>。</li>
-<li><strong>扩散运动</strong>：由于<strong>浓度差</strong>引起的载流子运动称为“扩散运动”，产生的相应电流为<strong>扩散电流</strong>。</li>
-<li>漂移运动与扩散运动相反。</li>
-<li>漂移运动作用和扩散运动作用相等。</li>
+<!-- tocstop -->
+
+<p>[TOC]</p>
+<h2><span id="一-串的存储结构">一、串的存储结构</span></h2><h3><span id="1顺序存储">1.顺序存储</span></h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#define MAXLEN 255 //串的最大长度</span><br><span class="line">typedef struct&#123;</span><br><span class="line">//串的定长顺序存储结构</span><br><span class="line">char ch[MAXLEN+1]; //存储串的一位数组，下标0的分量闲置不用</span><br><span class="line">int length; //串的当前长度</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">typedef struct&#123;</span><br><span class="line">//串的堆式顺序存储结构</span><br><span class="line">char *ch; //若是非空串，则按串长分配存储区，否则ch为NULL</span><br><span class="line">int length;</span><br><span class="line">&#125;HString;</span><br></pre></td></tr></table></figure>
+
+<h3><span id="2链式存储">2.链式存储</span></h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#define CHUNKSIZE 80</span><br><span class="line">typedef struct Chunk&#123;</span><br><span class="line">char ch[CHUNKSIZE];</span><br><span class="line">struct Chunk *next;</span><br><span class="line">&#125;Chunk;</span><br><span class="line">typedef struct&#123;</span><br><span class="line">Chunk *head,*tail; //串的头、尾指针</span><br><span class="line">int length; //串的当前长度</span><br><span class="line">&#125;LString;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2><span id="二-串的模式匹配算法">二、串的模式匹配算法</span></h2><h3><span id="1bf算法">1.BF算法</span></h3><ul>
+<li><p>分别利用计数指针i和j，指示主串S和模式T中当前正待比较的字符位置，i初值为pos，j初值为0；</p>
+</li>
+<li><p>如果两个串均未比较到串尾，即i和j均分别小于等于S和T的长度时，循环执行操作：</p>
+</li>
+<li><p>S.ch[i]和T.ch[i]比较，若相等，则i和j分别指示串中下一个位置，继续比较后续字符；</p>
+</li>
+<li><p>若不等，指针后退重新匹配，从主串的下一个字符（i&#x3D;i-j+2）起再重新和模式的第一个字符(j&#x3D;0)比较；</p>
+</li>
+<li><p>如果j&gt;length，说明模式T的每个字符依次和主串S中的一个连续的字符序列相等，则匹配成功，返回和模式T中第一个字符相等的字符在主串S中的符号（i-T.length），否则不成功，返回0。</p>
+</li>
 </ul>
-<h2><span id="pn结">PN结</span></h2><h3><span id="1形成">1.形成</span></h3><ul>
-<li>扩散越多，电场越强，漂移运动越强，对扩散的阻力越大，从而达到<strong>动态平衡</strong>，形成PN结。</li>
-<li>PN结的电流为0。</li>
-<li>PN区交界处有一个缺少载流子的高阻区，称为<strong>阻挡区</strong>，又叫耗尽区。</li>
-</ul>
-<p><img src="/2024/04/23/%E5%8D%8A%E5%AF%BC%E4%BD%93%E5%99%A8%E4%BB%B6%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%89%B9%E6%80%A7/20200622205628795.jpg" alt="20200622205628795"></p>
-<h3><span id="2单向导电特性">2.单向导电特性</span></h3><h4><span id="1pn结外加正向电压导通">（1）PN结外加正向电压（导通）</span></h4><ul>
-<li>**正向偏置：P+N-**。</li>
-<li>扩散运动增加，漂流运动减弱，多数载流子向对方区扩散形成<strong>较大的正向电流</strong>。</li>
-<li>PN结<strong>导通</strong>。</li>
-<li>形成的电阻为正向电阻，阻值很小。</li>
-<li><strong>正向电压越大，正向电流越大</strong>。</li>
-</ul>
-<p><img src="/2024/04/23/%E5%8D%8A%E5%AF%BC%E4%BD%93%E5%99%A8%E4%BB%B6%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%89%B9%E6%80%A7/20200622212041521.jpg" alt="20200622212041521"></p>
-<h4><span id="2pn结外加反向电压截止">（2）PN结外加反向电压（截止）</span></h4><ul>
-<li>**反向偏置：N+P-**。</li>
-<li>漂流作用大于扩散作用，少数载流子做漂移运动，称反向电流。</li>
-<li><strong>反向电流很小</strong>。</li>
-<li>反向电压再增加，反向电流也不会增加，I&#x3D;-Iₛ。</li>
-<li><strong>呈现的电阻为反向电阻，阻值很大</strong>。</li>
-</ul>
-<p><img src="/2024/04/23/%E5%8D%8A%E5%AF%BC%E4%BD%93%E5%99%A8%E4%BB%B6%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%89%B9%E6%80%A7/20200622211350136.jpg" alt="20200622211350136"></p>
-<h4><span id="3伏安特性">（3）伏安特性</span></h4><p>当反向电压超过一定数值（反向击穿电压Uᵦ）后，反向电流会突然<strong>急剧增加</strong>，称为<strong>反向击穿</strong>。</p>
-<p><img src="/2024/04/23/%E5%8D%8A%E5%AF%BC%E4%BD%93%E5%99%A8%E4%BB%B6%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%89%B9%E6%80%A7/R-C.png" alt="R-C"></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//算法4.1　BF算法</span><br><span class="line">int Index(SString S, SString T, int pos)</span><br><span class="line">&#123;</span><br><span class="line">	//返回模式T在主串S中第pos个字符之后第s一次出现的位置。若不存在，则返回值为0</span><br><span class="line">	//其中，T非空，1≤pos≤StrLength(S)</span><br><span class="line">	int i = pos;</span><br><span class="line">	int j = 1;</span><br><span class="line">	while(i &lt;= S[0]&amp;&amp;j &lt;= T[0])</span><br><span class="line">	&#123;</span><br><span class="line">		if(S[i]==T[j])</span><br><span class="line">		&#123;</span><br><span class="line">			++i;</span><br><span class="line">			++j;</span><br><span class="line">		&#125; //继续比较后继字符</span><br><span class="line">		else</span><br><span class="line">		&#123;</span><br><span class="line">			i=i-j+2;</span><br><span class="line">			j=1;</span><br><span class="line">		&#125; //指针后退重新开始匹配</span><br><span class="line">	&#125;</span><br><span class="line">	if (j &gt; T[0])</span><br><span class="line">		return i - T[0];</span><br><span class="line">	else</span><br><span class="line">		return 0;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;//Index</span><br></pre></td></tr></table></figure>
+
+<p>最好情况下的平均时间复杂度是O(n+m);</p>
+<p>最坏情况下的平均时间复杂度是O(n*m).</p>
+<h3><span id="2kmp算法">2.KMP算法</span></h3><p>特点：指针不需要回溯</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//算法4.2　KMP算法</span><br><span class="line">int Index_KMP(SString S, SString T, int pos, int next[])</span><br><span class="line">&#123; 	// 利用模式串T的next函数求T在主串S中第pos个字符之后的位置的KMP算法</span><br><span class="line">	//其中，T非空，1≤pos≤StrLength(S)</span><br><span class="line">	int i = pos, j = 1;</span><br><span class="line">	while (i &lt;= S[0] &amp;&amp; j &lt;= T[0])</span><br><span class="line">		if (j == 0 || S[i] == T[j]) // 继续比较后继字</span><br><span class="line">		&#123;</span><br><span class="line">			++i;</span><br><span class="line">			++j;</span><br><span class="line">		&#125;</span><br><span class="line">		else</span><br><span class="line">			j = next[j]; // 模式串向右移动</span><br><span class="line">	if (j &gt; T[0]) // 匹配成功</span><br><span class="line">		return i - T[0];</span><br><span class="line">	else</span><br><span class="line">		return 0;</span><br><span class="line">&#125;//Index_KMP</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//算法4.3　计算next函数值</span><br><span class="line">void get_next(SString T, int next[])</span><br><span class="line">&#123; //求模式串T的next函数值并存入数组next</span><br><span class="line">	int i = 1, j = 0;</span><br><span class="line">	next[1] = 0;</span><br><span class="line">	while (i &lt; T[0])</span><br><span class="line">		if (j == 0 || T[i] == T[j])</span><br><span class="line">		&#123;</span><br><span class="line">			++i;</span><br><span class="line">			++j;</span><br><span class="line">			next[i] = j;</span><br><span class="line">		&#125;</span><br><span class="line">		else</span><br><span class="line">			j = next[j];</span><br><span class="line">&#125;//get_next</span><br></pre></td></tr></table></figure>
+
 ]]></content>
       <tags>
-        <tag>电子电路基础</tag>
+        <tag>数据结构笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【离散数学】集合、关系</title>
+    <url>/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/</url>
+    <content><![CDATA[<!-- toc -->
+
+<ul>
+<li><a href="#%E4%B8%80-%E9%9B%86%E5%90%88%E7%9A%84%E6%A6%82%E5%BF%B5%E5%92%8C%E8%A1%A8%E7%A4%BA">一、集合的概念和表示</a><ul>
+<li><a href="#%E5%90%8D%E8%AF%8D%E8%A7%A3%E9%87%8A">名词解释</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BA%8C-%E9%9B%86%E5%90%88%E8%BF%90%E7%AE%97">二、集合运算</a><ul>
+<li><a href="#1%E8%BF%90%E7%AE%97">1.运算</a></li>
+<li><a href="#2%E6%80%A7%E8%B4%A8">2.性质</a></li>
+</ul>
+</li>
+<li><a href="#%E4%B8%89-%E5%8C%85%E5%90%AB%E6%8E%92%E6%96%A5%E5%8E%9F%E7%90%86">三、包含排斥原理</a><ul>
+<li><a href="#1%E6%A6%82%E5%BF%B5">1.概念</a></li>
+<li><a href="#2%E4%BE%8B%E9%A2%98">2.例题</a></li>
+</ul>
+</li>
+<li><a href="#%E5%9B%9B-%E5%BA%8F%E5%81%B6%E4%B8%8E%E7%AC%9B%E5%8D%A1%E5%B0%94%E7%A7%AF">四、序偶与笛卡尔积</a><ul>
+<li><a href="#1%E5%90%8D%E8%AF%8D%E8%A7%A3%E9%87%8A%E5%92%8C%E5%8E%9F%E7%90%86">1.名词解释和原理</a></li>
+<li><a href="#2%E4%BE%8B%E9%A2%98-1">2.例题</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BA%94-%E5%85%B3%E7%B3%BB%E5%8F%8A%E5%85%B6%E8%A1%A8%E7%A4%BA">五、关系及其表示</a><ul>
+<li><a href="#1%E5%90%8D%E8%AF%8D%E8%A7%A3%E9%87%8A%E5%92%8C%E5%8E%9F%E7%90%86-1">1.名词解释和原理</a></li>
+<li><a href="#2%E4%BE%8B%E9%A2%98-2">2.例题</a></li>
+</ul>
+</li>
+<li><a href="#%E5%85%AD-%E5%85%B3%E7%B3%BB%E7%9A%84%E6%80%A7%E8%B4%A8">六、关系的性质</a><ul>
+<li><a href="#%E5%90%8D%E8%AF%8D%E8%A7%A3%E9%87%8A-1">名词解释</a></li>
+<li><a href="#%E4%BE%8B%E9%A2%98">例题</a></li>
+</ul>
+</li>
+<li><a href="#%E4%B8%83-%E5%A4%8D%E5%90%88%E5%85%B3%E7%B3%BB%E5%92%8C%E9%80%86%E5%85%B3%E7%B3%BB">七、复合关系和逆关系</a><ul>
+<li><a href="#1%E5%90%8D%E8%AF%8D%E5%92%8C%E5%AE%9A%E7%90%86">1.名词和定理</a></li>
+<li><a href="#2%E4%BE%8B%E9%A2%98-3">2.例题</a></li>
+</ul>
+</li>
+<li><a href="#%E5%85%AB-%E9%97%AD%E5%8C%85%E8%BF%90%E7%AE%97">八、闭包运算</a></li>
+</ul>
+<!-- tocstop -->
+
+<p>[TOC]</p>
+<h2><span id="一-集合的概念和表示">一、集合的概念和表示</span></h2><h3><span id="名词解释">名词解释</span></h3><h4><span id="集合">集合</span></h4><p>把具有共同性质的一些东西汇集成一个整体，就形成一个集合。</p>
+<h4><span id="元素">元素</span></h4><p>汇集成集合的事物叫元素。</p>
+<p>描述：元素x属于集合A</p>
+<p>记作：x∈A</p>
+<h4><span id="子集">子集</span></h4><p>描述：A集合是B集合的子集</p>
+<p>记作：A ⊆ B</p>
+<h4><span id="真子集">真子集</span></h4><p>描述 : A集合是B集合的子集 , 并且 A &#x3D;̸ B，则称A集合是B集合的真子集</p>
+<p>记作 : A ⊂ B</p>
+<p><u>真包含关系的性质：</u></p>
+<ul>
+<li><strong>反自反性</strong>: A ⊄ A</li>
+<li><strong>反对称性</strong>: 如果 A ⊂ B，那么 B ⊄ A</li>
+<li><strong>传递性</strong>: 如果 A ⊂ B, 并且 B ⊂ C, 那么 A ⊂ C</li>
+</ul>
+<h4><span id="非真子集">非真子集</span></h4><p>描述 : 存在元素x是集合A的元素，不是集合B的元素，并且A、B不相等，则称A集合不是B集合的真子集</p>
+<p>记作 : A ⊄ B</p>
+<h4><span id="空集">空集</span></h4><p>描述 : 没有任何元素的集合 , 称为空集合 , 简称为空集 </p>
+<p>记作 : ∅</p>
+<ul>
+<li>x无解→空集</li>
+<li>空集是一切集合的子集</li>
+<li>空集是唯一的</li>
+<li>{∅} ≠ ∅</li>
+<li>对任何一个集合A，∅ ⊆ A</li>
+</ul>
+<h4><span id="全集">全集</span></h4><p>限定所讨论的集合 , 都是某个集合的子集 , 则称该集合为全集 , 记作 E</p>
+<h4><span id="幂集">幂集</span></h4><p>描述 : A集合的全体子集组成的集合称为 A的幂集 ;</p>
+<p>记作 : P ( A )</p>
+<p>幂集个数定理 : 集合 A中的元素个数∣ A ∣ &#x3D; n ，则 A的 幂集个数 ∣ P ( A ) ∣ &#x3D; 2ⁿ</p>
+<h4><span id="外延性原理">外延性原理</span></h4><p>两个集合是相等的，当且仅当它们有相同的成员。（两个集合A和B相等，记作A &#x3D; B）</p>
+<p>集合A和集合B相等的充分必要条件是这两个集合互为子集。</p>
+<h2><span id="二-集合运算">二、集合运算</span></h2><h3><span id="1运算">1.运算</span></h3><p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240526213445.png" alt="微信图片_20240526213445"></p>
+<h3><span id="2性质">2.性质</span></h3><p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/e2067441ba7746f0b650c1e43d9e64ef.png" alt="在这里插入图片描述"></p>
+<p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/87c29f238b2a41818fd3187d7829d652.png" alt="在这里插入图片描述"></p>
+<p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/dd8be408e0b24359b25f7ddefbf425eb.png" alt="在这里插入图片描述"></p>
+<p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/5dda146382eb4276a8a6ec029c2d4b42.png" alt="在这里插入图片描述"></p>
+<p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/8fdd73e243d841179f607fba34a9e141.png" alt="在这里插入图片描述"></p>
+<p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/255afd2714574225b2e84a5f04b48c5e.png" alt="在这里插入图片描述"></p>
+<p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/80456386fbfb4c72b4f4144838eea10d.png" alt="在这里插入图片描述"></p>
+<p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/0da7a50fde1f474d8f18293ee9f488ef.png" alt="在这里插入图片描述"></p>
+<h2><span id="三-包含排斥原理">三、包含排斥原理</span></h2><h3><span id="1概念">1.概念</span></h3><p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240526213441.png" alt="微信图片_20240526213441"></p>
+<p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/7d8cec1b0d80461b967e6d29f39c7288.png" alt="在这里插入图片描述"></p>
+<p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/97dfee6601d240678de51b656d2e2269.png" alt="在这里插入图片描述"></p>
+<p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/d260fc358e8a4abfbec140f60d714566.png" alt="在这里插入图片描述"></p>
+<h3><span id="2例题">2.例题</span></h3><p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526212553.png" alt="微信截图_20240526212553"></p>
+<h2><span id="四-序偶与笛卡尔积">四、序偶与笛卡尔积</span></h2><h3><span id="1名词解释和原理">1.名词解释和原理</span></h3><h4><span id="序偶">序偶</span></h4><p>有序二元组的称呼，可以看作一个有顺序的集合，记作&lt;A,B&gt;</p>
+<p>序偶不同于集合的是序偶是有顺序的，&lt;A,B&gt; !&#x3D; &lt;B,A&gt;</p>
+<h4><span id="n元组">n元组</span></h4><p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526212700.png" alt="微信截图_20240526212700"></p>
+<h4><span id="笛卡尔积">笛卡尔积</span></h4><p>A与B是集合，那么A与B的笛卡尔积相当于A X B，表示&lt;a,b&gt;,其中：a∈A ,b∈B</p>
+<p>笛卡尔积一般不满足交换律和结合律（并、交差运算除外）</p>
+<p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526215607.png" alt="微信截图_20240526215607"></p>
+<p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526215637.png" alt="微信截图_20240526215637"></p>
+<h3><span id="2例题">2.例题</span></h3><p>笛卡尔积的计算</p>
+<p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526215742.png" alt="微信截图_20240526215742"></p>
+<h2><span id="五-关系及其表示">五、关系及其表示</span></h2><h3><span id="1名词解释和原理">1.名词解释和原理</span></h3><h4><span id="关系">关系</span></h4><p>对于一个二元关系R，R里面的任意一个序偶&lt;x,y&gt;可以记作**&lt;x,y&gt;∈R **或 <strong>xRy</strong></p>
+<p>A X B的子集R称为一个从A到B的二元关系</p>
+<h4><span id="前域-值域-域">前域、值域、域</span></h4><p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526220618.png" alt="微信截图_20240526220618"></p>
+<h4><span id="空关系">空关系</span></h4><p>A X B的平凡子集∅，称为A到B的空关系。</p>
+<h4><span id="全域关系">全域关系</span></h4><p>A X B的平凡子集A X B称为A到B的全域关系。</p>
+<h4><span id="恒等关系">恒等关系</span></h4><p>设Iₓ是X上的二元关系，且满足Iₓ &#x3D; {&lt;x,x&gt;|x∈X}，则称Iₓ是X上的恒等关系。</p>
+<h4><span id="关系矩阵"><strong>关系矩阵</strong></span></h4><p>我们有两个有限集合：X &#x3D; {x₁,x₂,x₃,……,xₘ}，Y&#x3D;{y₁,y₂,y₃,……,yₙ}，R是X到Y上的一个二元关系，那么就有相应的关系矩阵：M &#x3D; [rᵢ ⱼ]ₘₓₙ</p>
+<p>rᵢ ⱼ&#x3D;1当且仅当&lt;aᵢ,bⱼ&gt;∈R</p>
+<p>rᵢ ⱼ&#x3D;0当且仅当&lt;aᵢ,bⱼ&gt;!∈R</p>
+<p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526221913.png" alt="微信截图_20240526221913"></p>
+<h4><span id="关系图">关系图</span></h4><p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526222016.png" alt="微信截图_20240526222016"></p>
+<h3><span id="2例题">2.例题</span></h3><h4><span id="关系矩阵的表示">关系矩阵的表示</span></h4><p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526221828.png" alt="微信截图_20240526221828"></p>
+<h4><span id="笛卡尔积的幂集算法">笛卡尔积的幂集算法</span></h4><p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240526221238.png" alt="微信图片_20240526221238"></p>
+<h4><span id="关系图的表示">关系图的表示</span></h4><p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526222107.png" alt="微信截图_20240526222107"></p>
+<h2><span id="六-关系的性质">六、关系的性质</span></h2><h3><span id="名词解释">名词解释</span></h3><h4><span id="自反的关系">自反的关系</span></h4><p>R是集合X上面的二元关系，如果对于每一个x ∈A,有xRx，即&lt;x,x&gt;∈R，就称R是自反的。</p>
+<p>设集合S非空，S上的关系可以是自反的，是反自反的，也可以两者都不是。</p>
+<p>Y是自反的，则：</p>
+<ul>
+<li>Iₓ ⊆ Y；（集合X上的恒等关系是自反关系，但自反关系却不一定是恒等关系）</li>
+<li>Mᵧ主对角线上的元素都是1；</li>
+<li>Gᵧ的每个结点均有环。</li>
+</ul>
+<h4><span id="反自反关系">反自反关系</span></h4><p>R是集合X上面的二元关系，如果对于每一个x ∈A,有xRx，即&lt;x,x&gt;!∈R，就称R是自反的。</p>
+<p>Y是反自反的，则：</p>
+<ul>
+<li>Iₓ ∩ Y &#x3D;∅；</li>
+<li>Mᵧ主对角线上的元素都是0；</li>
+<li>Gᵧ的每个结点均无环。</li>
+</ul>
+<h4><span id="对称关系">对称关系</span></h4><p>对于关系里面x,y ∈ X，每当xRy，就有yRx，就X上面关系R是对称的。</p>
+<p>Y是对称的，则：</p>
+<ul>
+<li>Mᵧ是对称的；</li>
+<li>Gᵧ中任何两个结点之间若有有向边，必有两条方向相反的有向边。</li>
+</ul>
+<h4><span id="反对称关系">反对称关系</span></h4><p>对于关系里面x,y ∈ X，每当xRy和yRx，就有x&#x3D;y，就X上面关系R是反对称的。</p>
+<ul>
+<li>关系矩阵以对角线对称的元素不能同时为1，(但可为对称阵，同时为0)。</li>
+<li>关系图中如果两个结点之间有有向弧，则不能成对出现。</li>
+</ul>
+<h4><span id="传递关系">传递关系</span></h4><p>对于x, y, z ∈ X，每当xRy, yRz时就有xRz,就称R在X上是传递的。</p>
+<h4><span id="特殊关系的性质">特殊关系的性质</span></h4><p><strong>空关系</strong>： 反自反性，对称性，反对称性，传递性<br><strong>全域关系</strong>：自反性，对称性，传递性<br><strong>恒等关系</strong>：自反性，对称性，传递性</p>
+<h4><span id="总结">总结</span></h4><ul>
+<li>自反性：应该含有所有&lt;x, x&gt;<br>对称性：如果有&lt;x, y&gt;就应该有&lt;y, x&gt;<br>传递性：如果有&lt;x, y&gt;和&lt;y, z&gt;就应该有&lt;x, z&gt;</li>
+<li>反自反性：不应该含有任何&lt;x, x&gt;<br>反对称性：如果有&lt;x, y&gt;就不应该有&lt;y, x&gt;</li>
+</ul>
+<h3><span id="例题">例题</span></h3><p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526231540.png" alt="微信截图_20240526231540"></p>
+<p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526233116.png" alt="微信截图_20240526233116"></p>
+<h2><span id="七-复合关系和逆关系">七、复合关系和逆关系</span></h2><h3><span id="1名词和定理">1.名词和定理</span></h3><h4><span id="复合关系">复合关系</span></h4><p>R是X到Y的关系，S是Y到Z的关系，则R和S的复合关系R°S称为R和S的复合关系，表示为: </p>
+<p>RoS&#x3D;{&lt;x,z&gt;|x∈X且z∈Z(y∈Y ,&lt;x, y&gt;∈R且&lt;y,z&gt; ∈S)}</p>
+<p>复合关系相当于一个个元素进行传递，看是否满足传递关系。</p>
+<h4><span id="逆关系">逆关系</span></h4><p>R是X到Y的二元关系，把R中每一序偶的元素次序颠倒，得到的关系称为R的逆关系，记作Rᶜ</p>
+<ul>
+<li>xRy &#x3D;&#x3D; xRᶜy</li>
+<li>互换R的关系矩阵的行和列，即得Rᶜ的关系矩阵（转置）</li>
+<li>颠倒R的关系图中每条弧线的箭头方向，即得Rᶜ的关系图</li>
+<li>空关系的逆是空关系</li>
+<li>R&#x3D;Rᶜ，则说明R是对称的</li>
+</ul>
+<p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526235030.png" alt="微信截图_20240526235030"></p>
+<p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526235224.png" alt="微信截图_20240526235224"></p>
+<h4><span id="复合关系的结合律">复合关系的结合律</span></h4><p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526233655.png" alt="微信截图_20240526233655"></p>
+<h4><span id="复合关系的幂集">复合关系的幂集</span></h4><p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526234315.png" alt="微信截图_20240526234315"></p>
+<h4><span id="复合关系的矩阵表示">复合关系的矩阵表示</span></h4><p>（1）布尔加法 &#x3D;&#x3D; or</p>
+<p>（2）布尔乘法 &#x3D;&#x3D; and</p>
+<h3><span id="2例题">2.例题</span></h3><h4><span id="复合关系的矩阵表示">复合关系的矩阵表示</span></h4><p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526234530.png" alt="微信截图_20240526234530"></p>
+<h2><span id="八-闭包运算">八、闭包运算</span></h2>]]></content>
+      <tags>
+        <tag>离散数学</tag>
       </tags>
   </entry>
   <entry>
@@ -966,17 +923,60 @@
       </tags>
   </entry>
   <entry>
-    <title>上标、下标的字符显示</title>
-    <url>/2024/04/02/%E4%B8%8A%E6%A0%87%E3%80%81%E4%B8%8B%E6%A0%87%E7%9A%84%E5%AD%97%E7%AC%A6%E6%98%BE%E7%A4%BA/</url>
-    <content><![CDATA[<h3><span id></span></h3><h3><span id="一-上标">一、上标</span></h3><h4><span id="1数字">1.数字</span></h4><p>¹²³⁴⁵⁶⁷⁸⁹⁰⁺⁻⁼˂˃⁽⁾˙*′˙ⁿº</p>
-<h4><span id="2字母">2.字母</span></h4><p>ᵃᵇᶜᵈᵉᶠᵍʰⁱʲᵏˡᵐⁿᵒᵖʳˢᵗᵘᵛʷˣʸᶻ</p>
-<p>ᴬᴮᒼᴰᴱᶠᴳᴴᴵᴶᴷᴸᴹᴺᴼᴾᴼ̴ᴿˢᵀᵁⱽᵂˣᵞᙆ</p>
-<h4><span id="3其他">3.其他</span></h4><p>ᵃ ᵇ ᶜ ᵈ ᵉ ᵍ ʰ ⁱ ʲ ᵏ ˡ ᵐ ⁿ ᵒ ᵖ ᵒ⃒ ʳ ˢ ᵗ ᵘ ᵛ ʷ ˣ ʸ ᙆ ᴬ ᴮ ᒼ ᴰ ᴱ ᴳ ᴴ ᴵ ᴶ ᴷ ᴸ ᴹ ᴺ ᴼ ᴾ ᴼ̴ ᴿ ˢ ᵀ ᵁ ᵂ ˣ ᵞ ᙆ ꝰ ˀ ˁ ˤ ꟸ ꭜ ʱ ꭝ ꭞ ʴ ʵ ʶ ꭟ ˠ ꟹ ᴭ ᴯ ᴲ ᴻ ᴽ ᵄ ᵅ ᵆ ᵊ ᵋ ᵌ ᵑ ᵓ ᵚ ᵝ ᵞ ᵟ ᵠ ᵡ ᵎ ᵔ ᵕ ᵙ ᵜ ᶛ ᶜ ᶝ ᶞ ᶟ ᶡ ᶣ ᶤ ᶥ ᶦ ᶧ ᶨ ᶩ ᶪ ᶫ ᶬ ᶭ ᶮ ᶯ ᶰ ᶱ ᶲ ᶳ ᶴ ᶵ ᶶ ᶷ ᶸ ᶹ ᶺ ᶼ ᶽ ᶾ ᶿ ꚜ ꚝ ჼ ᒃ ᕻ ᑦ ᒄ ᕪ ᑋ ᑊ ᔿ ᐢ ᣕ ᐤ ᣖ ᣴ ᣗ ᔆ ᙚ ᐡ ᘁ ᐜ ᕽ ᙆ ᙇ ᒼ ᣳ ᒢ ᒻ ᔿ ᐤ ᣖ ᣵ ᙚ ᐪ ᓑ ᘁ ᐜ ᕽ ᙆ ᙇ </p>
-<h3><span id="二-下标">二、下标</span></h3><h4><span id="1数字">1.数字</span></h4><p>₀ ₁ ₂ ₃ ₄ ₅ ₆ ₇ ₈ ₉ ₊ ₋ ₌ ₍ ₎ ₐ ₑ ₒ ₓ ₔ ₕ ₖ ₗ ₘ ₙ ₚ ₛ ₜ</p>
-<h4><span id="2字母">2.字母</span></h4><p>ₐ ₔ ₑ ₕ ᵢ ⱼ ₖ ₗ ₘ ₙ ₒ ₚ ᵣ ₛ ₜ ᵤ ᵥ ₓ ᙮ ᵤ ᵩ ᵦ ₗ ˪ ៳ ៷ ₒ ᵨ ₛ ៴ ᵤ ᵪ ᵧ</p>
+    <title>半导体器件的基本特性</title>
+    <url>/2024/04/23/%E5%8D%8A%E5%AF%BC%E4%BD%93%E5%99%A8%E4%BB%B6%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%89%B9%E6%80%A7/</url>
+    <content><![CDATA[<h2><span id="半导体">半导体</span></h2><p>根据导电性能，物质分为：导体、绝缘体和半导体。</p>
+<p>物质的导电特性取决于物质的原子结构。</p>
+<p>常见的半导体：硅（Si）、锗（Ge），四价元素。</p>
+<h3><span id="1本征半导体">1.<strong>本征半导体</strong></span></h3><ul>
+<li>完全纯净的、结构完整的半导体。</li>
+<li>在本征半导体中，自由电子和空穴<strong>成对产生，浓度相等</strong>。</li>
+</ul>
+<h3><span id="2n型半导体">2.N型半导体</span></h3><ul>
+<li>在本侦半导体中加入“<strong>五价元素</strong>”。</li>
+<li>靠自由电子导电。</li>
+<li>对外呈<strong>电中性</strong>。</li>
+<li>N型半导体中含有<strong>较高</strong>的自由电子浓度，<strong>自由电子</strong>是<strong>多数载流子（多子）</strong>，空穴浓度较低，是少数载流子（少子）。</li>
+<li>多数载流子浓度越高，导电性能越强。</li>
+</ul>
+<h3><span id="3p型半导体">3.P型半导体</span></h3><ul>
+<li>在本征半导体中掺入“<strong>三价元素</strong>”。</li>
+<li>对外呈<strong>电中性</strong>。</li>
+<li><strong>空穴</strong>为<strong>多数载流子</strong>，而自由电子为少数载流子。</li>
+</ul>
+<h3><span id="4载流子的运动">4.载流子的运动</span></h3><ul>
+<li><strong>漂移运动</strong>： 在<strong>电场</strong>的作用下，载流子的运动称为“漂移运动”，由漂移运动产生的电流为<strong>漂移电流</strong>。</li>
+<li><strong>扩散运动</strong>：由于<strong>浓度差</strong>引起的载流子运动称为“扩散运动”，产生的相应电流为<strong>扩散电流</strong>。</li>
+<li>漂移运动与扩散运动相反。</li>
+<li>漂移运动作用和扩散运动作用相等。</li>
+</ul>
+<h2><span id="pn结">PN结</span></h2><h3><span id="1形成">1.形成</span></h3><ul>
+<li>扩散越多，电场越强，漂移运动越强，对扩散的阻力越大，从而达到<strong>动态平衡</strong>，形成PN结。</li>
+<li>PN结的电流为0。</li>
+<li>PN区交界处有一个缺少载流子的高阻区，称为<strong>阻挡区</strong>，又叫耗尽区。</li>
+</ul>
+<p><img src="/2024/04/23/%E5%8D%8A%E5%AF%BC%E4%BD%93%E5%99%A8%E4%BB%B6%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%89%B9%E6%80%A7/20200622205628795.jpg" alt="20200622205628795"></p>
+<h3><span id="2单向导电特性">2.单向导电特性</span></h3><h4><span id="1pn结外加正向电压导通">（1）PN结外加正向电压（导通）</span></h4><ul>
+<li>**正向偏置：P+N-**。</li>
+<li>扩散运动增加，漂流运动减弱，多数载流子向对方区扩散形成<strong>较大的正向电流</strong>。</li>
+<li>PN结<strong>导通</strong>。</li>
+<li>形成的电阻为正向电阻，阻值很小。</li>
+<li><strong>正向电压越大，正向电流越大</strong>。</li>
+</ul>
+<p><img src="/2024/04/23/%E5%8D%8A%E5%AF%BC%E4%BD%93%E5%99%A8%E4%BB%B6%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%89%B9%E6%80%A7/20200622212041521.jpg" alt="20200622212041521"></p>
+<h4><span id="2pn结外加反向电压截止">（2）PN结外加反向电压（截止）</span></h4><ul>
+<li>**反向偏置：N+P-**。</li>
+<li>漂流作用大于扩散作用，少数载流子做漂移运动，称反向电流。</li>
+<li><strong>反向电流很小</strong>。</li>
+<li>反向电压再增加，反向电流也不会增加，I&#x3D;-Iₛ。</li>
+<li><strong>呈现的电阻为反向电阻，阻值很大</strong>。</li>
+</ul>
+<p><img src="/2024/04/23/%E5%8D%8A%E5%AF%BC%E4%BD%93%E5%99%A8%E4%BB%B6%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%89%B9%E6%80%A7/20200622211350136.jpg" alt="20200622211350136"></p>
+<h4><span id="3伏安特性">（3）伏安特性</span></h4><p>当反向电压超过一定数值（反向击穿电压Uᵦ）后，反向电流会突然<strong>急剧增加</strong>，称为<strong>反向击穿</strong>。</p>
+<p><img src="/2024/04/23/%E5%8D%8A%E5%AF%BC%E4%BD%93%E5%99%A8%E4%BB%B6%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%89%B9%E6%80%A7/R-C.png" alt="R-C"></p>
 ]]></content>
       <tags>
-        <tag>素材</tag>
+        <tag>电子电路基础</tag>
       </tags>
   </entry>
   <entry>
@@ -1058,6 +1058,126 @@
 ]]></content>
       <tags>
         <tag>电子电路基础</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>栈的表示和操作实现</title>
+    <url>/2024/04/05/%E6%A0%88%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E6%93%8D%E4%BD%9C%E5%AE%9E%E7%8E%B0/</url>
+    <content><![CDATA[<!-- toc -->
+
+<ul>
+<li><a href="#%E4%B8%80-%E9%A1%BA%E5%BA%8F%E6%A0%88">一、顺序栈</a></li>
+<li><a href="#%E4%BA%8C-%E9%93%BE%E6%A0%88">二、链栈</a></li>
+<li><a href="#%E4%B8%89-%E7%94%A8%E5%A0%86%E6%A0%88%E6%B1%82%E8%A7%A3%E5%90%8E%E7%BC%80%E8%A1%A8%E8%BE%BE%E5%BC%8F">三、用堆栈求解后缀表达式</a></li>
+</ul>
+<!-- tocstop -->
+
+<p>[TOC]</p>
+<h3><span id="一-顺序栈">一、顺序栈</span></h3><ul>
+<li>存储结构：顺序存储</li>
+<li>后进后出，插入和删除只在栈顶进行</li>
+<li>递归</li>
+<li>附设指针top指示栈顶元素在顺序栈的位置</li>
+</ul>
+<h4><span id="1定义">1.定义</span></h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#define MAXSIZE 100 //存储空间的初始分配量</span><br><span class="line"></span><br><span class="line">typedef struct&#123;</span><br><span class="line"></span><br><span class="line">int *base; //栈底指针，在构造前和销毁后，base的值为NULL</span><br><span class="line"></span><br><span class="line">int *top; //栈顶指针,指向栈顶元素的下一个位置</span><br><span class="line"></span><br><span class="line">int stacksize; //栈可用的最大容量</span><br><span class="line"></span><br><span class="line">&#125;SqStack;</span><br><span class="line">SqStack S;</span><br></pre></td></tr></table></figure>
+
+<p>①看栈空</p>
+<p>S.top &#x3D; -1; &#x2F;&#x2F;指针指向元素</p>
+<p>S.top &#x3D; NULL; </p>
+<p>S.top &#x3D; 0; &#x2F;&#x2F;指针指向栈顶元素的下一个位置</p>
+<p>s.top &#x3D; S.base; </p>
+<p>②看栈长</p>
+<p>length &#x3D; S.top - S.base; &#x2F;&#x2F;指针指向栈顶元素的下一个位置</p>
+<p>③看栈满</p>
+<p>top - base &#x3D; stacksize;  &#x2F;&#x2F;指针指向栈顶元素的下一个位置</p>
+<h4><span id="2初始化">2.初始化</span></h4><ul>
+<li>分配存储空间，new int[]</li>
+<li>如果分配失败，!base，返回-1</li>
+<li>否则使空栈，栈顶&#x3D;栈底</li>
+<li>使定义中的stacksize获得最大容量</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int InitStack(SqStack &amp;S)&#123;</span><br><span class="line">//构造一个空栈</span><br><span class="line"></span><br><span class="line">S.base = new int[MAXSIZE]; //为顺序栈分配一个指定最大容量的存储空间</span><br><span class="line"></span><br><span class="line">if(S.base==NULL) return -1; //存储分配失败</span><br><span class="line"></span><br><span class="line">S.top = S.base; //空栈</span><br><span class="line"></span><br><span class="line">S.stacksize = MAXSIZE; //stacksize置为最大容量</span><br><span class="line"></span><br><span class="line">return 1;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="3入栈">3.入栈</span></h4><ul>
+<li>判断栈满</li>
+<li>否则对e取值</li>
+<li>移动指针</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int Push(SqStack &amp;S,int e)&#123;</span><br><span class="line">//插入元素e为新的栈顶</span><br><span class="line"></span><br><span class="line">if(S.top-S.base = stacksize) return -1; //栈满</span><br><span class="line"></span><br><span class="line">*S.top++ = e;  //元素e压入栈顶后，指针+1</span><br><span class="line"></span><br><span class="line">//等价于*S.top = e; S.top++;</span><br><span class="line"></span><br><span class="line">return 1;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="4出栈">4.出栈</span></h4><ul>
+<li>判断栈空</li>
+<li>否则栈顶-1</li>
+<li>出栈元素赋给元素e</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int Pop(SqStack &amp;S,int &amp;e)&#123;</span><br><span class="line">//删除S的栈顶元素，用e返回其值</span><br><span class="line"></span><br><span class="line">if(S.top == S.base) return -1; //栈空</span><br><span class="line"></span><br><span class="line">e = *--S.top; //栈顶指针-1，将栈顶元素赋给e</span><br><span class="line"></span><br><span class="line">//等价于--S.top; e=*S.top;</span><br><span class="line"></span><br><span class="line">return 1;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="5取栈顶元素">5.取栈顶元素</span></h4><ul>
+<li>判断栈非空</li>
+<li>返回当前栈顶元素的值，不修改指针</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int GetTop(SqStack S)&#123;</span><br><span class="line">//返回S的栈顶元素，不修改栈顶指针</span><br><span class="line"></span><br><span class="line">if(S.top! = S.base) //栈非空</span><br><span class="line"></span><br><span class="line">return *(S.top-1); //这是因为栈顶指针指向的不是真实元素，而是元素的下一个</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3><span id="二-链栈">二、链栈</span></h3><h4><span id="1定义">1.定义</span></h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">typedef struct StackNode &#123;</span><br><span class="line"></span><br><span class="line">int data;    </span><br><span class="line"></span><br><span class="line">struct StackNode* next; </span><br><span class="line"></span><br><span class="line">&#125;StackLink, *Linkstack;</span><br><span class="line"></span><br><span class="line">LinkStack S;</span><br></pre></td></tr></table></figure>
+
+<p>链栈是操作受限的单链表，只能在链表的头部进行操作，故没有必要附加头结点。</p>
+<ul>
+<li>栈顶指针就是链表的头结点。</li>
+<li>链栈插入与删除仅在栈顶处执行(头插法&#x2F;头删法)。</li>
+<li>栈无栈满问题，空间可扩充适合于多栈操作。</li>
+</ul>
+<h4><span id="2初始化">2.初始化</span></h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int InitStack(LinkStack &amp;S)&#123;</span><br><span class="line">//构造一个空栈S，栈顶指针置空</span><br><span class="line"></span><br><span class="line">S= NULL;</span><br><span class="line"></span><br><span class="line">return 1;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="3入栈">3.入栈</span></h4><ul>
+<li>为入栈元素e分配空间，用指针p指向 p&#x3D; new LinkStack</li>
+<li>对新结点赋值e</li>
+<li>把新结点插入到栈顶</li>
+<li>修改栈顶指针为p</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int Push(LinkStack &amp;S,int e)&#123;</span><br><span class="line">//在栈顶插入元素e</span><br><span class="line"></span><br><span class="line">p = new LinkStack; //生成新结点</span><br><span class="line">if(!p) return -1;</span><br><span class="line"></span><br><span class="line">p-&gt;data = e; //赋值</span><br><span class="line"></span><br><span class="line">p-&gt;next = S; //将新栈顶插入</span><br><span class="line"></span><br><span class="line">S = p; //使p成为栈顶指针</span><br><span class="line"></span><br><span class="line">return 1;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="4出栈">4.出栈</span></h4><ul>
+<li>判断栈空</li>
+<li>否则将栈顶元素赋值给e</li>
+<li>用结点p临时保存栈顶元素的空间</li>
+<li>下移栈顶指针</li>
+<li>释放p结点</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int Pop(LinkStack &amp;S，int &amp;e)&#123;</span><br><span class="line">//删除S的栈顶元素，用e返回其值</span><br><span class="line"></span><br><span class="line">if(S=NULL) return -1; //栈空</span><br><span class="line"></span><br><span class="line">e = S-&gt;data; //赋值</span><br><span class="line"></span><br><span class="line">LinkStack* p;</span><br><span class="line"></span><br><span class="line">p = S; //用p临时保存栈顶元素空间</span><br><span class="line"></span><br><span class="line">S = S-&gt;next; //下移栈顶指针</span><br><span class="line"></span><br><span class="line">free(p); //释放</span><br><span class="line"></span><br><span class="line">return 1;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="5读栈顶元素">5.读栈顶元素</span></h4><ul>
+<li>当栈非空，返回S的值，栈顶S保持不变</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int GetTop(LinkStack S)&#123;</span><br><span class="line">//返回S的栈顶元素，不修改栈顶指针</span><br><span class="line"></span><br><span class="line">if(S!=NULL) </span><br><span class="line"></span><br><span class="line">return S-&gt;data;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3><span id="三-用堆栈求解后缀表达式">三、用堆栈求解后缀表达式</span></h3><h4><span id="1定义">1.定义</span></h4><p>后缀表达式是一种不需要括号的表达式，其本身是对栈的一种应用。</p>
+<p>与之对应的是中缀表达式，即我们现在使用的四则运算。</p>
+<h4><span id="2运算规则">2.运算规则</span></h4><p>顺序：从左到右入栈。</p>
+<p>对于数字直接入栈，对于运算符号，就把栈最上面的两个数出栈，进行运算后再重新入栈。式子最后的结果出栈。</p>
+<p>栈顶元素永远在运算符的右边。</p>
+<h4><span id="3例子">3.例子</span></h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">（1）令P代表入栈，O代表出栈。当利用堆栈求解后缀表达式1 2 3 + * 4 –时，堆栈操作序列是：</span><br><span class="line"></span><br><span class="line">A.PPPOOPOO</span><br><span class="line"></span><br><span class="line">B.PPOOPPOOPPOO</span><br><span class="line"></span><br><span class="line">C.PPPOOPOOPPOO</span><br><span class="line"></span><br><span class="line">D.PPPOOPOOPPOOPO</span><br></pre></td></tr></table></figure>
+
+<p>1、2、3：进栈，PPP</p>
+<p>+：对最顶上的3、2出栈，计算2+3&#x3D;5，把结果进栈，OOP</p>
+<p>*：对5、1出栈，计算5x1&#x3D;5，把结果进栈，OOP</p>
+<p>4：进栈，P</p>
+<p>-：对4、5出栈，计算4-5&#x3D;-1，把结果进栈，OOP</p>
+<p>最后输出结果：O</p>
+<p>答案为D。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">（2）表达式`a*(b+c)-d`的后缀表达式是：</span><br><span class="line"></span><br><span class="line">A.`a b c + * d -`</span><br><span class="line"></span><br><span class="line">B.`a b c d * + -`</span><br><span class="line"></span><br><span class="line">C.`a b c * + d -`</span><br><span class="line"></span><br><span class="line">D.`- + * a b c d`</span><br></pre></td></tr></table></figure>
+
+<p>数字优先进栈，所以abc</p>
+<p>括号内的式子优先计算，所以首先遇到+，为abc+</p>
+<p>算完加法算乘法，所以abc+*</p>
+<p>继续将d进栈，然后算减法，所以是abc+*d-</p>
+<p>答案为A。</p>
+]]></content>
+      <tags>
+        <tag>数据结构笔记</tag>
       </tags>
   </entry>
   <entry>
@@ -1308,123 +1428,135 @@ return 0;
       </tags>
   </entry>
   <entry>
-    <title>栈的表示和操作实现</title>
-    <url>/2024/04/05/%E6%A0%88%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E6%93%8D%E4%BD%9C%E5%AE%9E%E7%8E%B0/</url>
+    <title>正弦稳态电路分析</title>
+    <url>/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/</url>
     <content><![CDATA[<!-- toc -->
 
 <ul>
-<li><a href="#%E4%B8%80-%E9%A1%BA%E5%BA%8F%E6%A0%88">一、顺序栈</a></li>
-<li><a href="#%E4%BA%8C-%E9%93%BE%E6%A0%88">二、链栈</a></li>
-<li><a href="#%E4%B8%89-%E7%94%A8%E5%A0%86%E6%A0%88%E6%B1%82%E8%A7%A3%E5%90%8E%E7%BC%80%E8%A1%A8%E8%BE%BE%E5%BC%8F">三、用堆栈求解后缀表达式</a></li>
+<li><a href="#%E6%AD%A3%E5%BC%A6%E4%BF%A1%E5%8F%B7">正弦信号</a><ul>
+<li><a href="#1%E6%AD%A3%E5%BC%A6%E4%BF%A1%E5%8F%B7%E7%9A%84%E4%B8%89%E8%A6%81%E7%B4%A0">1.正弦信号的三要素</a></li>
+<li><a href="#2%E6%AD%A3%E5%BC%A6%E4%BF%A1%E5%8F%B7%E7%9A%84%E7%9B%B8%E4%BD%8D%E5%B7%AE">2.正弦信号的相位差</a></li>
+<li><a href="#3%E6%AD%A3%E5%BC%A6%E4%BF%A1%E5%8F%B7%E7%9A%84%E6%9C%89%E6%95%88%E5%80%BC">3.正弦信号的有效值</a></li>
+</ul>
+</li>
+<li><a href="#%E6%AD%A3%E5%BC%A6%E4%BF%A1%E5%8F%B7%E7%9A%84%E7%9B%B8%E9%87%8F%E8%A1%A8%E7%A4%BA">正弦信号的相量表示</a><ul>
+<li><a href="#1%E5%A4%8D%E6%95%B0a%E7%9A%84%E8%A1%A8%E7%A4%BA">1.复数A的表示</a></li>
+<li><a href="#2%E7%94%A8%E7%9B%B8%E9%87%8F%E8%A1%A8%E7%A4%BA%E6%AD%A3%E5%BC%A6%E4%BF%A1%E5%8F%B7">2.用相量表示正弦信号</a></li>
+</ul>
+</li>
+<li><a href="#%E5%9F%BA%E6%9C%AC%E5%85%83%E4%BB%B6%E4%BC%8F%E5%AE%89%E7%89%B9%E6%80%A7%E7%9A%84%E7%9B%B8%E9%87%8F%E5%BD%A2%E5%BC%8F">基本元件伏安特性的相量形式</a><ul>
+<li><a href="#1%E7%94%B5%E9%98%BB%E5%85%83%E4%BB%B6">1.电阻元件</a></li>
+<li><a href="#2%E7%94%B5%E6%84%9F%E5%85%83%E4%BB%B6">2.电感元件</a></li>
+<li><a href="#3%E7%94%B5%E5%AE%B9%E5%85%83%E4%BB%B6">3.电容元件</a></li>
+<li><a href="#4%E6%AD%A3%E5%BC%A6%E7%94%B5%E6%BA%90%E7%9A%84%E7%9B%B8%E9%87%8F%E6%A8%A1%E5%9E%8B">4.正弦电源的相量模型</a></li>
+</ul>
+</li>
+<li><a href="#%E7%9B%B8%E9%87%8F%E6%A8%A1%E5%9E%8B">相量模型</a><ul>
+<li><a href="#1%E9%98%BB%E6%8A%97%E5%92%8C%E5%AF%BC%E7%BA%B3">1.阻抗和导纳</a></li>
+<li><a href="#2%E7%9B%B8%E9%87%8F%E5%9B%BE">2.相量图</a></li>
+<li><a href="#3%E9%98%BB%E6%8A%97%E5%92%8C%E5%AF%BC%E7%BA%B3%E7%9A%84%E4%B8%B2-%E5%B9%B6%E8%81%94">3.阻抗和导纳的串、并联</a></li>
+</ul>
+</li>
+<li><a href="#%E4%B8%B2%E8%81%94%E8%B0%90%E6%8C%AF">串联谐振</a><ul>
+<li><a href="#1%E6%9D%A1%E4%BB%B6">1.条件</a></li>
+<li><a href="#2%E7%89%B9%E5%BE%81">2.特征</a></li>
+</ul>
+</li>
 </ul>
 <!-- tocstop -->
 
 <p>[TOC]</p>
-<h3><span id="一-顺序栈">一、顺序栈</span></h3><ul>
-<li>存储结构：顺序存储</li>
-<li>后进后出，插入和删除只在栈顶进行</li>
-<li>递归</li>
-<li>附设指针top指示栈顶元素在顺序栈的位置</li>
+<h2><span id="正弦信号">正弦信号</span></h2><p>正弦稳态电路：在正弦电源作用下，电路达到稳定工作状态时的正弦稳态电路。</p>
+<p>正弦交流信号可以用sin函数表示，也可以用cos函数表示，本书采用sin函数。</p>
+<h3><span id="1正弦信号的三要素">1.正弦信号的三要素</span></h3><h4><span id="一个正弦信号由3个参数确定最大值-频率角频率和初相">一个正弦信号由3个参数确定：<strong>最大值、频率（角频率）和初相</strong></span></h4><p>（1）<strong>正弦交流信号的一般表达式</strong>：<strong>u(t) &#x3D; Uₘ sin(ωt + θ)</strong></p>
+<p>（2）<strong>Uₘ</strong>：<strong>幅值</strong>，表示正弦量所能达到的最大值；又叫峰值或振幅</p>
+<p>（3）**(ωt + θ)<strong>：</strong>相位**；θ称为相位角</p>
+<p>（4）<strong>ω</strong>：<strong>角频率</strong>，是正弦量在单位时间内变化的弧度数，单位<strong>rad&#x2F;s</strong></p>
+<p>（5）<strong>周期</strong>：周期T表示正弦量变化一周需要的时间，单位<strong>s</strong></p>
+<p>（6）<strong>公式</strong>：①<strong>T&#x3D;2π&#x2F;ω</strong></p>
+<p>​                      ②<strong>f&#x3D;1&#x2F;T</strong></p>
+<h3><span id="2正弦信号的相位差">2.正弦信号的相位差</span></h3><p>（1）<strong>定义</strong>：两个同频率正弦信号在任一时刻的相位之差称为相位差，实际上是初相之差。</p>
+<p>（2）<strong>符号表示</strong>：θ&#x3D;θᵢ - θᵤ</p>
+<p>（3）θ&gt;0，表示i(t)超前于u(t)，电流比电压先到达最大值或最小值；</p>
+<p>​          θ&lt;0，表示i(t)滞后于u(t)；</p>
+<p>​          θ&#x3D;0，则称i(t)与u(t)同相，二者同时到达最值；</p>
+<p>​          θ&#x3D;+-π，则称i(t)与u(t)反相，当i(t)达到最大值时，u(t)达到最小值，反之亦然。</p>
+<h3><span id="3正弦信号的有效值">3.正弦信号的有效值</span></h3><p>（1）<strong>定义</strong>：设两个阻值相同的电阻，分别通过周期电流和直流电流，在一个周期内，两个电阻消耗相同的能量，就称该直流电流值为周期电流的有效值。</p>
+<p>（2）<strong>总结</strong>：<u>正弦信号的振幅值等于有效值的√2倍。</u></p>
+<p>​                     Uₘ &#x3D; √2 U               Iₘ &#x3D; √2 I</p>
+<p>（3）<strong>公式表示</strong>：i(t)&#x3D;√2 I sin(ωt + θᵢ)</p>
+<p>​                             u(t)&#x3D;√2 U sin(ωt + θᵤ)</p>
+<h2><span id="正弦信号的相量表示">正弦信号的相量表示</span></h2><h3><span id="1复数a的表示">1.复数A的表示</span></h3><h4><span id="1代数型-指数型和极型">（1）代数型、指数型和极型</span></h4><ul>
+<li><input disabled type="checkbox"> <strong>代数型</strong>：A&#x3D;a1 + ja2</li>
+<li><input disabled type="checkbox"> <strong>指数型</strong>：A&#x3D;aeʲᶿ</li>
+<li><input disabled type="checkbox"> <strong>极型</strong>：a∠θ</li>
 </ul>
-<h4><span id="1定义">1.定义</span></h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#define MAXSIZE 100 //存储空间的初始分配量</span><br><span class="line"></span><br><span class="line">typedef struct&#123;</span><br><span class="line"></span><br><span class="line">int *base; //栈底指针，在构造前和销毁后，base的值为NULL</span><br><span class="line"></span><br><span class="line">int *top; //栈顶指针,指向栈顶元素的下一个位置</span><br><span class="line"></span><br><span class="line">int stacksize; //栈可用的最大容量</span><br><span class="line"></span><br><span class="line">&#125;SqStack;</span><br><span class="line">SqStack S;</span><br></pre></td></tr></table></figure>
-
-<p>①看栈空</p>
-<p>S.top &#x3D; -1; &#x2F;&#x2F;指针指向元素</p>
-<p>S.top &#x3D; NULL; </p>
-<p>S.top &#x3D; 0; &#x2F;&#x2F;指针指向栈顶元素的下一个位置</p>
-<p>s.top &#x3D; S.base; </p>
-<p>②看栈长</p>
-<p>length &#x3D; S.top - S.base; &#x2F;&#x2F;指针指向栈顶元素的下一个位置</p>
-<p>③看栈满</p>
-<p>top - base &#x3D; stacksize;  &#x2F;&#x2F;指针指向栈顶元素的下一个位置</p>
-<h4><span id="2初始化">2.初始化</span></h4><ul>
-<li>分配存储空间，new int[]</li>
-<li>如果分配失败，!base，返回-1</li>
-<li>否则使空栈，栈顶&#x3D;栈底</li>
-<li>使定义中的stacksize获得最大容量</li>
+<h4><span id="2指数型转换为代数型">（2）指数型转换为代数型</span></h4><ul>
+<li><input disabled type="checkbox"> <strong>欧拉公式</strong>：eʲᶿ &#x3D; cosθ + jsinθ</li>
+<li><input disabled type="checkbox"> 特别的，e^jπ&#x2F;2 &#x3D; cos(π&#x2F;2) + jsin(π&#x2F;2) &#x3D;j</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int InitStack(SqStack &amp;S)&#123;</span><br><span class="line">//构造一个空栈</span><br><span class="line"></span><br><span class="line">S.base = new int[MAXSIZE]; //为顺序栈分配一个指定最大容量的存储空间</span><br><span class="line"></span><br><span class="line">if(S.base==NULL) return -1; //存储分配失败</span><br><span class="line"></span><br><span class="line">S.top = S.base; //空栈</span><br><span class="line"></span><br><span class="line">S.stacksize = MAXSIZE; //stacksize置为最大容量</span><br><span class="line"></span><br><span class="line">return 1;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4><span id="3入栈">3.入栈</span></h4><ul>
-<li>判断栈满</li>
-<li>否则对e取值</li>
-<li>移动指针</li>
+<h4><span id="3代数型转换为指数型和极型">（3）代数型转换为指数型和极型</span></h4><ul>
+<li><p><input disabled type="checkbox"> 
+<strong>a &#x3D; (a₁² + a₂²)^1&#x2F;2</strong></p>
+</li>
+<li><p><input disabled type="checkbox"> 
+<strong>θ &#x3D; arctan (a₂&#x2F;a₁)</strong></p>
+</li>
+<li><p><input disabled type="checkbox"> 
+常用值：arctan1 &#x3D; π&#x2F;4</p>
+<p>​                arctan√3 &#x3D; π&#x2F;3</p>
+<p>​                arctan1&#x2F;√3 &#x3D; π&#x2F;6</p>
+</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int Push(SqStack &amp;S,int e)&#123;</span><br><span class="line">//插入元素e为新的栈顶</span><br><span class="line"></span><br><span class="line">if(S.top-S.base = stacksize) return -1; //栈满</span><br><span class="line"></span><br><span class="line">*S.top++ = e;  //元素e压入栈顶后，指针+1</span><br><span class="line"></span><br><span class="line">//等价于*S.top = e; S.top++;</span><br><span class="line"></span><br><span class="line">return 1;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/微信截图_20240402012354.png" alt="微信截图_20240402012354" style="zoom:80%;">
 
-<h4><span id="4出栈">4.出栈</span></h4><ul>
-<li>判断栈空</li>
-<li>否则栈顶-1</li>
-<li>出栈元素赋给元素e</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int Pop(SqStack &amp;S,int &amp;e)&#123;</span><br><span class="line">//删除S的栈顶元素，用e返回其值</span><br><span class="line"></span><br><span class="line">if(S.top == S.base) return -1; //栈空</span><br><span class="line"></span><br><span class="line">e = *--S.top; //栈顶指针-1，将栈顶元素赋给e</span><br><span class="line"></span><br><span class="line">//等价于--S.top; e=*S.top;</span><br><span class="line"></span><br><span class="line">return 1;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4><span id="4计算">（4）计算</span></h4><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/微信截图_20240402012812.png" alt="微信截图_20240402012812" style="zoom:80%;">
 
-<h4><span id="5取栈顶元素">5.取栈顶元素</span></h4><ul>
-<li>判断栈非空</li>
-<li>返回当前栈顶元素的值，不修改指针</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int GetTop(SqStack S)&#123;</span><br><span class="line">//返回S的栈顶元素，不修改栈顶指针</span><br><span class="line"></span><br><span class="line">if(S.top! = S.base) //栈非空</span><br><span class="line"></span><br><span class="line">return *(S.top-1); //这是因为栈顶指针指向的不是真实元素，而是元素的下一个</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h3><span id="二-链栈">二、链栈</span></h3><h4><span id="1定义">1.定义</span></h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">typedef struct StackNode &#123;</span><br><span class="line"></span><br><span class="line">int data;    </span><br><span class="line"></span><br><span class="line">struct StackNode* next; </span><br><span class="line"></span><br><span class="line">&#125;StackLink, *Linkstack;</span><br><span class="line"></span><br><span class="line">LinkStack S;</span><br></pre></td></tr></table></figure>
-
-<p>链栈是操作受限的单链表，只能在链表的头部进行操作，故没有必要附加头结点。</p>
-<ul>
-<li>栈顶指针就是链表的头结点。</li>
-<li>链栈插入与删除仅在栈顶处执行(头插法&#x2F;头删法)。</li>
-<li>栈无栈满问题，空间可扩充适合于多栈操作。</li>
-</ul>
-<h4><span id="2初始化">2.初始化</span></h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int InitStack(LinkStack &amp;S)&#123;</span><br><span class="line">//构造一个空栈S，栈顶指针置空</span><br><span class="line"></span><br><span class="line">S= NULL;</span><br><span class="line"></span><br><span class="line">return 1;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4><span id="3入栈">3.入栈</span></h4><ul>
-<li>为入栈元素e分配空间，用指针p指向 p&#x3D; new LinkStack</li>
-<li>对新结点赋值e</li>
-<li>把新结点插入到栈顶</li>
-<li>修改栈顶指针为p</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int Push(LinkStack &amp;S,int e)&#123;</span><br><span class="line">//在栈顶插入元素e</span><br><span class="line"></span><br><span class="line">p = new LinkStack; //生成新结点</span><br><span class="line">if(!p) return -1;</span><br><span class="line"></span><br><span class="line">p-&gt;data = e; //赋值</span><br><span class="line"></span><br><span class="line">p-&gt;next = S; //将新栈顶插入</span><br><span class="line"></span><br><span class="line">S = p; //使p成为栈顶指针</span><br><span class="line"></span><br><span class="line">return 1;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4><span id="4出栈">4.出栈</span></h4><ul>
-<li>判断栈空</li>
-<li>否则将栈顶元素赋值给e</li>
-<li>用结点p临时保存栈顶元素的空间</li>
-<li>下移栈顶指针</li>
-<li>释放p结点</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int Pop(LinkStack &amp;S，int &amp;e)&#123;</span><br><span class="line">//删除S的栈顶元素，用e返回其值</span><br><span class="line"></span><br><span class="line">if(S=NULL) return -1; //栈空</span><br><span class="line"></span><br><span class="line">e = S-&gt;data; //赋值</span><br><span class="line"></span><br><span class="line">LinkStack* p;</span><br><span class="line"></span><br><span class="line">p = S; //用p临时保存栈顶元素空间</span><br><span class="line"></span><br><span class="line">S = S-&gt;next; //下移栈顶指针</span><br><span class="line"></span><br><span class="line">free(p); //释放</span><br><span class="line"></span><br><span class="line">return 1;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4><span id="5读栈顶元素">5.读栈顶元素</span></h4><ul>
-<li>当栈非空，返回S的值，栈顶S保持不变</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int GetTop(LinkStack S)&#123;</span><br><span class="line">//返回S的栈顶元素，不修改栈顶指针</span><br><span class="line"></span><br><span class="line">if(S!=NULL) </span><br><span class="line"></span><br><span class="line">return S-&gt;data;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h3><span id="三-用堆栈求解后缀表达式">三、用堆栈求解后缀表达式</span></h3><h4><span id="1定义">1.定义</span></h4><p>后缀表达式是一种不需要括号的表达式，其本身是对栈的一种应用。</p>
-<p>与之对应的是中缀表达式，即我们现在使用的四则运算。</p>
-<h4><span id="2运算规则">2.运算规则</span></h4><p>顺序：从左到右入栈。</p>
-<p>对于数字直接入栈，对于运算符号，就把栈最上面的两个数出栈，进行运算后再重新入栈。式子最后的结果出栈。</p>
-<p>栈顶元素永远在运算符的右边。</p>
-<h4><span id="3例子">3.例子</span></h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">（1）令P代表入栈，O代表出栈。当利用堆栈求解后缀表达式1 2 3 + * 4 –时，堆栈操作序列是：</span><br><span class="line"></span><br><span class="line">A.PPPOOPOO</span><br><span class="line"></span><br><span class="line">B.PPOOPPOOPPOO</span><br><span class="line"></span><br><span class="line">C.PPPOOPOOPPOO</span><br><span class="line"></span><br><span class="line">D.PPPOOPOOPPOOPO</span><br></pre></td></tr></table></figure>
-
-<p>1、2、3：进栈，PPP</p>
-<p>+：对最顶上的3、2出栈，计算2+3&#x3D;5，把结果进栈，OOP</p>
-<p>*：对5、1出栈，计算5x1&#x3D;5，把结果进栈，OOP</p>
-<p>4：进栈，P</p>
-<p>-：对4、5出栈，计算4-5&#x3D;-1，把结果进栈，OOP</p>
-<p>最后输出结果：O</p>
-<p>答案为D。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">（2）表达式`a*(b+c)-d`的后缀表达式是：</span><br><span class="line"></span><br><span class="line">A.`a b c + * d -`</span><br><span class="line"></span><br><span class="line">B.`a b c d * + -`</span><br><span class="line"></span><br><span class="line">C.`a b c * + d -`</span><br><span class="line"></span><br><span class="line">D.`- + * a b c d`</span><br></pre></td></tr></table></figure>
-
-<p>数字优先进栈，所以abc</p>
-<p>括号内的式子优先计算，所以首先遇到+，为abc+</p>
-<p>算完加法算乘法，所以abc+*</p>
-<p>继续将d进栈，然后算减法，所以是abc+*d-</p>
-<p>答案为A。</p>
+<h3><span id="2用相量表示正弦信号">2.用相量表示正弦信号</span></h3><h4><span id="1正弦电流-电压的表示">（1）正弦电流、电压的表示</span></h4><p><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240405124242.png" alt="微信截图_20240405124242"></p>
+<p><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240405123709.png" alt="微信图片_20240405123709"></p>
+<h4><span id="2正弦信号与相量的对应规则">（2）正弦信号与相量的对应规则</span></h4><p><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240405125143.png" alt="微信截图_20240405125143"></p>
+<h4><span id="3电流相量适用基尔霍夫定律见例题p87-p91">（3）电流相量适用基尔霍夫定律（见例题P87、P91）</span></h4><p>由i(t)&#x3D;i₁(t) + i₂(t)，有I˙ &#x3D;I˙₁ + I˙₂</p>
+<p>由u(t)&#x3D;u₁(t) + u₂(t)，有U˙ &#x3D;U˙₁ + U˙₂</p>
+<p>结论对于有效值相量和振幅相量都适用。</p>
+<h2><span id="基本元件伏安特性的相量形式">基本元件伏安特性的相量形式</span></h2><h3><span id="1电阻元件">1.电阻元件</span></h3><p><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240405130717.png" alt="微信图片_20240405130717"></p>
+<h3><span id="2电感元件">2.电感元件</span></h3><p><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240405131106.png" alt="微信截图_20240405131106"></p>
+<h3><span id="3电容元件">3.电容元件</span></h3><p><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240405132101.png" alt="微信截图_20240405132101"></p>
+<h3><span id="4正弦电源的相量模型">4.正弦电源的相量模型</span></h3><p>①<strong>正弦电压源</strong>：如果一个独立电压源uₛ(t)的输出电压为正弦电压，即uₛ(t) &#x3D; √2 Uₛ sin(ωt + θᵤ)，就称其为正弦电压源。</p>
+<p>参数：Uₛ→有效值；ω→角频率；θᵤ→初相。</p>
+<p>②<strong>正弦电流源</strong>：Iₛ(t) &#x3D; √2 Iₛ sin(ωt + θᵤ)</p>
+<p>③正弦受控源：VCVC,CCVS,VCCS,CCCS</p>
+<h2><span id="相量模型">相量模型</span></h2><h3><span id="1阻抗和导纳">1.阻抗和导纳</span></h3><h4><span id="1阻抗z">（1）阻抗Z</span></h4><h5><span id="1概念">①概念</span></h5><p><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/4c636121dd444a1e847b36ec124dfc34.png" alt="4c636121dd444a1e847b36ec124dfc34"></p>
+<p>X&#x3D;0时，阻抗Z成电阻性。</p>
+<p>把X替换成φᶻ也成立（z是下标）。</p>
+<h5><span id="2转换关系">②转换关系</span></h5><p>R &#x3D; |Z|cosφᶻ（z是下标）</p>
+<p>X &#x3D; |Z|sinφᶻ</p>
+<p>其中，</p>
+<p>|Z| &#x3D; √（R² + X²） &#x3D; U&#x2F;I</p>
+<p>φᶻ &#x3D; arctan（X&#x2F;R）&#x3D; θᵤ - θᵢ</p>
+<h5><span id="3基本元件的阻抗">③基本元件的阻抗</span></h5><p><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/35e4c5e6308d447aadb1585fcfa64836.png" alt="35e4c5e6308d447aadb1585fcfa64836"></p>
+<p>其中，X˪ &#x3D; ωL，Xᶜ &#x3D; -1&#x2F;ωC  （c是下标）</p>
+<h4><span id="2导纳y">（2）导纳Y</span></h4><p><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/aba8b119efdc4c78845b70dc846c1eaa.png" alt="aba8b119efdc4c78845b70dc846c1eaa"></p>
+<p>导纳的量纲是西门子（S）。</p>
+<h3><span id="2相量图">2.相量图</span></h3><p>确定相量的角度需要两个步骤:</p>
+<p>①第1步:确定参考相量，即角度为零的相量</p>
+<p><strong>串联电路</strong>选<strong>电流</strong>作为参考相量</p>
+<p><strong>并联电路</strong>选<strong>电压</strong>作为参考相量</p>
+<p>②第2步:根据支路的VCR确定支路电压或电流相量的角度</p>
+<p><strong>滞后</strong>：顺时针，后面（以U˪的相量形式作为参照）</p>
+<p><strong>超前</strong>：逆时针，前面</p>
+<p><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/fb1a95a4fab44f2aac3ed1a013f8078d.png" alt="fb1a95a4fab44f2aac3ed1a013f8078d"></p>
+<p><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/db461cce59f34b9b9df7b855b362fb60.png" alt="db461cce59f34b9b9df7b855b362fb60"></p>
+<p><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/f6acd5e9b5bb46fb92aa919e11f436a0.png" alt="f6acd5e9b5bb46fb92aa919e11f436a0"></p>
+<h3><span id="3阻抗和导纳的串-并联">3.阻抗和导纳的串、并联</span></h3><p><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240415222834.png" alt="微信图片_20240415222834"></p>
+<h2><span id="串联谐振">串联谐振</span></h2><h3><span id="1条件">1.条件</span></h3><p>①电路的总阻抗是：Z &#x3D; R + j(ωL - 1&#x2F;ωC)</p>
+<p>②发生谐振时，端口电压U&#96;和端口电流I·同相，只有当阻抗的虚部为0才能满足此条件。</p>
+<p>③公式：ω &#x3D; ω₀ &#x3D; 1 &#x2F; √（ωC）</p>
+<h3><span id="2特征">2.特征</span></h3><p>①谐振时的阻抗最小，电流最大。</p>
+<p>②谐振时的电压与电流同相。并且达到最大值。</p>
+<p>③谐振时电感电压和电容电压大小相等，方向相反，电阻电压等于电源电压。</p>
 ]]></content>
       <tags>
-        <tag>数据结构笔记</tag>
+        <tag>电子电路基础</tag>
       </tags>
   </entry>
   <entry>
@@ -1612,170 +1744,6 @@ return 0;
       </categories>
       <tags>
         <tag>电子电路基础</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>队列的表示和操作实现</title>
-    <url>/2024/05/26/%E9%98%9F%E5%88%97%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E6%93%8D%E4%BD%9C%E5%AE%9E%E7%8E%B0/</url>
-    <content><![CDATA[<!-- toc -->
-
-<ul>
-<li><a href="#%E4%B8%80-%E5%BE%AA%E7%8E%AF%E9%98%9F%E5%88%97%E9%98%9F%E5%88%97%E7%9A%84%E9%A1%BA%E5%BA%8F%E5%AD%98%E5%82%A8">一、循环队列（队列的顺序存储）</a></li>
-<li><a href="#%E4%BA%8C-%E9%93%BE%E6%A0%88">二、链栈</a></li>
-</ul>
-<!-- tocstop -->
-
-<p>[TOC]</p>
-<h3><span id="一-循环队列队列的顺序存储">一、循环队列（队列的顺序存储）</span></h3><p>如果用户的应用程序中设有循环队列，就必须为它设定一个最大队列长度。</p>
-<h4><span id="1定义">1.定义</span></h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#define MAXQSIZE 100 //队列可能达到的长度</span><br><span class="line"></span><br><span class="line">typedef struct&#123;</span><br><span class="line"></span><br><span class="line">int *base; //存储空间的基地址</span><br><span class="line"></span><br><span class="line">int front; //头指针，若队列不空，指向队列头元素（实位）</span><br><span class="line"></span><br><span class="line">int rear; //尾指针，若队列不空，指向队列尾元素的下一个位置（虚位）</span><br><span class="line"></span><br><span class="line">&#125;SqQueue;</span><br><span class="line"></span><br><span class="line">SqQueue Q;</span><br></pre></td></tr></table></figure>
-
-<h5><span id="顺序队列非循环队列">顺序队列——非循环队列</span></h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">初始化队列：Q.front=Q.rear=0;</span><br><span class="line"></span><br><span class="line">入队：新元素按 rear 指示位置加入，再将队尾指针加一，即</span><br><span class="line">Q.base[Q.rear] = e;</span><br><span class="line">Q.rear = Q.rear+1;</span><br><span class="line"></span><br><span class="line">出队：将front指示的元素取出，再将队头指针加一，即 </span><br><span class="line">e=Q.base[O.front];</span><br><span class="line">Q.front= Q.front+ 1;</span><br><span class="line"></span><br><span class="line">队空：Q.front==Q.rear;</span><br><span class="line"></span><br><span class="line">队满：Q.rear-Q.front==MAXQSIZE;</span><br><span class="line"></span><br><span class="line">求队长：Q.rear-Q.front;</span><br></pre></td></tr></table></figure>
-
-<p>存在“假上溢”的现象：<u>因数组越界而导致的程序非法操作错误，并且此时队列的实际可用空间并未占满。</u></p>
-<h5><span id="循环队列">循环队列</span></h5><p>防假上溢：少用一个元素空间，即队列空间大小为m时，有m-1个元素就认为是队满。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">队列初始化： Q.front = Q.rear =0;</span><br><span class="line"></span><br><span class="line">队空：Q.front == Q.rear;</span><br><span class="line"></span><br><span class="line">队满：(Q.rear + 1)%MAXQSIZE ==Q.front;</span><br><span class="line"></span><br><span class="line">入队：（1）队列不满，新元素e插入Q.rear所指的位置</span><br><span class="line">      Q.base[Q.rear] = e;</span><br><span class="line">      （2）Q.rear = (Q.rear+1)%MAXQSIZE;</span><br><span class="line">出队：（1）队列不空，删除Q.front所指的元素</span><br><span class="line">      e = Q.base[Q.front];</span><br><span class="line">     （2）Q.front = (Q.front+1)%MAXQSIZE;</span><br><span class="line">求队长：</span><br><span class="line">(Q.rear - Q.front + MAXQSIZE)%MAXQSIZE;</span><br></pre></td></tr></table></figure>
-
-<h4><span id="2初始化">2.初始化</span></h4><ul>
-<li>分配一个最大容量为MAXQSIZE的存储空间Q.base &#x3D; new int[]</li>
-<li>判断分配失败</li>
-<li>否则将头指针和尾指针置为0，表示队列为空</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int InitQueue(SqQueue &amp;Q)&#123;</span><br><span class="line">//构造一个空队列</span><br><span class="line"></span><br><span class="line">Q.base = new int[MAXQSIZE]; //分配存储空间</span><br><span class="line"></span><br><span class="line">if(!Q.base) return -1; //分配失败</span><br><span class="line"></span><br><span class="line">Q.front = Q.rear=0; //头指针、尾指针置为0，表示队列为空</span><br><span class="line"></span><br><span class="line">return 1;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4><span id="3入队">3.入队</span></h4><ul>
-<li>判断队满</li>
-<li>否则将新元素插入队尾</li>
-<li>队尾指针+1</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int EnQueue(SqQueue &amp;Q,int e)&#123;</span><br><span class="line">//插入元素e为Q的新队尾元素</span><br><span class="line"></span><br><span class="line">if((Q.rear+1)%MAXQSIZE==Q.front)</span><br><span class="line">//尾指针在循环意义上+1后等于头指针，表示队满</span><br><span class="line"></span><br><span class="line">return -1;</span><br><span class="line"></span><br><span class="line">Q.base[Q.rear] = e; //新元素插入队尾</span><br><span class="line"></span><br><span class="line">Q.rear = (Q.rear+1)%MAXQSIZE; //队尾指针+1</span><br><span class="line"></span><br><span class="line">return 1;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4><span id="4出队">4.出队</span></h4><ul>
-<li>判断队空</li>
-<li>否则保存队头元素</li>
-<li>队头指针+1</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int DeQueue(SqQueue &amp;Q,int &amp;e)&#123;</span><br><span class="line">//删除Q的队头元素，用e返回其值</span><br><span class="line"></span><br><span class="line">if(Q.front == Q.rear) return -1;//队空</span><br><span class="line"></span><br><span class="line">e = Q.base[Q.front]; //保存队头元素</span><br><span class="line"></span><br><span class="line">Q.front = (Q.front + 1 )%MAXQSIZE； //队头指针+1</span><br><span class="line"></span><br><span class="line">return 1;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4><span id="5取队头元素">5.取队头元素</span></h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int GetHead(SqQueue Q)&#123;</span><br><span class="line">//返回Q的队头元素，不修改队头指针</span><br><span class="line"></span><br><span class="line">if(Q.front!=Q.rear) //非空</span><br><span class="line"></span><br><span class="line">return Q.base[Q.front];//返回队头</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h3><span id="二-链栈">二、链栈</span></h3><p>采用链式存储结构实现的队列称为<strong>链队列</strong>。</p>
-<p>为了使操作更加方便，将队头指针指向链队列的头结点，而队尾指针指向终端结点。 </p>
-<p><strong>空队列时，front和rear都指向头结点，即front&#x3D;&#x3D;rear</strong></p>
-<h4><span id="1定义">1.定义</span></h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">typedef struct QNode&#123;</span><br><span class="line">int data;</span><br><span class="line">struct QNode *next;</span><br><span class="line">&#125;QNode,*QueuePtr;</span><br><span class="line"></span><br><span class="line">typedef struct &#123;</span><br><span class="line">QueuePtr front; //队头指针</span><br><span class="line">QueuePtr rear; //队尾指针</span><br><span class="line">&#125;LinkQueue;</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2024/05/26/%E9%98%9F%E5%88%97%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E6%93%8D%E4%BD%9C%E5%AE%9E%E7%8E%B0/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526020235.png" alt="微信截图_20240526020235"></p>
-<h4><span id="2初始化">2.初始化</span></h4><p>构造一个只有一个头结点的空队。</p>
-<ul>
-<li>生成新结点作为头结点，队头和队尾指针指向此结点</li>
-<li>头结点的指针域置空</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int InitQueue(LinkQueue &amp;Q)&#123;</span><br><span class="line"></span><br><span class="line">//构造一个空队列Q</span><br><span class="line"></span><br><span class="line">Q.front = Q.rear =new QNode;  //生成新结点作为头结点，队头和队尾指针指向此结点</span><br><span class="line"></span><br><span class="line">Q.front-&gt;next = NULL; //头结点的指针域置空</span><br><span class="line"></span><br><span class="line">return 1;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4><span id="3入队">3.入队</span></h4><p><strong>链队在入队前不需要判断队满，需要为入队元素分配结点空间。</strong></p>
-<ul>
-<li>为入队元素分配结点空间，用指针p指向</li>
-<li>将新结点数据域置为e</li>
-<li>将新结点插入到队尾</li>
-<li>修改队尾指针为p</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int EnQueue(LinkQueue &amp;Q,int e)&#123;</span><br><span class="line">//插入元素e为Q的新队尾元素</span><br><span class="line"></span><br><span class="line">p = new QNode; //分配新结点</span><br><span class="line"></span><br><span class="line">p-&gt;data = e; //把p的数据域置为e</span><br><span class="line"></span><br><span class="line">p-&gt;next = NULL; Q.rear-&gt;next = p;//把新结点插到队尾</span><br><span class="line"></span><br><span class="line">Q.rear = p; //修改队尾指针</span><br><span class="line"></span><br><span class="line">return 1;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4><span id="4出队">4.出队</span></h4><p><strong>链队在出队前需要判断队列是否为空，不同的是，链队在出队后需要放出队头元素的所占空间。</strong></p>
-<ul>
-<li>判断队空</li>
-<li>否则临时保存队头元素的空间，等待释放</li>
-<li>修改头结点的指针域，指向下一个结点</li>
-<li>判断出队元素是否为最后一个元素，若是，则将队尾指针重新赋值，指向头结点</li>
-<li>释放原队头元素</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int DeQueue(LinkQueue &amp;Q,int &amp;e)&#123;</span><br><span class="line">//删除Q的队头元素，用e返回其值</span><br><span class="line"></span><br><span class="line">if(Q.front==Q.rear) retrun -1; //队空</span><br><span class="line"></span><br><span class="line">p = Q.front-&gt;next; //p指向队头元素</span><br><span class="line"></span><br><span class="line">e = p-&gt;data; //e保存队头元素的值</span><br><span class="line"></span><br><span class="line">Q.front-&gt;next = p-&gt;next;  //修改头结点的指针域</span><br><span class="line"></span><br><span class="line">if(Q.rear == p) Q.rear = Q.front; //最后一个元素被删，队尾指针指向头结点</span><br><span class="line"></span><br><span class="line">free(p); //释放原队头元素</span><br><span class="line"></span><br><span class="line">return 1;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>5.求队头元素</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int GetHead(LinkQueue Q)&#123;</span><br><span class="line">//返回Q的队头元素，不修改队头指针</span><br><span class="line"></span><br><span class="line">if(Q.front!=Q.rear)</span><br><span class="line"></span><br><span class="line">return Q.front-&gt;next-&gt;data;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <tags>
-        <tag>数据结构笔记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>高等数学下笔记</title>
-    <url>/2024/03/25/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E4%B8%8B%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<!-- toc -->
-
-<ul>
-<li><a href="#8-%E5%90%91%E9%87%8F%E4%BB%A3%E6%95%B0%E4%B8%8E%E7%A9%BA%E9%97%B4%E8%A7%A3%E6%9E%90%E5%87%A0%E4%BD%95">8 - 向量代数与空间解析几何</a><ul>
-<li><a href="#8-1-%E5%90%91%E9%87%8F%E5%8F%8A%E5%85%B6%E7%BA%BF%E6%80%A7%E8%BF%90%E7%AE%97">8-1 向量及其线性运算</a></li>
-<li><a href="#8-2-%E7%A9%BA%E9%97%B4%E7%9B%B4%E8%A7%92%E5%9D%90%E6%A0%87%E7%B3%BB">8-2 空间直角坐标系</a></li>
-<li><a href="#8-3-%E5%90%91%E9%87%8F%E7%9A%84%E7%BB%BC%E5%90%88%E6%80%A7%E8%B4%A8%E5%92%8C%E8%BF%90%E7%AE%97">8-3 向量的综合性质和运算</a></li>
-<li><a href="#8-4-%E6%95%B0%E9%87%8F%E7%A7%AF-%E5%90%91%E9%87%8F%E7%A7%AF">8-4 数量积、向量积</a></li>
-<li><a href="#8-5-%E5%B9%B3%E9%9D%A2%E5%8F%8A%E5%85%B6%E6%96%B9%E7%A8%8B">8-5 平面及其方程</a></li>
-<li><a href="#8-6-%E7%A9%BA%E9%97%B4%E7%9B%B4%E7%BA%BF%E5%8F%8A%E5%85%B6%E6%96%B9%E7%A8%8B">8-6 空间直线及其方程</a></li>
-</ul>
-</li>
-</ul>
-<!-- tocstop -->
-
-<p>[TOC]</p>
-<h2><span id="8-向量代数与空间解析几何">8 - 向量代数与空间解析几何</span></h2><h3><span id="8-1-向量及其线性运算">8-1 向量及其线性运算</span></h3><p>1.由三角形两边之和大于第三边，有：|<strong>a</strong> + <strong>b</strong>|&lt;&#x3D;|<strong>a</strong>|+|<strong>b</strong>|; |<strong>a</strong> - <strong>b</strong>|&lt;&#x3D;|<strong>a</strong>|+|<strong>b</strong>|</p>
-<p>2.数乘：|λ<strong>a</strong>| &#x3D; |λ||<strong>a</strong>|</p>
-<p>3.单位向量<strong>e</strong>&#x3D;<strong>a</strong>&#x2F;|<strong>a</strong>|</p>
-<p>4.<strong>a</strong>&#x2F;&#x2F;<strong>b</strong>等价于<strong>b</strong>&#x3D;λ<strong>a</strong>（<strong>a</strong>!&#x3D;0）</p>
-<h3><span id="8-2-空间直角坐标系">8-2 空间直角坐标系</span></h3><img src="/2024/03/25/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E4%B8%8B%E7%AC%94%E8%AE%B0/be8b438d8dab4f26425537c8e52ffa4.png" alt="be8b438d8dab4f26425537c8e52ffa4" style="zoom:80%;">
-
-<img src="/2024/03/25/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E4%B8%8B%E7%AC%94%E8%AE%B0/ed720f4486e49cb4f94f47c876630bf.png" alt="ed720f4486e49cb4f94f47c876630bf" style="zoom:80%;">
-
-<p>向量OF（x，y，z）是点O关于点F的向径，<u>求点F的坐标就是求向量OP的坐标</u></p>
-<p>①若点F在yoz面上，x&#x3D;0；</p>
-<p>②点F在zox面上，y&#x3D;0；点F在xoy面上，z&#x3D;0；</p>
-<p>③点F在x轴上，y&#x3D;z&#x3D;0；</p>
-<p>④点F在y轴上，z&#x3D;x&#x3D;0；点F在z轴上，x&#x3D;y&#x3D;0；</p>
-<p>⑤点F为原点，x&#x3D;y&#x3D;z&#x3D;0。</p>
-<h3><span id="8-3-向量的综合性质和运算">8-3 向量的综合性质和运算</span></h3><img src="/2024/03/25/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E4%B8%8B%E7%AC%94%E8%AE%B0/微信截图_20240326011004.png" alt="微信截图_20240326011004" style="zoom:80%;">
-
-<h4><span id="题型"><strong>题型：</strong></span></h4><h5><span id="1向量模的坐标表达式">1.向量模的坐标表达式</span></h5><h5><span id="2两点距离公式">2.两点距离公式：</span></h5><p>求证三角形的类型（等腰、直角、等边）</p>
-<p>求已知向量的定向单位向量</p>
-<p>求与某几点等距离的点</p>
-<h5><span id="3方向角与方向余弦">3.方向角与方向余弦：</span></h5><p>已知角度求点的坐标</p>
-<p>已知向量求方向角、余弦和模</p>
-<h5><span id="4投影">4.投影</span></h5><p>已知向量求向量在某轴上的投影</p>
-<p>已知投影求向量</p>
-<h3><span id="8-4-数量积-向量积">8-4 数量积、向量积</span></h3><img src="/2024/03/25/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E4%B8%8B%E7%AC%94%E8%AE%B0/微信截图_20240326013200.png" alt="微信截图_20240326013200" style="zoom:80%;">
-
-<h4><span id="题型"><strong>题型</strong>：</span></h4><p>1.用数量积公式求夹角、投影</p>
-<p>2.用向量积求三角形面积（用到正弦）</p>
-<p>3.用数量积、向量积定义证垂直或平行</p>
-<p>4.（多用）用向量积求平面方程</p>
-<h3><span id="8-5-平面及其方程">8-5 平面及其方程</span></h3><h4><span id="1平面的点法式方程">1.平面的点法式方程</span></h4><p><strong>A（x-x₀）+B（y-y₀）+C（z-z₀）&#x3D;0</strong></p>
-<p>其中<strong>n</strong>&#x3D;（A,B,C），M₀&#x3D;（x₀，y₀，z₀）</p>
-<h4><span id="2平面的一般方程">2.平面的一般方程</span></h4><p><strong>Ax0 + By0 + Cz0 +D&#x3D;0</strong></p>
-<p><strong>n</strong>&#x3D;（A,B,C）</p>
-<p>①<strong>D&#x3D;0</strong>时，方程表示一个通过<strong>原点</strong>的平面</p>
-<p>②<strong>A&#x3D;0</strong>时，<strong>n</strong>垂直于x轴，方程表示一个平行于（或包含）<strong>x轴</strong>的平面；<strong>B&#x3D;0，C&#x3D;0</strong>同理</p>
-<p>③<strong>A&#x3D;B&#x3D;0</strong>，<strong>n</strong>同时垂直x轴和y轴，方程表示一个平行于（或重合）<strong>x0y面</strong>的平面；<strong>A&#x3D;C&#x3D;0,B&#x3D;C&#x3D;0</strong>同理</p>
-<h4><span id="3平面的截距式方程">3.平面的截距式方程</span></h4><p><strong>x&#x2F;a + y&#x2F;b + z&#x2F;c &#x3D; 1</strong></p>
-<p>a、b、c分别是平面在xyz轴上的截距</p>
-<h4><span id="4两平面夹角-点到平面距离">4.两平面夹角、点到平面距离</span></h4><p><strong>两平面互相垂直</strong>相当于<strong>A₁A₂ + B₁B₂ + C₁C₂ &#x3D; 0</strong></p>
-<p><strong>两平面互相平行或重合</strong>相当于<strong>A₁&#x2F;A₂ &#x3D; B₁&#x2F;B₂ &#x3D; C₁&#x2F;C₂</strong></p>
-<img src="/2024/03/25/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E4%B8%8B%E7%AC%94%E8%AE%B0/微信截图_20240326015143.png" alt="微信截图_20240326015143" style="zoom:80%;">
-
-
-
-<h3><span id="8-6-空间直线及其方程">8-6 空间直线及其方程</span></h3><h4><span id="1直线的点向式方程对称式方程">1.直线的点向式方程（对称式方程）</span></h4><p>其中，<strong>s</strong>&#x3D;(m,n,p)，M₀&#x3D;(x₀,y₀,z₀)</p>
-<p>要素：①方向向量 ②点</p>
-<h4><span id="2直线的参数方程">2.直线的参数方程</span></h4><h4><span id="3直线的一般方程">3.直线的一般方程</span></h4><p>表现为两个平面的交线</p>
-<h4><span id="4线面角">4.线面角</span></h4><p>范围是【0，90°】</p>
-<img src="/2024/03/25/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E4%B8%8B%E7%AC%94%E8%AE%B0/微信截图_20240326015259.png" alt="微信截图_20240326015259" style="zoom:80%;">
-
-<h4><span id="5线线角">5.线线角</span></h4><p>和面面角公式相同，用cos</p>
-<h4><span id="6性质">6.性质</span></h4><p><strong>两直线相互垂直（包括异面、相交）</strong>相当于 <strong>m₁m₂ + n₁n₂ + p₁p₂ &#x3D; 0</strong></p>
-<p><strong>两直线互相平行或重合</strong> 相当于 <strong>m₁&#x2F;m₂ &#x3D; n₁&#x2F;n₂ &#x3D; p₁&#x2F;p₂</strong></p>
-<p><strong>直线与平面平行或直线在平面上</strong> 相当于 <strong>Am + Bn + Cp &#x3D;0</strong></p>
-]]></content>
-      <tags>
-        <tag>高等数学</tag>
       </tags>
   </entry>
   <entry>
@@ -2037,135 +2005,167 @@ return 0;
       </tags>
   </entry>
   <entry>
-    <title>正弦稳态电路分析</title>
-    <url>/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/</url>
+    <title>队列的表示和操作实现</title>
+    <url>/2024/05/26/%E9%98%9F%E5%88%97%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E6%93%8D%E4%BD%9C%E5%AE%9E%E7%8E%B0/</url>
     <content><![CDATA[<!-- toc -->
 
 <ul>
-<li><a href="#%E6%AD%A3%E5%BC%A6%E4%BF%A1%E5%8F%B7">正弦信号</a><ul>
-<li><a href="#1%E6%AD%A3%E5%BC%A6%E4%BF%A1%E5%8F%B7%E7%9A%84%E4%B8%89%E8%A6%81%E7%B4%A0">1.正弦信号的三要素</a></li>
-<li><a href="#2%E6%AD%A3%E5%BC%A6%E4%BF%A1%E5%8F%B7%E7%9A%84%E7%9B%B8%E4%BD%8D%E5%B7%AE">2.正弦信号的相位差</a></li>
-<li><a href="#3%E6%AD%A3%E5%BC%A6%E4%BF%A1%E5%8F%B7%E7%9A%84%E6%9C%89%E6%95%88%E5%80%BC">3.正弦信号的有效值</a></li>
+<li><a href="#%E4%B8%80-%E5%BE%AA%E7%8E%AF%E9%98%9F%E5%88%97%E9%98%9F%E5%88%97%E7%9A%84%E9%A1%BA%E5%BA%8F%E5%AD%98%E5%82%A8">一、循环队列（队列的顺序存储）</a></li>
+<li><a href="#%E4%BA%8C-%E9%93%BE%E6%A0%88">二、链栈</a></li>
 </ul>
-</li>
-<li><a href="#%E6%AD%A3%E5%BC%A6%E4%BF%A1%E5%8F%B7%E7%9A%84%E7%9B%B8%E9%87%8F%E8%A1%A8%E7%A4%BA">正弦信号的相量表示</a><ul>
-<li><a href="#1%E5%A4%8D%E6%95%B0a%E7%9A%84%E8%A1%A8%E7%A4%BA">1.复数A的表示</a></li>
-<li><a href="#2%E7%94%A8%E7%9B%B8%E9%87%8F%E8%A1%A8%E7%A4%BA%E6%AD%A3%E5%BC%A6%E4%BF%A1%E5%8F%B7">2.用相量表示正弦信号</a></li>
+<!-- tocstop -->
+
+<p>[TOC]</p>
+<h3><span id="一-循环队列队列的顺序存储">一、循环队列（队列的顺序存储）</span></h3><p>如果用户的应用程序中设有循环队列，就必须为它设定一个最大队列长度。</p>
+<h4><span id="1定义">1.定义</span></h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#define MAXQSIZE 100 //队列可能达到的长度</span><br><span class="line"></span><br><span class="line">typedef struct&#123;</span><br><span class="line"></span><br><span class="line">int *base; //存储空间的基地址</span><br><span class="line"></span><br><span class="line">int front; //头指针，若队列不空，指向队列头元素（实位）</span><br><span class="line"></span><br><span class="line">int rear; //尾指针，若队列不空，指向队列尾元素的下一个位置（虚位）</span><br><span class="line"></span><br><span class="line">&#125;SqQueue;</span><br><span class="line"></span><br><span class="line">SqQueue Q;</span><br></pre></td></tr></table></figure>
+
+<h5><span id="顺序队列非循环队列">顺序队列——非循环队列</span></h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">初始化队列：Q.front=Q.rear=0;</span><br><span class="line"></span><br><span class="line">入队：新元素按 rear 指示位置加入，再将队尾指针加一，即</span><br><span class="line">Q.base[Q.rear] = e;</span><br><span class="line">Q.rear = Q.rear+1;</span><br><span class="line"></span><br><span class="line">出队：将front指示的元素取出，再将队头指针加一，即 </span><br><span class="line">e=Q.base[O.front];</span><br><span class="line">Q.front= Q.front+ 1;</span><br><span class="line"></span><br><span class="line">队空：Q.front==Q.rear;</span><br><span class="line"></span><br><span class="line">队满：Q.rear-Q.front==MAXQSIZE;</span><br><span class="line"></span><br><span class="line">求队长：Q.rear-Q.front;</span><br></pre></td></tr></table></figure>
+
+<p>存在“假上溢”的现象：<u>因数组越界而导致的程序非法操作错误，并且此时队列的实际可用空间并未占满。</u></p>
+<h5><span id="循环队列">循环队列</span></h5><p>防假上溢：少用一个元素空间，即队列空间大小为m时，有m-1个元素就认为是队满。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">队列初始化： Q.front = Q.rear =0;</span><br><span class="line"></span><br><span class="line">队空：Q.front == Q.rear;</span><br><span class="line"></span><br><span class="line">队满：(Q.rear + 1)%MAXQSIZE ==Q.front;</span><br><span class="line"></span><br><span class="line">入队：（1）队列不满，新元素e插入Q.rear所指的位置</span><br><span class="line">      Q.base[Q.rear] = e;</span><br><span class="line">      （2）Q.rear = (Q.rear+1)%MAXQSIZE;</span><br><span class="line">出队：（1）队列不空，删除Q.front所指的元素</span><br><span class="line">      e = Q.base[Q.front];</span><br><span class="line">     （2）Q.front = (Q.front+1)%MAXQSIZE;</span><br><span class="line">求队长：</span><br><span class="line">(Q.rear - Q.front + MAXQSIZE)%MAXQSIZE;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="2初始化">2.初始化</span></h4><ul>
+<li>分配一个最大容量为MAXQSIZE的存储空间Q.base &#x3D; new int[]</li>
+<li>判断分配失败</li>
+<li>否则将头指针和尾指针置为0，表示队列为空</li>
 </ul>
-</li>
-<li><a href="#%E5%9F%BA%E6%9C%AC%E5%85%83%E4%BB%B6%E4%BC%8F%E5%AE%89%E7%89%B9%E6%80%A7%E7%9A%84%E7%9B%B8%E9%87%8F%E5%BD%A2%E5%BC%8F">基本元件伏安特性的相量形式</a><ul>
-<li><a href="#1%E7%94%B5%E9%98%BB%E5%85%83%E4%BB%B6">1.电阻元件</a></li>
-<li><a href="#2%E7%94%B5%E6%84%9F%E5%85%83%E4%BB%B6">2.电感元件</a></li>
-<li><a href="#3%E7%94%B5%E5%AE%B9%E5%85%83%E4%BB%B6">3.电容元件</a></li>
-<li><a href="#4%E6%AD%A3%E5%BC%A6%E7%94%B5%E6%BA%90%E7%9A%84%E7%9B%B8%E9%87%8F%E6%A8%A1%E5%9E%8B">4.正弦电源的相量模型</a></li>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int InitQueue(SqQueue &amp;Q)&#123;</span><br><span class="line">//构造一个空队列</span><br><span class="line"></span><br><span class="line">Q.base = new int[MAXQSIZE]; //分配存储空间</span><br><span class="line"></span><br><span class="line">if(!Q.base) return -1; //分配失败</span><br><span class="line"></span><br><span class="line">Q.front = Q.rear=0; //头指针、尾指针置为0，表示队列为空</span><br><span class="line"></span><br><span class="line">return 1;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="3入队">3.入队</span></h4><ul>
+<li>判断队满</li>
+<li>否则将新元素插入队尾</li>
+<li>队尾指针+1</li>
 </ul>
-</li>
-<li><a href="#%E7%9B%B8%E9%87%8F%E6%A8%A1%E5%9E%8B">相量模型</a><ul>
-<li><a href="#1%E9%98%BB%E6%8A%97%E5%92%8C%E5%AF%BC%E7%BA%B3">1.阻抗和导纳</a></li>
-<li><a href="#2%E7%9B%B8%E9%87%8F%E5%9B%BE">2.相量图</a></li>
-<li><a href="#3%E9%98%BB%E6%8A%97%E5%92%8C%E5%AF%BC%E7%BA%B3%E7%9A%84%E4%B8%B2-%E5%B9%B6%E8%81%94">3.阻抗和导纳的串、并联</a></li>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int EnQueue(SqQueue &amp;Q,int e)&#123;</span><br><span class="line">//插入元素e为Q的新队尾元素</span><br><span class="line"></span><br><span class="line">if((Q.rear+1)%MAXQSIZE==Q.front)</span><br><span class="line">//尾指针在循环意义上+1后等于头指针，表示队满</span><br><span class="line"></span><br><span class="line">return -1;</span><br><span class="line"></span><br><span class="line">Q.base[Q.rear] = e; //新元素插入队尾</span><br><span class="line"></span><br><span class="line">Q.rear = (Q.rear+1)%MAXQSIZE; //队尾指针+1</span><br><span class="line"></span><br><span class="line">return 1;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="4出队">4.出队</span></h4><ul>
+<li>判断队空</li>
+<li>否则保存队头元素</li>
+<li>队头指针+1</li>
 </ul>
-</li>
-<li><a href="#%E4%B8%B2%E8%81%94%E8%B0%90%E6%8C%AF">串联谐振</a><ul>
-<li><a href="#1%E6%9D%A1%E4%BB%B6">1.条件</a></li>
-<li><a href="#2%E7%89%B9%E5%BE%81">2.特征</a></li>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int DeQueue(SqQueue &amp;Q,int &amp;e)&#123;</span><br><span class="line">//删除Q的队头元素，用e返回其值</span><br><span class="line"></span><br><span class="line">if(Q.front == Q.rear) return -1;//队空</span><br><span class="line"></span><br><span class="line">e = Q.base[Q.front]; //保存队头元素</span><br><span class="line"></span><br><span class="line">Q.front = (Q.front + 1 )%MAXQSIZE； //队头指针+1</span><br><span class="line"></span><br><span class="line">return 1;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="5取队头元素">5.取队头元素</span></h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int GetHead(SqQueue Q)&#123;</span><br><span class="line">//返回Q的队头元素，不修改队头指针</span><br><span class="line"></span><br><span class="line">if(Q.front!=Q.rear) //非空</span><br><span class="line"></span><br><span class="line">return Q.base[Q.front];//返回队头</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3><span id="二-链栈">二、链栈</span></h3><p>采用链式存储结构实现的队列称为<strong>链队列</strong>。</p>
+<p>为了使操作更加方便，将队头指针指向链队列的头结点，而队尾指针指向终端结点。 </p>
+<p><strong>空队列时，front和rear都指向头结点，即front&#x3D;&#x3D;rear</strong></p>
+<h4><span id="1定义">1.定义</span></h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">typedef struct QNode&#123;</span><br><span class="line">int data;</span><br><span class="line">struct QNode *next;</span><br><span class="line">&#125;QNode,*QueuePtr;</span><br><span class="line"></span><br><span class="line">typedef struct &#123;</span><br><span class="line">QueuePtr front; //队头指针</span><br><span class="line">QueuePtr rear; //队尾指针</span><br><span class="line">&#125;LinkQueue;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2024/05/26/%E9%98%9F%E5%88%97%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E6%93%8D%E4%BD%9C%E5%AE%9E%E7%8E%B0/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526020235.png" alt="微信截图_20240526020235"></p>
+<h4><span id="2初始化">2.初始化</span></h4><p>构造一个只有一个头结点的空队。</p>
+<ul>
+<li>生成新结点作为头结点，队头和队尾指针指向此结点</li>
+<li>头结点的指针域置空</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int InitQueue(LinkQueue &amp;Q)&#123;</span><br><span class="line"></span><br><span class="line">//构造一个空队列Q</span><br><span class="line"></span><br><span class="line">Q.front = Q.rear =new QNode;  //生成新结点作为头结点，队头和队尾指针指向此结点</span><br><span class="line"></span><br><span class="line">Q.front-&gt;next = NULL; //头结点的指针域置空</span><br><span class="line"></span><br><span class="line">return 1;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="3入队">3.入队</span></h4><p><strong>链队在入队前不需要判断队满，需要为入队元素分配结点空间。</strong></p>
+<ul>
+<li>为入队元素分配结点空间，用指针p指向</li>
+<li>将新结点数据域置为e</li>
+<li>将新结点插入到队尾</li>
+<li>修改队尾指针为p</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int EnQueue(LinkQueue &amp;Q,int e)&#123;</span><br><span class="line">//插入元素e为Q的新队尾元素</span><br><span class="line"></span><br><span class="line">p = new QNode; //分配新结点</span><br><span class="line"></span><br><span class="line">p-&gt;data = e; //把p的数据域置为e</span><br><span class="line"></span><br><span class="line">p-&gt;next = NULL; Q.rear-&gt;next = p;//把新结点插到队尾</span><br><span class="line"></span><br><span class="line">Q.rear = p; //修改队尾指针</span><br><span class="line"></span><br><span class="line">return 1;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="4出队">4.出队</span></h4><p><strong>链队在出队前需要判断队列是否为空，不同的是，链队在出队后需要放出队头元素的所占空间。</strong></p>
+<ul>
+<li>判断队空</li>
+<li>否则临时保存队头元素的空间，等待释放</li>
+<li>修改头结点的指针域，指向下一个结点</li>
+<li>判断出队元素是否为最后一个元素，若是，则将队尾指针重新赋值，指向头结点</li>
+<li>释放原队头元素</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int DeQueue(LinkQueue &amp;Q,int &amp;e)&#123;</span><br><span class="line">//删除Q的队头元素，用e返回其值</span><br><span class="line"></span><br><span class="line">if(Q.front==Q.rear) retrun -1; //队空</span><br><span class="line"></span><br><span class="line">p = Q.front-&gt;next; //p指向队头元素</span><br><span class="line"></span><br><span class="line">e = p-&gt;data; //e保存队头元素的值</span><br><span class="line"></span><br><span class="line">Q.front-&gt;next = p-&gt;next;  //修改头结点的指针域</span><br><span class="line"></span><br><span class="line">if(Q.rear == p) Q.rear = Q.front; //最后一个元素被删，队尾指针指向头结点</span><br><span class="line"></span><br><span class="line">free(p); //释放原队头元素</span><br><span class="line"></span><br><span class="line">return 1;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>5.求队头元素</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int GetHead(LinkQueue Q)&#123;</span><br><span class="line">//返回Q的队头元素，不修改队头指针</span><br><span class="line"></span><br><span class="line">if(Q.front!=Q.rear)</span><br><span class="line"></span><br><span class="line">return Q.front-&gt;next-&gt;data;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <tags>
+        <tag>数据结构笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>高等数学下笔记</title>
+    <url>/2024/03/25/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E4%B8%8B%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<!-- toc -->
+
+<ul>
+<li><a href="#8-%E5%90%91%E9%87%8F%E4%BB%A3%E6%95%B0%E4%B8%8E%E7%A9%BA%E9%97%B4%E8%A7%A3%E6%9E%90%E5%87%A0%E4%BD%95">8 - 向量代数与空间解析几何</a><ul>
+<li><a href="#8-1-%E5%90%91%E9%87%8F%E5%8F%8A%E5%85%B6%E7%BA%BF%E6%80%A7%E8%BF%90%E7%AE%97">8-1 向量及其线性运算</a></li>
+<li><a href="#8-2-%E7%A9%BA%E9%97%B4%E7%9B%B4%E8%A7%92%E5%9D%90%E6%A0%87%E7%B3%BB">8-2 空间直角坐标系</a></li>
+<li><a href="#8-3-%E5%90%91%E9%87%8F%E7%9A%84%E7%BB%BC%E5%90%88%E6%80%A7%E8%B4%A8%E5%92%8C%E8%BF%90%E7%AE%97">8-3 向量的综合性质和运算</a></li>
+<li><a href="#8-4-%E6%95%B0%E9%87%8F%E7%A7%AF-%E5%90%91%E9%87%8F%E7%A7%AF">8-4 数量积、向量积</a></li>
+<li><a href="#8-5-%E5%B9%B3%E9%9D%A2%E5%8F%8A%E5%85%B6%E6%96%B9%E7%A8%8B">8-5 平面及其方程</a></li>
+<li><a href="#8-6-%E7%A9%BA%E9%97%B4%E7%9B%B4%E7%BA%BF%E5%8F%8A%E5%85%B6%E6%96%B9%E7%A8%8B">8-6 空间直线及其方程</a></li>
 </ul>
 </li>
 </ul>
 <!-- tocstop -->
 
 <p>[TOC]</p>
-<h2><span id="正弦信号">正弦信号</span></h2><p>正弦稳态电路：在正弦电源作用下，电路达到稳定工作状态时的正弦稳态电路。</p>
-<p>正弦交流信号可以用sin函数表示，也可以用cos函数表示，本书采用sin函数。</p>
-<h3><span id="1正弦信号的三要素">1.正弦信号的三要素</span></h3><h4><span id="一个正弦信号由3个参数确定最大值-频率角频率和初相">一个正弦信号由3个参数确定：<strong>最大值、频率（角频率）和初相</strong></span></h4><p>（1）<strong>正弦交流信号的一般表达式</strong>：<strong>u(t) &#x3D; Uₘ sin(ωt + θ)</strong></p>
-<p>（2）<strong>Uₘ</strong>：<strong>幅值</strong>，表示正弦量所能达到的最大值；又叫峰值或振幅</p>
-<p>（3）**(ωt + θ)<strong>：</strong>相位**；θ称为相位角</p>
-<p>（4）<strong>ω</strong>：<strong>角频率</strong>，是正弦量在单位时间内变化的弧度数，单位<strong>rad&#x2F;s</strong></p>
-<p>（5）<strong>周期</strong>：周期T表示正弦量变化一周需要的时间，单位<strong>s</strong></p>
-<p>（6）<strong>公式</strong>：①<strong>T&#x3D;2π&#x2F;ω</strong></p>
-<p>​                      ②<strong>f&#x3D;1&#x2F;T</strong></p>
-<h3><span id="2正弦信号的相位差">2.正弦信号的相位差</span></h3><p>（1）<strong>定义</strong>：两个同频率正弦信号在任一时刻的相位之差称为相位差，实际上是初相之差。</p>
-<p>（2）<strong>符号表示</strong>：θ&#x3D;θᵢ - θᵤ</p>
-<p>（3）θ&gt;0，表示i(t)超前于u(t)，电流比电压先到达最大值或最小值；</p>
-<p>​          θ&lt;0，表示i(t)滞后于u(t)；</p>
-<p>​          θ&#x3D;0，则称i(t)与u(t)同相，二者同时到达最值；</p>
-<p>​          θ&#x3D;+-π，则称i(t)与u(t)反相，当i(t)达到最大值时，u(t)达到最小值，反之亦然。</p>
-<h3><span id="3正弦信号的有效值">3.正弦信号的有效值</span></h3><p>（1）<strong>定义</strong>：设两个阻值相同的电阻，分别通过周期电流和直流电流，在一个周期内，两个电阻消耗相同的能量，就称该直流电流值为周期电流的有效值。</p>
-<p>（2）<strong>总结</strong>：<u>正弦信号的振幅值等于有效值的√2倍。</u></p>
-<p>​                     Uₘ &#x3D; √2 U               Iₘ &#x3D; √2 I</p>
-<p>（3）<strong>公式表示</strong>：i(t)&#x3D;√2 I sin(ωt + θᵢ)</p>
-<p>​                             u(t)&#x3D;√2 U sin(ωt + θᵤ)</p>
-<h2><span id="正弦信号的相量表示">正弦信号的相量表示</span></h2><h3><span id="1复数a的表示">1.复数A的表示</span></h3><h4><span id="1代数型-指数型和极型">（1）代数型、指数型和极型</span></h4><ul>
-<li><input disabled type="checkbox"> <strong>代数型</strong>：A&#x3D;a1 + ja2</li>
-<li><input disabled type="checkbox"> <strong>指数型</strong>：A&#x3D;aeʲᶿ</li>
-<li><input disabled type="checkbox"> <strong>极型</strong>：a∠θ</li>
-</ul>
-<h4><span id="2指数型转换为代数型">（2）指数型转换为代数型</span></h4><ul>
-<li><input disabled type="checkbox"> <strong>欧拉公式</strong>：eʲᶿ &#x3D; cosθ + jsinθ</li>
-<li><input disabled type="checkbox"> 特别的，e^jπ&#x2F;2 &#x3D; cos(π&#x2F;2) + jsin(π&#x2F;2) &#x3D;j</li>
-</ul>
-<h4><span id="3代数型转换为指数型和极型">（3）代数型转换为指数型和极型</span></h4><ul>
-<li><p><input disabled type="checkbox"> 
-<strong>a &#x3D; (a₁² + a₂²)^1&#x2F;2</strong></p>
-</li>
-<li><p><input disabled type="checkbox"> 
-<strong>θ &#x3D; arctan (a₂&#x2F;a₁)</strong></p>
-</li>
-<li><p><input disabled type="checkbox"> 
-常用值：arctan1 &#x3D; π&#x2F;4</p>
-<p>​                arctan√3 &#x3D; π&#x2F;3</p>
-<p>​                arctan1&#x2F;√3 &#x3D; π&#x2F;6</p>
-</li>
-</ul>
-<img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/微信截图_20240402012354.png" alt="微信截图_20240402012354" style="zoom:80%;">
+<h2><span id="8-向量代数与空间解析几何">8 - 向量代数与空间解析几何</span></h2><h3><span id="8-1-向量及其线性运算">8-1 向量及其线性运算</span></h3><p>1.由三角形两边之和大于第三边，有：|<strong>a</strong> + <strong>b</strong>|&lt;&#x3D;|<strong>a</strong>|+|<strong>b</strong>|; |<strong>a</strong> - <strong>b</strong>|&lt;&#x3D;|<strong>a</strong>|+|<strong>b</strong>|</p>
+<p>2.数乘：|λ<strong>a</strong>| &#x3D; |λ||<strong>a</strong>|</p>
+<p>3.单位向量<strong>e</strong>&#x3D;<strong>a</strong>&#x2F;|<strong>a</strong>|</p>
+<p>4.<strong>a</strong>&#x2F;&#x2F;<strong>b</strong>等价于<strong>b</strong>&#x3D;λ<strong>a</strong>（<strong>a</strong>!&#x3D;0）</p>
+<h3><span id="8-2-空间直角坐标系">8-2 空间直角坐标系</span></h3><img src="/2024/03/25/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E4%B8%8B%E7%AC%94%E8%AE%B0/be8b438d8dab4f26425537c8e52ffa4.png" alt="be8b438d8dab4f26425537c8e52ffa4" style="zoom:80%;">
 
-<h4><span id="4计算">（4）计算</span></h4><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/微信截图_20240402012812.png" alt="微信截图_20240402012812" style="zoom:80%;">
+<img src="/2024/03/25/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E4%B8%8B%E7%AC%94%E8%AE%B0/ed720f4486e49cb4f94f47c876630bf.png" alt="ed720f4486e49cb4f94f47c876630bf" style="zoom:80%;">
 
-<h3><span id="2用相量表示正弦信号">2.用相量表示正弦信号</span></h3><h4><span id="1正弦电流-电压的表示">（1）正弦电流、电压的表示</span></h4><p><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240405124242.png" alt="微信截图_20240405124242"></p>
-<p><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240405123709.png" alt="微信图片_20240405123709"></p>
-<h4><span id="2正弦信号与相量的对应规则">（2）正弦信号与相量的对应规则</span></h4><p><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240405125143.png" alt="微信截图_20240405125143"></p>
-<h4><span id="3电流相量适用基尔霍夫定律见例题p87-p91">（3）电流相量适用基尔霍夫定律（见例题P87、P91）</span></h4><p>由i(t)&#x3D;i₁(t) + i₂(t)，有I˙ &#x3D;I˙₁ + I˙₂</p>
-<p>由u(t)&#x3D;u₁(t) + u₂(t)，有U˙ &#x3D;U˙₁ + U˙₂</p>
-<p>结论对于有效值相量和振幅相量都适用。</p>
-<h2><span id="基本元件伏安特性的相量形式">基本元件伏安特性的相量形式</span></h2><h3><span id="1电阻元件">1.电阻元件</span></h3><p><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240405130717.png" alt="微信图片_20240405130717"></p>
-<h3><span id="2电感元件">2.电感元件</span></h3><p><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240405131106.png" alt="微信截图_20240405131106"></p>
-<h3><span id="3电容元件">3.电容元件</span></h3><p><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240405132101.png" alt="微信截图_20240405132101"></p>
-<h3><span id="4正弦电源的相量模型">4.正弦电源的相量模型</span></h3><p>①<strong>正弦电压源</strong>：如果一个独立电压源uₛ(t)的输出电压为正弦电压，即uₛ(t) &#x3D; √2 Uₛ sin(ωt + θᵤ)，就称其为正弦电压源。</p>
-<p>参数：Uₛ→有效值；ω→角频率；θᵤ→初相。</p>
-<p>②<strong>正弦电流源</strong>：Iₛ(t) &#x3D; √2 Iₛ sin(ωt + θᵤ)</p>
-<p>③正弦受控源：VCVC,CCVS,VCCS,CCCS</p>
-<h2><span id="相量模型">相量模型</span></h2><h3><span id="1阻抗和导纳">1.阻抗和导纳</span></h3><h4><span id="1阻抗z">（1）阻抗Z</span></h4><h5><span id="1概念">①概念</span></h5><p><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/4c636121dd444a1e847b36ec124dfc34.png" alt="4c636121dd444a1e847b36ec124dfc34"></p>
-<p>X&#x3D;0时，阻抗Z成电阻性。</p>
-<p>把X替换成φᶻ也成立（z是下标）。</p>
-<h5><span id="2转换关系">②转换关系</span></h5><p>R &#x3D; |Z|cosφᶻ（z是下标）</p>
-<p>X &#x3D; |Z|sinφᶻ</p>
-<p>其中，</p>
-<p>|Z| &#x3D; √（R² + X²） &#x3D; U&#x2F;I</p>
-<p>φᶻ &#x3D; arctan（X&#x2F;R）&#x3D; θᵤ - θᵢ</p>
-<h5><span id="3基本元件的阻抗">③基本元件的阻抗</span></h5><p><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/35e4c5e6308d447aadb1585fcfa64836.png" alt="35e4c5e6308d447aadb1585fcfa64836"></p>
-<p>其中，X˪ &#x3D; ωL，Xᶜ &#x3D; -1&#x2F;ωC  （c是下标）</p>
-<h4><span id="2导纳y">（2）导纳Y</span></h4><p><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/aba8b119efdc4c78845b70dc846c1eaa.png" alt="aba8b119efdc4c78845b70dc846c1eaa"></p>
-<p>导纳的量纲是西门子（S）。</p>
-<h3><span id="2相量图">2.相量图</span></h3><p>确定相量的角度需要两个步骤:</p>
-<p>①第1步:确定参考相量，即角度为零的相量</p>
-<p><strong>串联电路</strong>选<strong>电流</strong>作为参考相量</p>
-<p><strong>并联电路</strong>选<strong>电压</strong>作为参考相量</p>
-<p>②第2步:根据支路的VCR确定支路电压或电流相量的角度</p>
-<p><strong>滞后</strong>：顺时针，后面（以U˪的相量形式作为参照）</p>
-<p><strong>超前</strong>：逆时针，前面</p>
-<p><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/fb1a95a4fab44f2aac3ed1a013f8078d.png" alt="fb1a95a4fab44f2aac3ed1a013f8078d"></p>
-<p><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/db461cce59f34b9b9df7b855b362fb60.png" alt="db461cce59f34b9b9df7b855b362fb60"></p>
-<p><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/f6acd5e9b5bb46fb92aa919e11f436a0.png" alt="f6acd5e9b5bb46fb92aa919e11f436a0"></p>
-<h3><span id="3阻抗和导纳的串-并联">3.阻抗和导纳的串、并联</span></h3><p><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240415222834.png" alt="微信图片_20240415222834"></p>
-<h2><span id="串联谐振">串联谐振</span></h2><h3><span id="1条件">1.条件</span></h3><p>①电路的总阻抗是：Z &#x3D; R + j(ωL - 1&#x2F;ωC)</p>
-<p>②发生谐振时，端口电压U&#96;和端口电流I·同相，只有当阻抗的虚部为0才能满足此条件。</p>
-<p>③公式：ω &#x3D; ω₀ &#x3D; 1 &#x2F; √（ωC）</p>
-<h3><span id="2特征">2.特征</span></h3><p>①谐振时的阻抗最小，电流最大。</p>
-<p>②谐振时的电压与电流同相。并且达到最大值。</p>
-<p>③谐振时电感电压和电容电压大小相等，方向相反，电阻电压等于电源电压。</p>
+<p>向量OF（x，y，z）是点O关于点F的向径，<u>求点F的坐标就是求向量OP的坐标</u></p>
+<p>①若点F在yoz面上，x&#x3D;0；</p>
+<p>②点F在zox面上，y&#x3D;0；点F在xoy面上，z&#x3D;0；</p>
+<p>③点F在x轴上，y&#x3D;z&#x3D;0；</p>
+<p>④点F在y轴上，z&#x3D;x&#x3D;0；点F在z轴上，x&#x3D;y&#x3D;0；</p>
+<p>⑤点F为原点，x&#x3D;y&#x3D;z&#x3D;0。</p>
+<h3><span id="8-3-向量的综合性质和运算">8-3 向量的综合性质和运算</span></h3><img src="/2024/03/25/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E4%B8%8B%E7%AC%94%E8%AE%B0/微信截图_20240326011004.png" alt="微信截图_20240326011004" style="zoom:80%;">
+
+<h4><span id="题型"><strong>题型：</strong></span></h4><h5><span id="1向量模的坐标表达式">1.向量模的坐标表达式</span></h5><h5><span id="2两点距离公式">2.两点距离公式：</span></h5><p>求证三角形的类型（等腰、直角、等边）</p>
+<p>求已知向量的定向单位向量</p>
+<p>求与某几点等距离的点</p>
+<h5><span id="3方向角与方向余弦">3.方向角与方向余弦：</span></h5><p>已知角度求点的坐标</p>
+<p>已知向量求方向角、余弦和模</p>
+<h5><span id="4投影">4.投影</span></h5><p>已知向量求向量在某轴上的投影</p>
+<p>已知投影求向量</p>
+<h3><span id="8-4-数量积-向量积">8-4 数量积、向量积</span></h3><img src="/2024/03/25/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E4%B8%8B%E7%AC%94%E8%AE%B0/微信截图_20240326013200.png" alt="微信截图_20240326013200" style="zoom:80%;">
+
+<h4><span id="题型"><strong>题型</strong>：</span></h4><p>1.用数量积公式求夹角、投影</p>
+<p>2.用向量积求三角形面积（用到正弦）</p>
+<p>3.用数量积、向量积定义证垂直或平行</p>
+<p>4.（多用）用向量积求平面方程</p>
+<h3><span id="8-5-平面及其方程">8-5 平面及其方程</span></h3><h4><span id="1平面的点法式方程">1.平面的点法式方程</span></h4><p><strong>A（x-x₀）+B（y-y₀）+C（z-z₀）&#x3D;0</strong></p>
+<p>其中<strong>n</strong>&#x3D;（A,B,C），M₀&#x3D;（x₀，y₀，z₀）</p>
+<h4><span id="2平面的一般方程">2.平面的一般方程</span></h4><p><strong>Ax0 + By0 + Cz0 +D&#x3D;0</strong></p>
+<p><strong>n</strong>&#x3D;（A,B,C）</p>
+<p>①<strong>D&#x3D;0</strong>时，方程表示一个通过<strong>原点</strong>的平面</p>
+<p>②<strong>A&#x3D;0</strong>时，<strong>n</strong>垂直于x轴，方程表示一个平行于（或包含）<strong>x轴</strong>的平面；<strong>B&#x3D;0，C&#x3D;0</strong>同理</p>
+<p>③<strong>A&#x3D;B&#x3D;0</strong>，<strong>n</strong>同时垂直x轴和y轴，方程表示一个平行于（或重合）<strong>x0y面</strong>的平面；<strong>A&#x3D;C&#x3D;0,B&#x3D;C&#x3D;0</strong>同理</p>
+<h4><span id="3平面的截距式方程">3.平面的截距式方程</span></h4><p><strong>x&#x2F;a + y&#x2F;b + z&#x2F;c &#x3D; 1</strong></p>
+<p>a、b、c分别是平面在xyz轴上的截距</p>
+<h4><span id="4两平面夹角-点到平面距离">4.两平面夹角、点到平面距离</span></h4><p><strong>两平面互相垂直</strong>相当于<strong>A₁A₂ + B₁B₂ + C₁C₂ &#x3D; 0</strong></p>
+<p><strong>两平面互相平行或重合</strong>相当于<strong>A₁&#x2F;A₂ &#x3D; B₁&#x2F;B₂ &#x3D; C₁&#x2F;C₂</strong></p>
+<img src="/2024/03/25/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E4%B8%8B%E7%AC%94%E8%AE%B0/微信截图_20240326015143.png" alt="微信截图_20240326015143" style="zoom:80%;">
+
+
+
+<h3><span id="8-6-空间直线及其方程">8-6 空间直线及其方程</span></h3><h4><span id="1直线的点向式方程对称式方程">1.直线的点向式方程（对称式方程）</span></h4><p>其中，<strong>s</strong>&#x3D;(m,n,p)，M₀&#x3D;(x₀,y₀,z₀)</p>
+<p>要素：①方向向量 ②点</p>
+<h4><span id="2直线的参数方程">2.直线的参数方程</span></h4><h4><span id="3直线的一般方程">3.直线的一般方程</span></h4><p>表现为两个平面的交线</p>
+<h4><span id="4线面角">4.线面角</span></h4><p>范围是【0，90°】</p>
+<img src="/2024/03/25/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6%E4%B8%8B%E7%AC%94%E8%AE%B0/微信截图_20240326015259.png" alt="微信截图_20240326015259" style="zoom:80%;">
+
+<h4><span id="5线线角">5.线线角</span></h4><p>和面面角公式相同，用cos</p>
+<h4><span id="6性质">6.性质</span></h4><p><strong>两直线相互垂直（包括异面、相交）</strong>相当于 <strong>m₁m₂ + n₁n₂ + p₁p₂ &#x3D; 0</strong></p>
+<p><strong>两直线互相平行或重合</strong> 相当于 <strong>m₁&#x2F;m₂ &#x3D; n₁&#x2F;n₂ &#x3D; p₁&#x2F;p₂</strong></p>
+<p><strong>直线与平面平行或直线在平面上</strong> 相当于 <strong>Am + Bn + Cp &#x3D;0</strong></p>
 ]]></content>
       <tags>
-        <tag>电子电路基础</tag>
+        <tag>高等数学</tag>
       </tags>
   </entry>
   <entry>
