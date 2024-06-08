@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="John Doe">
+
+
+
+
+
+
+
+<title>数据结构 主观题汇总 | Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/menu.js"></script>
+    
+
+
+
+
+
+
+
+    <script src='https://unpkg.com/valine@1.4.16/dist/Valine.min.js'></script>
+
+
+
+
+  <!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.1.1"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            首页
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">主页</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">归档</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/categories/gallery/">画廊</a>
+              </li> 
+                   
+          
+          
+            <li class="menu-item search-btn">
+              <a href="#">Search</a>
+            </li>
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+                
+                    <span class="post-tag">
+                        <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%94%E8%AE%B0/">
+                            数据结构笔记
+                        </a>
+                    </span>    
+                           
+            
+        </div>
+        <div class="post-title">
+            
+            
+                数据结构 主观题汇总
+            
+            
+        </div>
+        <span class="post-date">
+            Jun 7, 2024
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <!-- toc -->
+
+<ul>
+<li><a href="#1%E6%A0%91%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E5%92%8C%E6%9C%AF%E8%AF%AD%E7%9A%84%E9%97%AE%E9%A2%98">1.树的基本概念和术语的问题</a></li>
+<li><a href="#2%E7%94%B1%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%85%88%E5%BA%8F%E5%92%8C%E4%B8%AD%E5%BA%8F%E5%BA%8F%E5%88%97%E5%BB%BA%E6%A0%91">2.由二叉树的先序和中序序列建树</a></li>
+<li><a href="#3%E5%93%88%E5%A4%AB%E6%9B%BC%E6%A0%91%E5%92%8C%E5%93%88%E5%A4%AB%E6%9B%BC%E7%BC%96%E7%A0%81">3.哈夫曼树和哈夫曼编码</a></li>
+<li><a href="#4%E5%9B%BE%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5">4.图的基本概念</a></li>
+<li><a href="#5%E7%94%BB%E5%87%BA%E6%97%A0%E5%90%91%E5%9B%BE%E7%9A%84%E9%82%BB%E6%8E%A5%E8%A1%A8%E5%B9%B6%E5%86%99%E5%87%BA%E5%9B%BE%E7%9A%84%E5%B9%BF%E5%BA%A6%E5%92%8C%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86%E5%BA%8F%E5%88%97">5.画出无向图的邻接表并写出图的广度和深度优先遍历序列</a></li>
+</ul>
+<!-- tocstop -->
+
+<p>[TOC]</p>
+<h3><span id="1树的基本概念和术语的问题">1.树的基本概念和术语的问题</span></h3><p><strong>设在树中，结点x是结点y的双亲时，用(x,y)来表示树变。已知一棵树边的集合为：{(i,m),(i,n),(b,e),(e,i),(b,d),(a,b),(g,j),(g,k),(c,g),(c,f),(h,l),(c,h),(a,c)}，回答下列问题：</strong><br>（1）用树形表示法（带字母的圆圈和线）画出此树<br>（2） 哪个是根结点<br>（3） 哪些是叶结点？<br>（4） 哪个是g的双亲？<br>（5） 哪些是g的祖先？<br>（6） 哪些是g的孩子？<br>（7） 哪些是e的子孙？<br>（8） 哪些是e的兄弟？哪些是f的兄弟？<br>（9） 结点b和n的层次各是多少？<br>（10） 树的深度是多少？<br>（11） 以结点c为根的子树的深度是多少？<br>（12） 树的度数是多少？</p>
+<p><img src="/2024/06/07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E4%B8%BB%E8%A7%82%E9%A2%98%E6%B1%87%E6%80%BB/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240608083207.png" alt="微信截图_20240608083207"></p>
+<p>a是根结点；</p>
+<p>m、n、d、j、k、f、l是叶子结点；</p>
+<p>c是g的双亲；</p>
+<p>a是g的祖先；</p>
+<p>j、k是g的孩子；</p>
+<p>i、m、n是e的子孙；</p>
+<p>d是e的兄弟，g、h是f的兄弟；</p>
+<p>b的层次是2，n的层次是5；</p>
+<p>树的深度是5；</p>
+<p>c的深度是3；</p>
+<p>树的度数是3。</p>
+<h3><span id="2由二叉树的先序和中序序列建树">2.由二叉树的先序和中序序列建树</span></h3><p><img src="/2024/06/07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E4%B8%BB%E8%A7%82%E9%A2%98%E6%B1%87%E6%80%BB/20180523165909343-1717818496339-6.png" alt="20180523165909343"></p>
+<p><strong>假设一棵二叉树的先序序列为EBADCFHGIKJ和中序序列为ABCDEFGHIJK，要求：</strong></p>
+<p>（1）画出这棵二叉树；</p>
+<p>（2）请给出其后序序列和层序序列。</p>
+<p><img src="/2024/06/07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E4%B8%BB%E8%A7%82%E9%A2%98%E6%B1%87%E6%80%BB/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240608084403-1717817891019-3.png" alt="微信截图_20240608084403"></p>
+<p>后序：ACDBGJKIHFE</p>
+<p>层序：EBFADHCGIKJ</p>
+<h3><span id="3哈夫曼树和哈夫曼编码">3.哈夫曼树和哈夫曼编码</span></h3><p><strong>求哈夫曼树：</strong></p>
+<p>（１）根据n个给定的权值构成n棵二叉树的森林，森林中每一棵树只有一个带权的根结点</p>
+<p>（２）在森林中，选取两棵根结点的权值最小的树作为左右子树，构造一棵新的二叉树，且设置新的二叉树的根结点的权值为其左右子树上根结点的权值之和</p>
+<p>（３）在森林中删除这两棵树，同时将新得到的二叉树加入到森林中</p>
+<p>（４）重复（２）和（３），直到森林中只有一棵树为止，这棵树即为哈夫曼树</p>
+<p>求哈夫曼编码：</p>
+<p>左分支为0，右分支为1。</p>
+<p><strong>假设用于通信的电文仅由8个字母组成，字母在电文中出现的频率分别为0.09，0.16，0.02，0.06，0.32，0.03，0.21，0.11。</strong></p>
+<p>（1）画出哈夫曼树；</p>
+<p>（2）根据哈夫曼树给这8个字母设计哈夫曼编码，计算WPL值；</p>
+<p>（3）设计另一种由二进制表示的等长编码方案；</p>
+<p>（4） 对于上述实例，计算两种方案的平均编码长度，分析两种方案的优缺点。</p>
+<p><img src="/2024/06/07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E4%B8%BB%E8%A7%82%E9%A2%98%E6%B1%87%E6%80%BB/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240608120058.png" alt="微信截图_20240608120058"></p>
+<p><img src="/2024/06/07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E4%B8%BB%E8%A7%82%E9%A2%98%E6%B1%87%E6%80%BB/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240608121225.png" alt="微信截图_20240608121225"></p>
+<p>对于上述两种方案，等长编码的构造比哈夫曼编码的构造简单。等长编码的译码简单。但是哈夫曼编码是最优前缀编码。利用哈夫曼编码对文件进行编码，使该文件压缩后对应的二进制文件的长度最短。而等长编码使该二进制文件的长度不短。哈夫曼编码的构造和译码相对等长编码复杂些。</p>
+<h3><span id="4图的基本概念">4.图的基本概念</span></h3><p>请根据下图给出：</p>
+<p>（1）每个顶点的度</p>
+<p>（2）邻接矩阵</p>
+<p>（3）邻接表(边结点序号从小到大)</p>
+<p><img src="/2024/06/07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E4%B8%BB%E8%A7%82%E9%A2%98%E6%B1%87%E6%80%BB/51c238b5-954b-4348-af1a-f29986300fa6.png" alt="51c238b5-954b-4348-af1a-f29986300fa6"></p>
+<p><img src="/2024/06/07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E4%B8%BB%E8%A7%82%E9%A2%98%E6%B1%87%E6%80%BB/0fa7c377-cb8e-4ccb-8c37-96bddd5aa3d2.jpg" alt="0fa7c377-cb8e-4ccb-8c37-96bddd5aa3d2"></p>
+<p><img src="/2024/06/07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E4%B8%BB%E8%A7%82%E9%A2%98%E6%B1%87%E6%80%BB/aca2a79d-0232-4de6-96b0-1f5b0d9385a3.jpg" alt="aca2a79d-0232-4de6-96b0-1f5b0d9385a3"></p>
+<p><img src="/2024/06/07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E4%B8%BB%E8%A7%82%E9%A2%98%E6%B1%87%E6%80%BB/4b5df1b6-2e31-4120-a0c3-af870755f3fe.png" alt="4b5df1b6-2e31-4120-a0c3-af870755f3fe"></p>
+<h3><span id="5画出无向图的邻接表并写出图的广度和深度优先遍历序列">5.画出无向图的邻接表并写出图的广度和深度优先遍历序列</span></h3><p>(1)写出下图的邻接表(边结点序号从小到大)，<br>(2)写出从顶点3出发的广度优先搜索序列和深度优先搜索序列，顶点之间用空格隔开。约定以结点小编号优先次序访问。</p>
+<p><img src="/2024/06/07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E4%B8%BB%E8%A7%82%E9%A2%98%E6%B1%87%E6%80%BB/8013d897-f5b6-4f3c-8fc5-39674a21cc16.png" alt="8013d897-f5b6-4f3c-8fc5-39674a21cc16"></p>
+<p><img src="/2024/06/07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E4%B8%BB%E8%A7%82%E9%A2%98%E6%B1%87%E6%80%BB/user-uploads_1639164144315953152_2024-5-21_1716235096-488f3a33-1844-4da5-a857-1ac694da7a5f.jpg" alt="user-uploads_1639164144315953152_2024-5-21_1716235096-488f3a33-1844-4da5-a857-1ac694da7a5f"></p>
+<p>广度：3 1 2 4 6 0 5</p>
+<p>深度：3 1 0 2 4 5 6</p>
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2024/06/01/%E5%9B%BE%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E6%93%8D%E4%BD%9C/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+    
+        <div id="vcomments"></div>
+        <script>
+            var META = ['nick', 'mail', 'link'];
+            var meta = 'nick,mail';
+            meta = meta.split(',').filter(item => {
+                return META.includes(item);
+            });
+            new Valine({
+                el: '#vcomments',
+                appId: 'f131VXTFNbI57QRvg5lJFtbq-MdYXbMMI',
+                appKey: 'd1GENolYcYpRMO2FbRRbarov',
+                lang: 'zh-CN',
+                placeholder: 'Say something',
+                avatar: 'mp',
+                meta: meta
+            })
+        </script>    
+     
+
+     
+    
+    
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    
+      <div class="search-popup">
+    <div class="search-popup-overlay">  
+    </div>
+    <div class="search-popup-window" >
+        <div class="search-header">
+            <div class="search-input-container">
+              <input autocomplete="off" autocapitalize="off" maxlength="80"
+                     placeholder="Search Anything" spellcheck="false"
+                     type="search" class="search-input">
+            </div>
+            <div class="search-close-btn">
+                <div class="icon close-btn"></div>
+            </div>
+        </div>
+        <div class="search-result-container">
+        </div>
+    </div>
+</div>
+
+<script>
+    const searchConfig = {
+        path             : "/search.xml",
+        top_n_per_article: "1",
+        unescape         : "false",
+        trigger: "auto",
+        preload: "false"
+    }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js"></script>
+<script src="/js/search.js"></script>
+    
+    
+
+  </body>
+</html>
