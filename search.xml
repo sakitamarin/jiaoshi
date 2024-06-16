@@ -55,75 +55,13 @@
       </tags>
   </entry>
   <entry>
-    <title>c++ map使用方法</title>
-    <url>/2024/05/27/c-map%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/</url>
-    <content><![CDATA[<p>在浏览器上搜了一下相关的博文，整理了一部分相对基础的内容，有点难懂的另一部分等以后遇到案例了再重新整理</p>
-<!-- toc -->
-
-<ul>
-<li><a href="#%E4%B8%80-%E8%AF%B4%E6%98%8E">一、说明</a><ul>
-<li><a href="#1%E5%90%8D%E8%AF%8D%E8%A7%A3%E9%87%8A">1.名词解释</a></li>
-<li><a href="#2%E5%AE%9A%E4%B9%89">2.定义</a></li>
-<li><a href="#3%E5%85%83%E7%B4%A0%E7%9A%84%E8%AE%BF%E9%97%AE">3.元素的访问</a></li>
-</ul>
-</li>
-<li><a href="#%E4%BA%8C-%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0">二、常用函数</a><ul>
-<li><a href="#1find">1.find()</a></li>
-<li><a href="#2erase">2.erase()</a></li>
-<li><a href="#3size">3.size()</a></li>
-<li><a href="#4clear">4.clear()</a></li>
-</ul>
-</li>
-</ul>
-<!-- tocstop -->
-
-<p>[TOC]</p>
-<h2><span id="一-说明">一、说明</span></h2><h3><span id="1名词解释">1.名词解释</span></h3><ul>
-<li><p>map是STL的一个关联容器，它以&lt;key,value&gt;一对一的形式存储，且map的内部自建一个红黑树，使得其可以自动排序(在map内部一切都是有序的)</p>
-</li>
-<li><p>key可以时任意的数据类型，比如int,char，包括用户自定义数据类型</p>
-</li>
-<li><p>value是该key对应的存储的值</p>
-</li>
-</ul>
-<p><img src="/2024/05/27/c-map%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/8697326-1c3bfc38aacd4611.webp" alt="8697326-1c3bfc38aacd4611"></p>
-<h3><span id="2定义">2.定义</span></h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">map&lt;typename1, typename2&gt; mp;</span><br><span class="line">//例子</span><br><span class="line">map&lt;int string&gt; mis;</span><br><span class="line">map&lt;string, string&gt;mss;</span><br><span class="line">map&lt;float,int&gt; mfi;</span><br><span class="line">map&lt;double,long&gt; mdl;</span><br><span class="line">map&lt;person, int&gt;mpi;//创建一个key为person型、value为int类型的map对象</span><br><span class="line">map&lt;string, int&gt; mp;</span><br></pre></td></tr></table></figure>
-
-<p>注：如果是字符串到整型的映射，必须使用<strong>string</strong>而不能使用char数组。</p>
-<h3><span id="3元素的访问">3.元素的访问</span></h3><h4><span id="1通过下标访问">（1）通过下标访问</span></h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;map&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">map&lt;char, int&gt; mp;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    mp[&#x27;a&#x27;]=1;</span><br><span class="line">    mp[&#x27;c&#x27;]=2;    </span><br><span class="line">    cout&lt;&lt;mp[&#x27;c&#x27;];</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">返回：2</span><br></pre></td></tr></table></figure>
-
-<h4><span id="2通过迭代器访问">（2）通过迭代器访问</span></h4><p>定义迭代器：</p>
-<p>map&lt;typename1, typename2&gt;::iterator it;</p>
-<p>map可以使用it-&gt;first来访问键，使用it-&gt;second来访问值。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;map&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">map&lt;char, int&gt; mp;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    mp[&#x27;a&#x27;]=1;</span><br><span class="line">    mp[&#x27;c&#x27;]=2;    </span><br><span class="line">    mp[&#x27;b&#x27;]=3;</span><br><span class="line">    for(map&lt;char, int&gt;::iterator it=mp.begin();it!=mp.end();it++)&#123;</span><br><span class="line">        cout&lt;&lt;it-&gt;first&lt;&lt;&quot; &quot;&lt;&lt;it-&gt;second&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line">返回：</span><br><span class="line">a 1</span><br><span class="line">b 3</span><br><span class="line">c 2</span><br></pre></td></tr></table></figure>
-
-<p><strong>map会以键从小到大的顺序自动排序</strong>，这种方法可以用于遍历</p>
-<h2><span id="二-常用函数">二、常用函数</span></h2><h3><span id="1find">1.find()</span></h3><p>find（key）返回键值为key的映射的迭代器，时间复杂度为O（logN），N为map中映射的个数。</p>
-<p>如果find()找不到，将返回NULL</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line"> #include &lt;map&gt;</span><br><span class="line"> using namespace std;</span><br><span class="line"> map&lt;char, int&gt; mp;</span><br><span class="line"> int main()</span><br><span class="line"> &#123;</span><br><span class="line">     mp[&#x27;a&#x27;]=1;</span><br><span class="line">     mp[&#x27;c&#x27;]=2;    </span><br><span class="line">     mp[&#x27;b&#x27;]=3;</span><br><span class="line">     map&lt;char, int&gt;::iterator it=mp.find(&#x27;c&#x27;);</span><br><span class="line">     cout&lt;&lt;it-&gt;first&lt;&lt;&quot; &quot;&lt;&lt;it-&gt;second;</span><br><span class="line">     return 0;</span><br><span class="line"> &#125;</span><br><span class="line">输出结果：</span><br><span class="line">c 2</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">当map的第一个元素是int类型时候，可以这样操作</span><br><span class="line"></span><br><span class="line">map&lt;int, int&gt;mp1;</span><br><span class="line">int sum = 100;</span><br><span class="line">sum += mp1[10];//mp1中不存在关键字10，所以mp1返回的值为0，sum累加后是100</span><br><span class="line"></span><br><span class="line">map&lt;int,int&gt; mp2;</span><br><span class="line">mp2[20]++;//因关键字20不存在，增加一个关键字20，其值从0自增到1， 效果相当于mp2增加一个元素&lt;20,1&gt;</span><br></pre></td></tr></table></figure>
-
-
-
-<h3><span id="2erase">2.erase()</span></h3><p>erase()可以删除单个元素，也可以删除一个区间的所有元素。</p>
-<h4><span id="1删除单个元素">（1）删除单个元素</span></h4><p>mp.erase(it)，it为需要删除的元素的迭代器，时间复杂度为O(1)。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"> #include &lt;iostream&gt;</span><br><span class="line"> #include &lt;map&gt;</span><br><span class="line"> using namespace std;</span><br><span class="line"> map&lt;char, int&gt; mp;</span><br><span class="line"> int main()</span><br><span class="line"> &#123;</span><br><span class="line">     mp[&#x27;a&#x27;]=1;</span><br><span class="line">     mp[&#x27;c&#x27;]=2;    </span><br><span class="line">     mp[&#x27;b&#x27;]=3;</span><br><span class="line">     map&lt;char, int&gt;::iterator it=mp.find(&#x27;c&#x27;);</span><br><span class="line">     mp.erase(it);</span><br><span class="line">     for(map&lt;char, int&gt;::iterator it=mp.begin();it!=mp.end();it++)&#123;</span><br><span class="line">             cout&lt;&lt;it-&gt;first&lt;&lt;&quot; &quot;&lt;&lt;it-&gt;second&lt;&lt;endl;</span><br><span class="line">     &#125;</span><br><span class="line">     return 0;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line">输出结果：</span><br><span class="line">a 1</span><br><span class="line"></span><br><span class="line">b 3</span><br></pre></td></tr></table></figure>
-
-<p>mp.erase(key)，key为欲删除的映射的键。时间复杂度为O(logN)，N为map内元素的个数。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"> #include &lt;iostream&gt;</span><br><span class="line"> #include &lt;map&gt;</span><br><span class="line"> using namespace std;</span><br><span class="line"> map&lt;char, int&gt; mp;</span><br><span class="line"> int main()</span><br><span class="line"> &#123;</span><br><span class="line">     mp[&#x27;a&#x27;]=1;</span><br><span class="line">     mp[&#x27;c&#x27;]=2;    </span><br><span class="line">     mp[&#x27;b&#x27;]=3;</span><br><span class="line">     mp.erase(&#x27;c&#x27;);</span><br><span class="line">     for(map&lt;char, int&gt;::iterator it=mp.begin();it!=mp.end();it++)&#123;</span><br><span class="line">             cout&lt;&lt;it-&gt;first&lt;&lt;&quot; &quot;&lt;&lt;it-&gt;second&lt;&lt;endl;</span><br><span class="line">     &#125;</span><br><span class="line">     return 0;</span><br><span class="line"> &#125;</span><br><span class="line">输出结果：</span><br><span class="line">a 1</span><br><span class="line"></span><br><span class="line">b 3</span><br></pre></td></tr></table></figure>
-
-<h4><span id="2删除一个区间内的所有元素">（2）删除一个区间内的所有元素</span></h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line"> #include &lt;map&gt;</span><br><span class="line"> using namespace std;</span><br><span class="line"> map&lt;char, int&gt; mp;</span><br><span class="line"> int main()</span><br><span class="line"> &#123;</span><br><span class="line">     mp[&#x27;a&#x27;]=1;</span><br><span class="line">     mp[&#x27;c&#x27;]=2;    </span><br><span class="line">     mp[&#x27;b&#x27;]=3;</span><br><span class="line">     map&lt;char, int&gt;::iterator it=mp.find(&#x27;c&#x27;);    //令it指向键为c的值 </span><br><span class="line">     mp.erase(it, mp.end());    //删除it之后的所有映射 </span><br><span class="line">     for(map&lt;char, int&gt;::iterator it=mp.begin();it!=mp.end();it++)&#123;</span><br><span class="line">             cout&lt;&lt;it-&gt;first&lt;&lt;&quot; &quot;&lt;&lt;it-&gt;second&lt;&lt;endl;</span><br><span class="line">     &#125;</span><br><span class="line">     return 0;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line">输出结果：</span><br><span class="line">a 1</span><br><span class="line"></span><br><span class="line">b 3　</span><br></pre></td></tr></table></figure>
-
-<h3><span id="3size">3.size()</span></h3><p>size()用来获得map中映射的对数，时间复杂度为O(1)。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"> #include &lt;iostream&gt;</span><br><span class="line"> #include &lt;map&gt;</span><br><span class="line"> using namespace std;</span><br><span class="line"> map&lt;char, int&gt; mp;</span><br><span class="line"> int main()</span><br><span class="line"> &#123;</span><br><span class="line">     mp[&#x27;a&#x27;]=1;</span><br><span class="line">     mp[&#x27;c&#x27;]=2;    </span><br><span class="line">     mp[&#x27;b&#x27;]=3;</span><br><span class="line">     cout&lt;&lt;mp.size();</span><br><span class="line">     return 0;</span><br><span class="line"> &#125;</span><br><span class="line">输出结果：</span><br><span class="line">3</span><br></pre></td></tr></table></figure>
-
-<h3><span id="4clear">4.clear()</span></h3><p>clear()用来清除map中的所有元素，时间复杂度为O(N)。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"> #include &lt;iostream&gt;</span><br><span class="line"> #include &lt;map&gt;</span><br><span class="line"> using namespace std;</span><br><span class="line"> map&lt;char, int&gt; mp;</span><br><span class="line"> int main()</span><br><span class="line"> &#123;</span><br><span class="line">     mp[&#x27;a&#x27;]=1;</span><br><span class="line">     mp[&#x27;c&#x27;]=2;    </span><br><span class="line">     mp[&#x27;b&#x27;]=3;</span><br><span class="line">     mp.clear();    //清空map </span><br><span class="line">     cout&lt;&lt;mp.size();</span><br><span class="line">     return 0;</span><br><span class="line"> &#125;</span><br><span class="line">输出结果：</span><br><span class="line">0</span><br></pre></td></tr></table></figure>
+    <title>控制角色移动</title>
+    <url>/2024/03/19/unity-%E6%8E%A7%E5%88%B6%E8%A7%92%E8%89%B2%E7%A7%BB%E5%8A%A8/</url>
+    <content><![CDATA[<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">using System.Collections;</span><br><span class="line">using System.Collections.Generic;</span><br><span class="line">using UnityEngine;</span><br><span class="line">//控制角色移动、生命、动画等</span><br><span class="line">public class NewBehaviourScript : MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    public float speed = 5f;//移动速度</span><br><span class="line">    // Start is called before the first frame update</span><br><span class="line">    void Start()</span><br><span class="line">    &#123;</span><br><span class="line">        </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// Update is called once per frame</span><br><span class="line">void Update()</span><br><span class="line">&#123;</span><br><span class="line">    float moveX = Input.GetAxisRaw(&quot;Horizontal&quot;);//控制水平方向移动，A：-1，D：1,0</span><br><span class="line">    float moveY = Input.GetAxisRaw(&quot;Vertical&quot;);//控制垂直方向W1 S-1 0</span><br><span class="line"></span><br><span class="line">    Vector2 position = transform.position;</span><br><span class="line">    position.x +=moveX * speed * Time.deltaTime;</span><br><span class="line">    position.y +=moveY * speed * Time.deltaTime;</span><br><span class="line">    transform.position = position;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 ]]></content>
       <tags>
-        <tag>STL</tag>
+        <tag>unity2d</tag>
       </tags>
   </entry>
   <entry>
@@ -224,218 +162,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <url>/2024/03/11/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2><span id="quick-start">Quick Start</span></h2><h3><span id="create-a-new-post">Create a new post</span></h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3><span id="run-server">Run server</span></h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3><span id="generate-static-files">Generate static files</span></h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3><span id="deploy-to-remote-sites">Deploy to remote sites</span></h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>控制角色移动</title>
-    <url>/2024/03/19/unity-%E6%8E%A7%E5%88%B6%E8%A7%92%E8%89%B2%E7%A7%BB%E5%8A%A8/</url>
-    <content><![CDATA[<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">using System.Collections;</span><br><span class="line">using System.Collections.Generic;</span><br><span class="line">using UnityEngine;</span><br><span class="line">//控制角色移动、生命、动画等</span><br><span class="line">public class NewBehaviourScript : MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    public float speed = 5f;//移动速度</span><br><span class="line">    // Start is called before the first frame update</span><br><span class="line">    void Start()</span><br><span class="line">    &#123;</span><br><span class="line">        </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// Update is called once per frame</span><br><span class="line">void Update()</span><br><span class="line">&#123;</span><br><span class="line">    float moveX = Input.GetAxisRaw(&quot;Horizontal&quot;);//控制水平方向移动，A：-1，D：1,0</span><br><span class="line">    float moveY = Input.GetAxisRaw(&quot;Vertical&quot;);//控制垂直方向W1 S-1 0</span><br><span class="line"></span><br><span class="line">    Vector2 position = transform.position;</span><br><span class="line">    position.x +=moveX * speed * Time.deltaTime;</span><br><span class="line">    position.y +=moveY * speed * Time.deltaTime;</span><br><span class="line">    transform.position = position;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <tags>
-        <tag>unity2d</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【离散数学】集合、关系</title>
-    <url>/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/</url>
-    <content><![CDATA[<!-- toc -->
-
-<ul>
-<li><a href="#%E4%B8%80-%E9%9B%86%E5%90%88%E7%9A%84%E6%A6%82%E5%BF%B5%E5%92%8C%E8%A1%A8%E7%A4%BA">一、集合的概念和表示</a><ul>
-<li><a href="#%E5%90%8D%E8%AF%8D%E8%A7%A3%E9%87%8A">名词解释</a></li>
-</ul>
-</li>
-<li><a href="#%E4%BA%8C-%E9%9B%86%E5%90%88%E8%BF%90%E7%AE%97">二、集合运算</a><ul>
-<li><a href="#1%E8%BF%90%E7%AE%97">1.运算</a></li>
-<li><a href="#2%E6%80%A7%E8%B4%A8">2.性质</a></li>
-</ul>
-</li>
-<li><a href="#%E4%B8%89-%E5%8C%85%E5%90%AB%E6%8E%92%E6%96%A5%E5%8E%9F%E7%90%86">三、包含排斥原理</a><ul>
-<li><a href="#1%E6%A6%82%E5%BF%B5">1.概念</a></li>
-<li><a href="#2%E4%BE%8B%E9%A2%98">2.例题</a></li>
-</ul>
-</li>
-<li><a href="#%E5%9B%9B-%E5%BA%8F%E5%81%B6%E4%B8%8E%E7%AC%9B%E5%8D%A1%E5%B0%94%E7%A7%AF">四、序偶与笛卡尔积</a><ul>
-<li><a href="#1%E5%90%8D%E8%AF%8D%E8%A7%A3%E9%87%8A%E5%92%8C%E5%8E%9F%E7%90%86">1.名词解释和原理</a></li>
-<li><a href="#2%E4%BE%8B%E9%A2%98-1">2.例题</a></li>
-</ul>
-</li>
-<li><a href="#%E4%BA%94-%E5%85%B3%E7%B3%BB%E5%8F%8A%E5%85%B6%E8%A1%A8%E7%A4%BA">五、关系及其表示</a><ul>
-<li><a href="#1%E5%90%8D%E8%AF%8D%E8%A7%A3%E9%87%8A%E5%92%8C%E5%8E%9F%E7%90%86-1">1.名词解释和原理</a></li>
-<li><a href="#2%E4%BE%8B%E9%A2%98-2">2.例题</a></li>
-</ul>
-</li>
-<li><a href="#%E5%85%AD-%E5%85%B3%E7%B3%BB%E7%9A%84%E6%80%A7%E8%B4%A8">六、关系的性质</a><ul>
-<li><a href="#%E5%90%8D%E8%AF%8D%E8%A7%A3%E9%87%8A-1">名词解释</a></li>
-<li><a href="#%E4%BE%8B%E9%A2%98">例题</a></li>
-</ul>
-</li>
-<li><a href="#%E4%B8%83-%E5%A4%8D%E5%90%88%E5%85%B3%E7%B3%BB%E5%92%8C%E9%80%86%E5%85%B3%E7%B3%BB">七、复合关系和逆关系</a><ul>
-<li><a href="#1%E5%90%8D%E8%AF%8D%E5%92%8C%E5%AE%9A%E7%90%86">1.名词和定理</a></li>
-<li><a href="#2%E4%BE%8B%E9%A2%98-3">2.例题</a></li>
-</ul>
-</li>
-<li><a href="#%E5%85%AB-%E9%97%AD%E5%8C%85%E8%BF%90%E7%AE%97">八、闭包运算</a></li>
-</ul>
-<!-- tocstop -->
-
-<p>[TOC]</p>
-<h2><span id="一-集合的概念和表示">一、集合的概念和表示</span></h2><h3><span id="名词解释">名词解释</span></h3><h4><span id="集合">集合</span></h4><p>把具有共同性质的一些东西汇集成一个整体，就形成一个集合。</p>
-<h4><span id="元素">元素</span></h4><p>汇集成集合的事物叫元素。</p>
-<p>描述：元素x属于集合A</p>
-<p>记作：x∈A</p>
-<h4><span id="子集">子集</span></h4><p>描述：A集合是B集合的子集</p>
-<p>记作：A ⊆ B</p>
-<h4><span id="真子集">真子集</span></h4><p>描述 : A集合是B集合的子集 , 并且 A &#x3D;̸ B，则称A集合是B集合的真子集</p>
-<p>记作 : A ⊂ B</p>
-<p><u>真包含关系的性质：</u></p>
-<ul>
-<li><strong>反自反性</strong>: A ⊄ A</li>
-<li><strong>反对称性</strong>: 如果 A ⊂ B，那么 B ⊄ A</li>
-<li><strong>传递性</strong>: 如果 A ⊂ B, 并且 B ⊂ C, 那么 A ⊂ C</li>
-</ul>
-<h4><span id="非真子集">非真子集</span></h4><p>描述 : 存在元素x是集合A的元素，不是集合B的元素，并且A、B不相等，则称A集合不是B集合的真子集</p>
-<p>记作 : A ⊄ B</p>
-<h4><span id="空集">空集</span></h4><p>描述 : 没有任何元素的集合 , 称为空集合 , 简称为空集 </p>
-<p>记作 : ∅</p>
-<ul>
-<li>x无解→空集</li>
-<li>空集是一切集合的子集</li>
-<li>空集是唯一的</li>
-<li>{∅} ≠ ∅</li>
-<li>对任何一个集合A，∅ ⊆ A</li>
-</ul>
-<h4><span id="全集">全集</span></h4><p>限定所讨论的集合 , 都是某个集合的子集 , 则称该集合为全集 , 记作 E</p>
-<h4><span id="幂集">幂集</span></h4><p>描述 : A集合的全体子集组成的集合称为 A的幂集 ;</p>
-<p>记作 : P ( A )</p>
-<p>幂集个数定理 : 集合 A中的元素个数∣ A ∣ &#x3D; n ，则 A的 幂集个数 ∣ P ( A ) ∣ &#x3D; 2ⁿ</p>
-<h4><span id="外延性原理">外延性原理</span></h4><p>两个集合是相等的，当且仅当它们有相同的成员。（两个集合A和B相等，记作A &#x3D; B）</p>
-<p>集合A和集合B相等的充分必要条件是这两个集合互为子集。</p>
-<h2><span id="二-集合运算">二、集合运算</span></h2><h3><span id="1运算">1.运算</span></h3><p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240526213445.png" alt="微信图片_20240526213445"></p>
-<h3><span id="2性质">2.性质</span></h3><p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/e2067441ba7746f0b650c1e43d9e64ef.png" alt="在这里插入图片描述"></p>
-<p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/87c29f238b2a41818fd3187d7829d652.png" alt="在这里插入图片描述"></p>
-<p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/dd8be408e0b24359b25f7ddefbf425eb.png" alt="在这里插入图片描述"></p>
-<p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/5dda146382eb4276a8a6ec029c2d4b42.png" alt="在这里插入图片描述"></p>
-<p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/8fdd73e243d841179f607fba34a9e141.png" alt="在这里插入图片描述"></p>
-<p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/255afd2714574225b2e84a5f04b48c5e.png" alt="在这里插入图片描述"></p>
-<p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/80456386fbfb4c72b4f4144838eea10d.png" alt="在这里插入图片描述"></p>
-<p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/0da7a50fde1f474d8f18293ee9f488ef.png" alt="在这里插入图片描述"></p>
-<h2><span id="三-包含排斥原理">三、包含排斥原理</span></h2><h3><span id="1概念">1.概念</span></h3><p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240526213441.png" alt="微信图片_20240526213441"></p>
-<p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/7d8cec1b0d80461b967e6d29f39c7288.png" alt="在这里插入图片描述"></p>
-<p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/97dfee6601d240678de51b656d2e2269.png" alt="在这里插入图片描述"></p>
-<p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/d260fc358e8a4abfbec140f60d714566.png" alt="在这里插入图片描述"></p>
-<h3><span id="2例题">2.例题</span></h3><p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526212553.png" alt="微信截图_20240526212553"></p>
-<h2><span id="四-序偶与笛卡尔积">四、序偶与笛卡尔积</span></h2><h3><span id="1名词解释和原理">1.名词解释和原理</span></h3><h4><span id="序偶">序偶</span></h4><p>有序二元组的称呼，可以看作一个有顺序的集合，记作&lt;A,B&gt;</p>
-<p>序偶不同于集合的是序偶是有顺序的，&lt;A,B&gt; !&#x3D; &lt;B,A&gt;</p>
-<h4><span id="n元组">n元组</span></h4><p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526212700.png" alt="微信截图_20240526212700"></p>
-<h4><span id="笛卡尔积">笛卡尔积</span></h4><p>A与B是集合，那么A与B的笛卡尔积相当于A X B，表示&lt;a,b&gt;,其中：a∈A ,b∈B</p>
-<p>笛卡尔积一般不满足交换律和结合律（并、交差运算除外）</p>
-<p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526215607.png" alt="微信截图_20240526215607"></p>
-<p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526215637.png" alt="微信截图_20240526215637"></p>
-<h3><span id="2例题">2.例题</span></h3><p>笛卡尔积的计算</p>
-<p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526215742.png" alt="微信截图_20240526215742"></p>
-<h2><span id="五-关系及其表示">五、关系及其表示</span></h2><h3><span id="1名词解释和原理">1.名词解释和原理</span></h3><h4><span id="关系">关系</span></h4><p>对于一个二元关系R，R里面的任意一个序偶&lt;x,y&gt;可以记作**&lt;x,y&gt;∈R **或 <strong>xRy</strong></p>
-<p>A X B的子集R称为一个从A到B的二元关系</p>
-<h4><span id="前域-值域-域">前域、值域、域</span></h4><p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526220618.png" alt="微信截图_20240526220618"></p>
-<h4><span id="空关系">空关系</span></h4><p>A X B的平凡子集∅，称为A到B的空关系。</p>
-<h4><span id="全域关系">全域关系</span></h4><p>A X B的平凡子集A X B称为A到B的全域关系。</p>
-<h4><span id="恒等关系">恒等关系</span></h4><p>设Iₓ是X上的二元关系，且满足Iₓ &#x3D; {&lt;x,x&gt;|x∈X}，则称Iₓ是X上的恒等关系。</p>
-<h4><span id="关系矩阵"><strong>关系矩阵</strong></span></h4><p>我们有两个有限集合：X &#x3D; {x₁,x₂,x₃,……,xₘ}，Y&#x3D;{y₁,y₂,y₃,……,yₙ}，R是X到Y上的一个二元关系，那么就有相应的关系矩阵：M &#x3D; [rᵢ ⱼ]ₘₓₙ</p>
-<p>rᵢ ⱼ&#x3D;1当且仅当&lt;aᵢ,bⱼ&gt;∈R</p>
-<p>rᵢ ⱼ&#x3D;0当且仅当&lt;aᵢ,bⱼ&gt;!∈R</p>
-<p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526221913.png" alt="微信截图_20240526221913"></p>
-<h4><span id="关系图">关系图</span></h4><p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526222016.png" alt="微信截图_20240526222016"></p>
-<h3><span id="2例题">2.例题</span></h3><h4><span id="关系矩阵的表示">关系矩阵的表示</span></h4><p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526221828.png" alt="微信截图_20240526221828"></p>
-<h4><span id="笛卡尔积的幂集算法">笛卡尔积的幂集算法</span></h4><p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240526221238.png" alt="微信图片_20240526221238"></p>
-<h4><span id="关系图的表示">关系图的表示</span></h4><p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526222107.png" alt="微信截图_20240526222107"></p>
-<h2><span id="六-关系的性质">六、关系的性质</span></h2><h3><span id="名词解释">名词解释</span></h3><h4><span id="自反的关系">自反的关系</span></h4><p>R是集合X上面的二元关系，如果对于每一个x ∈A,有xRx，即&lt;x,x&gt;∈R，就称R是自反的。</p>
-<p>设集合S非空，S上的关系可以是自反的，是反自反的，也可以两者都不是。</p>
-<p>Y是自反的，则：</p>
-<ul>
-<li>Iₓ ⊆ Y；（集合X上的恒等关系是自反关系，但自反关系却不一定是恒等关系）</li>
-<li>Mᵧ主对角线上的元素都是1；</li>
-<li>Gᵧ的每个结点均有环。</li>
-</ul>
-<h4><span id="反自反关系">反自反关系</span></h4><p>R是集合X上面的二元关系，如果对于每一个x ∈A,有xRx，即&lt;x,x&gt;!∈R，就称R是自反的。</p>
-<p>Y是反自反的，则：</p>
-<ul>
-<li>Iₓ ∩ Y &#x3D;∅；</li>
-<li>Mᵧ主对角线上的元素都是0；</li>
-<li>Gᵧ的每个结点均无环。</li>
-</ul>
-<h4><span id="对称关系">对称关系</span></h4><p>对于关系里面x,y ∈ X，每当xRy，就有yRx，就X上面关系R是对称的。</p>
-<p>Y是对称的，则：</p>
-<ul>
-<li>Mᵧ是对称的；</li>
-<li>Gᵧ中任何两个结点之间若有有向边，必有两条方向相反的有向边。</li>
-</ul>
-<h4><span id="反对称关系">反对称关系</span></h4><p>对于关系里面x,y ∈ X，每当xRy和yRx，就有x&#x3D;y，就X上面关系R是反对称的。</p>
-<ul>
-<li>关系矩阵以对角线对称的元素不能同时为1，(但可为对称阵，同时为0)。</li>
-<li>关系图中如果两个结点之间有有向弧，则不能成对出现。</li>
-</ul>
-<h4><span id="传递关系">传递关系</span></h4><p>对于x, y, z ∈ X，每当xRy, yRz时就有xRz,就称R在X上是传递的。</p>
-<h4><span id="特殊关系的性质">特殊关系的性质</span></h4><p><strong>空关系</strong>： 反自反性，对称性，反对称性，传递性<br><strong>全域关系</strong>：自反性，对称性，传递性<br><strong>恒等关系</strong>：自反性，对称性，传递性</p>
-<h4><span id="总结">总结</span></h4><ul>
-<li>自反性：应该含有所有&lt;x, x&gt;<br>对称性：如果有&lt;x, y&gt;就应该有&lt;y, x&gt;<br>传递性：如果有&lt;x, y&gt;和&lt;y, z&gt;就应该有&lt;x, z&gt;</li>
-<li>反自反性：不应该含有任何&lt;x, x&gt;<br>反对称性：如果有&lt;x, y&gt;就不应该有&lt;y, x&gt;</li>
-</ul>
-<h3><span id="例题">例题</span></h3><p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526231540.png" alt="微信截图_20240526231540"></p>
-<p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526233116.png" alt="微信截图_20240526233116"></p>
-<h2><span id="七-复合关系和逆关系">七、复合关系和逆关系</span></h2><h3><span id="1名词和定理">1.名词和定理</span></h3><h4><span id="复合关系">复合关系</span></h4><p>R是X到Y的关系，S是Y到Z的关系，则R和S的复合关系R°S称为R和S的复合关系，表示为: </p>
-<p>RoS&#x3D;{&lt;x,z&gt;|x∈X且z∈Z(y∈Y ,&lt;x, y&gt;∈R且&lt;y,z&gt; ∈S)}</p>
-<p>复合关系相当于一个个元素进行传递，看是否满足传递关系。</p>
-<h4><span id="逆关系">逆关系</span></h4><p>R是X到Y的二元关系，把R中每一序偶的元素次序颠倒，得到的关系称为R的逆关系，记作Rᶜ</p>
-<ul>
-<li>xRy &#x3D;&#x3D; xRᶜy</li>
-<li>互换R的关系矩阵的行和列，即得Rᶜ的关系矩阵（转置）</li>
-<li>颠倒R的关系图中每条弧线的箭头方向，即得Rᶜ的关系图</li>
-<li>空关系的逆是空关系</li>
-<li>R&#x3D;Rᶜ，则说明R是对称的</li>
-</ul>
-<p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526235030.png" alt="微信截图_20240526235030"></p>
-<p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526235224.png" alt="微信截图_20240526235224"></p>
-<h4><span id="复合关系的结合律">复合关系的结合律</span></h4><p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526233655.png" alt="微信截图_20240526233655"></p>
-<h4><span id="复合关系的幂集">复合关系的幂集</span></h4><p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526234315.png" alt="微信截图_20240526234315"></p>
-<h4><span id="复合关系的矩阵表示">复合关系的矩阵表示</span></h4><p>（1）布尔加法 &#x3D;&#x3D; or</p>
-<p>（2）布尔乘法 &#x3D;&#x3D; and</p>
-<h3><span id="2例题">2.例题</span></h3><h4><span id="复合关系的矩阵表示">复合关系的矩阵表示</span></h4><p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526234530.png" alt="微信截图_20240526234530"></p>
-<h2><span id="八-闭包运算">八、闭包运算</span></h2>]]></content>
-      <tags>
-        <tag>离散数学</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>上标、下标的字符显示</title>
-    <url>/2024/04/02/%E4%B8%8A%E6%A0%87%E3%80%81%E4%B8%8B%E6%A0%87%E7%9A%84%E5%AD%97%E7%AC%A6%E6%98%BE%E7%A4%BA/</url>
-    <content><![CDATA[<h3><span id></span></h3><h3><span id="一-上标">一、上标</span></h3><h4><span id="1数字">1.数字</span></h4><p>¹²³⁴⁵⁶⁷⁸⁹⁰⁺⁻⁼˂˃⁽⁾˙*′˙ⁿº</p>
-<h4><span id="2字母">2.字母</span></h4><p>ᵃᵇᶜᵈᵉᶠᵍʰⁱʲᵏˡᵐⁿᵒᵖʳˢᵗᵘᵛʷˣʸᶻ</p>
-<p>ᴬᴮᒼᴰᴱᶠᴳᴴᴵᴶᴷᴸᴹᴺᴼᴾᴼ̴ᴿˢᵀᵁⱽᵂˣᵞᙆ</p>
-<h4><span id="3其他">3.其他</span></h4><p>ᵃ ᵇ ᶜ ᵈ ᵉ ᵍ ʰ ⁱ ʲ ᵏ ˡ ᵐ ⁿ ᵒ ᵖ ᵒ⃒ ʳ ˢ ᵗ ᵘ ᵛ ʷ ˣ ʸ ᙆ ᴬ ᴮ ᒼ ᴰ ᴱ ᴳ ᴴ ᴵ ᴶ ᴷ ᴸ ᴹ ᴺ ᴼ ᴾ ᴼ̴ ᴿ ˢ ᵀ ᵁ ᵂ ˣ ᵞ ᙆ ꝰ ˀ ˁ ˤ ꟸ ꭜ ʱ ꭝ ꭞ ʴ ʵ ʶ ꭟ ˠ ꟹ ᴭ ᴯ ᴲ ᴻ ᴽ ᵄ ᵅ ᵆ ᵊ ᵋ ᵌ ᵑ ᵓ ᵚ ᵝ ᵞ ᵟ ᵠ ᵡ ᵎ ᵔ ᵕ ᵙ ᵜ ᶛ ᶜ ᶝ ᶞ ᶟ ᶡ ᶣ ᶤ ᶥ ᶦ ᶧ ᶨ ᶩ ᶪ ᶫ ᶬ ᶭ ᶮ ᶯ ᶰ ᶱ ᶲ ᶳ ᶴ ᶵ ᶶ ᶷ ᶸ ᶹ ᶺ ᶼ ᶽ ᶾ ᶿ ꚜ ꚝ ჼ ᒃ ᕻ ᑦ ᒄ ᕪ ᑋ ᑊ ᔿ ᐢ ᣕ ᐤ ᣖ ᣴ ᣗ ᔆ ᙚ ᐡ ᘁ ᐜ ᕽ ᙆ ᙇ ᒼ ᣳ ᒢ ᒻ ᔿ ᐤ ᣖ ᣵ ᙚ ᐪ ᓑ ᘁ ᐜ ᕽ ᙆ ᙇ </p>
-<h3><span id="二-下标">二、下标</span></h3><h4><span id="1数字">1.数字</span></h4><p>₀ ₁ ₂ ₃ ₄ ₅ ₆ ₇ ₈ ₉ ₊ ₋ ₌ ₍ ₎ ₐ ₑ ₒ ₓ ₔ ₕ ₖ ₗ ₘ ₙ ₚ ₛ ₜ</p>
-<h4><span id="2字母">2.字母</span></h4><p>ₐ ₔ ₑ ₕ ᵢ ⱼ ₖ ₗ ₘ ₙ ₒ ₚ ᵣ ₛ ₜ ᵤ ᵥ ₓ ᙮ ᵤ ᵩ ᵦ ₗ ˪ ៳ ៷ ₒ ᵨ ₛ ៴ ᵤ ᵪ ᵧ</p>
-]]></content>
-      <tags>
-        <tag>素材</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>【python】数据采集的基本知识</title>
     <url>/2024/05/29/%E3%80%90python%E3%80%91%E6%95%B0%E6%8D%AE%E9%87%87%E9%9B%86%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/</url>
     <content><![CDATA[<p>记录了在书上看到的一些方法，大体有用，不过代码本身有点老</p>
@@ -533,6 +259,78 @@
       </tags>
   </entry>
   <entry>
+    <title>Hello World</title>
+    <url>/2024/03/11/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2><span id="quick-start">Quick Start</span></h2><h3><span id="create-a-new-post">Create a new post</span></h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3><span id="run-server">Run server</span></h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3><span id="generate-static-files">Generate static files</span></h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3><span id="deploy-to-remote-sites">Deploy to remote sites</span></h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>上标、下标的字符显示</title>
+    <url>/2024/04/02/%E4%B8%8A%E6%A0%87%E3%80%81%E4%B8%8B%E6%A0%87%E7%9A%84%E5%AD%97%E7%AC%A6%E6%98%BE%E7%A4%BA/</url>
+    <content><![CDATA[<h3><span id></span></h3><h3><span id="一-上标">一、上标</span></h3><h4><span id="1数字">1.数字</span></h4><p>¹²³⁴⁵⁶⁷⁸⁹⁰⁺⁻⁼˂˃⁽⁾˙*′˙ⁿº</p>
+<h4><span id="2字母">2.字母</span></h4><p>ᵃᵇᶜᵈᵉᶠᵍʰⁱʲᵏˡᵐⁿᵒᵖʳˢᵗᵘᵛʷˣʸᶻ</p>
+<p>ᴬᴮᒼᴰᴱᶠᴳᴴᴵᴶᴷᴸᴹᴺᴼᴾᴼ̴ᴿˢᵀᵁⱽᵂˣᵞᙆ</p>
+<h4><span id="3其他">3.其他</span></h4><p>ᵃ ᵇ ᶜ ᵈ ᵉ ᵍ ʰ ⁱ ʲ ᵏ ˡ ᵐ ⁿ ᵒ ᵖ ᵒ⃒ ʳ ˢ ᵗ ᵘ ᵛ ʷ ˣ ʸ ᙆ ᴬ ᴮ ᒼ ᴰ ᴱ ᴳ ᴴ ᴵ ᴶ ᴷ ᴸ ᴹ ᴺ ᴼ ᴾ ᴼ̴ ᴿ ˢ ᵀ ᵁ ᵂ ˣ ᵞ ᙆ ꝰ ˀ ˁ ˤ ꟸ ꭜ ʱ ꭝ ꭞ ʴ ʵ ʶ ꭟ ˠ ꟹ ᴭ ᴯ ᴲ ᴻ ᴽ ᵄ ᵅ ᵆ ᵊ ᵋ ᵌ ᵑ ᵓ ᵚ ᵝ ᵞ ᵟ ᵠ ᵡ ᵎ ᵔ ᵕ ᵙ ᵜ ᶛ ᶜ ᶝ ᶞ ᶟ ᶡ ᶣ ᶤ ᶥ ᶦ ᶧ ᶨ ᶩ ᶪ ᶫ ᶬ ᶭ ᶮ ᶯ ᶰ ᶱ ᶲ ᶳ ᶴ ᶵ ᶶ ᶷ ᶸ ᶹ ᶺ ᶼ ᶽ ᶾ ᶿ ꚜ ꚝ ჼ ᒃ ᕻ ᑦ ᒄ ᕪ ᑋ ᑊ ᔿ ᐢ ᣕ ᐤ ᣖ ᣴ ᣗ ᔆ ᙚ ᐡ ᘁ ᐜ ᕽ ᙆ ᙇ ᒼ ᣳ ᒢ ᒻ ᔿ ᐤ ᣖ ᣵ ᙚ ᐪ ᓑ ᘁ ᐜ ᕽ ᙆ ᙇ </p>
+<h3><span id="二-下标">二、下标</span></h3><h4><span id="1数字">1.数字</span></h4><p>₀ ₁ ₂ ₃ ₄ ₅ ₆ ₇ ₈ ₉ ₊ ₋ ₌ ₍ ₎ ₐ ₑ ₒ ₓ ₔ ₕ ₖ ₗ ₘ ₙ ₚ ₛ ₜ</p>
+<h4><span id="2字母">2.字母</span></h4><p>ₐ ₔ ₑ ₕ ᵢ ⱼ ₖ ₗ ₘ ₙ ₒ ₚ ᵣ ₛ ₜ ᵤ ᵥ ₓ ᙮ ᵤ ᵩ ᵦ ₗ ˪ ៳ ៷ ₒ ᵨ ₛ ៴ ᵤ ᵪ ᵧ</p>
+]]></content>
+      <tags>
+        <tag>素材</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>《图解密码技术》 读书笔记</title>
+    <url>/2024/04/17/%E3%80%8A%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF%E3%80%8B-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h2><span id="基础概念">基础概念</span></h2><h3><span id="1-1-基本名词解释">1-1 基本名词解释</span></h3><p>1.密钥（key）：加密和解密所需的媒介。</p>
+<p>2.对称密码：在加密和解密时使用同一密钥的解密方式。</p>
+<p>3.公钥密码：在加密和解密时使用不同密钥的解密方式。又叫非对称密码。</p>
+<p>4.混合密码系统：结合了对称密码和非对称密码的优势。</p>
+<p>5.单向散列函数：是一种保证完整性的密码技术。</p>
+<p>为了防止软件被篡改，一些发布者会在发布软件的同时发布该软件的散列值，下载该软件的人自行下载散列值，如果后者与前者的值相等，说明下载的软件是正版的。</p>
+<p>6.消息认证码：是一种能够保证完整性和提供认证的密码技术。</p>
+<p>为了确认消息是否来自所期望的通信对象，可以使用消息认证码。</p>
+<p>7.数字签名：</p>
+<p>（1）伪装：第三方伪造发送者的身份传达消息。</p>
+<p>（2）篡改：消息在传输的过程中遭到第三方修改。</p>
+<p>（3）否认：发送者在事后推翻自己先前的主张。</p>
+<p>防止伪装、篡改、否认等威胁的技术，就是数字签名。</p>
+<p>8.伪随机数生成器</p>
+<p>9.隐写术：密码隐藏的是内容，而隐写术隐藏的是消息本身</p>
+<h2><span id="历史密码">历史密码</span></h2><h3><span id="2-1凯撒密码">2-1凯撒密码</span></h3><h4><span id="1概念">1.概念</span></h4><p>通过将明文中所使用的字母表按照一定的字数”平移“来进行加密的密码。</p>
+<p>如A→F，B→G</p>
+<p>在此例中，密钥为5</p>
+<h4><span id="2解密">2.解密</span></h4><p>将所有可能的密钥全部尝试一遍，这种方法称为<strong>暴力破解</strong>。由于这种方法的本质是从所有的密钥中找出正确的密钥，因此又称为<strong>穷举搜索</strong>。</p>
+<h3><span id="2-2简单替换密码">2-2简单替换密码</span></h3><h4><span id="1概念">1.概念</span></h4><p>将明文中所使用的字母表替换为另一套字母表的密码。</p>
+<h4><span id="2加密">2.加密</span></h4><p>依次将明文中的每一个字母按照替换表替换成另一个字母。</p>
+<p>如A→B，B→Z</p>
+<h4><span id="3解密">3.解密</span></h4><p>简单替换密码很难通过暴力破解来破译。</p>
+<p>一种密码能够使用的所有密钥的集合称为密钥空间。</p>
+<p>密钥空间越大，暴力破解越困难。</p>
+<p>计算：n!(n是密码所用到的字符的种类)</p>
+<p><strong>频率分析法</strong></p>
+<p>①明文中的字母的出现频率&#x3D;密文中的字母的出现频率</p>
+<p>②除了高频字母以外，低频字母也能够成为线索</p>
+<p>③搞清开头和结尾能够成为线索，搞清单词之间的分隔也能成为线索</p>
+<p>④密文越长越容易破译</p>
+<p>⑤同一个字母连续出现能够成为线索（这是因为在简单替换密码中，某个字母在替换表中所对应的另一个字母是固定的）</p>
+]]></content>
+      <tags>
+        <tag>读书笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>串的存储和表现</title>
     <url>/2024/05/31/%E4%B8%B2%E5%92%8C%E6%95%B0%E7%BB%84/</url>
     <content><![CDATA[<!-- toc -->
@@ -578,168 +376,6 @@
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//算法4.2　KMP算法</span><br><span class="line">int Index_KMP(SString S, SString T, int pos, int next[])</span><br><span class="line">&#123; 	// 利用模式串T的next函数求T在主串S中第pos个字符之后的位置的KMP算法</span><br><span class="line">	//其中，T非空，1≤pos≤StrLength(S)</span><br><span class="line">	int i = pos, j = 1;</span><br><span class="line">	while (i &lt;= S[0] &amp;&amp; j &lt;= T[0])</span><br><span class="line">		if (j == 0 || S[i] == T[j]) // 继续比较后继字</span><br><span class="line">		&#123;</span><br><span class="line">			++i;</span><br><span class="line">			++j;</span><br><span class="line">		&#125;</span><br><span class="line">		else</span><br><span class="line">			j = next[j]; // 模式串向右移动</span><br><span class="line">	if (j &gt; T[0]) // 匹配成功</span><br><span class="line">		return i - T[0];</span><br><span class="line">	else</span><br><span class="line">		return 0;</span><br><span class="line">&#125;//Index_KMP</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//算法4.3　计算next函数值</span><br><span class="line">void get_next(SString T, int next[])</span><br><span class="line">&#123; //求模式串T的next函数值并存入数组next</span><br><span class="line">	int i = 1, j = 0;</span><br><span class="line">	next[1] = 0;</span><br><span class="line">	while (i &lt; T[0])</span><br><span class="line">		if (j == 0 || T[i] == T[j])</span><br><span class="line">		&#123;</span><br><span class="line">			++i;</span><br><span class="line">			++j;</span><br><span class="line">			next[i] = j;</span><br><span class="line">		&#125;</span><br><span class="line">		else</span><br><span class="line">			j = next[j];</span><br><span class="line">&#125;//get_next</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <tags>
-        <tag>数据结构笔记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>《图解密码技术》 读书笔记</title>
-    <url>/2024/04/17/%E3%80%8A%E5%9B%BE%E8%A7%A3%E5%AF%86%E7%A0%81%E6%8A%80%E6%9C%AF%E3%80%8B-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h2><span id="基础概念">基础概念</span></h2><h3><span id="1-1-基本名词解释">1-1 基本名词解释</span></h3><p>1.密钥（key）：加密和解密所需的媒介。</p>
-<p>2.对称密码：在加密和解密时使用同一密钥的解密方式。</p>
-<p>3.公钥密码：在加密和解密时使用不同密钥的解密方式。又叫非对称密码。</p>
-<p>4.混合密码系统：结合了对称密码和非对称密码的优势。</p>
-<p>5.单向散列函数：是一种保证完整性的密码技术。</p>
-<p>为了防止软件被篡改，一些发布者会在发布软件的同时发布该软件的散列值，下载该软件的人自行下载散列值，如果后者与前者的值相等，说明下载的软件是正版的。</p>
-<p>6.消息认证码：是一种能够保证完整性和提供认证的密码技术。</p>
-<p>为了确认消息是否来自所期望的通信对象，可以使用消息认证码。</p>
-<p>7.数字签名：</p>
-<p>（1）伪装：第三方伪造发送者的身份传达消息。</p>
-<p>（2）篡改：消息在传输的过程中遭到第三方修改。</p>
-<p>（3）否认：发送者在事后推翻自己先前的主张。</p>
-<p>防止伪装、篡改、否认等威胁的技术，就是数字签名。</p>
-<p>8.伪随机数生成器</p>
-<p>9.隐写术：密码隐藏的是内容，而隐写术隐藏的是消息本身</p>
-<h2><span id="历史密码">历史密码</span></h2><h3><span id="2-1凯撒密码">2-1凯撒密码</span></h3><h4><span id="1概念">1.概念</span></h4><p>通过将明文中所使用的字母表按照一定的字数”平移“来进行加密的密码。</p>
-<p>如A→F，B→G</p>
-<p>在此例中，密钥为5</p>
-<h4><span id="2解密">2.解密</span></h4><p>将所有可能的密钥全部尝试一遍，这种方法称为<strong>暴力破解</strong>。由于这种方法的本质是从所有的密钥中找出正确的密钥，因此又称为<strong>穷举搜索</strong>。</p>
-<h3><span id="2-2简单替换密码">2-2简单替换密码</span></h3><h4><span id="1概念">1.概念</span></h4><p>将明文中所使用的字母表替换为另一套字母表的密码。</p>
-<h4><span id="2加密">2.加密</span></h4><p>依次将明文中的每一个字母按照替换表替换成另一个字母。</p>
-<p>如A→B，B→Z</p>
-<h4><span id="3解密">3.解密</span></h4><p>简单替换密码很难通过暴力破解来破译。</p>
-<p>一种密码能够使用的所有密钥的集合称为密钥空间。</p>
-<p>密钥空间越大，暴力破解越困难。</p>
-<p>计算：n!(n是密码所用到的字符的种类)</p>
-<p><strong>频率分析法</strong></p>
-<p>①明文中的字母的出现频率&#x3D;密文中的字母的出现频率</p>
-<p>②除了高频字母以外，低频字母也能够成为线索</p>
-<p>③搞清开头和结尾能够成为线索，搞清单词之间的分隔也能成为线索</p>
-<p>④密文越长越容易破译</p>
-<p>⑤同一个字母连续出现能够成为线索（这是因为在简单替换密码中，某个字母在替换表中所对应的另一个字母是固定的）</p>
-]]></content>
-      <tags>
-        <tag>读书笔记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>图的表示和操作</title>
-    <url>/2024/06/01/%E5%9B%BE%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E6%93%8D%E4%BD%9C/</url>
-    <content><![CDATA[<!-- toc -->
-
-<ul>
-<li><a href="#%E4%B8%80-%E5%9B%BE%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C">一、图的基本操作</a><ul>
-<li><a href="#int-locatevex">int LocateVex();</a></li>
-<li><a href="#int-firstadjvex">int FirstAdjVex();</a></li>
-<li><a href="#int-nextadjvex">int NextAdjVex();</a></li>
-<li><a href="#void-showmatrix">void showMatrix();</a></li>
-</ul>
-</li>
-<li><a href="#%E4%BA%8C-%E5%9B%BE%E7%9A%84%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84">二、图的存储结构</a></li>
-<li><a href="#1%E9%82%BB%E6%8E%A5%E7%9F%A9%E9%98%B5">1.邻接矩阵</a><ul>
-<li><a href="#1%E6%97%A0%E5%90%91%E7%BD%91%E7%9A%84%E5%AE%9A%E4%B9%89">（1）无向网的定义</a></li>
-<li><a href="#2%E6%97%A0%E5%90%91%E7%BD%91%E7%9A%84%E5%88%9B%E5%BB%BA">（2）无向网的创建</a></li>
-</ul>
-</li>
-<li><a href="#2%E9%82%BB%E6%8E%A5%E8%A1%A8%E9%93%BE%E5%BC%8F%E5%AD%98%E5%82%A8">2.邻接表（链式存储）</a><ul>
-<li><a href="#1%E5%AE%9A%E4%B9%89">（1）定义</a></li>
-<li><a href="#2%E5%88%9B%E5%BB%BA">（2）创建</a></li>
-</ul>
-</li>
-<li><a href="#%E4%B8%89-%E5%9B%BE%E7%9A%84%E9%81%8D%E5%8E%86">三、图的遍历</a><ul>
-<li><a href="#1%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86">1.深度优先遍历</a></li>
-<li><a href="#2%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86">2.广度优先遍历</a></li>
-</ul>
-</li>
-</ul>
-<!-- tocstop -->
-
-<p>[TOC]</p>
-<h2><span id="一-图的基本操作">一、图的基本操作</span></h2><h3><span id="int-locatevex">int LocateVex();</span></h3><p>&#x2F;&#x2F; 返回顶点u在图中的位置</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int LocateVex(MGraph G, VertexType u) &#123;</span><br><span class="line">	int i;</span><br><span class="line">	for (i = 0; i &lt; G.vexnum &amp;&amp; G.vexs[i] != u; i++);</span><br><span class="line">	return i;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3><span id="int-firstadjvex">int FirstAdjVex();</span></h3><p>&#x2F;&#x2F; 返回图G中u的第一个邻接节点</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int FirstAdjVex(MGraph G, VertexType u) &#123;</span><br><span class="line">	int index = LocateVex(G, u);</span><br><span class="line">	int i;</span><br><span class="line">	for (i = 0; i &lt; G.vexnum; i++) &#123;</span><br><span class="line">		if (G.arcs[index][i].adj != -1) break;</span><br><span class="line">	&#125;</span><br><span class="line">	if (i == G.vexnum) return -1;  // 没有临界点</span><br><span class="line">	else return i;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
-
-<h3><span id="int-nextadjvex">int NextAdjVex();</span></h3><p>&#x2F;&#x2F; 返回G中顶点v相对于u的下一邻接点</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int NextAdjVex(MGraph G, VertexType v, VertexType u) &#123;</span><br><span class="line">	int indexV = LocateVex(G, v);</span><br><span class="line">	int indexU = LocateVex(G, u);</span><br><span class="line">	int index;</span><br><span class="line">	for (index = indexU + 1; index &lt; G.vexnum &amp;&amp; G.arcs[indexV][index].adj == -1; index++);</span><br><span class="line">	if (index == G.vexnum) return -1;</span><br><span class="line">	else return index;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3><span id="void-showmatrix">void showMatrix();</span></h3><p>&#x2F;&#x2F; 打印图的邻接矩阵</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">void showMatrix(MGraph G) &#123;</span><br><span class="line">	for (int i = 0; i &lt; G.vexnum; i++) &#123;</span><br><span class="line">		for (int j = 0; j &lt; G.vexnum; j++) cout &lt;&lt; G.arcs[i][j].adj &lt;&lt; &quot; &quot;;</span><br><span class="line">		cout &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2><span id="二-图的存储结构">二、图的存储结构</span></h2><h2><span id="1邻接矩阵">1.邻接矩阵</span></h2><p>图没有顺序存储结构，但可以利用二维数组来表示元素之间的关系，即邻接矩阵表示法。</p>
-<p>邻接矩阵是表示顶点之间相邻关系的矩阵。</p>
-<p><strong>无向图</strong></p>
-<p><img src="/2024/06/01/%E5%9B%BE%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E6%93%8D%E4%BD%9C/fd2a45a63a414cfdb6800122ecd6bb82.jpg" alt="fd2a45a63a414cfdb6800122ecd6bb82"></p>
-<p><strong>有向网</strong></p>
-<p><img src="/2024/06/01/%E5%9B%BE%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E6%93%8D%E4%BD%9C/af06656474c14cfb839a5cb7e8cae998.jpg" alt="af06656474c14cfb839a5cb7e8cae998"></p>
-<h3><span id="1无向网的定义">（1）无向网的定义</span></h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#define MAXINT 32767 //表示极大值，即∞</span><br><span class="line">#define MVnum 100 //最大顶点数</span><br><span class="line"></span><br><span class="line">typedef char VerTexType;//假设顶点为字符型</span><br><span class="line">typedef int ArcType; //假设边的权值为整型</span><br><span class="line"></span><br><span class="line">typedef struct&#123;</span><br><span class="line">	VerTexType vexs[MVnum]; //顶点表</span><br><span class="line">	ArcType arcs[MVnum][MVnum]; //邻接矩阵</span><br><span class="line">	int vexnum,arcnum; //图的当前点数和边数 </span><br><span class="line">&#125;AMGraph;</span><br></pre></td></tr></table></figure>
-
-<h3><span id="2无向网的创建">（2）无向网的创建</span></h3><ul>
-<li>输入总顶点数和总边数；</li>
-<li>依次输入点的信息；</li>
-<li>初始化邻接矩阵；</li>
-<li>依次输入每条边（及其权值），<u>确定两个顶点在图中的位置之后</u>，使相应边赋予相应的权值，<u>同时使其对称边赋予相同的权值</u>。</li>
-</ul>
-<p><strong>创建。</strong></p>
-<p>无向图的创建只需要删除w变量的部分，并把无穷改成1就好。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int CreateUDN(AMGraph &amp;G)&#123; </span><br><span class="line">	cin&gt;&gt;G.vexnum&gt;&gt;G.arcnum; //输入总点数和总边数</span><br><span class="line">	for(int i=0;i&lt;G.vexnum;i++)&#123;</span><br><span class="line"> 		cin&gt;&gt;G.vexs[i]; //输入点的信息</span><br><span class="line">	&#125;</span><br><span class="line">	for(int i=0;i&lt;G.arcnum;i++)</span><br><span class="line">	  for(int j=0;i&lt;G.arcnum;j++)</span><br><span class="line">	    G.arcs[i][j]=MAXINT; //初始化邻接矩阵，边的权值均置为∞ </span><br><span class="line">	for(int k=0;k&lt;G.arcnum;k++) &#123;  // 输入弧v1-v2的信息</span><br><span class="line">		VerTexType v1,v2;int w;</span><br><span class="line">		cin&gt;&gt;v1&gt;&gt;v2&gt;&gt;w; </span><br><span class="line">		int index1 = LocateVex(G, v1);</span><br><span class="line">		int index2 = LocateVex(G, v2);</span><br><span class="line">		G.arcs[index1][index2]= w; // w表示邻接的权值 </span><br><span class="line">		G.arcs[index2][index1] = G.arcs[index1][index2];  // 无向图对称构造</span><br><span class="line">	&#125;</span><br><span class="line">	return 1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>打印。</strong></p>
-<pre><code>for(i = 0 ; i &lt; G.vexnum ; ++i)&#123;
-    for(j = 0; j &lt; G.vexnum; ++j)&#123;
-        if(j != G.vexnum - 1)&#123;
-            if(G.arcs[i][j] != MaxInt)
-                cout &lt;&lt; G.arcs[i][j] &lt;&lt; &quot;\t&quot;;
-            else
-                cout &lt;&lt; &quot;∞&quot; &lt;&lt; &quot;\t&quot;;
-        &#125;
-        else&#123;
-            if(G.arcs[i][j] != MaxInt)
-                cout &lt;&lt; G.arcs[i][j] &lt;&lt;endl;
-            else
-                cout &lt;&lt; &quot;∞&quot; &lt;&lt;endl;
-        &#125;
-    &#125;
-&#125;//for
-</code></pre>
-<h2><span id="2邻接表链式存储">2.邻接表（链式存储）</span></h2><p><img src="/2024/06/01/%E5%9B%BE%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E6%93%8D%E4%BD%9C/v2-917733c568ffe18d48b5493b1b327f05_r.jpg" alt="v2-917733c568ffe18d48b5493b1b327f05_r"></p>
-<h3><span id="1定义">（1）定义</span></h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#typedef MVNum 100 //最大顶点数 </span><br><span class="line">typedef struct ArcNode&#123; //边结点 </span><br><span class="line">	int adjvex; //该边所指向的顶点的位置</span><br><span class="line">	struct ArcNode *nextarc; //指向下一条边的指针</span><br><span class="line">	//InfoType info         //网的边权值 </span><br><span class="line">&#125;ArcNode;</span><br><span class="line"></span><br><span class="line">typedef struct VNode&#123; //顶点表 </span><br><span class="line">	VertexType data; //顶点信息</span><br><span class="line">	ArcNode *firstarc; //指向第一天依附该结点的弧的指针 </span><br><span class="line">&#125;VNode,AdjList[MVNum];</span><br><span class="line"></span><br><span class="line">typedef struct&#123;</span><br><span class="line">	AdjList vertices;</span><br><span class="line">	int vexnum,arcnum; //图的当前顶点数和边数 </span><br><span class="line">&#125;ALGraph; </span><br></pre></td></tr></table></figure>
-
-<h3><span id="2创建">（2）创建</span></h3><ul>
-<li><p>输入总顶点数和总边数；</p>
-</li>
-<li><p>依次输入点的信息存在顶点表中，每个表头结点的指针域初始化为NULL；</p>
-</li>
-<li><p>创建邻接表，依次输入每条边依附的两个顶点，确定这两个顶点的序号i和j之后，将此边结点分别插入vi和vj</p>
-</li>
-<li><p>对应的两个边链表的头部。如果是有向图，只需生成一个序号为j的边结点，插入到vj的边链表头。</p>
-<p>  int CreateUDG(ALGraph &amp;G){<br>  &#x2F;&#x2F;采用邻接表表示法，创建无向图G<br>  cin &gt;&gt; G.vexnum &gt;&gt; G.arcnum;				&#x2F;&#x2F;输入总顶点数，总边数<br>  for(int i &#x3D; 0; i &lt; G.vexnum; ++i){          	&#x2F;&#x2F;输入各点，构造表头结点表<br>  cin &gt;&gt; G.vertices[i].data;           	&#x2F;&#x2F;输入顶点值<br>  G.vertices[i].firstarc&#x3D;NULL;			&#x2F;&#x2F;初始化表头结点的指针域为NULL<br>  }&#x2F;&#x2F;for<br>  for(int k &#x3D; 0; k &lt; G.arcnum;++k){        		&#x2F;&#x2F;输入各边，构造邻接表<br>  VerTexType v1 , v2;<br>  int i , j;<br>  cin &gt;&gt; v1 &gt;&gt; v2;                 		&#x2F;&#x2F;输入一条边依附的两个顶点<br>  i &#x3D; LocateVex(G, v1);  j &#x3D; LocateVex(G, v2);<br>  &#x2F;&#x2F;确定v1和v2在G中位置，即顶点在G.vertices中的序号<br><br>  ArcNode <em>p1&#x3D;new ArcNode;               	&#x2F;&#x2F;生成一个新的边结点</em>p1<br>  p1-&gt;adjvex&#x3D;j;                   		&#x2F;&#x2F;邻接点序号为j<br>  p1-&gt;nextarc&#x3D; G.vertices[i].firstarc;  G.vertices[i].firstarc&#x3D;p1;<br>  &#x2F;&#x2F;将新结点<em>p1插入顶点vi的边表头部<br><br>  ArcNode <em>p2&#x3D;new ArcNode;                &#x2F;&#x2F;生成另一个对称的新的边结点</em>p2<br>  p2-&gt;adjvex&#x3D;i;                   		&#x2F;&#x2F;邻接点序号为i<br>  p2-&gt;nextarc&#x3D; G.vertices[j].firstarc;  G.vertices[j].firstarc&#x3D;p2;<br>  &#x2F;&#x2F;将新结点</em>p2插入顶点vj的边表头部<br>  }&#x2F;&#x2F;for<br>  return 1;<br>  }</p>
-</li>
-</ul>
-<h2><span id="三-图的遍历">三、图的遍历</span></h2><h3><span id="1深度优先遍历">1.深度优先遍历</span></h3><p>设置变量。</p>
-<p>图的遍历和树的遍历类似，即从图中某一顶点出发遍历图中其余顶点，且使每一个顶点仅被访问一次。<br>为了避免同一顶点被访问多次，在遍历图的过程中，必须记下每个已被访问过的顶点。为此，我们可以设一个辅助数组Visited[N]来标记某一顶点是否被访问过了，初始化为False。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">bool visited[MVNum];           					//访问标志数组，其初值为&quot;false&quot; </span><br><span class="line">int FirstAdjVex(Graph G , int v);				//返回v的第一个邻接点</span><br><span class="line">int NextAdjVex(Graph G , int v , int w);		//返回v相对于w的下一个邻接点</span><br></pre></td></tr></table></figure>
-
-<p>类似于树的先序遍历。</p>
-<ul>
-<li>从图中某个顶点v出发，访问v，并置visited[v]的值为1；</li>
-<li>依次检查v的所有邻接点w，如果visited[w]的值为0，再从w出发进行遍历，直到图中所有顶点都被遍历过。</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 图的深度优先遍历</span><br><span class="line">void DFSTraverse(MGraph G) &#123;</span><br><span class="line">	int* visited = new int[G.vexnum]; // 访问标志数组</span><br><span class="line">	for (int i = 0; i &lt; G.vexnum; i++) visited[i] = 0; // 初始化未被访问</span><br><span class="line">	for (int i = 0; i &lt; G.vexnum; i++) &#123;</span><br><span class="line">		if (!visited[i]) DFS(G, i, visited); // 对尚未访问的顶点i调用DFS，</span><br><span class="line">											 // 因为图G可能不是连通图</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">// 从图中第v个顶点开始进行深度优先遍历</span><br><span class="line">void DFS(MGraph G, int v, int* visited) &#123;</span><br><span class="line">	visited[v] = 1; //先访问顶点v</span><br><span class="line">	cout &lt;&lt; G.vexs[v] &lt;&lt; &quot; &quot;;</span><br><span class="line">	for (int w = FirstAdjVex(G, G.vexs[v]); w &gt;= 0; w = NextAdjVex(G, G.vexs[v], G.vexs[w])) &#123;</span><br><span class="line">		if (!visited[w]) DFS(G, w, visited); // 对v的尚未访问的邻接顶点w递归调用DFS</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3><span id="2广度优先遍历">2.广度优先遍历</span></h3><p><strong>广度优先搜索（Broadth First Search）</strong> 类似于树层次遍历的过程，即以v为初始点，由近即远，一次访问和v有路径相通且路径长度为1，2，…的顶点。此过程可借助于<code>队列</code>实现。</p>
-<ul>
-<li>从图中某个顶点出发，访问v，并置visited[v]的值为1，然后v进队；</li>
-<li>只要队列不空，则：</li>
-<li>队头顶点u出队；</li>
-<li>依次检查u的所有邻接点w，如果visited[w]为0，访问w，并置其值为1，w进队。</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">void BFSTraverse(MGraph G) &#123;</span><br><span class="line">// 按照广度优先非递归遍历图G，使用辅助队列Q和访问标志数组visited。</span><br><span class="line">	int* visited = new int[G.vexnum];</span><br><span class="line">	queue&lt;int&gt; Q;</span><br><span class="line">	int i;</span><br><span class="line">	for (i = 0; i &lt; G.vexnum; i++) visited[i] = 0;</span><br><span class="line">	for (i = 0; i &lt; G.vexnum; i++) &#123;</span><br><span class="line">		if (!visited[i]) &#123; //访问顶点i</span><br><span class="line">			visited[i] = 1;</span><br><span class="line">			cout &lt;&lt; G.vexs[i] &lt;&lt; &quot; &quot;;</span><br><span class="line">			Q.push(i);</span><br><span class="line">			while (!Q.empty()) &#123;</span><br><span class="line">				int u = Q.front();</span><br><span class="line">				Q.pop(); //取出对头顶点</span><br><span class="line">				for (int w = FirstAdjVex(G, G.vexs[u]); w &gt;= 0; w = NextAdjVex(G, G.vexs[u], G.vexs[w])) &#123;</span><br><span class="line">					if (!visited[w]) &#123;  // w为u的尚未访问的邻接顶点</span><br><span class="line">						visited[w] = 1;</span><br><span class="line">						cout &lt;&lt; G.vexs[w] &lt;&lt; &quot; &quot;;</span><br><span class="line">						Q.push(w);</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 ]]></content>
       <tags>
@@ -801,6 +437,78 @@
 ]]></content>
       <tags>
         <tag>电子电路基础</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>c++ map使用方法</title>
+    <url>/2024/05/27/c-map%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/</url>
+    <content><![CDATA[<p>在浏览器上搜了一下相关的博文，整理了一部分相对基础的内容，有点难懂的另一部分等以后遇到案例了再重新整理</p>
+<!-- toc -->
+
+<ul>
+<li><a href="#%E4%B8%80-%E8%AF%B4%E6%98%8E">一、说明</a><ul>
+<li><a href="#1%E5%90%8D%E8%AF%8D%E8%A7%A3%E9%87%8A">1.名词解释</a></li>
+<li><a href="#2%E5%AE%9A%E4%B9%89">2.定义</a></li>
+<li><a href="#3%E5%85%83%E7%B4%A0%E7%9A%84%E8%AE%BF%E9%97%AE">3.元素的访问</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BA%8C-%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0">二、常用函数</a><ul>
+<li><a href="#1find">1.find()</a></li>
+<li><a href="#2erase">2.erase()</a></li>
+<li><a href="#3size">3.size()</a></li>
+<li><a href="#4clear">4.clear()</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+
+<p>[TOC]</p>
+<h2><span id="一-说明">一、说明</span></h2><h3><span id="1名词解释">1.名词解释</span></h3><ul>
+<li><p>map是STL的一个关联容器，它以&lt;key,value&gt;一对一的形式存储，且map的内部自建一个红黑树，使得其可以自动排序(在map内部一切都是有序的)</p>
+</li>
+<li><p>key可以时任意的数据类型，比如int,char，包括用户自定义数据类型</p>
+</li>
+<li><p>value是该key对应的存储的值</p>
+</li>
+</ul>
+<p><img src="/2024/05/27/c-map%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/8697326-1c3bfc38aacd4611.webp" alt="8697326-1c3bfc38aacd4611"></p>
+<h3><span id="2定义">2.定义</span></h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">map&lt;typename1, typename2&gt; mp;</span><br><span class="line">//例子</span><br><span class="line">map&lt;int string&gt; mis;</span><br><span class="line">map&lt;string, string&gt;mss;</span><br><span class="line">map&lt;float,int&gt; mfi;</span><br><span class="line">map&lt;double,long&gt; mdl;</span><br><span class="line">map&lt;person, int&gt;mpi;//创建一个key为person型、value为int类型的map对象</span><br><span class="line">map&lt;string, int&gt; mp;</span><br></pre></td></tr></table></figure>
+
+<p>注：如果是字符串到整型的映射，必须使用<strong>string</strong>而不能使用char数组。</p>
+<h3><span id="3元素的访问">3.元素的访问</span></h3><h4><span id="1通过下标访问">（1）通过下标访问</span></h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;map&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">map&lt;char, int&gt; mp;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    mp[&#x27;a&#x27;]=1;</span><br><span class="line">    mp[&#x27;c&#x27;]=2;    </span><br><span class="line">    cout&lt;&lt;mp[&#x27;c&#x27;];</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">返回：2</span><br></pre></td></tr></table></figure>
+
+<h4><span id="2通过迭代器访问">（2）通过迭代器访问</span></h4><p>定义迭代器：</p>
+<p>map&lt;typename1, typename2&gt;::iterator it;</p>
+<p>map可以使用it-&gt;first来访问键，使用it-&gt;second来访问值。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;map&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">map&lt;char, int&gt; mp;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    mp[&#x27;a&#x27;]=1;</span><br><span class="line">    mp[&#x27;c&#x27;]=2;    </span><br><span class="line">    mp[&#x27;b&#x27;]=3;</span><br><span class="line">    for(map&lt;char, int&gt;::iterator it=mp.begin();it!=mp.end();it++)&#123;</span><br><span class="line">        cout&lt;&lt;it-&gt;first&lt;&lt;&quot; &quot;&lt;&lt;it-&gt;second&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line">返回：</span><br><span class="line">a 1</span><br><span class="line">b 3</span><br><span class="line">c 2</span><br></pre></td></tr></table></figure>
+
+<p><strong>map会以键从小到大的顺序自动排序</strong>，这种方法可以用于遍历</p>
+<h2><span id="二-常用函数">二、常用函数</span></h2><h3><span id="1find">1.find()</span></h3><p>find（key）返回键值为key的映射的迭代器，时间复杂度为O（logN），N为map中映射的个数。</p>
+<p>如果find()找不到，将返回NULL</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line"> #include &lt;map&gt;</span><br><span class="line"> using namespace std;</span><br><span class="line"> map&lt;char, int&gt; mp;</span><br><span class="line"> int main()</span><br><span class="line"> &#123;</span><br><span class="line">     mp[&#x27;a&#x27;]=1;</span><br><span class="line">     mp[&#x27;c&#x27;]=2;    </span><br><span class="line">     mp[&#x27;b&#x27;]=3;</span><br><span class="line">     map&lt;char, int&gt;::iterator it=mp.find(&#x27;c&#x27;);</span><br><span class="line">     cout&lt;&lt;it-&gt;first&lt;&lt;&quot; &quot;&lt;&lt;it-&gt;second;</span><br><span class="line">     return 0;</span><br><span class="line"> &#125;</span><br><span class="line">输出结果：</span><br><span class="line">c 2</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">当map的第一个元素是int类型时候，可以这样操作</span><br><span class="line"></span><br><span class="line">map&lt;int, int&gt;mp1;</span><br><span class="line">int sum = 100;</span><br><span class="line">sum += mp1[10];//mp1中不存在关键字10，所以mp1返回的值为0，sum累加后是100</span><br><span class="line"></span><br><span class="line">map&lt;int,int&gt; mp2;</span><br><span class="line">mp2[20]++;//因关键字20不存在，增加一个关键字20，其值从0自增到1， 效果相当于mp2增加一个元素&lt;20,1&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3><span id="2erase">2.erase()</span></h3><p>erase()可以删除单个元素，也可以删除一个区间的所有元素。</p>
+<h4><span id="1删除单个元素">（1）删除单个元素</span></h4><p>mp.erase(it)，it为需要删除的元素的迭代器，时间复杂度为O(1)。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"> #include &lt;iostream&gt;</span><br><span class="line"> #include &lt;map&gt;</span><br><span class="line"> using namespace std;</span><br><span class="line"> map&lt;char, int&gt; mp;</span><br><span class="line"> int main()</span><br><span class="line"> &#123;</span><br><span class="line">     mp[&#x27;a&#x27;]=1;</span><br><span class="line">     mp[&#x27;c&#x27;]=2;    </span><br><span class="line">     mp[&#x27;b&#x27;]=3;</span><br><span class="line">     map&lt;char, int&gt;::iterator it=mp.find(&#x27;c&#x27;);</span><br><span class="line">     mp.erase(it);</span><br><span class="line">     for(map&lt;char, int&gt;::iterator it=mp.begin();it!=mp.end();it++)&#123;</span><br><span class="line">             cout&lt;&lt;it-&gt;first&lt;&lt;&quot; &quot;&lt;&lt;it-&gt;second&lt;&lt;endl;</span><br><span class="line">     &#125;</span><br><span class="line">     return 0;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line">输出结果：</span><br><span class="line">a 1</span><br><span class="line"></span><br><span class="line">b 3</span><br></pre></td></tr></table></figure>
+
+<p>mp.erase(key)，key为欲删除的映射的键。时间复杂度为O(logN)，N为map内元素的个数。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"> #include &lt;iostream&gt;</span><br><span class="line"> #include &lt;map&gt;</span><br><span class="line"> using namespace std;</span><br><span class="line"> map&lt;char, int&gt; mp;</span><br><span class="line"> int main()</span><br><span class="line"> &#123;</span><br><span class="line">     mp[&#x27;a&#x27;]=1;</span><br><span class="line">     mp[&#x27;c&#x27;]=2;    </span><br><span class="line">     mp[&#x27;b&#x27;]=3;</span><br><span class="line">     mp.erase(&#x27;c&#x27;);</span><br><span class="line">     for(map&lt;char, int&gt;::iterator it=mp.begin();it!=mp.end();it++)&#123;</span><br><span class="line">             cout&lt;&lt;it-&gt;first&lt;&lt;&quot; &quot;&lt;&lt;it-&gt;second&lt;&lt;endl;</span><br><span class="line">     &#125;</span><br><span class="line">     return 0;</span><br><span class="line"> &#125;</span><br><span class="line">输出结果：</span><br><span class="line">a 1</span><br><span class="line"></span><br><span class="line">b 3</span><br></pre></td></tr></table></figure>
+
+<h4><span id="2删除一个区间内的所有元素">（2）删除一个区间内的所有元素</span></h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line"> #include &lt;map&gt;</span><br><span class="line"> using namespace std;</span><br><span class="line"> map&lt;char, int&gt; mp;</span><br><span class="line"> int main()</span><br><span class="line"> &#123;</span><br><span class="line">     mp[&#x27;a&#x27;]=1;</span><br><span class="line">     mp[&#x27;c&#x27;]=2;    </span><br><span class="line">     mp[&#x27;b&#x27;]=3;</span><br><span class="line">     map&lt;char, int&gt;::iterator it=mp.find(&#x27;c&#x27;);    //令it指向键为c的值 </span><br><span class="line">     mp.erase(it, mp.end());    //删除it之后的所有映射 </span><br><span class="line">     for(map&lt;char, int&gt;::iterator it=mp.begin();it!=mp.end();it++)&#123;</span><br><span class="line">             cout&lt;&lt;it-&gt;first&lt;&lt;&quot; &quot;&lt;&lt;it-&gt;second&lt;&lt;endl;</span><br><span class="line">     &#125;</span><br><span class="line">     return 0;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line">输出结果：</span><br><span class="line">a 1</span><br><span class="line"></span><br><span class="line">b 3　</span><br></pre></td></tr></table></figure>
+
+<h3><span id="3size">3.size()</span></h3><p>size()用来获得map中映射的对数，时间复杂度为O(1)。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"> #include &lt;iostream&gt;</span><br><span class="line"> #include &lt;map&gt;</span><br><span class="line"> using namespace std;</span><br><span class="line"> map&lt;char, int&gt; mp;</span><br><span class="line"> int main()</span><br><span class="line"> &#123;</span><br><span class="line">     mp[&#x27;a&#x27;]=1;</span><br><span class="line">     mp[&#x27;c&#x27;]=2;    </span><br><span class="line">     mp[&#x27;b&#x27;]=3;</span><br><span class="line">     cout&lt;&lt;mp.size();</span><br><span class="line">     return 0;</span><br><span class="line"> &#125;</span><br><span class="line">输出结果：</span><br><span class="line">3</span><br></pre></td></tr></table></figure>
+
+<h3><span id="4clear">4.clear()</span></h3><p>clear()用来清除map中的所有元素，时间复杂度为O(N)。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"> #include &lt;iostream&gt;</span><br><span class="line"> #include &lt;map&gt;</span><br><span class="line"> using namespace std;</span><br><span class="line"> map&lt;char, int&gt; mp;</span><br><span class="line"> int main()</span><br><span class="line"> &#123;</span><br><span class="line">     mp[&#x27;a&#x27;]=1;</span><br><span class="line">     mp[&#x27;c&#x27;]=2;    </span><br><span class="line">     mp[&#x27;b&#x27;]=3;</span><br><span class="line">     mp.clear();    //清空map </span><br><span class="line">     cout&lt;&lt;mp.size();</span><br><span class="line">     return 0;</span><br><span class="line"> &#125;</span><br><span class="line">输出结果：</span><br><span class="line">0</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <tags>
+        <tag>STL</tag>
       </tags>
   </entry>
   <entry>
@@ -996,6 +704,298 @@
       </tags>
   </entry>
   <entry>
+    <title>图的表示和操作</title>
+    <url>/2024/06/01/%E5%9B%BE%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E6%93%8D%E4%BD%9C/</url>
+    <content><![CDATA[<!-- toc -->
+
+<ul>
+<li><a href="#%E4%B8%80-%E5%9B%BE%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C">一、图的基本操作</a><ul>
+<li><a href="#int-locatevex">int LocateVex();</a></li>
+<li><a href="#int-firstadjvex">int FirstAdjVex();</a></li>
+<li><a href="#int-nextadjvex">int NextAdjVex();</a></li>
+<li><a href="#void-showmatrix">void showMatrix();</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BA%8C-%E5%9B%BE%E7%9A%84%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84">二、图的存储结构</a></li>
+<li><a href="#1%E9%82%BB%E6%8E%A5%E7%9F%A9%E9%98%B5">1.邻接矩阵</a><ul>
+<li><a href="#1%E6%97%A0%E5%90%91%E7%BD%91%E7%9A%84%E5%AE%9A%E4%B9%89">（1）无向网的定义</a></li>
+<li><a href="#2%E6%97%A0%E5%90%91%E7%BD%91%E7%9A%84%E5%88%9B%E5%BB%BA">（2）无向网的创建</a></li>
+</ul>
+</li>
+<li><a href="#2%E9%82%BB%E6%8E%A5%E8%A1%A8%E9%93%BE%E5%BC%8F%E5%AD%98%E5%82%A8">2.邻接表（链式存储）</a><ul>
+<li><a href="#1%E5%AE%9A%E4%B9%89">（1）定义</a></li>
+<li><a href="#2%E5%88%9B%E5%BB%BA">（2）创建</a></li>
+</ul>
+</li>
+<li><a href="#%E4%B8%89-%E5%9B%BE%E7%9A%84%E9%81%8D%E5%8E%86">三、图的遍历</a><ul>
+<li><a href="#1%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86">1.深度优先遍历</a></li>
+<li><a href="#2%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86">2.广度优先遍历</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+
+<p>[TOC]</p>
+<h2><span id="一-图的基本操作">一、图的基本操作</span></h2><h3><span id="int-locatevex">int LocateVex();</span></h3><p>&#x2F;&#x2F; 返回顶点u在图中的位置</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int LocateVex(MGraph G, VertexType u) &#123;</span><br><span class="line">	int i;</span><br><span class="line">	for (i = 0; i &lt; G.vexnum &amp;&amp; G.vexs[i] != u; i++);</span><br><span class="line">	return i;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3><span id="int-firstadjvex">int FirstAdjVex();</span></h3><p>&#x2F;&#x2F; 返回图G中u的第一个邻接节点</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int FirstAdjVex(MGraph G, VertexType u) &#123;</span><br><span class="line">	int index = LocateVex(G, u);</span><br><span class="line">	int i;</span><br><span class="line">	for (i = 0; i &lt; G.vexnum; i++) &#123;</span><br><span class="line">		if (G.arcs[index][i].adj != -1) break;</span><br><span class="line">	&#125;</span><br><span class="line">	if (i == G.vexnum) return -1;  // 没有临界点</span><br><span class="line">	else return i;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<h3><span id="int-nextadjvex">int NextAdjVex();</span></h3><p>&#x2F;&#x2F; 返回G中顶点v相对于u的下一邻接点</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int NextAdjVex(MGraph G, VertexType v, VertexType u) &#123;</span><br><span class="line">	int indexV = LocateVex(G, v);</span><br><span class="line">	int indexU = LocateVex(G, u);</span><br><span class="line">	int index;</span><br><span class="line">	for (index = indexU + 1; index &lt; G.vexnum &amp;&amp; G.arcs[indexV][index].adj == -1; index++);</span><br><span class="line">	if (index == G.vexnum) return -1;</span><br><span class="line">	else return index;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3><span id="void-showmatrix">void showMatrix();</span></h3><p>&#x2F;&#x2F; 打印图的邻接矩阵</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">void showMatrix(MGraph G) &#123;</span><br><span class="line">	for (int i = 0; i &lt; G.vexnum; i++) &#123;</span><br><span class="line">		for (int j = 0; j &lt; G.vexnum; j++) cout &lt;&lt; G.arcs[i][j].adj &lt;&lt; &quot; &quot;;</span><br><span class="line">		cout &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2><span id="二-图的存储结构">二、图的存储结构</span></h2><h2><span id="1邻接矩阵">1.邻接矩阵</span></h2><p>图没有顺序存储结构，但可以利用二维数组来表示元素之间的关系，即邻接矩阵表示法。</p>
+<p>邻接矩阵是表示顶点之间相邻关系的矩阵。</p>
+<p><strong>无向图</strong></p>
+<p><img src="/2024/06/01/%E5%9B%BE%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E6%93%8D%E4%BD%9C/fd2a45a63a414cfdb6800122ecd6bb82.jpg" alt="fd2a45a63a414cfdb6800122ecd6bb82"></p>
+<p><strong>有向网</strong></p>
+<p><img src="/2024/06/01/%E5%9B%BE%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E6%93%8D%E4%BD%9C/af06656474c14cfb839a5cb7e8cae998.jpg" alt="af06656474c14cfb839a5cb7e8cae998"></p>
+<h3><span id="1无向网的定义">（1）无向网的定义</span></h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#define MAXINT 32767 //表示极大值，即∞</span><br><span class="line">#define MVnum 100 //最大顶点数</span><br><span class="line"></span><br><span class="line">typedef char VerTexType;//假设顶点为字符型</span><br><span class="line">typedef int ArcType; //假设边的权值为整型</span><br><span class="line"></span><br><span class="line">typedef struct&#123;</span><br><span class="line">	VerTexType vexs[MVnum]; //顶点表</span><br><span class="line">	ArcType arcs[MVnum][MVnum]; //邻接矩阵</span><br><span class="line">	int vexnum,arcnum; //图的当前点数和边数 </span><br><span class="line">&#125;AMGraph;</span><br></pre></td></tr></table></figure>
+
+<h3><span id="2无向网的创建">（2）无向网的创建</span></h3><ul>
+<li>输入总顶点数和总边数；</li>
+<li>依次输入点的信息；</li>
+<li>初始化邻接矩阵；</li>
+<li>依次输入每条边（及其权值），<u>确定两个顶点在图中的位置之后</u>，使相应边赋予相应的权值，<u>同时使其对称边赋予相同的权值</u>。</li>
+</ul>
+<p><strong>创建。</strong></p>
+<p>无向图的创建只需要删除w变量的部分，并把无穷改成1就好。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int CreateUDN(AMGraph &amp;G)&#123; </span><br><span class="line">	cin&gt;&gt;G.vexnum&gt;&gt;G.arcnum; //输入总点数和总边数</span><br><span class="line">	for(int i=0;i&lt;G.vexnum;i++)&#123;</span><br><span class="line"> 		cin&gt;&gt;G.vexs[i]; //输入点的信息</span><br><span class="line">	&#125;</span><br><span class="line">	for(int i=0;i&lt;G.arcnum;i++)</span><br><span class="line">	  for(int j=0;i&lt;G.arcnum;j++)</span><br><span class="line">	    G.arcs[i][j]=MAXINT; //初始化邻接矩阵，边的权值均置为∞ </span><br><span class="line">	for(int k=0;k&lt;G.arcnum;k++) &#123;  // 输入弧v1-v2的信息</span><br><span class="line">		VerTexType v1,v2;int w;</span><br><span class="line">		cin&gt;&gt;v1&gt;&gt;v2&gt;&gt;w; </span><br><span class="line">		int index1 = LocateVex(G, v1);</span><br><span class="line">		int index2 = LocateVex(G, v2);</span><br><span class="line">		G.arcs[index1][index2]= w; // w表示邻接的权值 </span><br><span class="line">		G.arcs[index2][index1] = G.arcs[index1][index2];  // 无向图对称构造</span><br><span class="line">	&#125;</span><br><span class="line">	return 1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>打印。</strong></p>
+<pre><code>for(i = 0 ; i &lt; G.vexnum ; ++i)&#123;
+    for(j = 0; j &lt; G.vexnum; ++j)&#123;
+        if(j != G.vexnum - 1)&#123;
+            if(G.arcs[i][j] != MaxInt)
+                cout &lt;&lt; G.arcs[i][j] &lt;&lt; &quot;\t&quot;;
+            else
+                cout &lt;&lt; &quot;∞&quot; &lt;&lt; &quot;\t&quot;;
+        &#125;
+        else&#123;
+            if(G.arcs[i][j] != MaxInt)
+                cout &lt;&lt; G.arcs[i][j] &lt;&lt;endl;
+            else
+                cout &lt;&lt; &quot;∞&quot; &lt;&lt;endl;
+        &#125;
+    &#125;
+&#125;//for
+</code></pre>
+<h2><span id="2邻接表链式存储">2.邻接表（链式存储）</span></h2><p><img src="/2024/06/01/%E5%9B%BE%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E6%93%8D%E4%BD%9C/v2-917733c568ffe18d48b5493b1b327f05_r.jpg" alt="v2-917733c568ffe18d48b5493b1b327f05_r"></p>
+<h3><span id="1定义">（1）定义</span></h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#typedef MVNum 100 //最大顶点数 </span><br><span class="line">typedef struct ArcNode&#123; //边结点 </span><br><span class="line">	int adjvex; //该边所指向的顶点的位置</span><br><span class="line">	struct ArcNode *nextarc; //指向下一条边的指针</span><br><span class="line">	//InfoType info         //网的边权值 </span><br><span class="line">&#125;ArcNode;</span><br><span class="line"></span><br><span class="line">typedef struct VNode&#123; //顶点表 </span><br><span class="line">	VertexType data; //顶点信息</span><br><span class="line">	ArcNode *firstarc; //指向第一天依附该结点的弧的指针 </span><br><span class="line">&#125;VNode,AdjList[MVNum];</span><br><span class="line"></span><br><span class="line">typedef struct&#123;</span><br><span class="line">	AdjList vertices;</span><br><span class="line">	int vexnum,arcnum; //图的当前顶点数和边数 </span><br><span class="line">&#125;ALGraph; </span><br></pre></td></tr></table></figure>
+
+<h3><span id="2创建">（2）创建</span></h3><ul>
+<li><p>输入总顶点数和总边数；</p>
+</li>
+<li><p>依次输入点的信息存在顶点表中，每个表头结点的指针域初始化为NULL；</p>
+</li>
+<li><p>创建邻接表，依次输入每条边依附的两个顶点，确定这两个顶点的序号i和j之后，将此边结点分别插入vi和vj</p>
+</li>
+<li><p>对应的两个边链表的头部。如果是有向图，只需生成一个序号为j的边结点，插入到vj的边链表头。</p>
+<p>  int CreateUDG(ALGraph &amp;G){<br>  &#x2F;&#x2F;采用邻接表表示法，创建无向图G<br>  cin &gt;&gt; G.vexnum &gt;&gt; G.arcnum;				&#x2F;&#x2F;输入总顶点数，总边数<br>  for(int i &#x3D; 0; i &lt; G.vexnum; ++i){          	&#x2F;&#x2F;输入各点，构造表头结点表<br>  cin &gt;&gt; G.vertices[i].data;           	&#x2F;&#x2F;输入顶点值<br>  G.vertices[i].firstarc&#x3D;NULL;			&#x2F;&#x2F;初始化表头结点的指针域为NULL<br>  }&#x2F;&#x2F;for<br>  for(int k &#x3D; 0; k &lt; G.arcnum;++k){        		&#x2F;&#x2F;输入各边，构造邻接表<br>  VerTexType v1 , v2;<br>  int i , j;<br>  cin &gt;&gt; v1 &gt;&gt; v2;                 		&#x2F;&#x2F;输入一条边依附的两个顶点<br>  i &#x3D; LocateVex(G, v1);  j &#x3D; LocateVex(G, v2);<br>  &#x2F;&#x2F;确定v1和v2在G中位置，即顶点在G.vertices中的序号<br><br>  ArcNode <em>p1&#x3D;new ArcNode;               	&#x2F;&#x2F;生成一个新的边结点</em>p1<br>  p1-&gt;adjvex&#x3D;j;                   		&#x2F;&#x2F;邻接点序号为j<br>  p1-&gt;nextarc&#x3D; G.vertices[i].firstarc;  G.vertices[i].firstarc&#x3D;p1;<br>  &#x2F;&#x2F;将新结点<em>p1插入顶点vi的边表头部<br><br>  ArcNode <em>p2&#x3D;new ArcNode;                &#x2F;&#x2F;生成另一个对称的新的边结点</em>p2<br>  p2-&gt;adjvex&#x3D;i;                   		&#x2F;&#x2F;邻接点序号为i<br>  p2-&gt;nextarc&#x3D; G.vertices[j].firstarc;  G.vertices[j].firstarc&#x3D;p2;<br>  &#x2F;&#x2F;将新结点</em>p2插入顶点vj的边表头部<br>  }&#x2F;&#x2F;for<br>  return 1;<br>  }</p>
+</li>
+</ul>
+<h2><span id="三-图的遍历">三、图的遍历</span></h2><h3><span id="1深度优先遍历">1.深度优先遍历</span></h3><p>设置变量。</p>
+<p>图的遍历和树的遍历类似，即从图中某一顶点出发遍历图中其余顶点，且使每一个顶点仅被访问一次。<br>为了避免同一顶点被访问多次，在遍历图的过程中，必须记下每个已被访问过的顶点。为此，我们可以设一个辅助数组Visited[N]来标记某一顶点是否被访问过了，初始化为False。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">bool visited[MVNum];           					//访问标志数组，其初值为&quot;false&quot; </span><br><span class="line">int FirstAdjVex(Graph G , int v);				//返回v的第一个邻接点</span><br><span class="line">int NextAdjVex(Graph G , int v , int w);		//返回v相对于w的下一个邻接点</span><br></pre></td></tr></table></figure>
+
+<p>类似于树的先序遍历。</p>
+<ul>
+<li>从图中某个顶点v出发，访问v，并置visited[v]的值为1；</li>
+<li>依次检查v的所有邻接点w，如果visited[w]的值为0，再从w出发进行遍历，直到图中所有顶点都被遍历过。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 图的深度优先遍历</span><br><span class="line">void DFSTraverse(MGraph G) &#123;</span><br><span class="line">	int* visited = new int[G.vexnum]; // 访问标志数组</span><br><span class="line">	for (int i = 0; i &lt; G.vexnum; i++) visited[i] = 0; // 初始化未被访问</span><br><span class="line">	for (int i = 0; i &lt; G.vexnum; i++) &#123;</span><br><span class="line">		if (!visited[i]) DFS(G, i, visited); // 对尚未访问的顶点i调用DFS，</span><br><span class="line">											 // 因为图G可能不是连通图</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">// 从图中第v个顶点开始进行深度优先遍历</span><br><span class="line">void DFS(MGraph G, int v, int* visited) &#123;</span><br><span class="line">	visited[v] = 1; //先访问顶点v</span><br><span class="line">	cout &lt;&lt; G.vexs[v] &lt;&lt; &quot; &quot;;</span><br><span class="line">	for (int w = FirstAdjVex(G, G.vexs[v]); w &gt;= 0; w = NextAdjVex(G, G.vexs[v], G.vexs[w])) &#123;</span><br><span class="line">		if (!visited[w]) DFS(G, w, visited); // 对v的尚未访问的邻接顶点w递归调用DFS</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3><span id="2广度优先遍历">2.广度优先遍历</span></h3><p><strong>广度优先搜索（Broadth First Search）</strong> 类似于树层次遍历的过程，即以v为初始点，由近即远，一次访问和v有路径相通且路径长度为1，2，…的顶点。此过程可借助于<code>队列</code>实现。</p>
+<ul>
+<li>从图中某个顶点出发，访问v，并置visited[v]的值为1，然后v进队；</li>
+<li>只要队列不空，则：</li>
+<li>队头顶点u出队；</li>
+<li>依次检查u的所有邻接点w，如果visited[w]为0，访问w，并置其值为1，w进队。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">void BFSTraverse(MGraph G) &#123;</span><br><span class="line">// 按照广度优先非递归遍历图G，使用辅助队列Q和访问标志数组visited。</span><br><span class="line">	int* visited = new int[G.vexnum];</span><br><span class="line">	queue&lt;int&gt; Q;</span><br><span class="line">	int i;</span><br><span class="line">	for (i = 0; i &lt; G.vexnum; i++) visited[i] = 0;</span><br><span class="line">	for (i = 0; i &lt; G.vexnum; i++) &#123;</span><br><span class="line">		if (!visited[i]) &#123; //访问顶点i</span><br><span class="line">			visited[i] = 1;</span><br><span class="line">			cout &lt;&lt; G.vexs[i] &lt;&lt; &quot; &quot;;</span><br><span class="line">			Q.push(i);</span><br><span class="line">			while (!Q.empty()) &#123;</span><br><span class="line">				int u = Q.front();</span><br><span class="line">				Q.pop(); //取出对头顶点</span><br><span class="line">				for (int w = FirstAdjVex(G, G.vexs[u]); w &gt;= 0; w = NextAdjVex(G, G.vexs[u], G.vexs[w])) &#123;</span><br><span class="line">					if (!visited[w]) &#123;  // w为u的尚未访问的邻接顶点</span><br><span class="line">						visited[w] = 1;</span><br><span class="line">						cout &lt;&lt; G.vexs[w] &lt;&lt; &quot; &quot;;</span><br><span class="line">						Q.push(w);</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <tags>
+        <tag>数据结构笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【离散数学】集合、关系</title>
+    <url>/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/</url>
+    <content><![CDATA[<!-- toc -->
+
+<ul>
+<li><a href="#%E4%B8%80-%E9%9B%86%E5%90%88%E7%9A%84%E6%A6%82%E5%BF%B5%E5%92%8C%E8%A1%A8%E7%A4%BA">一、集合的概念和表示</a><ul>
+<li><a href="#%E5%90%8D%E8%AF%8D%E8%A7%A3%E9%87%8A">名词解释</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BA%8C-%E9%9B%86%E5%90%88%E8%BF%90%E7%AE%97">二、集合运算</a><ul>
+<li><a href="#1%E8%BF%90%E7%AE%97">1.运算</a></li>
+<li><a href="#2%E6%80%A7%E8%B4%A8">2.性质</a></li>
+</ul>
+</li>
+<li><a href="#%E4%B8%89-%E5%8C%85%E5%90%AB%E6%8E%92%E6%96%A5%E5%8E%9F%E7%90%86">三、包含排斥原理</a><ul>
+<li><a href="#1%E6%A6%82%E5%BF%B5">1.概念</a></li>
+<li><a href="#2%E4%BE%8B%E9%A2%98">2.例题</a></li>
+</ul>
+</li>
+<li><a href="#%E5%9B%9B-%E5%BA%8F%E5%81%B6%E4%B8%8E%E7%AC%9B%E5%8D%A1%E5%B0%94%E7%A7%AF">四、序偶与笛卡尔积</a><ul>
+<li><a href="#1%E5%90%8D%E8%AF%8D%E8%A7%A3%E9%87%8A%E5%92%8C%E5%8E%9F%E7%90%86">1.名词解释和原理</a></li>
+<li><a href="#2%E4%BE%8B%E9%A2%98-1">2.例题</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BA%94-%E5%85%B3%E7%B3%BB%E5%8F%8A%E5%85%B6%E8%A1%A8%E7%A4%BA">五、关系及其表示</a><ul>
+<li><a href="#1%E5%90%8D%E8%AF%8D%E8%A7%A3%E9%87%8A%E5%92%8C%E5%8E%9F%E7%90%86-1">1.名词解释和原理</a></li>
+<li><a href="#2%E4%BE%8B%E9%A2%98-2">2.例题</a></li>
+</ul>
+</li>
+<li><a href="#%E5%85%AD-%E5%85%B3%E7%B3%BB%E7%9A%84%E6%80%A7%E8%B4%A8">六、关系的性质</a><ul>
+<li><a href="#%E5%90%8D%E8%AF%8D%E8%A7%A3%E9%87%8A-1">名词解释</a></li>
+<li><a href="#%E4%BE%8B%E9%A2%98">例题</a></li>
+</ul>
+</li>
+<li><a href="#%E4%B8%83-%E5%A4%8D%E5%90%88%E5%85%B3%E7%B3%BB%E5%92%8C%E9%80%86%E5%85%B3%E7%B3%BB">七、复合关系和逆关系</a><ul>
+<li><a href="#1%E5%90%8D%E8%AF%8D%E5%92%8C%E5%AE%9A%E7%90%86">1.名词和定理</a></li>
+<li><a href="#2%E4%BE%8B%E9%A2%98-3">2.例题</a></li>
+</ul>
+</li>
+<li><a href="#%E5%85%AB-%E9%97%AD%E5%8C%85%E8%BF%90%E7%AE%97">八、闭包运算</a></li>
+</ul>
+<!-- tocstop -->
+
+<p>[TOC]</p>
+<h2><span id="一-集合的概念和表示">一、集合的概念和表示</span></h2><h3><span id="名词解释">名词解释</span></h3><h4><span id="集合">集合</span></h4><p>把具有共同性质的一些东西汇集成一个整体，就形成一个集合。</p>
+<h4><span id="元素">元素</span></h4><p>汇集成集合的事物叫元素。</p>
+<p>描述：元素x属于集合A</p>
+<p>记作：x∈A</p>
+<h4><span id="子集">子集</span></h4><p>描述：A集合是B集合的子集</p>
+<p>记作：A ⊆ B</p>
+<h4><span id="真子集">真子集</span></h4><p>描述 : A集合是B集合的子集 , 并且 A &#x3D;̸ B，则称A集合是B集合的真子集</p>
+<p>记作 : A ⊂ B</p>
+<p><u>真包含关系的性质：</u></p>
+<ul>
+<li><strong>反自反性</strong>: A ⊄ A</li>
+<li><strong>反对称性</strong>: 如果 A ⊂ B，那么 B ⊄ A</li>
+<li><strong>传递性</strong>: 如果 A ⊂ B, 并且 B ⊂ C, 那么 A ⊂ C</li>
+</ul>
+<h4><span id="非真子集">非真子集</span></h4><p>描述 : 存在元素x是集合A的元素，不是集合B的元素，并且A、B不相等，则称A集合不是B集合的真子集</p>
+<p>记作 : A ⊄ B</p>
+<h4><span id="空集">空集</span></h4><p>描述 : 没有任何元素的集合 , 称为空集合 , 简称为空集 </p>
+<p>记作 : ∅</p>
+<ul>
+<li>x无解→空集</li>
+<li>空集是一切集合的子集</li>
+<li>空集是唯一的</li>
+<li>{∅} ≠ ∅</li>
+<li>对任何一个集合A，∅ ⊆ A</li>
+</ul>
+<h4><span id="全集">全集</span></h4><p>限定所讨论的集合 , 都是某个集合的子集 , 则称该集合为全集 , 记作 E</p>
+<h4><span id="幂集">幂集</span></h4><p>描述 : A集合的全体子集组成的集合称为 A的幂集 ;</p>
+<p>记作 : P ( A )</p>
+<p>幂集个数定理 : 集合 A中的元素个数∣ A ∣ &#x3D; n ，则 A的 幂集个数 ∣ P ( A ) ∣ &#x3D; 2ⁿ</p>
+<h4><span id="外延性原理">外延性原理</span></h4><p>两个集合是相等的，当且仅当它们有相同的成员。（两个集合A和B相等，记作A &#x3D; B）</p>
+<p>集合A和集合B相等的充分必要条件是这两个集合互为子集。</p>
+<h2><span id="二-集合运算">二、集合运算</span></h2><h3><span id="1运算">1.运算</span></h3><p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240526213445.png" alt="微信图片_20240526213445"></p>
+<h3><span id="2性质">2.性质</span></h3><p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/e2067441ba7746f0b650c1e43d9e64ef.png" alt="在这里插入图片描述"></p>
+<p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/87c29f238b2a41818fd3187d7829d652.png" alt="在这里插入图片描述"></p>
+<p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/dd8be408e0b24359b25f7ddefbf425eb.png" alt="在这里插入图片描述"></p>
+<p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/5dda146382eb4276a8a6ec029c2d4b42.png" alt="在这里插入图片描述"></p>
+<p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/8fdd73e243d841179f607fba34a9e141.png" alt="在这里插入图片描述"></p>
+<p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/255afd2714574225b2e84a5f04b48c5e.png" alt="在这里插入图片描述"></p>
+<p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/80456386fbfb4c72b4f4144838eea10d.png" alt="在这里插入图片描述"></p>
+<p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/0da7a50fde1f474d8f18293ee9f488ef.png" alt="在这里插入图片描述"></p>
+<h2><span id="三-包含排斥原理">三、包含排斥原理</span></h2><h3><span id="1概念">1.概念</span></h3><p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240526213441.png" alt="微信图片_20240526213441"></p>
+<p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/7d8cec1b0d80461b967e6d29f39c7288.png" alt="在这里插入图片描述"></p>
+<p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/97dfee6601d240678de51b656d2e2269.png" alt="在这里插入图片描述"></p>
+<p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/d260fc358e8a4abfbec140f60d714566.png" alt="在这里插入图片描述"></p>
+<h3><span id="2例题">2.例题</span></h3><p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526212553.png" alt="微信截图_20240526212553"></p>
+<h2><span id="四-序偶与笛卡尔积">四、序偶与笛卡尔积</span></h2><h3><span id="1名词解释和原理">1.名词解释和原理</span></h3><h4><span id="序偶">序偶</span></h4><p>有序二元组的称呼，可以看作一个有顺序的集合，记作&lt;A,B&gt;</p>
+<p>序偶不同于集合的是序偶是有顺序的，&lt;A,B&gt; !&#x3D; &lt;B,A&gt;</p>
+<h4><span id="n元组">n元组</span></h4><p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526212700.png" alt="微信截图_20240526212700"></p>
+<h4><span id="笛卡尔积">笛卡尔积</span></h4><p>A与B是集合，那么A与B的笛卡尔积相当于A X B，表示&lt;a,b&gt;,其中：a∈A ,b∈B</p>
+<p>笛卡尔积一般不满足交换律和结合律（并、交差运算除外）</p>
+<p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526215607.png" alt="微信截图_20240526215607"></p>
+<p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526215637.png" alt="微信截图_20240526215637"></p>
+<h3><span id="2例题">2.例题</span></h3><p>笛卡尔积的计算</p>
+<p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526215742.png" alt="微信截图_20240526215742"></p>
+<h2><span id="五-关系及其表示">五、关系及其表示</span></h2><h3><span id="1名词解释和原理">1.名词解释和原理</span></h3><h4><span id="关系">关系</span></h4><p>对于一个二元关系R，R里面的任意一个序偶&lt;x,y&gt;可以记作**&lt;x,y&gt;∈R **或 <strong>xRy</strong></p>
+<p>A X B的子集R称为一个从A到B的二元关系</p>
+<h4><span id="前域-值域-域">前域、值域、域</span></h4><p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526220618.png" alt="微信截图_20240526220618"></p>
+<h4><span id="空关系">空关系</span></h4><p>A X B的平凡子集∅，称为A到B的空关系。</p>
+<h4><span id="全域关系">全域关系</span></h4><p>A X B的平凡子集A X B称为A到B的全域关系。</p>
+<h4><span id="恒等关系">恒等关系</span></h4><p>设Iₓ是X上的二元关系，且满足Iₓ &#x3D; {&lt;x,x&gt;|x∈X}，则称Iₓ是X上的恒等关系。</p>
+<h4><span id="关系矩阵"><strong>关系矩阵</strong></span></h4><p>我们有两个有限集合：X &#x3D; {x₁,x₂,x₃,……,xₘ}，Y&#x3D;{y₁,y₂,y₃,……,yₙ}，R是X到Y上的一个二元关系，那么就有相应的关系矩阵：M &#x3D; [rᵢ ⱼ]ₘₓₙ</p>
+<p>rᵢ ⱼ&#x3D;1当且仅当&lt;aᵢ,bⱼ&gt;∈R</p>
+<p>rᵢ ⱼ&#x3D;0当且仅当&lt;aᵢ,bⱼ&gt;!∈R</p>
+<p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526221913.png" alt="微信截图_20240526221913"></p>
+<h4><span id="关系图">关系图</span></h4><p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526222016.png" alt="微信截图_20240526222016"></p>
+<h3><span id="2例题">2.例题</span></h3><h4><span id="关系矩阵的表示">关系矩阵的表示</span></h4><p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526221828.png" alt="微信截图_20240526221828"></p>
+<h4><span id="笛卡尔积的幂集算法">笛卡尔积的幂集算法</span></h4><p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240526221238.png" alt="微信图片_20240526221238"></p>
+<h4><span id="关系图的表示">关系图的表示</span></h4><p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526222107.png" alt="微信截图_20240526222107"></p>
+<h2><span id="六-关系的性质">六、关系的性质</span></h2><h3><span id="名词解释">名词解释</span></h3><h4><span id="自反的关系">自反的关系</span></h4><p>R是集合X上面的二元关系，如果对于每一个x ∈A,有xRx，即&lt;x,x&gt;∈R，就称R是自反的。</p>
+<p>设集合S非空，S上的关系可以是自反的，是反自反的，也可以两者都不是。</p>
+<p>Y是自反的，则：</p>
+<ul>
+<li>Iₓ ⊆ Y；（集合X上的恒等关系是自反关系，但自反关系却不一定是恒等关系）</li>
+<li>Mᵧ主对角线上的元素都是1；</li>
+<li>Gᵧ的每个结点均有环。</li>
+</ul>
+<h4><span id="反自反关系">反自反关系</span></h4><p>R是集合X上面的二元关系，如果对于每一个x ∈A,有xRx，即&lt;x,x&gt;!∈R，就称R是自反的。</p>
+<p>Y是反自反的，则：</p>
+<ul>
+<li>Iₓ ∩ Y &#x3D;∅；</li>
+<li>Mᵧ主对角线上的元素都是0；</li>
+<li>Gᵧ的每个结点均无环。</li>
+</ul>
+<h4><span id="对称关系">对称关系</span></h4><p>对于关系里面x,y ∈ X，每当xRy，就有yRx，就X上面关系R是对称的。</p>
+<p>Y是对称的，则：</p>
+<ul>
+<li>Mᵧ是对称的；</li>
+<li>Gᵧ中任何两个结点之间若有有向边，必有两条方向相反的有向边。</li>
+</ul>
+<h4><span id="反对称关系">反对称关系</span></h4><p>对于关系里面x,y ∈ X，每当xRy和yRx，就有x&#x3D;y，就X上面关系R是反对称的。</p>
+<ul>
+<li>关系矩阵以对角线对称的元素不能同时为1，(但可为对称阵，同时为0)。</li>
+<li>关系图中如果两个结点之间有有向弧，则不能成对出现。</li>
+</ul>
+<h4><span id="传递关系">传递关系</span></h4><p>对于x, y, z ∈ X，每当xRy, yRz时就有xRz,就称R在X上是传递的。</p>
+<h4><span id="特殊关系的性质">特殊关系的性质</span></h4><p><strong>空关系</strong>： 反自反性，对称性，反对称性，传递性<br><strong>全域关系</strong>：自反性，对称性，传递性<br><strong>恒等关系</strong>：自反性，对称性，传递性</p>
+<h4><span id="总结">总结</span></h4><ul>
+<li>自反性：应该含有所有&lt;x, x&gt;<br>对称性：如果有&lt;x, y&gt;就应该有&lt;y, x&gt;<br>传递性：如果有&lt;x, y&gt;和&lt;y, z&gt;就应该有&lt;x, z&gt;</li>
+<li>反自反性：不应该含有任何&lt;x, x&gt;<br>反对称性：如果有&lt;x, y&gt;就不应该有&lt;y, x&gt;</li>
+</ul>
+<h3><span id="例题">例题</span></h3><p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526231540.png" alt="微信截图_20240526231540"></p>
+<p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526233116.png" alt="微信截图_20240526233116"></p>
+<h2><span id="七-复合关系和逆关系">七、复合关系和逆关系</span></h2><h3><span id="1名词和定理">1.名词和定理</span></h3><h4><span id="复合关系">复合关系</span></h4><p>R是X到Y的关系，S是Y到Z的关系，则R和S的复合关系R°S称为R和S的复合关系，表示为: </p>
+<p>RoS&#x3D;{&lt;x,z&gt;|x∈X且z∈Z(y∈Y ,&lt;x, y&gt;∈R且&lt;y,z&gt; ∈S)}</p>
+<p>复合关系相当于一个个元素进行传递，看是否满足传递关系。</p>
+<h4><span id="逆关系">逆关系</span></h4><p>R是X到Y的二元关系，把R中每一序偶的元素次序颠倒，得到的关系称为R的逆关系，记作Rᶜ</p>
+<ul>
+<li>xRy &#x3D;&#x3D; xRᶜy</li>
+<li>互换R的关系矩阵的行和列，即得Rᶜ的关系矩阵（转置）</li>
+<li>颠倒R的关系图中每条弧线的箭头方向，即得Rᶜ的关系图</li>
+<li>空关系的逆是空关系</li>
+<li>R&#x3D;Rᶜ，则说明R是对称的</li>
+</ul>
+<p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526235030.png" alt="微信截图_20240526235030"></p>
+<p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526235224.png" alt="微信截图_20240526235224"></p>
+<h4><span id="复合关系的结合律">复合关系的结合律</span></h4><p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526233655.png" alt="微信截图_20240526233655"></p>
+<h4><span id="复合关系的幂集">复合关系的幂集</span></h4><p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526234315.png" alt="微信截图_20240526234315"></p>
+<h4><span id="复合关系的矩阵表示">复合关系的矩阵表示</span></h4><p>（1）布尔加法 &#x3D;&#x3D; or</p>
+<p>（2）布尔乘法 &#x3D;&#x3D; and</p>
+<h3><span id="2例题">2.例题</span></h3><h4><span id="复合关系的矩阵表示">复合关系的矩阵表示</span></h4><p><img src="/2024/05/26/%E3%80%90%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E3%80%91%E9%9B%86%E5%90%88/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526234530.png" alt="微信截图_20240526234530"></p>
+<h2><span id="八-闭包运算">八、闭包运算</span></h2>]]></content>
+      <tags>
+        <tag>离散数学</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>数据结构 主观题汇总</title>
     <url>/2024/06/07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E4%B8%BB%E8%A7%82%E9%A2%98%E6%B1%87%E6%80%BB/</url>
     <content><![CDATA[<!-- toc -->
@@ -1006,6 +1006,14 @@
 <li><a href="#3%E5%93%88%E5%A4%AB%E6%9B%BC%E6%A0%91%E5%92%8C%E5%93%88%E5%A4%AB%E6%9B%BC%E7%BC%96%E7%A0%81">3.哈夫曼树和哈夫曼编码</a></li>
 <li><a href="#4%E5%9B%BE%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5">4.图的基本概念</a></li>
 <li><a href="#5%E7%94%BB%E5%87%BA%E6%97%A0%E5%90%91%E5%9B%BE%E7%9A%84%E9%82%BB%E6%8E%A5%E8%A1%A8%E5%B9%B6%E5%86%99%E5%87%BA%E5%9B%BE%E7%9A%84%E5%B9%BF%E5%BA%A6%E5%92%8C%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86%E5%BA%8F%E5%88%97">5.画出无向图的邻接表并写出图的广度和深度优先遍历序列</a></li>
+<li><a href="#6%E6%B1%82%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91">6.求最小生成树</a></li>
+<li><a href="#7%E6%B1%82%E5%8D%95%E6%BA%90%E7%82%B9%E7%9A%84%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84">7.求单源点的最短路径</a></li>
+<li><a href="#10%E9%A1%BA%E5%BA%8F%E6%9F%A5%E6%89%BE">10.顺序查找</a></li>
+<li><a href="#11%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E6%88%96%E6%8A%98%E5%8D%8A%E6%9F%A5%E6%89%BE">11.二分查找或折半查找</a></li>
+<li><a href="#12%E4%BA%8C%E5%8F%89%E6%8E%92%E5%BA%8F%E6%A0%91">12.二叉排序树</a></li>
+<li><a href="#13%E6%95%A3%E5%88%97%E8%A1%A8%E6%9F%A5%E6%89%BE%E7%BA%BF%E6%80%A7%E6%8E%A2%E6%B5%8B%E6%B3%95">13.散列表查找——线性探测法</a></li>
+<li><a href="#14%E5%93%88%E5%B8%8C%E8%A1%A8%E6%9F%A5%E6%89%BE%E9%93%BE%E5%9C%B0%E5%9D%80%E6%B3%95">14.哈希表查找——链地址法</a></li>
+<li><a href="#15%E5%90%84%E7%A7%8D%E6%8E%92%E5%BA%8F">15.各种排序</a></li>
 </ul>
 <!-- tocstop -->
 
@@ -1023,11 +1031,13 @@
 <p>树的深度是5；</p>
 <p>c的深度是3；</p>
 <p>树的度数是3。</p>
-<h3><span id="2由二叉树的先序和中序序列建树">2.由二叉树的先序和中序序列建树</span></h3><p><img src="/2024/06/07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E4%B8%BB%E8%A7%82%E9%A2%98%E6%B1%87%E6%80%BB/20180523165909343-1717818496339-6.png" alt="20180523165909343"></p>
+<h3><span id="2由二叉树的先序和中序序列建树">2.由二叉树的先序和中序序列建树</span></h3><img src="/2024/06/07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E4%B8%BB%E8%A7%82%E9%A2%98%E6%B1%87%E6%80%BB/20180523165909343-1718009007546-1.png" alt="20180523165909343" style="zoom:80%;">
+
 <p><strong>假设一棵二叉树的先序序列为EBADCFHGIKJ和中序序列为ABCDEFGHIJK，要求：</strong></p>
 <p>（1）画出这棵二叉树；</p>
 <p>（2）请给出其后序序列和层序序列。</p>
-<p><img src="/2024/06/07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E4%B8%BB%E8%A7%82%E9%A2%98%E6%B1%87%E6%80%BB/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240608084403-1717817891019-3.png" alt="微信截图_20240608084403"></p>
+<img src="/2024/06/07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E4%B8%BB%E8%A7%82%E9%A2%98%E6%B1%87%E6%80%BB/微信截图_20240608084403-1718009026051-3.png" alt="微信截图_20240608084403" style="zoom:80%;">
+
 <p>后序：ACDBGJKIHFE</p>
 <p>层序：EBFADHCGIKJ</p>
 <h3><span id="3哈夫曼树和哈夫曼编码">3.哈夫曼树和哈夫曼编码</span></h3><p><strong>求哈夫曼树：</strong></p>
@@ -1035,7 +1045,7 @@
 <p>（２）在森林中，选取两棵根结点的权值最小的树作为左右子树，构造一棵新的二叉树，且设置新的二叉树的根结点的权值为其左右子树上根结点的权值之和</p>
 <p>（３）在森林中删除这两棵树，同时将新得到的二叉树加入到森林中</p>
 <p>（４）重复（２）和（３），直到森林中只有一棵树为止，这棵树即为哈夫曼树</p>
-<p>求哈夫曼编码：</p>
+<p><strong>求哈夫曼编码：</strong></p>
 <p>左分支为0，右分支为1。</p>
 <p><strong>假设用于通信的电文仅由8个字母组成，字母在电文中出现的频率分别为0.09，0.16，0.02，0.06，0.32，0.03，0.21，0.11。</strong></p>
 <p>（1）画出哈夫曼树；</p>
@@ -1056,8 +1066,47 @@
 <h3><span id="5画出无向图的邻接表并写出图的广度和深度优先遍历序列">5.画出无向图的邻接表并写出图的广度和深度优先遍历序列</span></h3><p>(1)写出下图的邻接表(边结点序号从小到大)，<br>(2)写出从顶点3出发的广度优先搜索序列和深度优先搜索序列，顶点之间用空格隔开。约定以结点小编号优先次序访问。</p>
 <p><img src="/2024/06/07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E4%B8%BB%E8%A7%82%E9%A2%98%E6%B1%87%E6%80%BB/8013d897-f5b6-4f3c-8fc5-39674a21cc16.png" alt="8013d897-f5b6-4f3c-8fc5-39674a21cc16"></p>
 <p><img src="/2024/06/07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E4%B8%BB%E8%A7%82%E9%A2%98%E6%B1%87%E6%80%BB/user-uploads_1639164144315953152_2024-5-21_1716235096-488f3a33-1844-4da5-a857-1ac694da7a5f.jpg" alt="user-uploads_1639164144315953152_2024-5-21_1716235096-488f3a33-1844-4da5-a857-1ac694da7a5f"></p>
+<p><img src="/2024/06/07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E4%B8%BB%E8%A7%82%E9%A2%98%E6%B1%87%E6%80%BB/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240616114026.jpg" alt="微信图片_20240616114026"></p>
 <p>广度：3 1 2 4 6 0 5</p>
 <p>深度：3 1 0 2 4 5 6</p>
+<h3><span id="6求最小生成树">6.求最小生成树</span></h3><p>已知一个无向图的顶点集V和边集E分别为：V&#x3D;{1,2,3,4,5,6,7};</p>
+<p>E&#x3D;{(1,2)3, (1,3)5, (1,4)8, (2,5)10, (2,3)6, (3,4)15, (3,5)12, (3,6)9, (4,6)4, (4,7)20, (5,6)18, (6,7)25}; &#x2F;&#x2F;每条边后面的数代表权值</p>
+<p>请用克鲁斯卡尔算法得到最小生成树，试写出在最小生成树中依次得到的各条边。</p>
+<p><img src="/2024/06/07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E4%B8%BB%E8%A7%82%E9%A2%98%E6%B1%87%E6%80%BB/user-uploads_1639164144315953152_2024-5-31_1717163110-28a492eb-ccc1-4eab-8f7c-a68b9a0db883.jpg" alt="user-uploads_1639164144315953152_2024-5-31_1717163110-28a492eb-ccc1-4eab-8f7c-a68b9a0db883"></p>
+<h3><span id="7求单源点的最短路径">7.求单源点的最短路径</span></h3><p>下图所示的带权有向图G，给出从顶点V1到其余各个顶点的最短路径及其路径长度。</p>
+<p><img src="/2024/06/07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E4%B8%BB%E8%A7%82%E9%A2%98%E6%B1%87%E6%80%BB/2364c788-a821-4c59-993f-2540331d84ae.jpg" alt="2364c788-a821-4c59-993f-2540331d84ae"></p>
+<p><img src="/2024/06/07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E4%B8%BB%E8%A7%82%E9%A2%98%E6%B1%87%E6%80%BB/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240616114650.png" alt="微信图片_20240616114650"></p>
+<h3><span id="10顺序查找">10.顺序查找</span></h3><p>根据教材中设置监视哨的顺序查找算法，回答如下问题：</p>
+<p>（1）简述设置监视哨的顺序查找算法中监视哨的作用，（2）查找表中哪个数据元素是哨兵？（3）查找方向是顺序方向查找还是逆序方向查找？（4）n个元素的查找表进行设置监视哨的顺序查找，需要进行多少次比较后查找失败？</p>
+<p>答案：</p>
+<p>（1）设置监视哨，可以免去查找过程中每一步都要检测整个表是否查找完毕，可以使进行一次查找所需的平均时间几乎减少一半，提高了查找效率。</p>
+<p>（2）顺序表ST的0单元</p>
+<p>（3）逆序</p>
+<p>（4）n+1次</p>
+<h3><span id="11二分查找或折半查找">11.二分查找或折半查找</span></h3><p>已知如下11个元素的有序表（8,16,19,23,39,52,63,77,81,88,90）,要求：<br>（1）画出其二分查找的判定树；<br>（2）给出查找元素88和17的折半查找过程；<br>（3）设有序表表长为n，查找成功或不成功时和给定值进行比较的关键字个数至多分别为多少？<br>（4）给出二分查找的时间复杂度。</p>
+<p><img src="/2024/06/07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E4%B8%BB%E8%A7%82%E9%A2%98%E6%B1%87%E6%80%BB/a41dc4ba-73ad-49b5-8d00-17554aed31f9.jpg" alt="a41dc4ba-73ad-49b5-8d00-17554aed31f9"></p>
+<p><img src="/2024/06/07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E4%B8%BB%E8%A7%82%E9%A2%98%E6%B1%87%E6%80%BB/user-uploads_1639164144315953152_2024-6-6_1717688367-4365e094-635d-4768-ba6b-086bee11148c.jpg" alt="user-uploads_1639164144315953152_2024-6-6_1717688367-4365e094-635d-4768-ba6b-086bee11148c"></p>
+<p>（3）查找成功和给定值进行比较的关键字个数至多都是（log₂n）的向下取整再加一</p>
+<p>查找不成功和给定值进行比较的关键字个数等于该路径上内部结点个数，至多不超过（log₂n）的向下取整再加一</p>
+<p>（4）O（log₂n）</p>
+<h3><span id="12二叉排序树">12.二叉排序树</span></h3><p>在一个空的二叉排序树中依次插入关键字序列为12,7,17,11,16,2,13,9,21,4，要求：<br>（1）画出所得到的二叉排序树；<br>（2）查找关键字9和22各自跟哪些关键字进行了比较？<br>（3）二叉排序树的平均查找长度(ASL)与其形态有关，对n个元素构建的二叉排序树进行查找，最好和最坏的ASL分别是多少？</p>
+<p>保证左子树小于根节点，右子树大于根节点</p>
+<p><img src="/2024/06/07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E4%B8%BB%E8%A7%82%E9%A2%98%E6%B1%87%E6%80%BB/user-uploads_1639164144315953152_2024-6-7_1717690536-b9f28c4c-9993-4ef4-8706-c642776c854b.jpg" alt="user-uploads_1639164144315953152_2024-6-7_1717690536-b9f28c4c-9993-4ef4-8706-c642776c854b"></p>
+<p>(2)9：12、7、11、9</p>
+<p>22：12、17、21</p>
+<p>（3）最好：log₂n</p>
+<p>最坏：（n+1)&#x2F;2</p>
+<h3><span id="13散列表查找线性探测法">13.散列表查找——线性探测法</span></h3><p>设哈希表的地址范围为0～17，哈希函数为：H（key）&#x3D;key%16。用线性探测法处理冲突，输入关键字序列：（10，24，32，17，31，30，46，47，40，63，49），构造哈希表，试回答下列问题：<br>① 画出哈希表的示意图；<br>② 若查找关键字63，需要依次与哪些关键字进行比较？<br>③ 若查找关键字60，需要依次与哪些关键字比较？<br>④ 假定每个关键字的查找概率相等，求查找成功时的平均查找长度。<br><img src="/2024/06/07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E4%B8%BB%E8%A7%82%E9%A2%98%E6%B1%87%E6%80%BB/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240616121417.png" alt="微信截图_20240616121417"></p>
+<h3><span id="14哈希表查找链地址法">14.哈希表查找——链地址法</span></h3><p><img src="/2024/06/07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E4%B8%BB%E8%A7%82%E9%A2%98%E6%B1%87%E6%80%BB/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240616121606.png" alt="微信截图_20240616121606"></p>
+<h3><span id="15各种排序">15.各种排序</span></h3><p>（1）设待排序的关键字序列为{12，2，16，30，28，10，16*，20，6，18}，试分别写出使用以下排序方法，每趟排序结束后关键字序列的状态。<br>① 直接插入排序<br>④ 冒泡排序<br>⑤ 快速排序<br>⑥ 简单选择排序<br>⑦ 堆排序<br>⑧ 二路归并排序</p>
+<p>①直接插入排序</p>
+<p><img src="/2024/06/07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E4%B8%BB%E8%A7%82%E9%A2%98%E6%B1%87%E6%80%BB/20191229110240491.png" alt="20191229110240491"></p>
+<p>④ 冒泡排序</p>
+<p><img src="/2024/06/07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E4%B8%BB%E8%A7%82%E9%A2%98%E6%B1%87%E6%80%BB/20191229155437320.png" alt="20191229155437320"></p>
+<p>⑤ 快速排序</p>
+<p><img src="/2024/06/07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E4%B8%BB%E8%A7%82%E9%A2%98%E6%B1%87%E6%80%BB/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240616121942.png" alt="微信截图_20240616121942"></p>
+<p>⑥ 简单选择排序<br>将最小的选出来放在前面<br>2 [12 16 30 28 10 16* 20 6 18]<br>2 6 [16 30 28 10 16* 20 12 18]<br>2 6 10 [30 28 16 16* 20 12 18]<br>2 6 10 12 [28 16 16* 20 30 18]<br>2 6 10 12 16 [28 16* 20 30 18]<br>2 6 10 12 16 16* [28 20 30 18]<br>2 6 10 12 16 16* 18 [20 30 28]<br>2 6 10 12 16 16* 18 20 [28 30]<br>2 6 10 12 16 16* 18 20 28 [30]</p>
+<p>⑧ 二路归并排序<br>[2 12] [16 30] [10 28] [16 * 20] [6 18]<br>[2 12 16 30] [10 16* 20 28] [ 6 18 ]<br>[2 10 12 16 16* 20 28 30] [6 18]<br>2 6 10 12 16 16* 18 20 28 30</p>
 ]]></content>
       <tags>
         <tag>数据结构笔记</tag>
@@ -1119,126 +1168,6 @@
 
 <h2><span id="完整代码">【完整代码】</span></h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#include&lt;queue&gt;</span><br><span class="line">#include&lt;stack&gt;</span><br><span class="line">#include&lt;string&gt;</span><br><span class="line">#include&lt;map&gt; </span><br><span class="line"></span><br><span class="line">struct element&#123;</span><br><span class="line">double num; //存放操作数</span><br><span class="line">char op; //存放操作符</span><br><span class="line">bool flag; //true 表示操作数，false 表示操作符 </span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">string str; //输入的中缀表达式</span><br><span class="line">stack&lt;element&gt;s; //操作符栈</span><br><span class="line">queue&lt;element&gt;q; //后缀表达式队列</span><br><span class="line">map&lt;char,int&gt;op; //判断优先级,字符到整型的映射 </span><br><span class="line"></span><br><span class="line">int suffix()&#123;</span><br><span class="line">//将中缀表达式str转换成后缀表达式 </span><br><span class="line">element temp;</span><br><span class="line">int index = 0; //当前位置 </span><br><span class="line">while(index &lt; str.size()) &#123;</span><br><span class="line">	</span><br><span class="line">if(str[index]&gt;=&#x27;0&#x27; &amp;&amp; str[index]&lt;=&#x27;9&#x27;)&#123; //当前读取的是数字</span><br><span class="line"> temp.flag = true;</span><br><span class="line"> temp.num = str[index++]-&#x27;0&#x27; ; //转化成数字</span><br><span class="line">  while(index&lt;str.size() &amp;&amp; str[index]&gt;=&#x27;0&#x27; &amp;&amp; str[index]&lt;&#x27;9&#x27;)&#123; //处理多位数 </span><br><span class="line">   temp.num = temp.num*10 + str[index]-&#x27;0&#x27;;</span><br><span class="line">   index++; //下一位 </span><br><span class="line"> &#125;</span><br><span class="line"> q.push(temp);//进后缀表达式队列 </span><br><span class="line">&#125;else&#123;</span><br><span class="line"> temp.flag = false; //当前读取的是符号</span><br><span class="line"> temp.op = str[index];</span><br><span class="line"></span><br><span class="line"> if(str[index] ==&#x27;(&#x27;) &#123;</span><br><span class="line">  s.push(temp);//对左括号，直接进操作符栈</span><br><span class="line">   index++; //下一位</span><br><span class="line">   continue;</span><br><span class="line"> &#125;else if(str[index]==&#x27;)&#x27;)&#123;</span><br><span class="line"> 	while(s.top().op!=&#x27;(&#x27;)&#123; //为右括号匹配左括号 </span><br><span class="line"> 		q.push(s.top()); </span><br><span class="line">		s.pop(); //出栈元素加入到队列</span><br><span class="line">    &#125;</span><br><span class="line">  s.pop();//将左括号出栈 </span><br><span class="line">  index++;</span><br><span class="line">  continue;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> temp.flag=false;</span><br><span class="line"> temp.op=str[index];</span><br><span class="line"></span><br><span class="line"> while(!s.empty() &amp;&amp; op[temp.op]&lt;=op[s.top().op])&#123; //当前操作符栈的优先级低于栈顶，并且栈不为空 </span><br><span class="line">  q.push(s.top());</span><br><span class="line">  s.pop();</span><br><span class="line"> &#125;</span><br><span class="line"> s.push(temp);</span><br><span class="line"> index++;</span><br><span class="line">&#125; </span><br><span class="line">&#125;</span><br><span class="line">while(!s.empty())&#123;</span><br><span class="line"> q.push(s.top());</span><br><span class="line"> s.pop();</span><br><span class="line">&#125;</span><br><span class="line">return 1;</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line">double cal()&#123;</span><br><span class="line">double top1,top2;</span><br><span class="line">element cur,temp;</span><br><span class="line">while(!q.empty())&#123; //后缀表达式队列从头依次读取</span><br><span class="line"> cur = q.front(); //cur记录队首</span><br><span class="line"> q.pop(); //出队列 </span><br><span class="line"> if(cur.flag==true)&#123;</span><br><span class="line">   s.push(cur); //对操作数入栈 </span><br><span class="line"> &#125;else&#123;//遇到操作符，对栈里的操作数出栈 </span><br><span class="line">   top1 = s.top().num;</span><br><span class="line">   s.pop();</span><br><span class="line">   top2 = s.top().num;</span><br><span class="line">   s.pop();</span><br><span class="line">   temp.flag=true; //记录运算结果 </span><br><span class="line">   if(cur.op == &#x27;+&#x27;) temp.num = top2+top1;</span><br><span class="line">   if(cur.op == &#x27;-&#x27;) temp.num = top2-top1;</span><br><span class="line">   if(cur.op == &#x27;*&#x27;) temp.num = top2*top1;</span><br><span class="line">   if(cur.op == &#x27;/&#x27;) temp.num = top2/top1;</span><br><span class="line">   s.push(temp);//计算结果进栈 </span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">return s.top().num;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">	op[&#x27;+&#x27;] = op[&#x27;-&#x27;] = 1;</span><br><span class="line">	op[&#x27;*&#x27;] = op[&#x27;/&#x27;] = 2;</span><br><span class="line">	getline(cin,str);</span><br><span class="line">	while(!s.empty())&#123;</span><br><span class="line">		s.pop(); //清空 </span><br><span class="line">	&#125;</span><br><span class="line">	for(int i = 0; i &lt; str.size(); i++) &#123;		//去掉空格 </span><br><span class="line">	if(str[i] == &#x27; &#x27;) &#123;</span><br><span class="line">	str.erase(str.begin() + i);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125; </span><br><span class="line">	suffix();</span><br><span class="line">	cout&lt;&lt;&quot;计算结果为：&quot;&lt;&lt;cal()&lt;&lt;endl;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-]]></content>
-      <tags>
-        <tag>数据结构笔记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>栈的表示和操作实现</title>
-    <url>/2024/04/05/%E6%A0%88%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E6%93%8D%E4%BD%9C%E5%AE%9E%E7%8E%B0/</url>
-    <content><![CDATA[<!-- toc -->
-
-<ul>
-<li><a href="#%E4%B8%80-%E9%A1%BA%E5%BA%8F%E6%A0%88">一、顺序栈</a></li>
-<li><a href="#%E4%BA%8C-%E9%93%BE%E6%A0%88">二、链栈</a></li>
-<li><a href="#%E4%B8%89-%E7%94%A8%E5%A0%86%E6%A0%88%E6%B1%82%E8%A7%A3%E5%90%8E%E7%BC%80%E8%A1%A8%E8%BE%BE%E5%BC%8F">三、用堆栈求解后缀表达式</a></li>
-</ul>
-<!-- tocstop -->
-
-<p>[TOC]</p>
-<h3><span id="一-顺序栈">一、顺序栈</span></h3><ul>
-<li>存储结构：顺序存储</li>
-<li>后进后出，插入和删除只在栈顶进行</li>
-<li>递归</li>
-<li>附设指针top指示栈顶元素在顺序栈的位置</li>
-</ul>
-<h4><span id="1定义">1.定义</span></h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#define MAXSIZE 100 //存储空间的初始分配量</span><br><span class="line"></span><br><span class="line">typedef struct&#123;</span><br><span class="line"></span><br><span class="line">int *base; //栈底指针，在构造前和销毁后，base的值为NULL</span><br><span class="line"></span><br><span class="line">int *top; //栈顶指针,指向栈顶元素的下一个位置</span><br><span class="line"></span><br><span class="line">int stacksize; //栈可用的最大容量</span><br><span class="line"></span><br><span class="line">&#125;SqStack;</span><br><span class="line">SqStack S;</span><br></pre></td></tr></table></figure>
-
-<p>①看栈空</p>
-<p>S.top &#x3D; -1; &#x2F;&#x2F;指针指向元素</p>
-<p>S.top &#x3D; NULL; </p>
-<p>S.top &#x3D; 0; &#x2F;&#x2F;指针指向栈顶元素的下一个位置</p>
-<p>s.top &#x3D; S.base; </p>
-<p>②看栈长</p>
-<p>length &#x3D; S.top - S.base; &#x2F;&#x2F;指针指向栈顶元素的下一个位置</p>
-<p>③看栈满</p>
-<p>top - base &#x3D; stacksize;  &#x2F;&#x2F;指针指向栈顶元素的下一个位置</p>
-<h4><span id="2初始化">2.初始化</span></h4><ul>
-<li>分配存储空间，new int[]</li>
-<li>如果分配失败，!base，返回-1</li>
-<li>否则使空栈，栈顶&#x3D;栈底</li>
-<li>使定义中的stacksize获得最大容量</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int InitStack(SqStack &amp;S)&#123;</span><br><span class="line">//构造一个空栈</span><br><span class="line"></span><br><span class="line">S.base = new int[MAXSIZE]; //为顺序栈分配一个指定最大容量的存储空间</span><br><span class="line"></span><br><span class="line">if(S.base==NULL) return -1; //存储分配失败</span><br><span class="line"></span><br><span class="line">S.top = S.base; //空栈</span><br><span class="line"></span><br><span class="line">S.stacksize = MAXSIZE; //stacksize置为最大容量</span><br><span class="line"></span><br><span class="line">return 1;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4><span id="3入栈">3.入栈</span></h4><ul>
-<li>判断栈满</li>
-<li>否则对e取值</li>
-<li>移动指针</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int Push(SqStack &amp;S,int e)&#123;</span><br><span class="line">//插入元素e为新的栈顶</span><br><span class="line"></span><br><span class="line">if(S.top-S.base = stacksize) return -1; //栈满</span><br><span class="line"></span><br><span class="line">*S.top++ = e;  //元素e压入栈顶后，指针+1</span><br><span class="line"></span><br><span class="line">//等价于*S.top = e; S.top++;</span><br><span class="line"></span><br><span class="line">return 1;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4><span id="4出栈">4.出栈</span></h4><ul>
-<li>判断栈空</li>
-<li>否则栈顶-1</li>
-<li>出栈元素赋给元素e</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int Pop(SqStack &amp;S,int &amp;e)&#123;</span><br><span class="line">//删除S的栈顶元素，用e返回其值</span><br><span class="line"></span><br><span class="line">if(S.top == S.base) return -1; //栈空</span><br><span class="line"></span><br><span class="line">e = *--S.top; //栈顶指针-1，将栈顶元素赋给e</span><br><span class="line"></span><br><span class="line">//等价于--S.top; e=*S.top;</span><br><span class="line"></span><br><span class="line">return 1;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4><span id="5取栈顶元素">5.取栈顶元素</span></h4><ul>
-<li>判断栈非空</li>
-<li>返回当前栈顶元素的值，不修改指针</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int GetTop(SqStack S)&#123;</span><br><span class="line">//返回S的栈顶元素，不修改栈顶指针</span><br><span class="line"></span><br><span class="line">if(S.top! = S.base) //栈非空</span><br><span class="line"></span><br><span class="line">return *(S.top-1); //这是因为栈顶指针指向的不是真实元素，而是元素的下一个</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h3><span id="二-链栈">二、链栈</span></h3><h4><span id="1定义">1.定义</span></h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">typedef struct StackNode &#123;</span><br><span class="line"></span><br><span class="line">int data;    </span><br><span class="line"></span><br><span class="line">struct StackNode* next; </span><br><span class="line"></span><br><span class="line">&#125;StackLink, *Linkstack;</span><br><span class="line"></span><br><span class="line">LinkStack S;</span><br></pre></td></tr></table></figure>
-
-<p>链栈是操作受限的单链表，只能在链表的头部进行操作，故没有必要附加头结点。</p>
-<ul>
-<li>栈顶指针就是链表的头结点。</li>
-<li>链栈插入与删除仅在栈顶处执行(头插法&#x2F;头删法)。</li>
-<li>栈无栈满问题，空间可扩充适合于多栈操作。</li>
-</ul>
-<h4><span id="2初始化">2.初始化</span></h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int InitStack(LinkStack &amp;S)&#123;</span><br><span class="line">//构造一个空栈S，栈顶指针置空</span><br><span class="line"></span><br><span class="line">S= NULL;</span><br><span class="line"></span><br><span class="line">return 1;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4><span id="3入栈">3.入栈</span></h4><ul>
-<li>为入栈元素e分配空间，用指针p指向 p&#x3D; new LinkStack</li>
-<li>对新结点赋值e</li>
-<li>把新结点插入到栈顶</li>
-<li>修改栈顶指针为p</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int Push(LinkStack &amp;S,int e)&#123;</span><br><span class="line">//在栈顶插入元素e</span><br><span class="line"></span><br><span class="line">p = new LinkStack; //生成新结点</span><br><span class="line">if(!p) return -1;</span><br><span class="line"></span><br><span class="line">p-&gt;data = e; //赋值</span><br><span class="line"></span><br><span class="line">p-&gt;next = S; //将新栈顶插入</span><br><span class="line"></span><br><span class="line">S = p; //使p成为栈顶指针</span><br><span class="line"></span><br><span class="line">return 1;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4><span id="4出栈">4.出栈</span></h4><ul>
-<li>判断栈空</li>
-<li>否则将栈顶元素赋值给e</li>
-<li>用结点p临时保存栈顶元素的空间</li>
-<li>下移栈顶指针</li>
-<li>释放p结点</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int Pop(LinkStack &amp;S，int &amp;e)&#123;</span><br><span class="line">//删除S的栈顶元素，用e返回其值</span><br><span class="line"></span><br><span class="line">if(S=NULL) return -1; //栈空</span><br><span class="line"></span><br><span class="line">e = S-&gt;data; //赋值</span><br><span class="line"></span><br><span class="line">LinkStack* p;</span><br><span class="line"></span><br><span class="line">p = S; //用p临时保存栈顶元素空间</span><br><span class="line"></span><br><span class="line">S = S-&gt;next; //下移栈顶指针</span><br><span class="line"></span><br><span class="line">free(p); //释放</span><br><span class="line"></span><br><span class="line">return 1;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4><span id="5读栈顶元素">5.读栈顶元素</span></h4><ul>
-<li>当栈非空，返回S的值，栈顶S保持不变</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int GetTop(LinkStack S)&#123;</span><br><span class="line">//返回S的栈顶元素，不修改栈顶指针</span><br><span class="line"></span><br><span class="line">if(S!=NULL) </span><br><span class="line"></span><br><span class="line">return S-&gt;data;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h3><span id="三-用堆栈求解后缀表达式">三、用堆栈求解后缀表达式</span></h3><h4><span id="1定义">1.定义</span></h4><p>后缀表达式是一种不需要括号的表达式，其本身是对栈的一种应用。</p>
-<p>与之对应的是中缀表达式，即我们现在使用的四则运算。</p>
-<h4><span id="2运算规则">2.运算规则</span></h4><p>顺序：从左到右入栈。</p>
-<p>对于数字直接入栈，对于运算符号，就把栈最上面的两个数出栈，进行运算后再重新入栈。式子最后的结果出栈。</p>
-<p>栈顶元素永远在运算符的右边。</p>
-<h4><span id="3例子">3.例子</span></h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">（1）令P代表入栈，O代表出栈。当利用堆栈求解后缀表达式1 2 3 + * 4 –时，堆栈操作序列是：</span><br><span class="line"></span><br><span class="line">A.PPPOOPOO</span><br><span class="line"></span><br><span class="line">B.PPOOPPOOPPOO</span><br><span class="line"></span><br><span class="line">C.PPPOOPOOPPOO</span><br><span class="line"></span><br><span class="line">D.PPPOOPOOPPOOPO</span><br></pre></td></tr></table></figure>
-
-<p>1、2、3：进栈，PPP</p>
-<p>+：对最顶上的3、2出栈，计算2+3&#x3D;5，把结果进栈，OOP</p>
-<p>*：对5、1出栈，计算5x1&#x3D;5，把结果进栈，OOP</p>
-<p>4：进栈，P</p>
-<p>-：对4、5出栈，计算4-5&#x3D;-1，把结果进栈，OOP</p>
-<p>最后输出结果：O</p>
-<p>答案为D。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">（2）表达式`a*(b+c)-d`的后缀表达式是：</span><br><span class="line"></span><br><span class="line">A.`a b c + * d -`</span><br><span class="line"></span><br><span class="line">B.`a b c d * + -`</span><br><span class="line"></span><br><span class="line">C.`a b c * + d -`</span><br><span class="line"></span><br><span class="line">D.`- + * a b c d`</span><br></pre></td></tr></table></figure>
-
-<p>数字优先进栈，所以abc</p>
-<p>括号内的式子优先计算，所以首先遇到+，为abc+</p>
-<p>算完加法算乘法，所以abc+*</p>
-<p>继续将d进栈，然后算减法，所以是abc+*d-</p>
-<p>答案为A。</p>
 ]]></content>
       <tags>
         <tag>数据结构笔记</tag>
@@ -1541,6 +1470,258 @@ return 0;
       </tags>
   </entry>
   <entry>
+    <title>正弦稳态电路分析</title>
+    <url>/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/</url>
+    <content><![CDATA[<!-- toc -->
+
+<ul>
+<li><a href="#%E6%AD%A3%E5%BC%A6%E4%BF%A1%E5%8F%B7">正弦信号</a><ul>
+<li><a href="#1%E6%AD%A3%E5%BC%A6%E4%BF%A1%E5%8F%B7%E7%9A%84%E4%B8%89%E8%A6%81%E7%B4%A0">1.正弦信号的三要素</a></li>
+<li><a href="#2%E6%AD%A3%E5%BC%A6%E4%BF%A1%E5%8F%B7%E7%9A%84%E7%9B%B8%E4%BD%8D%E5%B7%AE">2.正弦信号的相位差</a></li>
+<li><a href="#3%E6%AD%A3%E5%BC%A6%E4%BF%A1%E5%8F%B7%E7%9A%84%E6%9C%89%E6%95%88%E5%80%BC">3.正弦信号的有效值</a></li>
+</ul>
+</li>
+<li><a href="#%E6%AD%A3%E5%BC%A6%E4%BF%A1%E5%8F%B7%E7%9A%84%E7%9B%B8%E9%87%8F%E8%A1%A8%E7%A4%BA">正弦信号的相量表示</a><ul>
+<li><a href="#1%E5%A4%8D%E6%95%B0a%E7%9A%84%E8%A1%A8%E7%A4%BA">1.复数A的表示</a></li>
+<li><a href="#2%E7%94%A8%E7%9B%B8%E9%87%8F%E8%A1%A8%E7%A4%BA%E6%AD%A3%E5%BC%A6%E4%BF%A1%E5%8F%B7">2.用相量表示正弦信号</a></li>
+</ul>
+</li>
+<li><a href="#%E5%9F%BA%E6%9C%AC%E5%85%83%E4%BB%B6%E4%BC%8F%E5%AE%89%E7%89%B9%E6%80%A7%E7%9A%84%E7%9B%B8%E9%87%8F%E5%BD%A2%E5%BC%8F">基本元件伏安特性的相量形式</a><ul>
+<li><a href="#1%E7%94%B5%E9%98%BB%E5%85%83%E4%BB%B6">1.电阻元件</a></li>
+<li><a href="#2%E7%94%B5%E6%84%9F%E5%85%83%E4%BB%B6">2.电感元件</a></li>
+<li><a href="#3%E7%94%B5%E5%AE%B9%E5%85%83%E4%BB%B6">3.电容元件</a></li>
+<li><a href="#4%E6%AD%A3%E5%BC%A6%E7%94%B5%E6%BA%90%E7%9A%84%E7%9B%B8%E9%87%8F%E6%A8%A1%E5%9E%8B">4.正弦电源的相量模型</a></li>
+</ul>
+</li>
+<li><a href="#%E7%9B%B8%E9%87%8F%E6%A8%A1%E5%9E%8B">相量模型</a><ul>
+<li><a href="#1%E9%98%BB%E6%8A%97%E5%92%8C%E5%AF%BC%E7%BA%B3">1.阻抗和导纳</a></li>
+<li><a href="#2%E7%9B%B8%E9%87%8F%E5%9B%BE">2.相量图</a></li>
+<li><a href="#3%E9%98%BB%E6%8A%97%E5%92%8C%E5%AF%BC%E7%BA%B3%E7%9A%84%E4%B8%B2-%E5%B9%B6%E8%81%94">3.阻抗和导纳的串、并联</a></li>
+</ul>
+</li>
+<li><a href="#%E4%B8%B2%E8%81%94%E8%B0%90%E6%8C%AF">串联谐振</a><ul>
+<li><a href="#1%E6%9D%A1%E4%BB%B6">1.条件</a></li>
+<li><a href="#2%E7%89%B9%E5%BE%81">2.特征</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+
+<p>[TOC]</p>
+<h2><span id="正弦信号">正弦信号</span></h2><p>正弦稳态电路：在正弦电源作用下，电路达到稳定工作状态时的正弦稳态电路。</p>
+<p>正弦交流信号可以用sin函数表示，也可以用cos函数表示，本书采用sin函数。</p>
+<h3><span id="1正弦信号的三要素">1.正弦信号的三要素</span></h3><h4><span id="一个正弦信号由3个参数确定最大值-频率角频率和初相">一个正弦信号由3个参数确定：<strong>最大值、频率（角频率）和初相</strong></span></h4><p>（1）<strong>正弦交流信号的一般表达式</strong>：<strong>u(t) &#x3D; Uₘ sin(ωt + θ)</strong></p>
+<p>（2）<strong>Uₘ</strong>：<strong>幅值</strong>，表示正弦量所能达到的最大值；又叫峰值或振幅</p>
+<p>（3）**(ωt + θ)<strong>：</strong>相位**；θ称为相位角</p>
+<p>（4）<strong>ω</strong>：<strong>角频率</strong>，是正弦量在单位时间内变化的弧度数，单位<strong>rad&#x2F;s</strong></p>
+<p>（5）<strong>周期</strong>：周期T表示正弦量变化一周需要的时间，单位<strong>s</strong></p>
+<p>（6）<strong>公式</strong>：①<strong>T&#x3D;2π&#x2F;ω</strong></p>
+<p>​                      ②<strong>f&#x3D;1&#x2F;T</strong></p>
+<h3><span id="2正弦信号的相位差">2.正弦信号的相位差</span></h3><p>（1）<strong>定义</strong>：两个同频率正弦信号在任一时刻的相位之差称为相位差，实际上是初相之差。</p>
+<p>（2）<strong>符号表示</strong>：θ&#x3D;θᵢ - θᵤ</p>
+<p>（3）θ&gt;0，表示i(t)超前于u(t)，电流比电压先到达最大值或最小值；</p>
+<p>​          θ&lt;0，表示i(t)滞后于u(t)；</p>
+<p>​          θ&#x3D;0，则称i(t)与u(t)同相，二者同时到达最值；</p>
+<p>​          θ&#x3D;+-π，则称i(t)与u(t)反相，当i(t)达到最大值时，u(t)达到最小值，反之亦然。</p>
+<h3><span id="3正弦信号的有效值">3.正弦信号的有效值</span></h3><p>（1）<strong>定义</strong>：设两个阻值相同的电阻，分别通过周期电流和直流电流，在一个周期内，两个电阻消耗相同的能量，就称该直流电流值为周期电流的有效值。</p>
+<p>（2）<strong>总结</strong>：<u>正弦信号的振幅值等于有效值的√2倍。</u></p>
+<p>​                     Uₘ &#x3D; √2 U       ，        Iₘ &#x3D; √2 I</p>
+<p>（3）<strong>公式表示</strong>：i(t)&#x3D;√2 I sin(ωt + θᵢ)</p>
+<p>​                             u(t)&#x3D;√2 U sin(ωt + θᵤ)</p>
+<h2><span id="正弦信号的相量表示">正弦信号的相量表示</span></h2><h3><span id="1复数a的表示">1.复数A的表示</span></h3><h4><span id="1代数型-指数型和极型">（1）代数型、指数型和极型</span></h4><ul>
+<li><input disabled type="checkbox"> <strong>代数型</strong>：A&#x3D;a1 + ja2</li>
+<li><input disabled type="checkbox"> <strong>指数型</strong>：A&#x3D;aeʲᶿ</li>
+<li><input disabled type="checkbox"> <strong>极型</strong>：a∠θ</li>
+</ul>
+<h4><span id="2指数型转换为代数型">（2）指数型转换为代数型</span></h4><ul>
+<li><input disabled type="checkbox"> <strong>欧拉公式</strong>：eʲᶿ &#x3D; cosθ + jsinθ</li>
+<li><input disabled type="checkbox"> 特别的，e^jπ&#x2F;2 &#x3D; cos(π&#x2F;2) + jsin(π&#x2F;2) &#x3D;j</li>
+</ul>
+<h4><span id="3代数型转换为指数型和极型">（3）代数型转换为指数型和极型</span></h4><ul>
+<li><p><input disabled type="checkbox"> 
+<strong>a &#x3D; (a₁² + a₂²)^1&#x2F;2</strong></p>
+</li>
+<li><p><input disabled type="checkbox"> 
+<strong>θ &#x3D; arctan (a₂&#x2F;a₁)</strong></p>
+</li>
+<li><p><input disabled type="checkbox"> 
+常用值：arctan1 &#x3D; π&#x2F;4</p>
+<p>​                arctan√3 &#x3D; π&#x2F;3</p>
+<p>​                arctan1&#x2F;√3 &#x3D; π&#x2F;6</p>
+</li>
+</ul>
+<img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/微信截图_20240402012354.png" alt="微信截图_20240402012354" style="zoom:80%;">
+
+<h4><span id="4计算">（4）计算</span></h4><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/微信截图_20240402012812.png" alt="微信截图_20240402012812" style="zoom:80%;">
+
+<h3><span id="2用相量表示正弦信号">2.用相量表示正弦信号</span></h3><h4><span id="1正弦电流-电压的表示">（1）正弦电流、电压的表示</span></h4><p><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240405124242.png" alt="微信截图_20240405124242"></p>
+<p><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240405123709.png" alt="微信图片_20240405123709"></p>
+<h4><span id="2正弦信号与相量的对应规则">（2）正弦信号与相量的对应规则</span></h4><p><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240405125143.png" alt="微信截图_20240405125143"></p>
+<h4><span id="3电流相量适用基尔霍夫定律见例题p87-p91">（3）电流相量适用基尔霍夫定律（见例题P87、P91）</span></h4><p>由i(t)&#x3D;i₁(t) + i₂(t)，有I˙ &#x3D;I˙₁ + I˙₂</p>
+<p>由u(t)&#x3D;u₁(t) + u₂(t)，有U˙ &#x3D;U˙₁ + U˙₂</p>
+<p>结论对于有效值相量和振幅相量都适用。</p>
+<h2><span id="基本元件伏安特性的相量形式">基本元件伏安特性的相量形式</span></h2><h3><span id="1电阻元件">1.电阻元件</span></h3><p><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240405130717.png" alt="微信图片_20240405130717"></p>
+<h3><span id="2电感元件">2.电感元件</span></h3><p><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240405131106.png" alt="微信截图_20240405131106"></p>
+<h3><span id="3电容元件">3.电容元件</span></h3><p><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240405132101.png" alt="微信截图_20240405132101"></p>
+<h3><span id="4正弦电源的相量模型">4.正弦电源的相量模型</span></h3><p>①<strong>正弦电压源</strong>：如果一个独立电压源uₛ(t)的输出电压为正弦电压，即uₛ(t) &#x3D; √2 Uₛ sin(ωt + θᵤ)，就称其为正弦电压源。</p>
+<p>参数：Uₛ→有效值；ω→角频率；θᵤ→初相。</p>
+<p>②<strong>正弦电流源</strong>：Iₛ(t) &#x3D; √2 Iₛ sin(ωt + θᵤ)</p>
+<p>③正弦受控源：VCVC,CCVS,VCCS,CCCS</p>
+<h2><span id="相量模型">相量模型</span></h2><h3><span id="1阻抗和导纳">1.阻抗和导纳</span></h3><h4><span id="1阻抗z">（1）阻抗Z</span></h4><h5><span id="1概念">①概念</span></h5><p><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/4c636121dd444a1e847b36ec124dfc34.png" alt="4c636121dd444a1e847b36ec124dfc34"></p>
+<p>X&#x3D;0时，阻抗Z成电阻性。</p>
+<p>把X替换成φᶻ也成立（z是下标）。</p>
+<h5><span id="2转换关系">②转换关系</span></h5><p>R &#x3D; |Z|cosφᶻ（z是下标）</p>
+<p>X &#x3D; |Z|sinφᶻ</p>
+<p>其中，</p>
+<p>|Z| &#x3D; √（R² + X²） &#x3D; U&#x2F;I</p>
+<p>φᶻ &#x3D; arctan（X&#x2F;R）&#x3D; θᵤ - θᵢ</p>
+<h5><span id="3基本元件的阻抗">③基本元件的阻抗</span></h5><p><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/35e4c5e6308d447aadb1585fcfa64836.png" alt="35e4c5e6308d447aadb1585fcfa64836"></p>
+<p>其中，X˪ &#x3D; ωL，Xᶜ &#x3D; -1&#x2F;ωC  （c是下标）</p>
+<h4><span id="2导纳y">（2）导纳Y</span></h4><p><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/aba8b119efdc4c78845b70dc846c1eaa.png" alt="aba8b119efdc4c78845b70dc846c1eaa"></p>
+<p>导纳的量纲是西门子（S）。</p>
+<h3><span id="2相量图">2.相量图</span></h3><p>确定相量的角度需要两个步骤:</p>
+<p>①第1步:确定参考相量，即角度为零的相量</p>
+<p><strong>串联电路</strong>选<strong>电流</strong>作为参考相量</p>
+<p><strong>并联电路</strong>选<strong>电压</strong>作为参考相量</p>
+<p>②第2步:根据支路的VCR确定支路电压或电流相量的角度</p>
+<p><strong>滞后</strong>：顺时针，后面（以U˪的相量形式作为参照）</p>
+<p><strong>超前</strong>：逆时针，前面</p>
+<p><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/fb1a95a4fab44f2aac3ed1a013f8078d.png" alt="fb1a95a4fab44f2aac3ed1a013f8078d"></p>
+<p><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/db461cce59f34b9b9df7b855b362fb60.png" alt="db461cce59f34b9b9df7b855b362fb60"></p>
+<p><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/f6acd5e9b5bb46fb92aa919e11f436a0.png" alt="f6acd5e9b5bb46fb92aa919e11f436a0"></p>
+<h3><span id="3阻抗和导纳的串-并联">3.阻抗和导纳的串、并联</span></h3><p><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240415222834.png" alt="微信图片_20240415222834"></p>
+<h2><span id="串联谐振">串联谐振</span></h2><h3><span id="1条件">1.条件</span></h3><p>①电路的总阻抗是：Z &#x3D; R + j(ωL - 1&#x2F;ωC)</p>
+<p>②发生谐振时，端口电压U&#96;和端口电流I·同相，只有当阻抗的虚部为0才能满足此条件。</p>
+<p>③公式：ω &#x3D; ω₀ &#x3D; 1 &#x2F; √（ωC）</p>
+<h3><span id="2特征">2.特征</span></h3><p>①谐振时的阻抗最小，电流最大。</p>
+<p>②谐振时的电压与电流同相。并且达到最大值。</p>
+<p>③谐振时电感电压和电容电压大小相等，方向相反，电阻电压等于电源电压。</p>
+]]></content>
+      <tags>
+        <tag>电子电路基础</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>栈的表示和操作实现</title>
+    <url>/2024/04/05/%E6%A0%88%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E6%93%8D%E4%BD%9C%E5%AE%9E%E7%8E%B0/</url>
+    <content><![CDATA[<!-- toc -->
+
+<ul>
+<li><a href="#%E4%B8%80-%E9%A1%BA%E5%BA%8F%E6%A0%88">一、顺序栈</a></li>
+<li><a href="#%E4%BA%8C-%E9%93%BE%E6%A0%88">二、链栈</a></li>
+<li><a href="#%E4%B8%89-%E7%94%A8%E5%A0%86%E6%A0%88%E6%B1%82%E8%A7%A3%E5%90%8E%E7%BC%80%E8%A1%A8%E8%BE%BE%E5%BC%8F">三、用堆栈求解后缀表达式</a></li>
+</ul>
+<!-- tocstop -->
+
+<p>[TOC]</p>
+<h3><span id="一-顺序栈">一、顺序栈</span></h3><ul>
+<li>存储结构：顺序存储</li>
+<li>后进后出，插入和删除只在栈顶进行</li>
+<li>递归</li>
+<li>附设指针top指示栈顶元素在顺序栈的位置</li>
+</ul>
+<h4><span id="1定义">1.定义</span></h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#define MAXSIZE 100 //存储空间的初始分配量</span><br><span class="line"></span><br><span class="line">typedef struct&#123;</span><br><span class="line"></span><br><span class="line">int *base; //栈底指针，在构造前和销毁后，base的值为NULL</span><br><span class="line"></span><br><span class="line">int *top; //栈顶指针,指向栈顶元素的下一个位置</span><br><span class="line"></span><br><span class="line">int stacksize; //栈可用的最大容量</span><br><span class="line"></span><br><span class="line">&#125;SqStack;</span><br><span class="line">SqStack S;</span><br></pre></td></tr></table></figure>
+
+<p>①看栈空</p>
+<p>S.top &#x3D; -1; &#x2F;&#x2F;指针指向元素</p>
+<p>S.top &#x3D; NULL; </p>
+<p>S.top &#x3D; 0; &#x2F;&#x2F;指针指向栈顶元素的下一个位置</p>
+<p>s.top &#x3D; S.base; </p>
+<p>②看栈长</p>
+<p>length &#x3D; S.top - S.base; &#x2F;&#x2F;指针指向栈顶元素的下一个位置</p>
+<p>③看栈满</p>
+<p>top - base &#x3D; stacksize;  &#x2F;&#x2F;指针指向栈顶元素的下一个位置</p>
+<h4><span id="2初始化">2.初始化</span></h4><ul>
+<li>分配存储空间，new int[]</li>
+<li>如果分配失败，!base，返回-1</li>
+<li>否则使空栈，栈顶&#x3D;栈底</li>
+<li>使定义中的stacksize获得最大容量</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int InitStack(SqStack &amp;S)&#123;</span><br><span class="line">//构造一个空栈</span><br><span class="line"></span><br><span class="line">S.base = new int[MAXSIZE]; //为顺序栈分配一个指定最大容量的存储空间</span><br><span class="line"></span><br><span class="line">if(S.base==NULL) return -1; //存储分配失败</span><br><span class="line"></span><br><span class="line">S.top = S.base; //空栈</span><br><span class="line"></span><br><span class="line">S.stacksize = MAXSIZE; //stacksize置为最大容量</span><br><span class="line"></span><br><span class="line">return 1;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="3入栈">3.入栈</span></h4><ul>
+<li>判断栈满</li>
+<li>否则对e取值</li>
+<li>移动指针</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int Push(SqStack &amp;S,int e)&#123;</span><br><span class="line">//插入元素e为新的栈顶</span><br><span class="line"></span><br><span class="line">if(S.top-S.base = stacksize) return -1; //栈满</span><br><span class="line"></span><br><span class="line">*S.top++ = e;  //元素e压入栈顶后，指针+1</span><br><span class="line"></span><br><span class="line">//等价于*S.top = e; S.top++;</span><br><span class="line"></span><br><span class="line">return 1;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="4出栈">4.出栈</span></h4><ul>
+<li>判断栈空</li>
+<li>否则栈顶-1</li>
+<li>出栈元素赋给元素e</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int Pop(SqStack &amp;S,int &amp;e)&#123;</span><br><span class="line">//删除S的栈顶元素，用e返回其值</span><br><span class="line"></span><br><span class="line">if(S.top == S.base) return -1; //栈空</span><br><span class="line"></span><br><span class="line">e = *--S.top; //栈顶指针-1，将栈顶元素赋给e</span><br><span class="line"></span><br><span class="line">//等价于--S.top; e=*S.top;</span><br><span class="line"></span><br><span class="line">return 1;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="5取栈顶元素">5.取栈顶元素</span></h4><ul>
+<li>判断栈非空</li>
+<li>返回当前栈顶元素的值，不修改指针</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int GetTop(SqStack S)&#123;</span><br><span class="line">//返回S的栈顶元素，不修改栈顶指针</span><br><span class="line"></span><br><span class="line">if(S.top! = S.base) //栈非空</span><br><span class="line"></span><br><span class="line">return *(S.top-1); //这是因为栈顶指针指向的不是真实元素，而是元素的下一个</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3><span id="二-链栈">二、链栈</span></h3><h4><span id="1定义">1.定义</span></h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">typedef struct StackNode &#123;</span><br><span class="line"></span><br><span class="line">int data;    </span><br><span class="line"></span><br><span class="line">struct StackNode* next; </span><br><span class="line"></span><br><span class="line">&#125;StackLink, *Linkstack;</span><br><span class="line"></span><br><span class="line">LinkStack S;</span><br></pre></td></tr></table></figure>
+
+<p>链栈是操作受限的单链表，只能在链表的头部进行操作，故没有必要附加头结点。</p>
+<ul>
+<li>栈顶指针就是链表的头结点。</li>
+<li>链栈插入与删除仅在栈顶处执行(头插法&#x2F;头删法)。</li>
+<li>栈无栈满问题，空间可扩充适合于多栈操作。</li>
+</ul>
+<h4><span id="2初始化">2.初始化</span></h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int InitStack(LinkStack &amp;S)&#123;</span><br><span class="line">//构造一个空栈S，栈顶指针置空</span><br><span class="line"></span><br><span class="line">S= NULL;</span><br><span class="line"></span><br><span class="line">return 1;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="3入栈">3.入栈</span></h4><ul>
+<li>为入栈元素e分配空间，用指针p指向 p&#x3D; new LinkStack</li>
+<li>对新结点赋值e</li>
+<li>把新结点插入到栈顶</li>
+<li>修改栈顶指针为p</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int Push(LinkStack &amp;S,int e)&#123;</span><br><span class="line">//在栈顶插入元素e</span><br><span class="line"></span><br><span class="line">p = new LinkStack; //生成新结点</span><br><span class="line">if(!p) return -1;</span><br><span class="line"></span><br><span class="line">p-&gt;data = e; //赋值</span><br><span class="line"></span><br><span class="line">p-&gt;next = S; //将新栈顶插入</span><br><span class="line"></span><br><span class="line">S = p; //使p成为栈顶指针</span><br><span class="line"></span><br><span class="line">return 1;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="4出栈">4.出栈</span></h4><ul>
+<li>判断栈空</li>
+<li>否则将栈顶元素赋值给e</li>
+<li>用结点p临时保存栈顶元素的空间</li>
+<li>下移栈顶指针</li>
+<li>释放p结点</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int Pop(LinkStack &amp;S，int &amp;e)&#123;</span><br><span class="line">//删除S的栈顶元素，用e返回其值</span><br><span class="line"></span><br><span class="line">if(S=NULL) return -1; //栈空</span><br><span class="line"></span><br><span class="line">e = S-&gt;data; //赋值</span><br><span class="line"></span><br><span class="line">LinkStack* p;</span><br><span class="line"></span><br><span class="line">p = S; //用p临时保存栈顶元素空间</span><br><span class="line"></span><br><span class="line">S = S-&gt;next; //下移栈顶指针</span><br><span class="line"></span><br><span class="line">free(p); //释放</span><br><span class="line"></span><br><span class="line">return 1;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="5读栈顶元素">5.读栈顶元素</span></h4><ul>
+<li>当栈非空，返回S的值，栈顶S保持不变</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int GetTop(LinkStack S)&#123;</span><br><span class="line">//返回S的栈顶元素，不修改栈顶指针</span><br><span class="line"></span><br><span class="line">if(S!=NULL) </span><br><span class="line"></span><br><span class="line">return S-&gt;data;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3><span id="三-用堆栈求解后缀表达式">三、用堆栈求解后缀表达式</span></h3><h4><span id="1定义">1.定义</span></h4><p>后缀表达式是一种不需要括号的表达式，其本身是对栈的一种应用。</p>
+<p>与之对应的是中缀表达式，即我们现在使用的四则运算。</p>
+<h4><span id="2运算规则">2.运算规则</span></h4><p>顺序：从左到右入栈。</p>
+<p>对于数字直接入栈，对于运算符号，就把栈最上面的两个数出栈，进行运算后再重新入栈。式子最后的结果出栈。</p>
+<p>栈顶元素永远在运算符的右边。</p>
+<h4><span id="3例子">3.例子</span></h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">（1）令P代表入栈，O代表出栈。当利用堆栈求解后缀表达式1 2 3 + * 4 –时，堆栈操作序列是：</span><br><span class="line"></span><br><span class="line">A.PPPOOPOO</span><br><span class="line"></span><br><span class="line">B.PPOOPPOOPPOO</span><br><span class="line"></span><br><span class="line">C.PPPOOPOOPPOO</span><br><span class="line"></span><br><span class="line">D.PPPOOPOOPPOOPO</span><br></pre></td></tr></table></figure>
+
+<p>1、2、3：进栈，PPP</p>
+<p>+：对最顶上的3、2出栈，计算2+3&#x3D;5，把结果进栈，OOP</p>
+<p>*：对5、1出栈，计算5x1&#x3D;5，把结果进栈，OOP</p>
+<p>4：进栈，P</p>
+<p>-：对4、5出栈，计算4-5&#x3D;-1，把结果进栈，OOP</p>
+<p>最后输出结果：O</p>
+<p>答案为D。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">（2）表达式`a*(b+c)-d`的后缀表达式是：</span><br><span class="line"></span><br><span class="line">A.`a b c + * d -`</span><br><span class="line"></span><br><span class="line">B.`a b c d * + -`</span><br><span class="line"></span><br><span class="line">C.`a b c * + d -`</span><br><span class="line"></span><br><span class="line">D.`- + * a b c d`</span><br></pre></td></tr></table></figure>
+
+<p>数字优先进栈，所以abc</p>
+<p>括号内的式子优先计算，所以首先遇到+，为abc+</p>
+<p>算完加法算乘法，所以abc+*</p>
+<p>继续将d进栈，然后算减法，所以是abc+*d-</p>
+<p>答案为A。</p>
+]]></content>
+      <tags>
+        <tag>数据结构笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>用链表实现交集和并集</title>
     <url>/2024/03/24/%E7%94%A8%E9%93%BE%E8%A1%A8%E5%AE%9E%E7%8E%B0%E4%BA%A4%E9%9B%86%E5%92%8C%E5%B9%B6%E9%9B%86/</url>
     <content><![CDATA[<!-- toc -->
@@ -1799,135 +1980,89 @@ return 0;
       </tags>
   </entry>
   <entry>
-    <title>正弦稳态电路分析</title>
-    <url>/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/</url>
+    <title>队列的表示和操作实现</title>
+    <url>/2024/05/26/%E9%98%9F%E5%88%97%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E6%93%8D%E4%BD%9C%E5%AE%9E%E7%8E%B0/</url>
     <content><![CDATA[<!-- toc -->
 
 <ul>
-<li><a href="#%E6%AD%A3%E5%BC%A6%E4%BF%A1%E5%8F%B7">正弦信号</a><ul>
-<li><a href="#1%E6%AD%A3%E5%BC%A6%E4%BF%A1%E5%8F%B7%E7%9A%84%E4%B8%89%E8%A6%81%E7%B4%A0">1.正弦信号的三要素</a></li>
-<li><a href="#2%E6%AD%A3%E5%BC%A6%E4%BF%A1%E5%8F%B7%E7%9A%84%E7%9B%B8%E4%BD%8D%E5%B7%AE">2.正弦信号的相位差</a></li>
-<li><a href="#3%E6%AD%A3%E5%BC%A6%E4%BF%A1%E5%8F%B7%E7%9A%84%E6%9C%89%E6%95%88%E5%80%BC">3.正弦信号的有效值</a></li>
-</ul>
-</li>
-<li><a href="#%E6%AD%A3%E5%BC%A6%E4%BF%A1%E5%8F%B7%E7%9A%84%E7%9B%B8%E9%87%8F%E8%A1%A8%E7%A4%BA">正弦信号的相量表示</a><ul>
-<li><a href="#1%E5%A4%8D%E6%95%B0a%E7%9A%84%E8%A1%A8%E7%A4%BA">1.复数A的表示</a></li>
-<li><a href="#2%E7%94%A8%E7%9B%B8%E9%87%8F%E8%A1%A8%E7%A4%BA%E6%AD%A3%E5%BC%A6%E4%BF%A1%E5%8F%B7">2.用相量表示正弦信号</a></li>
-</ul>
-</li>
-<li><a href="#%E5%9F%BA%E6%9C%AC%E5%85%83%E4%BB%B6%E4%BC%8F%E5%AE%89%E7%89%B9%E6%80%A7%E7%9A%84%E7%9B%B8%E9%87%8F%E5%BD%A2%E5%BC%8F">基本元件伏安特性的相量形式</a><ul>
-<li><a href="#1%E7%94%B5%E9%98%BB%E5%85%83%E4%BB%B6">1.电阻元件</a></li>
-<li><a href="#2%E7%94%B5%E6%84%9F%E5%85%83%E4%BB%B6">2.电感元件</a></li>
-<li><a href="#3%E7%94%B5%E5%AE%B9%E5%85%83%E4%BB%B6">3.电容元件</a></li>
-<li><a href="#4%E6%AD%A3%E5%BC%A6%E7%94%B5%E6%BA%90%E7%9A%84%E7%9B%B8%E9%87%8F%E6%A8%A1%E5%9E%8B">4.正弦电源的相量模型</a></li>
-</ul>
-</li>
-<li><a href="#%E7%9B%B8%E9%87%8F%E6%A8%A1%E5%9E%8B">相量模型</a><ul>
-<li><a href="#1%E9%98%BB%E6%8A%97%E5%92%8C%E5%AF%BC%E7%BA%B3">1.阻抗和导纳</a></li>
-<li><a href="#2%E7%9B%B8%E9%87%8F%E5%9B%BE">2.相量图</a></li>
-<li><a href="#3%E9%98%BB%E6%8A%97%E5%92%8C%E5%AF%BC%E7%BA%B3%E7%9A%84%E4%B8%B2-%E5%B9%B6%E8%81%94">3.阻抗和导纳的串、并联</a></li>
-</ul>
-</li>
-<li><a href="#%E4%B8%B2%E8%81%94%E8%B0%90%E6%8C%AF">串联谐振</a><ul>
-<li><a href="#1%E6%9D%A1%E4%BB%B6">1.条件</a></li>
-<li><a href="#2%E7%89%B9%E5%BE%81">2.特征</a></li>
-</ul>
-</li>
+<li><a href="#%E4%B8%80-%E5%BE%AA%E7%8E%AF%E9%98%9F%E5%88%97%E9%98%9F%E5%88%97%E7%9A%84%E9%A1%BA%E5%BA%8F%E5%AD%98%E5%82%A8">一、循环队列（队列的顺序存储）</a></li>
+<li><a href="#%E4%BA%8C-%E9%93%BE%E6%A0%88">二、链栈</a></li>
 </ul>
 <!-- tocstop -->
 
 <p>[TOC]</p>
-<h2><span id="正弦信号">正弦信号</span></h2><p>正弦稳态电路：在正弦电源作用下，电路达到稳定工作状态时的正弦稳态电路。</p>
-<p>正弦交流信号可以用sin函数表示，也可以用cos函数表示，本书采用sin函数。</p>
-<h3><span id="1正弦信号的三要素">1.正弦信号的三要素</span></h3><h4><span id="一个正弦信号由3个参数确定最大值-频率角频率和初相">一个正弦信号由3个参数确定：<strong>最大值、频率（角频率）和初相</strong></span></h4><p>（1）<strong>正弦交流信号的一般表达式</strong>：<strong>u(t) &#x3D; Uₘ sin(ωt + θ)</strong></p>
-<p>（2）<strong>Uₘ</strong>：<strong>幅值</strong>，表示正弦量所能达到的最大值；又叫峰值或振幅</p>
-<p>（3）**(ωt + θ)<strong>：</strong>相位**；θ称为相位角</p>
-<p>（4）<strong>ω</strong>：<strong>角频率</strong>，是正弦量在单位时间内变化的弧度数，单位<strong>rad&#x2F;s</strong></p>
-<p>（5）<strong>周期</strong>：周期T表示正弦量变化一周需要的时间，单位<strong>s</strong></p>
-<p>（6）<strong>公式</strong>：①<strong>T&#x3D;2π&#x2F;ω</strong></p>
-<p>​                      ②<strong>f&#x3D;1&#x2F;T</strong></p>
-<h3><span id="2正弦信号的相位差">2.正弦信号的相位差</span></h3><p>（1）<strong>定义</strong>：两个同频率正弦信号在任一时刻的相位之差称为相位差，实际上是初相之差。</p>
-<p>（2）<strong>符号表示</strong>：θ&#x3D;θᵢ - θᵤ</p>
-<p>（3）θ&gt;0，表示i(t)超前于u(t)，电流比电压先到达最大值或最小值；</p>
-<p>​          θ&lt;0，表示i(t)滞后于u(t)；</p>
-<p>​          θ&#x3D;0，则称i(t)与u(t)同相，二者同时到达最值；</p>
-<p>​          θ&#x3D;+-π，则称i(t)与u(t)反相，当i(t)达到最大值时，u(t)达到最小值，反之亦然。</p>
-<h3><span id="3正弦信号的有效值">3.正弦信号的有效值</span></h3><p>（1）<strong>定义</strong>：设两个阻值相同的电阻，分别通过周期电流和直流电流，在一个周期内，两个电阻消耗相同的能量，就称该直流电流值为周期电流的有效值。</p>
-<p>（2）<strong>总结</strong>：<u>正弦信号的振幅值等于有效值的√2倍。</u></p>
-<p>​                     Uₘ &#x3D; √2 U       ，        Iₘ &#x3D; √2 I</p>
-<p>（3）<strong>公式表示</strong>：i(t)&#x3D;√2 I sin(ωt + θᵢ)</p>
-<p>​                             u(t)&#x3D;√2 U sin(ωt + θᵤ)</p>
-<h2><span id="正弦信号的相量表示">正弦信号的相量表示</span></h2><h3><span id="1复数a的表示">1.复数A的表示</span></h3><h4><span id="1代数型-指数型和极型">（1）代数型、指数型和极型</span></h4><ul>
-<li><input disabled type="checkbox"> <strong>代数型</strong>：A&#x3D;a1 + ja2</li>
-<li><input disabled type="checkbox"> <strong>指数型</strong>：A&#x3D;aeʲᶿ</li>
-<li><input disabled type="checkbox"> <strong>极型</strong>：a∠θ</li>
-</ul>
-<h4><span id="2指数型转换为代数型">（2）指数型转换为代数型</span></h4><ul>
-<li><input disabled type="checkbox"> <strong>欧拉公式</strong>：eʲᶿ &#x3D; cosθ + jsinθ</li>
-<li><input disabled type="checkbox"> 特别的，e^jπ&#x2F;2 &#x3D; cos(π&#x2F;2) + jsin(π&#x2F;2) &#x3D;j</li>
-</ul>
-<h4><span id="3代数型转换为指数型和极型">（3）代数型转换为指数型和极型</span></h4><ul>
-<li><p><input disabled type="checkbox"> 
-<strong>a &#x3D; (a₁² + a₂²)^1&#x2F;2</strong></p>
-</li>
-<li><p><input disabled type="checkbox"> 
-<strong>θ &#x3D; arctan (a₂&#x2F;a₁)</strong></p>
-</li>
-<li><p><input disabled type="checkbox"> 
-常用值：arctan1 &#x3D; π&#x2F;4</p>
-<p>​                arctan√3 &#x3D; π&#x2F;3</p>
-<p>​                arctan1&#x2F;√3 &#x3D; π&#x2F;6</p>
-</li>
-</ul>
-<img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/微信截图_20240402012354.png" alt="微信截图_20240402012354" style="zoom:80%;">
+<h3><span id="一-循环队列队列的顺序存储">一、循环队列（队列的顺序存储）</span></h3><p>如果用户的应用程序中设有循环队列，就必须为它设定一个最大队列长度。</p>
+<h4><span id="1定义">1.定义</span></h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#define MAXQSIZE 100 //队列可能达到的长度</span><br><span class="line"></span><br><span class="line">typedef struct&#123;</span><br><span class="line"></span><br><span class="line">int *base; //存储空间的基地址</span><br><span class="line"></span><br><span class="line">int front; //头指针，若队列不空，指向队列头元素（实位）</span><br><span class="line"></span><br><span class="line">int rear; //尾指针，若队列不空，指向队列尾元素的下一个位置（虚位）</span><br><span class="line"></span><br><span class="line">&#125;SqQueue;</span><br><span class="line"></span><br><span class="line">SqQueue Q;</span><br></pre></td></tr></table></figure>
 
-<h4><span id="4计算">（4）计算</span></h4><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/微信截图_20240402012812.png" alt="微信截图_20240402012812" style="zoom:80%;">
+<h5><span id="顺序队列非循环队列">顺序队列——非循环队列</span></h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">初始化队列：Q.front=Q.rear=0;</span><br><span class="line"></span><br><span class="line">入队：新元素按 rear 指示位置加入，再将队尾指针加一，即</span><br><span class="line">Q.base[Q.rear] = e;</span><br><span class="line">Q.rear = Q.rear+1;</span><br><span class="line"></span><br><span class="line">出队：将front指示的元素取出，再将队头指针加一，即 </span><br><span class="line">e=Q.base[O.front];</span><br><span class="line">Q.front= Q.front+ 1;</span><br><span class="line"></span><br><span class="line">队空：Q.front==Q.rear;</span><br><span class="line"></span><br><span class="line">队满：Q.rear-Q.front==MAXQSIZE;</span><br><span class="line"></span><br><span class="line">求队长：Q.rear-Q.front;</span><br></pre></td></tr></table></figure>
 
-<h3><span id="2用相量表示正弦信号">2.用相量表示正弦信号</span></h3><h4><span id="1正弦电流-电压的表示">（1）正弦电流、电压的表示</span></h4><p><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240405124242.png" alt="微信截图_20240405124242"></p>
-<p><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240405123709.png" alt="微信图片_20240405123709"></p>
-<h4><span id="2正弦信号与相量的对应规则">（2）正弦信号与相量的对应规则</span></h4><p><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240405125143.png" alt="微信截图_20240405125143"></p>
-<h4><span id="3电流相量适用基尔霍夫定律见例题p87-p91">（3）电流相量适用基尔霍夫定律（见例题P87、P91）</span></h4><p>由i(t)&#x3D;i₁(t) + i₂(t)，有I˙ &#x3D;I˙₁ + I˙₂</p>
-<p>由u(t)&#x3D;u₁(t) + u₂(t)，有U˙ &#x3D;U˙₁ + U˙₂</p>
-<p>结论对于有效值相量和振幅相量都适用。</p>
-<h2><span id="基本元件伏安特性的相量形式">基本元件伏安特性的相量形式</span></h2><h3><span id="1电阻元件">1.电阻元件</span></h3><p><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240405130717.png" alt="微信图片_20240405130717"></p>
-<h3><span id="2电感元件">2.电感元件</span></h3><p><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240405131106.png" alt="微信截图_20240405131106"></p>
-<h3><span id="3电容元件">3.电容元件</span></h3><p><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240405132101.png" alt="微信截图_20240405132101"></p>
-<h3><span id="4正弦电源的相量模型">4.正弦电源的相量模型</span></h3><p>①<strong>正弦电压源</strong>：如果一个独立电压源uₛ(t)的输出电压为正弦电压，即uₛ(t) &#x3D; √2 Uₛ sin(ωt + θᵤ)，就称其为正弦电压源。</p>
-<p>参数：Uₛ→有效值；ω→角频率；θᵤ→初相。</p>
-<p>②<strong>正弦电流源</strong>：Iₛ(t) &#x3D; √2 Iₛ sin(ωt + θᵤ)</p>
-<p>③正弦受控源：VCVC,CCVS,VCCS,CCCS</p>
-<h2><span id="相量模型">相量模型</span></h2><h3><span id="1阻抗和导纳">1.阻抗和导纳</span></h3><h4><span id="1阻抗z">（1）阻抗Z</span></h4><h5><span id="1概念">①概念</span></h5><p><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/4c636121dd444a1e847b36ec124dfc34.png" alt="4c636121dd444a1e847b36ec124dfc34"></p>
-<p>X&#x3D;0时，阻抗Z成电阻性。</p>
-<p>把X替换成φᶻ也成立（z是下标）。</p>
-<h5><span id="2转换关系">②转换关系</span></h5><p>R &#x3D; |Z|cosφᶻ（z是下标）</p>
-<p>X &#x3D; |Z|sinφᶻ</p>
-<p>其中，</p>
-<p>|Z| &#x3D; √（R² + X²） &#x3D; U&#x2F;I</p>
-<p>φᶻ &#x3D; arctan（X&#x2F;R）&#x3D; θᵤ - θᵢ</p>
-<h5><span id="3基本元件的阻抗">③基本元件的阻抗</span></h5><p><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/35e4c5e6308d447aadb1585fcfa64836.png" alt="35e4c5e6308d447aadb1585fcfa64836"></p>
-<p>其中，X˪ &#x3D; ωL，Xᶜ &#x3D; -1&#x2F;ωC  （c是下标）</p>
-<h4><span id="2导纳y">（2）导纳Y</span></h4><p><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/aba8b119efdc4c78845b70dc846c1eaa.png" alt="aba8b119efdc4c78845b70dc846c1eaa"></p>
-<p>导纳的量纲是西门子（S）。</p>
-<h3><span id="2相量图">2.相量图</span></h3><p>确定相量的角度需要两个步骤:</p>
-<p>①第1步:确定参考相量，即角度为零的相量</p>
-<p><strong>串联电路</strong>选<strong>电流</strong>作为参考相量</p>
-<p><strong>并联电路</strong>选<strong>电压</strong>作为参考相量</p>
-<p>②第2步:根据支路的VCR确定支路电压或电流相量的角度</p>
-<p><strong>滞后</strong>：顺时针，后面（以U˪的相量形式作为参照）</p>
-<p><strong>超前</strong>：逆时针，前面</p>
-<p><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/fb1a95a4fab44f2aac3ed1a013f8078d.png" alt="fb1a95a4fab44f2aac3ed1a013f8078d"></p>
-<p><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/db461cce59f34b9b9df7b855b362fb60.png" alt="db461cce59f34b9b9df7b855b362fb60"></p>
-<p><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/f6acd5e9b5bb46fb92aa919e11f436a0.png" alt="f6acd5e9b5bb46fb92aa919e11f436a0"></p>
-<h3><span id="3阻抗和导纳的串-并联">3.阻抗和导纳的串、并联</span></h3><p><img src="/2024/04/01/%E6%AD%A3%E5%BC%A6%E7%A8%B3%E6%80%81%E7%94%B5%E8%B7%AF%E5%88%86%E6%9E%90/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240415222834.png" alt="微信图片_20240415222834"></p>
-<h2><span id="串联谐振">串联谐振</span></h2><h3><span id="1条件">1.条件</span></h3><p>①电路的总阻抗是：Z &#x3D; R + j(ωL - 1&#x2F;ωC)</p>
-<p>②发生谐振时，端口电压U&#96;和端口电流I·同相，只有当阻抗的虚部为0才能满足此条件。</p>
-<p>③公式：ω &#x3D; ω₀ &#x3D; 1 &#x2F; √（ωC）</p>
-<h3><span id="2特征">2.特征</span></h3><p>①谐振时的阻抗最小，电流最大。</p>
-<p>②谐振时的电压与电流同相。并且达到最大值。</p>
-<p>③谐振时电感电压和电容电压大小相等，方向相反，电阻电压等于电源电压。</p>
+<p>存在“假上溢”的现象：<u>因数组越界而导致的程序非法操作错误，并且此时队列的实际可用空间并未占满。</u></p>
+<h5><span id="循环队列">循环队列</span></h5><p>防假上溢：少用一个元素空间，即队列空间大小为m时，有m-1个元素就认为是队满。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">队列初始化： Q.front = Q.rear =0;</span><br><span class="line"></span><br><span class="line">队空：Q.front == Q.rear;</span><br><span class="line"></span><br><span class="line">队满：(Q.rear + 1)%MAXQSIZE ==Q.front;</span><br><span class="line"></span><br><span class="line">入队：（1）队列不满，新元素e插入Q.rear所指的位置</span><br><span class="line">      Q.base[Q.rear] = e;</span><br><span class="line">      （2）Q.rear = (Q.rear+1)%MAXQSIZE;</span><br><span class="line">出队：（1）队列不空，删除Q.front所指的元素</span><br><span class="line">      e = Q.base[Q.front];</span><br><span class="line">     （2）Q.front = (Q.front+1)%MAXQSIZE;</span><br><span class="line">求队长：</span><br><span class="line">(Q.rear - Q.front + MAXQSIZE)%MAXQSIZE;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="2初始化">2.初始化</span></h4><ul>
+<li>分配一个最大容量为MAXQSIZE的存储空间Q.base &#x3D; new int[]</li>
+<li>判断分配失败</li>
+<li>否则将头指针和尾指针置为0，表示队列为空</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int InitQueue(SqQueue &amp;Q)&#123;</span><br><span class="line">//构造一个空队列</span><br><span class="line"></span><br><span class="line">Q.base = new int[MAXQSIZE]; //分配存储空间</span><br><span class="line"></span><br><span class="line">if(!Q.base) return -1; //分配失败</span><br><span class="line"></span><br><span class="line">Q.front = Q.rear=0; //头指针、尾指针置为0，表示队列为空</span><br><span class="line"></span><br><span class="line">return 1;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="3入队">3.入队</span></h4><ul>
+<li>判断队满</li>
+<li>否则将新元素插入队尾</li>
+<li>队尾指针+1</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int EnQueue(SqQueue &amp;Q,int e)&#123;</span><br><span class="line">//插入元素e为Q的新队尾元素</span><br><span class="line"></span><br><span class="line">if((Q.rear+1)%MAXQSIZE==Q.front)</span><br><span class="line">//尾指针在循环意义上+1后等于头指针，表示队满</span><br><span class="line"></span><br><span class="line">return -1;</span><br><span class="line"></span><br><span class="line">Q.base[Q.rear] = e; //新元素插入队尾</span><br><span class="line"></span><br><span class="line">Q.rear = (Q.rear+1)%MAXQSIZE; //队尾指针+1</span><br><span class="line"></span><br><span class="line">return 1;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="4出队">4.出队</span></h4><ul>
+<li>判断队空</li>
+<li>否则保存队头元素</li>
+<li>队头指针+1</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int DeQueue(SqQueue &amp;Q,int &amp;e)&#123;</span><br><span class="line">//删除Q的队头元素，用e返回其值</span><br><span class="line"></span><br><span class="line">if(Q.front == Q.rear) return -1;//队空</span><br><span class="line"></span><br><span class="line">e = Q.base[Q.front]; //保存队头元素</span><br><span class="line"></span><br><span class="line">Q.front = (Q.front + 1 )%MAXQSIZE； //队头指针+1</span><br><span class="line"></span><br><span class="line">return 1;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="5取队头元素">5.取队头元素</span></h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int GetHead(SqQueue Q)&#123;</span><br><span class="line">//返回Q的队头元素，不修改队头指针</span><br><span class="line"></span><br><span class="line">if(Q.front!=Q.rear) //非空</span><br><span class="line"></span><br><span class="line">return Q.base[Q.front];//返回队头</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3><span id="二-链栈">二、链栈</span></h3><p>采用链式存储结构实现的队列称为<strong>链队列</strong>。</p>
+<p>为了使操作更加方便，将队头指针指向链队列的头结点，而队尾指针指向终端结点。 </p>
+<p><strong>空队列时，front和rear都指向头结点，即front&#x3D;&#x3D;rear</strong></p>
+<h4><span id="1定义">1.定义</span></h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">typedef struct QNode&#123;</span><br><span class="line">int data;</span><br><span class="line">struct QNode *next;</span><br><span class="line">&#125;QNode,*QueuePtr;</span><br><span class="line"></span><br><span class="line">typedef struct &#123;</span><br><span class="line">QueuePtr front; //队头指针</span><br><span class="line">QueuePtr rear; //队尾指针</span><br><span class="line">&#125;LinkQueue;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2024/05/26/%E9%98%9F%E5%88%97%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E6%93%8D%E4%BD%9C%E5%AE%9E%E7%8E%B0/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526020235.png" alt="微信截图_20240526020235"></p>
+<h4><span id="2初始化">2.初始化</span></h4><p>构造一个只有一个头结点的空队。</p>
+<ul>
+<li>生成新结点作为头结点，队头和队尾指针指向此结点</li>
+<li>头结点的指针域置空</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int InitQueue(LinkQueue &amp;Q)&#123;</span><br><span class="line"></span><br><span class="line">//构造一个空队列Q</span><br><span class="line"></span><br><span class="line">Q.front = Q.rear =new QNode;  //生成新结点作为头结点，队头和队尾指针指向此结点</span><br><span class="line"></span><br><span class="line">Q.front-&gt;next = NULL; //头结点的指针域置空</span><br><span class="line"></span><br><span class="line">return 1;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="3入队">3.入队</span></h4><p><strong>链队在入队前不需要判断队满，需要为入队元素分配结点空间。</strong></p>
+<ul>
+<li>为入队元素分配结点空间，用指针p指向</li>
+<li>将新结点数据域置为e</li>
+<li>将新结点插入到队尾</li>
+<li>修改队尾指针为p</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int EnQueue(LinkQueue &amp;Q,int e)&#123;</span><br><span class="line">//插入元素e为Q的新队尾元素</span><br><span class="line"></span><br><span class="line">p = new QNode; //分配新结点</span><br><span class="line"></span><br><span class="line">p-&gt;data = e; //把p的数据域置为e</span><br><span class="line"></span><br><span class="line">p-&gt;next = NULL; Q.rear-&gt;next = p;//把新结点插到队尾</span><br><span class="line"></span><br><span class="line">Q.rear = p; //修改队尾指针</span><br><span class="line"></span><br><span class="line">return 1;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4><span id="4出队">4.出队</span></h4><p><strong>链队在出队前需要判断队列是否为空，不同的是，链队在出队后需要放出队头元素的所占空间。</strong></p>
+<ul>
+<li>判断队空</li>
+<li>否则临时保存队头元素的空间，等待释放</li>
+<li>修改头结点的指针域，指向下一个结点</li>
+<li>判断出队元素是否为最后一个元素，若是，则将队尾指针重新赋值，指向头结点</li>
+<li>释放原队头元素</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int DeQueue(LinkQueue &amp;Q,int &amp;e)&#123;</span><br><span class="line">//删除Q的队头元素，用e返回其值</span><br><span class="line"></span><br><span class="line">if(Q.front==Q.rear) retrun -1; //队空</span><br><span class="line"></span><br><span class="line">p = Q.front-&gt;next; //p指向队头元素</span><br><span class="line"></span><br><span class="line">e = p-&gt;data; //e保存队头元素的值</span><br><span class="line"></span><br><span class="line">Q.front-&gt;next = p-&gt;next;  //修改头结点的指针域</span><br><span class="line"></span><br><span class="line">if(Q.rear == p) Q.rear = Q.front; //最后一个元素被删，队尾指针指向头结点</span><br><span class="line"></span><br><span class="line">free(p); //释放原队头元素</span><br><span class="line"></span><br><span class="line">return 1;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>5.求队头元素</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int GetHead(LinkQueue Q)&#123;</span><br><span class="line">//返回Q的队头元素，不修改队头指针</span><br><span class="line"></span><br><span class="line">if(Q.front!=Q.rear)</span><br><span class="line"></span><br><span class="line">return Q.front-&gt;next-&gt;data;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 ]]></content>
       <tags>
-        <tag>电子电路基础</tag>
+        <tag>数据结构笔记</tag>
       </tags>
   </entry>
   <entry>
@@ -2193,92 +2328,6 @@ return 0;
 ]]></content>
       <tags>
         <tag>高等数学</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>队列的表示和操作实现</title>
-    <url>/2024/05/26/%E9%98%9F%E5%88%97%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E6%93%8D%E4%BD%9C%E5%AE%9E%E7%8E%B0/</url>
-    <content><![CDATA[<!-- toc -->
-
-<ul>
-<li><a href="#%E4%B8%80-%E5%BE%AA%E7%8E%AF%E9%98%9F%E5%88%97%E9%98%9F%E5%88%97%E7%9A%84%E9%A1%BA%E5%BA%8F%E5%AD%98%E5%82%A8">一、循环队列（队列的顺序存储）</a></li>
-<li><a href="#%E4%BA%8C-%E9%93%BE%E6%A0%88">二、链栈</a></li>
-</ul>
-<!-- tocstop -->
-
-<p>[TOC]</p>
-<h3><span id="一-循环队列队列的顺序存储">一、循环队列（队列的顺序存储）</span></h3><p>如果用户的应用程序中设有循环队列，就必须为它设定一个最大队列长度。</p>
-<h4><span id="1定义">1.定义</span></h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#define MAXQSIZE 100 //队列可能达到的长度</span><br><span class="line"></span><br><span class="line">typedef struct&#123;</span><br><span class="line"></span><br><span class="line">int *base; //存储空间的基地址</span><br><span class="line"></span><br><span class="line">int front; //头指针，若队列不空，指向队列头元素（实位）</span><br><span class="line"></span><br><span class="line">int rear; //尾指针，若队列不空，指向队列尾元素的下一个位置（虚位）</span><br><span class="line"></span><br><span class="line">&#125;SqQueue;</span><br><span class="line"></span><br><span class="line">SqQueue Q;</span><br></pre></td></tr></table></figure>
-
-<h5><span id="顺序队列非循环队列">顺序队列——非循环队列</span></h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">初始化队列：Q.front=Q.rear=0;</span><br><span class="line"></span><br><span class="line">入队：新元素按 rear 指示位置加入，再将队尾指针加一，即</span><br><span class="line">Q.base[Q.rear] = e;</span><br><span class="line">Q.rear = Q.rear+1;</span><br><span class="line"></span><br><span class="line">出队：将front指示的元素取出，再将队头指针加一，即 </span><br><span class="line">e=Q.base[O.front];</span><br><span class="line">Q.front= Q.front+ 1;</span><br><span class="line"></span><br><span class="line">队空：Q.front==Q.rear;</span><br><span class="line"></span><br><span class="line">队满：Q.rear-Q.front==MAXQSIZE;</span><br><span class="line"></span><br><span class="line">求队长：Q.rear-Q.front;</span><br></pre></td></tr></table></figure>
-
-<p>存在“假上溢”的现象：<u>因数组越界而导致的程序非法操作错误，并且此时队列的实际可用空间并未占满。</u></p>
-<h5><span id="循环队列">循环队列</span></h5><p>防假上溢：少用一个元素空间，即队列空间大小为m时，有m-1个元素就认为是队满。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">队列初始化： Q.front = Q.rear =0;</span><br><span class="line"></span><br><span class="line">队空：Q.front == Q.rear;</span><br><span class="line"></span><br><span class="line">队满：(Q.rear + 1)%MAXQSIZE ==Q.front;</span><br><span class="line"></span><br><span class="line">入队：（1）队列不满，新元素e插入Q.rear所指的位置</span><br><span class="line">      Q.base[Q.rear] = e;</span><br><span class="line">      （2）Q.rear = (Q.rear+1)%MAXQSIZE;</span><br><span class="line">出队：（1）队列不空，删除Q.front所指的元素</span><br><span class="line">      e = Q.base[Q.front];</span><br><span class="line">     （2）Q.front = (Q.front+1)%MAXQSIZE;</span><br><span class="line">求队长：</span><br><span class="line">(Q.rear - Q.front + MAXQSIZE)%MAXQSIZE;</span><br></pre></td></tr></table></figure>
-
-<h4><span id="2初始化">2.初始化</span></h4><ul>
-<li>分配一个最大容量为MAXQSIZE的存储空间Q.base &#x3D; new int[]</li>
-<li>判断分配失败</li>
-<li>否则将头指针和尾指针置为0，表示队列为空</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int InitQueue(SqQueue &amp;Q)&#123;</span><br><span class="line">//构造一个空队列</span><br><span class="line"></span><br><span class="line">Q.base = new int[MAXQSIZE]; //分配存储空间</span><br><span class="line"></span><br><span class="line">if(!Q.base) return -1; //分配失败</span><br><span class="line"></span><br><span class="line">Q.front = Q.rear=0; //头指针、尾指针置为0，表示队列为空</span><br><span class="line"></span><br><span class="line">return 1;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4><span id="3入队">3.入队</span></h4><ul>
-<li>判断队满</li>
-<li>否则将新元素插入队尾</li>
-<li>队尾指针+1</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int EnQueue(SqQueue &amp;Q,int e)&#123;</span><br><span class="line">//插入元素e为Q的新队尾元素</span><br><span class="line"></span><br><span class="line">if((Q.rear+1)%MAXQSIZE==Q.front)</span><br><span class="line">//尾指针在循环意义上+1后等于头指针，表示队满</span><br><span class="line"></span><br><span class="line">return -1;</span><br><span class="line"></span><br><span class="line">Q.base[Q.rear] = e; //新元素插入队尾</span><br><span class="line"></span><br><span class="line">Q.rear = (Q.rear+1)%MAXQSIZE; //队尾指针+1</span><br><span class="line"></span><br><span class="line">return 1;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4><span id="4出队">4.出队</span></h4><ul>
-<li>判断队空</li>
-<li>否则保存队头元素</li>
-<li>队头指针+1</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int DeQueue(SqQueue &amp;Q,int &amp;e)&#123;</span><br><span class="line">//删除Q的队头元素，用e返回其值</span><br><span class="line"></span><br><span class="line">if(Q.front == Q.rear) return -1;//队空</span><br><span class="line"></span><br><span class="line">e = Q.base[Q.front]; //保存队头元素</span><br><span class="line"></span><br><span class="line">Q.front = (Q.front + 1 )%MAXQSIZE； //队头指针+1</span><br><span class="line"></span><br><span class="line">return 1;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4><span id="5取队头元素">5.取队头元素</span></h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int GetHead(SqQueue Q)&#123;</span><br><span class="line">//返回Q的队头元素，不修改队头指针</span><br><span class="line"></span><br><span class="line">if(Q.front!=Q.rear) //非空</span><br><span class="line"></span><br><span class="line">return Q.base[Q.front];//返回队头</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h3><span id="二-链栈">二、链栈</span></h3><p>采用链式存储结构实现的队列称为<strong>链队列</strong>。</p>
-<p>为了使操作更加方便，将队头指针指向链队列的头结点，而队尾指针指向终端结点。 </p>
-<p><strong>空队列时，front和rear都指向头结点，即front&#x3D;&#x3D;rear</strong></p>
-<h4><span id="1定义">1.定义</span></h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">typedef struct QNode&#123;</span><br><span class="line">int data;</span><br><span class="line">struct QNode *next;</span><br><span class="line">&#125;QNode,*QueuePtr;</span><br><span class="line"></span><br><span class="line">typedef struct &#123;</span><br><span class="line">QueuePtr front; //队头指针</span><br><span class="line">QueuePtr rear; //队尾指针</span><br><span class="line">&#125;LinkQueue;</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2024/05/26/%E9%98%9F%E5%88%97%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E6%93%8D%E4%BD%9C%E5%AE%9E%E7%8E%B0/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240526020235.png" alt="微信截图_20240526020235"></p>
-<h4><span id="2初始化">2.初始化</span></h4><p>构造一个只有一个头结点的空队。</p>
-<ul>
-<li>生成新结点作为头结点，队头和队尾指针指向此结点</li>
-<li>头结点的指针域置空</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int InitQueue(LinkQueue &amp;Q)&#123;</span><br><span class="line"></span><br><span class="line">//构造一个空队列Q</span><br><span class="line"></span><br><span class="line">Q.front = Q.rear =new QNode;  //生成新结点作为头结点，队头和队尾指针指向此结点</span><br><span class="line"></span><br><span class="line">Q.front-&gt;next = NULL; //头结点的指针域置空</span><br><span class="line"></span><br><span class="line">return 1;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4><span id="3入队">3.入队</span></h4><p><strong>链队在入队前不需要判断队满，需要为入队元素分配结点空间。</strong></p>
-<ul>
-<li>为入队元素分配结点空间，用指针p指向</li>
-<li>将新结点数据域置为e</li>
-<li>将新结点插入到队尾</li>
-<li>修改队尾指针为p</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int EnQueue(LinkQueue &amp;Q,int e)&#123;</span><br><span class="line">//插入元素e为Q的新队尾元素</span><br><span class="line"></span><br><span class="line">p = new QNode; //分配新结点</span><br><span class="line"></span><br><span class="line">p-&gt;data = e; //把p的数据域置为e</span><br><span class="line"></span><br><span class="line">p-&gt;next = NULL; Q.rear-&gt;next = p;//把新结点插到队尾</span><br><span class="line"></span><br><span class="line">Q.rear = p; //修改队尾指针</span><br><span class="line"></span><br><span class="line">return 1;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4><span id="4出队">4.出队</span></h4><p><strong>链队在出队前需要判断队列是否为空，不同的是，链队在出队后需要放出队头元素的所占空间。</strong></p>
-<ul>
-<li>判断队空</li>
-<li>否则临时保存队头元素的空间，等待释放</li>
-<li>修改头结点的指针域，指向下一个结点</li>
-<li>判断出队元素是否为最后一个元素，若是，则将队尾指针重新赋值，指向头结点</li>
-<li>释放原队头元素</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int DeQueue(LinkQueue &amp;Q,int &amp;e)&#123;</span><br><span class="line">//删除Q的队头元素，用e返回其值</span><br><span class="line"></span><br><span class="line">if(Q.front==Q.rear) retrun -1; //队空</span><br><span class="line"></span><br><span class="line">p = Q.front-&gt;next; //p指向队头元素</span><br><span class="line"></span><br><span class="line">e = p-&gt;data; //e保存队头元素的值</span><br><span class="line"></span><br><span class="line">Q.front-&gt;next = p-&gt;next;  //修改头结点的指针域</span><br><span class="line"></span><br><span class="line">if(Q.rear == p) Q.rear = Q.front; //最后一个元素被删，队尾指针指向头结点</span><br><span class="line"></span><br><span class="line">free(p); //释放原队头元素</span><br><span class="line"></span><br><span class="line">return 1;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>5.求队头元素</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int GetHead(LinkQueue Q)&#123;</span><br><span class="line">//返回Q的队头元素，不修改队头指针</span><br><span class="line"></span><br><span class="line">if(Q.front!=Q.rear)</span><br><span class="line"></span><br><span class="line">return Q.front-&gt;next-&gt;data;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <tags>
-        <tag>数据结构笔记</tag>
       </tags>
   </entry>
   <entry>
