@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="John Doe">
+
+
+
+
+
+
+
+<title>游戏设计 笔记 | Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/menu.js"></script>
+    
+
+
+
+
+
+
+
+    <script src='https://unpkg.com/valine@1.4.16/dist/Valine.min.js'></script>
+
+
+
+
+  <!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.1.1"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            首页
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">主页</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">归档</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/categories/gallery/">画廊</a>
+              </li> 
+                   
+          
+          
+            <li class="menu-item search-btn">
+              <a href="#">Search</a>
+            </li>
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+                
+                    <span class="post-tag">
+                        <a href="/tags/unity2d/">
+                            unity2d
+                        </a>
+                    </span>    
+                           
+            
+        </div>
+        <div class="post-title">
+            
+            
+                游戏设计 笔记
+            
+            
+        </div>
+        <span class="post-date">
+            Jun 29, 2024
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <!-- toc -->
+
+<ul>
+<li><a href="#%E7%A9%BA%E9%97%B4">空间</a><ul>
+<li><a href="#1%E4%BF%84%E7%BD%97%E6%96%AF%E6%96%B9%E5%9D%97%E6%B8%B8%E6%88%8F%E6%80%A7%E7%9A%84%E4%BD%93%E7%8E%B0">1.《俄罗斯方块》游戏性的体现</a></li>
+<li><a href="#2%E6%B3%A1%E6%B3%A1%E9%BE%99%E7%9A%84%E8%BF%9E%E9%94%81%E6%9C%BA%E5%88%B6">2.《泡泡龙》的连锁机制</a></li>
+<li><a href="#3%E5%9C%B0%E4%B8%8B%E5%9F%8E">3.地下城</a></li>
+<li><a href="#4%E7%A9%BA%E9%97%B4%E5%8E%8B%E7%BC%A9%E7%90%86%E5%BF%B5">4.空间压缩理念</a></li>
+<li><a href="#5%E7%A9%BA%E6%B0%94%E5%A2%99">5.空气墙</a></li>
+<li><a href="#6%E7%AE%B1%E5%BA%AD%E6%B8%B8%E6%88%8F">6.箱庭游戏</a></li>
+<li><a href="#7%E7%AE%80%E5%8D%95%E7%9A%84%E7%A9%BA%E9%97%B4%E5%BC%95%E5%AF%BC%E6%96%B9%E5%BC%8F">7.简单的空间引导方式</a></li>
+</ul>
+</li>
+<li><a href="#%E6%97%B6%E9%97%B4">时间</a><ul>
+<li><a href="#%E5%AF%B9%E7%A7%B0%E6%B8%B8%E6%88%8F%E5%92%8C%E9%9D%9E%E5%AF%B9%E7%A7%B0%E6%B8%B8%E6%88%8F">对称游戏和非对称游戏</a></li>
+<li><a href="#%E5%AD%98%E6%A1%A3">存档</a></li>
+<li><a href="#%E5%AD%90%E5%BC%B9%E6%97%B6%E9%97%B4">子弹时间</a></li>
+<li><a href="#%E6%97%B6%E9%97%B4%E5%8F%99%E4%BA%8B%E5%92%8C%E6%9C%BA%E5%88%B6">时间叙事和机制</a></li>
+</ul>
+</li>
+<li><a href="#%E8%A1%80%E9%87%8F">血量</a><ul>
+<li><a href="#%E8%AE%BE%E8%AE%A1">设计</a></li>
+<li><a href="#%E6%AD%BB%E4%BA%A1">死亡</a></li>
+<li><a href="#%E6%9C%80%E5%A5%BD%E7%9A%84%E6%AD%BB%E4%BA%A1">最好的死亡</a></li>
+</ul>
+</li>
+<li><a href="#%E9%81%93%E5%85%B7">道具</a><ul>
+<li><a href="#%E6%B8%B8%E6%88%8F%E5%86%85%E8%8E%B7%E5%8F%96%E9%81%93%E5%85%B7%E7%9A%84%E6%B8%A0%E9%81%93">游戏内获取道具的渠道</a></li>
+<li><a href="#%E6%8E%89%E8%90%BD%E6%A6%82%E7%8E%87">掉落概率</a></li>
+</ul>
+</li>
+<li><a href="#%E6%8A%80%E8%83%BD">技能</a><ul>
+<li><a href="#%E5%8E%9F%E5%88%99">原则</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BB%BB%E5%8A%A1">任务</a><ul>
+<li><a href="#%E4%BD%9C%E7%94%A8">作用</a></li>
+<li><a href="#%E8%8E%B7%E5%8F%96%E6%96%B9%E5%BC%8F">获取方式</a></li>
+<li><a href="#%E5%AE%8C%E6%88%90%E6%96%B9%E5%BC%8F">完成方式</a></li>
+<li><a href="#%E4%BC%98%E7%A7%80%E7%9A%84%E4%BB%BB%E5%8A%A1%E7%B3%BB%E7%BB%9F">优秀的任务系统</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+
+<p>[TOC]</p>
+<p>电子游戏和传统游戏最本质的区别是电子游戏可以创造相对客观的随机性。</p>
+<p>好玩的游戏不一定是只有单一的机制和单一的游戏性体现，而是需要一系列的相关机制合适地组合在一起。</p>
+<p>好的游戏不应该过度强调真实性，带来现实中的糟糕体验。</p>
+<p>电子游戏之所以吸引人是因为有着明确的目的性。</p>
+<h2><span id="空间">空间</span></h2><h3><span id="1俄罗斯方块游戏性的体现">1.《俄罗斯方块》游戏性的体现</span></h3><ul>
+<li>随机性带来的惊喜感。</li>
+<li>消除方块后带来的成就感。</li>
+<li>空间的减少带来的紧迫感。</li>
+</ul>
+<h3><span id="2泡泡龙的连锁机制">2.《泡泡龙》的连锁机制</span></h3><ul>
+<li>当玩家一次操作后可以获得多次消除的机会，成就感也是成倍增加，之后的连锁反应都是对第一次操作的奖励，而奖励机制是驱使玩家一步步坚持下去的最好动力。</li>
+<li>低敏感度的操作提供正反馈，高敏感的操作提供负反馈。</li>
+</ul>
+<h3><span id="3地下城">3.地下城</span></h3><h4><span id="a原因">A原因</span></h4><ul>
+<li>rpg的核心是故事性和人物塑造，而这两点很难填充起游戏时长。</li>
+<li>一款rpg想要成功，很重要的一点就是让玩家对主角有代入感，代入感最好的设计就是让玩家和主角有共同成长的体验。</li>
+<li>玩家需要在游戏里找到成就感，其中成就感最重要的来源就是“战胜敌人”和“完成挑战”。</li>
+<li>地下城本身是可以作为故事线索存在的。</li>
+</ul>
+<h4><span id="b缺点">B缺点</span></h4><ul>
+<li>容易产生疲劳感。</li>
+<li>很容易脱离游戏剧情本身。</li>
+</ul>
+<h4><span id="c原则">C原则</span></h4><ul>
+<li>迷宫难度和敌人难度不能同时太高。</li>
+<li>本身不能完全脱离故事，或者不能脱离游戏的某个核心机制。</li>
+<li>主线相关的单一地下城不能过于漫长。</li>
+</ul>
+<h3><span id="4空间压缩理念">4.空间压缩理念</span></h3><p>生存空间：玩家在地下城或地图上遇到的那些敌人，并不一定是让玩家去战斗，而只是通过压缩玩家的活动空间，驱使玩家被动前进，这增加了玩家的紧张感，也起到了情绪渲染的作用。</p>
+<h3><span id="5空气墙">5.空气墙</span></h3><p>分为看得见的墙（山川、海洋、森林）和看不见的墙（空气）。</p>
+<p>玩家容易对空气墙感到厌恶。</p>
+<h3><span id="6箱庭游戏">6.箱庭游戏</span></h3><ul>
+<li>基础元素的重复使用。</li>
+<li>鲜明的视觉落差。不同关卡不同风格。</li>
+<li>用通路连接不同关卡。</li>
+<li>三段式结构：钥匙-锁-钥匙。</li>
+<li>四段式结构：遇到障碍物-获取道具和技能-通过障碍物-扩展更大的地图。</li>
+</ul>
+<h3><span id="7简单的空间引导方式">7.简单的空间引导方式</span></h3><p>在一个岔路口，宽阔的大路一定是正确的道路，狭窄的道路里可能有支线人物或者宝箱。</p>
+<p>当有一条宽阔笔直的道路，中间没有任何敌人也没有任何宝物，而前面出现了一扇门，基本就暗示了即将开始一场宏大的boss战。</p>
+<h2><span id="时间">时间</span></h2><h3><span id="对称游戏和非对称游戏">对称游戏和非对称游戏</span></h3><ul>
+<li>对称性游戏指的是游戏的参与者获取的信息是同步的游戏。</li>
+<li>非对称性游戏是玩家之间存在信息差的游戏。</li>
+</ul>
+<h3><span id="存档">存档</span></h3><p>分为即时存档和非即时存档。</p>
+<h3><span id="子弹时间">子弹时间</span></h3><p>类似于《荒野大镖客2》的鹰眼</p>
+<p>子弹时间这种机制存在的最核心的要素就是时间的不平等，当作战双方在时间上没有平等的权力，战斗力自然也就不同了。</p>
+<h3><span id="时间叙事和机制">时间叙事和机制</span></h3><ul>
+<li>时间是有限的。在有限的时间里尽可能地做更多的事情。</li>
+<li>时间的流动性可以改变。</li>
+<li>时间是可以跳跃的。</li>
+</ul>
+<h2><span id="血量">血量</span></h2><p>血量是玩家在游戏中的容错率，是控制游戏节奏的工具。</p>
+<p>与胜负相关的重要信息一定要详细地呈现给玩家。</p>
+<h3><span id="设计">设计</span></h3><ul>
+<li>只有一条命。</li>
+<li>用具象的数学化表示，随着装备的升级和等级的提升，血量会增加。</li>
+<li>用小心心代替。</li>
+<li>模糊生命值概念，用红屏代替残血。</li>
+</ul>
+<h3><span id="死亡">死亡</span></h3><p>在游戏，死亡的本质是宣告玩家这一次的尝试失败了。</p>
+<p>一方面死亡存在的最主要的意义是为玩家创造玩下去的动力，当有死亡这个恐怖的可能性存在时，玩家才会想在游戏里拼命活下去，才能激励自己持续游戏；另一方面，在电子游戏里，死亡本身就是惩罚，去惩罚玩家不能完美地完成游戏。</p>
+<p>要保证玩家会因为失败而感到沮丧，但又没有沮丧到放弃游戏。</p>
+<p>死亡不是最糟糕的负面反馈，最糟糕的负面反馈是困惑。（不知道怎么就死了）</p>
+<h3><span id="最好的死亡">最好的死亡</span></h3><ul>
+<li>有操作空间的死亡。（可以提升自己再去打boss）</li>
+<li>死亡惩罚的损失是可控的。（装备不能全部消失，尤其是不可再生资源）</li>
+</ul>
+<p>真正的死亡是玩家不再玩这款游戏。</p>
+<h2><span id="道具">道具</span></h2><h3><span id="游戏内获取道具的渠道">游戏内获取道具的渠道</span></h3><p>任务获取。</p>
+<p>杀敌掉落。</p>
+<p>特殊时间或特殊任务（不可再生）。</p>
+<p>锻造。</p>
+<h3><span id="掉落概率">掉落概率</span></h3><p>完全随机。</p>
+<p>计数掉落。刷久了一定会得到，即保底。</p>
+<p>总值掉落，每次掉落会控制一定的总价值。</p>
+<p>预期掉落，程序会分析玩家的需求并给予掉落。</p>
+<h2><span id="技能">技能</span></h2><h3><span id="原则">原则</span></h3><p>独特性。看到某个技能，玩家能立刻想到对应的角色。</p>
+<p>操作空间。技能不能是无脑使用的。</p>
+<p>反制空间。技能可以被克制。比如冷却和消耗次数，比如其他人的技能可以压制。</p>
+<p>团队配合。见于多人游戏中。</p>
+<p>combo。可以打出连招。</p>
+<p><img src="/2024/06/29/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1-%E7%AC%94%E8%AE%B0/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20240630002911.jpg" alt="微信图片_20240630002911"></p>
+<h2><span id="任务">任务</span></h2><p>作为任务需要娱乐性，设计得有趣很重要。另外，任务在大部分游戏还承担叙事功能，给玩家讲清楚发生了什么故事也是任务流程要考虑的。</p>
+<h3><span id="作用">作用</span></h3><ul>
+<li>塑造主线剧情和世界观。</li>
+<li>带入角色。</li>
+<li>烘托环境和氛围。</li>
+<li>教学作用。</li>
+<li>引导行动路线。</li>
+</ul>
+<h3><span id="获取方式">获取方式</span></h3><ul>
+<li>主线任务：游戏系统强加的任务，是游戏的主要剧情。</li>
+<li>npc触发的支线任务。</li>
+<li>区域触发的支线任务。</li>
+<li>物品触发的支线任务。</li>
+<li>时间触发的支线任务。</li>
+</ul>
+<h3><span id="完成方式">完成方式</span></h3><ul>
+<li>战斗。不一定要胜利。</li>
+<li>收集某些物品。</li>
+<li>对话。</li>
+<li>护送某人或某物到达某地。</li>
+<li>移动到某地。</li>
+<li>探索新的地图。</li>
+<li>摧毁某些物品或建筑。</li>
+<li>解密。</li>
+<li>升级。</li>
+</ul>
+<h3><span id="优秀的任务系统">优秀的任务系统</span></h3><ul>
+<li>重复性较低。</li>
+<li>任务的产生和流程是逻辑自洽的。</li>
+<li>支线任务的塑造很完善，npc有人物性格。</li>
+<li>任务在地图上的节点设计非常合理。</li>
+</ul>
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2024/06/24/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%AE%A2%E8%A7%82%E9%A2%98%E7%9F%A5%E8%AF%86%E7%82%B9/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+    
+        <div id="vcomments"></div>
+        <script>
+            var META = ['nick', 'mail', 'link'];
+            var meta = 'nick,mail';
+            meta = meta.split(',').filter(item => {
+                return META.includes(item);
+            });
+            new Valine({
+                el: '#vcomments',
+                appId: 'f131VXTFNbI57QRvg5lJFtbq-MdYXbMMI',
+                appKey: 'd1GENolYcYpRMO2FbRRbarov',
+                lang: 'zh-CN',
+                placeholder: 'Say something',
+                avatar: 'mp',
+                meta: meta
+            })
+        </script>    
+     
+
+     
+    
+    
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    
+      <div class="search-popup">
+    <div class="search-popup-overlay">  
+    </div>
+    <div class="search-popup-window" >
+        <div class="search-header">
+            <div class="search-input-container">
+              <input autocomplete="off" autocapitalize="off" maxlength="80"
+                     placeholder="Search Anything" spellcheck="false"
+                     type="search" class="search-input">
+            </div>
+            <div class="search-close-btn">
+                <div class="icon close-btn"></div>
+            </div>
+        </div>
+        <div class="search-result-container">
+        </div>
+    </div>
+</div>
+
+<script>
+    const searchConfig = {
+        path             : "/search.xml",
+        top_n_per_article: "1",
+        unescape         : "false",
+        trigger: "auto",
+        preload: "false"
+    }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js"></script>
+<script src="/js/search.js"></script>
+    
+    
+
+  </body>
+</html>
