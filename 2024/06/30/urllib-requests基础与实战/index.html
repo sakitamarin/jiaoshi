@@ -148,30 +148,40 @@
     <!-- toc -->
 
 <ul>
-<li><a href="#urllib%E7%9A%84%E4%BD%BF%E7%94%A8">urllib的使用</a><ul>
+<li><a href="#1urllib%E7%9A%84%E4%BD%BF%E7%94%A8">1.urllib的使用</a><ul>
 <li><a href="#urlopen%E7%BD%91%E5%9D%80%E8%AF%B7%E6%B1%82">urlopen网址请求</a></li>
 <li><a href="#%E7%BD%91%E9%A1%B5%E7%9A%84%E4%BF%9D%E5%AD%98%E5%92%8C%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86">网页的保存和异常处理</a></li>
 <li><a href="#%E6%9E%84%E9%80%A0%E8%AF%B7%E6%B1%82%E5%AF%B9%E8%B1%A1request">构造请求对象Request</a></li>
 <li><a href="#%E6%B7%BB%E5%8A%A0%E8%AF%B7%E6%B1%82%E5%A4%B4">添加请求头</a></li>
+<li><a href="#ssl%E8%AE%A4%E8%AF%81">SSL认证</a></li>
+<li><a href="#%E5%BC%BA%E5%88%B6https%E8%AE%A4%E8%AF%81">强制https认证</a></li>
+</ul>
+</li>
+<li><a href="#2requests%E4%B8%ADget%E7%9A%84%E7%94%A8%E6%B3%95">2.Requests中get的用法</a><ul>
+<li><a href="#%E4%BB%A3%E7%A0%81%E8%8E%B7%E5%8F%96">代码获取</a></li>
+<li><a href="#%E6%9E%84%E5%BB%BA%E8%AF%B7%E6%B1%82">构建请求</a></li>
+<li><a href="#%E8%8E%B7%E5%8F%96cookie">获取cookie</a></li>
+<li><a href="#%E6%B7%BB%E5%8A%A0%E8%AF%B7%E6%B1%82%E5%A4%B4-1">添加请求头</a></li>
 </ul>
 </li>
 </ul>
 <!-- tocstop -->
 
-<h2><span id="urllib的使用">urllib的使用</span></h2><p>urllib.request ——打开和读取url</p>
+<p>[TOC]</p>
+<h2><span id="1urllib的使用">1.urllib的使用</span></h2><p>urllib.request ——打开和读取url</p>
 <p>urllib.error ——包含urllib.request抛出的异常</p>
 <p>urllib.parse ——用于解析url</p>
 <p>urllib.robotparser ——用于解析robots.txt文件</p>
-<h3><span id="urlopen网址请求">urlopen网址请求</span></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import urllib.request      #导入模块</span><br><span class="line">response = urllib.request.urlopen(&#x27;https://cn.bing.com/&#x27;)    #使用urlopen方法打开网页</span><br><span class="line">print(response.read().decode(&#x27;utf-8&#x27;))      #使用read方法读取网页，decode(&#x27;utf-8&#x27;)表示把utf-8设置为编码方式</span><br></pre></td></tr></table></figure>
+<h3><span id="urlopen网址请求">urlopen网址请求</span></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import urllib.request      </span><br><span class="line">#导入模块</span><br><span class="line">response = urllib.request.urlopen(&#x27;https://cn.bing.com/&#x27;)    </span><br><span class="line">#使用urlopen方法打开网页</span><br><span class="line">print(response.read().decode(&#x27;utf-8&#x27;))      </span><br><span class="line">#使用read方法读取网页，decode(&#x27;utf-8&#x27;)表示把utf-8设置为编码方式</span><br></pre></td></tr></table></figure>
 
 <p>如果网速比较慢或者所请求的网站打开时比较缓慢，可以设置一个超时限制，这时需要加入timeout参数</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import urllib.request     </span><br><span class="line">response = urllib.request.urlopen(&#x27;https://cn.bing.com/&#x27;,timeout=10)    #设置超时时间为10s</span><br><span class="line">print(response.read().decode(&#x27;utf-8&#x27;))</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import urllib.request     </span><br><span class="line">response = urllib.request.urlopen(&#x27;https://cn.bing.com/&#x27;,timeout=10)    </span><br><span class="line">#设置超时时间为10s</span><br><span class="line">print(response.read().decode(&#x27;utf-8&#x27;))</span><br></pre></td></tr></table></figure>
 
 <p><img src="/2024/06/30/urllib-requests%E5%9F%BA%E7%A1%80%E4%B8%8E%E5%AE%9E%E6%88%98/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240630230017.png" alt="微信截图_20240630230017"></p>
 <h3><span id="网页的保存和异常处理">网页的保存和异常处理</span></h3><p>把代码保存到HTML，如网页打开时读取失败，则通过Exception捕获异常</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">try:</span><br><span class="line">    x=urllib.request.urlopen(&#x27;https://cn.bing.com/&#x27;)</span><br><span class="line">    #print(x.read())</span><br><span class="line">    save = open(&#x27;1.html&#x27;,&#x27;w&#x27;)</span><br><span class="line">    save.write(str(x.read()))</span><br><span class="line">    save.close()</span><br><span class="line">except Exception as e:</span><br><span class="line">    print(str(e))</span><br></pre></td></tr></table></figure>
 
-<h3><span id="构造请求对象request">构造请求对象Request</span></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import urllib.request</span><br><span class="line">request = urllib.request.Request(&quot;https://cn.bing.com/&quot;)    #用Request构造Requests对象类</span><br><span class="line">response = urllib.request.urlopen(request)      #用urlopen打开网页</span><br><span class="line">print(response.read().decode(&#x27;utf-8&#x27;))     #用read打印内容</span><br></pre></td></tr></table></figure>
+<h3><span id="构造请求对象request">构造请求对象Request</span></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import urllib.request</span><br><span class="line">request = urllib.request.Request(&quot;https://cn.bing.com/&quot;)    </span><br><span class="line">#用Request构造Requests对象类</span><br><span class="line">response = urllib.request.urlopen(request)      </span><br><span class="line">#用urlopen打开网页</span><br><span class="line">print(response.read().decode(&#x27;utf-8&#x27;))     </span><br><span class="line">#用read打印内容</span><br></pre></td></tr></table></figure>
 
 <p><img src="/2024/06/30/urllib-requests%E5%9F%BA%E7%A1%80%E4%B8%8E%E5%AE%9E%E6%88%98/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240630230017-1719760905458-2.png" alt="微信截图_20240630230017"></p>
 <h3><span id="添加请求头">添加请求头</span></h3><p>构造的基本格式为：headers&#x3D;{‘User-Agent’:’请求头’}</p>
@@ -185,6 +195,38 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">from urllib import request</span><br><span class="line">url=&#x27;https://sakitamarin.github.io/2024/06/29/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1-%E7%AC%94%E8%AE%B0/&#x27;</span><br><span class="line">headers=&#123;&#x27;User-Agent&#x27;:&#x27;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36 Edg/126.0.0.0&#x27;&#125;</span><br><span class="line">req=request.Request(url=url,headers=headers)</span><br><span class="line">response=request.urlopen(req)</span><br><span class="line">print(response.read().decode(&#x27;utf-8&#x27;))</span><br></pre></td></tr></table></figure>
 
 <p><img src="/2024/06/30/urllib-requests%E5%9F%BA%E7%A1%80%E4%B8%8E%E5%AE%9E%E6%88%98/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240630234746.png" alt="微信截图_20240630234746"></p>
+<p>继续在请求头中添加cookie，这样便于身份识别。每一个用户登录一个网站都有对应的cookie。</p>
+<h3><span id="ssl认证">SSL认证</span></h3><p>用于没有SSL证书的网站。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import urllib</span><br><span class="line">import urllib.request</span><br><span class="line"></span><br><span class="line">#对ssl进行设置，忽略警告，继续进行访问</span><br><span class="line">import ssl</span><br><span class="line">ssl._create_default_https_context = ssl._create_unverified_context</span><br><span class="line">#不带s不会进行认证的</span><br><span class="line">url = &#x27;http://agedmw2.com/acg/71844/4.html&#x27;</span><br><span class="line">response = urllib.request.urlopen(url=url)</span><br><span class="line">print(response.read().decode(&#x27;utf-8&#x27;))</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2024/06/30/urllib-requests%E5%9F%BA%E7%A1%80%E4%B8%8E%E5%AE%9E%E6%88%98/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240701004648.png" alt="微信截图_20240701004648"></p>
+<h3><span id="强制https认证">强制https认证</span></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">#urllib3 官方强制验证https安全证书,解决警告</span><br><span class="line">import urllib3</span><br><span class="line">urllib3.disable_warnings()</span><br><span class="line"></span><br><span class="line">url = &#x27;https://www.12306.cn/mormhweb/&#x27;</span><br><span class="line">#requests操作起来简单   False不要进行认证</span><br><span class="line">response = requests.get(url=url,verify = False)</span><br><span class="line">#设置返回编码</span><br><span class="line">response.encoding = &#x27;utf-8&#x27;</span><br><span class="line">print(response.text)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2><span id="2requests中get的用法">2.Requests中get的用法</span></h2><p>模块安装命令：pip install request</p>
+<h3><span id="代码获取">代码获取</span></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import requests </span><br><span class="line">r = requests.get(&#x27;https://cn.bing.com/?mkt=zh-CN&#x27;) </span><br><span class="line">print(r.text)</span><br></pre></td></tr></table></figure>
+
+<p>status_code可以获取请求结果的状态，text方法以文本形式获取代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">u=requests.get(&#x27;https://www.weibo.com/&#x27;)</span><br><span class="line">print(u.status_code)#打印状态码</span><br><span class="line">print(u.text)#打印文本</span><br></pre></td></tr></table></figure>
+
+<h3><span id="构建请求">构建请求</span></h3><p>origin：个人ip</p>
+<p>url：读者请求的网址</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import requests  </span><br><span class="line">r = requests.get(&#x27;http://httpbin.org/get&#x27;)</span><br><span class="line">print(r.text)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2024/06/30/urllib-requests%E5%9F%BA%E7%A1%80%E4%B8%8E%E5%AE%9E%E6%88%98/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240701005748.png" alt="微信截图_20240701005748"></p>
+<h3><span id="获取cookie">获取cookie</span></h3><ul>
+<li>名字——name</li>
+<li>值——value</li>
+<li>过期时间——Expries&#x2F;Max-Age</li>
+<li>作用路径——path</li>
+<li>所在域名——domain</li>
+<li>使用cookie进行安全连接——secure</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">headers=&#123;</span><br><span class="line">    &#x27;User-Agent&#x27;:&#x27;Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36&#x27;</span><br><span class="line">&#125;#请求头</span><br><span class="line">url=&#x27;https://www.csdn.net/?spm=1011.2124.3001.5359&#x27;</span><br><span class="line">r=requests.get(url=url,headers=headers)</span><br><span class="line">cookiejar = r.cookies</span><br><span class="line">cookiedict = requests.utils.dict_from_cookiejar(cookiejar)</span><br><span class="line">print (cookiejar)</span><br><span class="line">print(cookiedict)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2024/06/30/urllib-requests%E5%9F%BA%E7%A1%80%E4%B8%8E%E5%AE%9E%E6%88%98/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240701010256.png" alt="微信截图_20240701010256"></p>
+<h3><span id="添加请求头">添加请求头</span></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line"></span><br><span class="line">headers = &#123;&#x27;User-Agent&#x27;: &#x27;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36&#x27;</span><br><span class="line">&#125;</span><br><span class="line">r = requests.get(&quot;https://www.zhihu.com/explore&quot;, headers=headers)</span><br><span class="line">print(r.text)</span><br></pre></td></tr></table></figure>
 
 </div> 
 
@@ -196,6 +238,11 @@
     <nav class="post-nav">
         <div class="prev-item">
            
+                <div class="icon arrow-left"></div>
+                <div class="post-link">
+                    <a href="/2024/07/04/%E4%BB%BF%E7%9C%9F%E8%87%AA%E7%94%B1%E8%90%BD%E4%BD%93%E7%9A%84%E5%B0%8F%E7%90%83/">Prev</a>
+                </div>
+            
         </div>
         <div class="next-item">
             
