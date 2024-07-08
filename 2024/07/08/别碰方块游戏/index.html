@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="John Doe">
+
+
+
+
+
+
+
+<title>别碰方块游戏 | Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/menu.js"></script>
+    
+
+
+
+
+
+
+
+    <script src='https://unpkg.com/valine@1.4.16/dist/Valine.min.js'></script>
+
+
+
+
+  <!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.1.1"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            首页
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">主页</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">归档</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/categories/gallery/">画廊</a>
+              </li> 
+                   
+          
+          
+            <li class="menu-item search-btn">
+              <a href="#">Search</a>
+            </li>
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+                
+                    <span class="post-tag">
+                        <a href="/tags/C-EasyX-%E9%A1%B9%E7%9B%AE/">
+                            C++_EasyX 项目
+                        </a>
+                    </span>    
+                           
+            
+        </div>
+        <div class="post-title">
+            
+            
+                别碰方块游戏
+            
+            
+        </div>
+        <span class="post-date">
+            Jul 8, 2024
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <!-- toc -->
+
+<ul>
+<li><a href="#1%E6%8C%89%E7%A9%BA%E6%A0%BC%E9%94%AE%E6%8E%A7%E5%88%B6%E5%B0%8F%E7%90%83%E8%B5%B7%E8%B7%B3">1.按空格键控制小球起跳</a></li>
+<li><a href="#2%E6%96%B9%E5%9D%97%E7%9A%84%E7%BB%98%E5%88%B6%E5%92%8C%E7%A7%BB%E5%8A%A8">2.方块的绘制和移动</a></li>
+<li><a href="#3%E5%B0%8F%E7%90%83%E5%92%8C%E6%96%B9%E5%9D%97%E7%9A%84%E7%A2%B0%E6%92%9E%E5%88%A4%E6%96%AD">3.小球和方块的碰撞判断</a></li>
+<li><a href="#4%E9%9A%8F%E6%9C%BA%E9%AB%98%E5%BA%A6%E5%92%8C%E9%80%9F%E5%BA%A6">4.随机高度和速度</a></li>
+<li><a href="#5%E5%BE%97%E5%88%86%E7%9A%84%E8%AE%A1%E7%AE%97%E5%92%8C%E6%98%BE%E7%A4%BA">5.得分的计算和显示</a></li>
+<li><a href="#6%E6%80%BB%E4%BB%A3%E7%A0%81">6.总代码</a></li>
+</ul>
+<!-- tocstop -->
+
+<p>[TOC]</p>
+<h2><span id="1按空格键控制小球起跳">1.按空格键控制小球起跳</span></h2><p>_kbhit()函数当用户有键盘输入时返回1，否则返回0.</p>
+<p>_getch()函数可以储存用户输入的字符在变量中。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;graphics.h&gt;//引用图形库头文件</span><br><span class="line">#include &lt;conio.h&gt;//_kbhit()所必要的头文件</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	float width = 600;//画面宽度</span><br><span class="line">	float height = 600;//画面高度</span><br><span class="line">	initgraph(height, width);//新建画布</span><br><span class="line"></span><br><span class="line">    float ball_x, ball_y, ball_vy;//小球圆心坐标x、y，y方向速度</span><br><span class="line">    float g=0.6;//重力</span><br><span class="line">    float radius = 20;//小球半径</span><br><span class="line">    ball_x = width / 4;</span><br><span class="line">    ball_y = height - radius;</span><br><span class="line">    ball_vy = 0;</span><br><span class="line">    </span><br><span class="line">    while (1) &#123;</span><br><span class="line">    	if (_kbhit()) &#123;//当按键时</span><br><span class="line">    		char input = _getch();//获得输入字符</span><br><span class="line">    		if(input == &#x27; &#x27;) ball_vy = -16;//给小球一个向上的初速度</span><br><span class="line">    	</span><br><span class="line">    	&#125;</span><br><span class="line">    	</span><br><span class="line">    	ball_vy =ball_vy + g;//利用加速度更新xy速度</span><br><span class="line">    	ball_y = ball_y + ball_vy;</span><br><span class="line">    	if (ball_y &gt;= height - radius) &#123;//如果小球落到地上</span><br><span class="line">    		ball_vy = 0;//y速度为0</span><br><span class="line">    		ball_y = height - radius;//重置</span><br><span class="line">    	&#125;</span><br><span class="line">    	cleardevice();//清屏函数，在绘制新小球前清除画面上的内容</span><br><span class="line">    	fillcircle(ball_x, ball_y, radius);</span><br><span class="line">    	Sleep(10);//表示程序暂停10毫秒</span><br><span class="line">    </span><br><span class="line">    &#125;</span><br><span class="line">    closegraph();   //关闭绘图窗口</span><br><span class="line">    return 0;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2><span id="2方块的绘制和移动">2.方块的绘制和移动</span></h2><p>一如函数fillcircle(ball_x, ball_y, radius);可以画圆，函数fillrectangle(left,top,right,bottom)可以画矩形。其中前两个是左上角的xy坐标，后两个是右下角的xy坐标。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">float rect_left_x, rect_top_y, rect_width, rect_height;</span><br><span class="line">rect_height = 100;//方块高度</span><br><span class="line">rect_width = 20;//方块宽度</span><br><span class="line">rect_left_x = width * 3 / 4;//方块左边x坐标</span><br><span class="line">rect_top_y = height - rect_height;//方块顶部y坐标</span><br><span class="line"></span><br><span class="line">fillrectangle(rect_left_x, height - rect_height, rect_left_x + rect_width, height);//画方块</span><br></pre></td></tr></table></figure>
+
+<p>由于方块最底部在窗口底部，因此其底部y坐标为窗口高度height。rect_height记录方块的高度，所以方块最顶部的y坐标rect_top_y为height - rect_height。</p>
+<p><img src="/2024/07/08/%E5%88%AB%E7%A2%B0%E6%96%B9%E5%9D%97%E6%B8%B8%E6%88%8F/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240708190907.png" alt="微信截图_20240708190907"></p>
+<p>进一步，添加变量rect_vx记录方块在x方向上的速度，并初始化为-3.</p>
+<p>在while语句中，让方块从右向左移动。当方块到达窗口最左边时，再让其从最右边出现。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//前略</span><br><span class="line">float ball_vy = 0;</span><br><span class="line">//中略</span><br><span class="line">rect_left_x += rect_vx;</span><br><span class="line">if (rect_left_x &lt;= 0)//如果方块跑到最左边</span><br><span class="line">	rect_left_x = width;//在最右边重新出现</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2024/07/08/%E5%88%AB%E7%A2%B0%E6%96%B9%E5%9D%97%E6%B8%B8%E6%88%8F/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240708190945.png" alt="微信截图_20240708190945"></p>
+<h2><span id="3小球和方块的碰撞判断">3.小球和方块的碰撞判断</span></h2><p>第一种情况：方块最左边在小球最右边的左侧 或者两者x坐标相同</p>
+<p>第二种情况：方块最右边在小球最左边的右侧 或者两者x坐标相同</p>
+<p>第三种情况：方块最上边在小球最下边的上侧 或者两者y坐标相同</p>
+<pre><code>    //如果小球碰到方块
+    if ((rect_left_x &lt;= ball_x + radius)
+        &amp;&amp; (rect_left_x + rect_width &gt;= ball_x - radius)
+        &amp;&amp; (height - rect_height &lt;= ball_y + radius)) &#123;
+        Sleep(100);//慢动作效果
+    &#125;
+</code></pre>
+<h2><span id="4随机高度和速度">4.随机高度和速度</span></h2><p>rand()可以生成随机数（整数）</p>
+<p>int() float()可以实现数据类型的转化</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">if (rect_left_x &lt;= 0) &#123;//如果方块跑到最左边</span><br><span class="line">	rect_left_x = width;//在最右边重新出现</span><br><span class="line">	rect_height = rand() % int(height / 4) + height / 4;//设置方块随机高度</span><br><span class="line">	rect_vx = rand() / float(RAND_MAX) * 4 - 7;//设置方块随机速度</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2><span id="5得分的计算和显示">5.得分的计算和显示</span></h2><p>定义整型变量记录游戏的得分，并初始化为0；</p>
+<p>当方块跑到画面最左边，得分增加1；</p>
+<p>当方块碰到小球时，得分清零。</p>
+<p>另外，利用EasyX的文字输出功能，可输出score</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">TCHAR s[20];//定义字符串数组</span><br><span class="line">_stprintf_s(s, _T(&quot;%d&quot;), score);//将score转化为字符串</span><br><span class="line">settextstyle(40, 0, _T(&quot;宋体&quot;));//设置文字大小、字体</span><br><span class="line">outtextxy(50, 30, s);//输出得分文字</span><br></pre></td></tr></table></figure>
+
+
+
+<h2><span id="6总代码">6.总代码</span></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;graphics.h&gt;//引用图形库头文件</span><br><span class="line">#include &lt;conio.h&gt;</span><br><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">	float width = 600;//画面宽度</span><br><span class="line">	float height = 600;//画面高度</span><br><span class="line">	initgraph(height, width);//新建画布</span><br><span class="line"></span><br><span class="line">    float ball_x, ball_y, ball_vy;//小球圆心坐标x、y，y方向速度</span><br><span class="line">    float g=0.6;//重力</span><br><span class="line">    float radius = 20;//小球半径</span><br><span class="line">    ball_x = width / 4;</span><br><span class="line">    ball_y = height - radius;</span><br><span class="line">    ball_vy = 0;</span><br><span class="line">    </span><br><span class="line">    float rect_left_x, rect_top_y, rect_width, rect_height,rect_vx;</span><br><span class="line">    rect_height = 100;//方块高度</span><br><span class="line">    rect_width = 20;//方块宽度</span><br><span class="line">    rect_left_x = width * 3 / 4;//方块左边x坐标</span><br><span class="line">    rect_top_y = height - rect_height;//方块顶部y坐标</span><br><span class="line">    rect_vx = -3;</span><br><span class="line">    </span><br><span class="line">    int score = 0;//得分</span><br><span class="line">    while (1) &#123;</span><br><span class="line">    	if (_kbhit()) &#123;//当按键时</span><br><span class="line">    		char input = _getch();//获得输入字符</span><br><span class="line">    		if(input == &#x27; &#x27;) ball_vy = -16;//给小球一个向上的初速度</span><br><span class="line">    	</span><br><span class="line">    	&#125;</span><br><span class="line">    	</span><br><span class="line">    	ball_vy =ball_vy + g;//利用加速度更新xy速度</span><br><span class="line">    	ball_y = ball_y + ball_vy;</span><br><span class="line">    	if (ball_y &gt;= height - radius) &#123;//如果小球落到地上</span><br><span class="line">    		ball_vy = 0;//y速度为0</span><br><span class="line">    		ball_y = height - radius;//重置</span><br><span class="line">    	&#125;</span><br><span class="line">    	rect_left_x += rect_vx;</span><br><span class="line">    	if (rect_left_x &lt;= 0) &#123;//如果方块跑到最左边</span><br><span class="line">    		rect_left_x = width;//在最右边重新出现</span><br><span class="line">    		rect_height = rand() % int(height / 4) + height / 4;//设置方块随机高度</span><br><span class="line">    		rect_vx = rand() / float(RAND_MAX) * 4 - 7;//设置方块随机速度</span><br><span class="line">    		score++;//得分加一</span><br><span class="line">    	&#125;</span><br><span class="line">    	//如果小球碰到方块</span><br><span class="line">    	if ((rect_left_x &lt;= ball_x + radius)</span><br><span class="line">    		&amp;&amp; (rect_left_x + rect_width &gt;= ball_x - radius)</span><br><span class="line">    		&amp;&amp; (height - rect_height &lt;= ball_y + radius)) &#123;</span><br><span class="line">    		Sleep(100);//慢动作效果</span><br><span class="line">    		score = 0;//得分清零</span><br><span class="line">    	&#125;</span><br><span class="line">    	cleardevice();//清屏函数，在绘制新小球前清除画面上的内容</span><br><span class="line">    	fillcircle(ball_x, ball_y, radius);//画圆</span><br><span class="line">    	fillrectangle(rect_left_x, height - rect_height, rect_left_x + rect_width, height);//画方块</span><br><span class="line">    	TCHAR s[20];//定义字符串数组</span><br><span class="line">    	_stprintf_s(s, _T(&quot;%d&quot;), score);//将score转化为字符串</span><br><span class="line">    	settextstyle(40, 0, _T(&quot;宋体&quot;));//设置文字大小、字体</span><br><span class="line">    	outtextxy(50, 30, s);//输出得分文字</span><br><span class="line">    	Sleep(10);//表示程序暂停10毫秒</span><br><span class="line">    &#125;</span><br><span class="line">    closegraph();   //关闭绘图窗口</span><br><span class="line">    return 0;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2024/07/06/%E6%96%B0%E6%A6%82%E5%BF%B53-L1/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+    
+        <div id="vcomments"></div>
+        <script>
+            var META = ['nick', 'mail', 'link'];
+            var meta = 'nick,mail';
+            meta = meta.split(',').filter(item => {
+                return META.includes(item);
+            });
+            new Valine({
+                el: '#vcomments',
+                appId: 'f131VXTFNbI57QRvg5lJFtbq-MdYXbMMI',
+                appKey: 'd1GENolYcYpRMO2FbRRbarov',
+                lang: 'zh-CN',
+                placeholder: 'Say something',
+                avatar: 'mp',
+                meta: meta
+            })
+        </script>    
+     
+
+     
+    
+    
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    
+      <div class="search-popup">
+    <div class="search-popup-overlay">  
+    </div>
+    <div class="search-popup-window" >
+        <div class="search-header">
+            <div class="search-input-container">
+              <input autocomplete="off" autocapitalize="off" maxlength="80"
+                     placeholder="Search Anything" spellcheck="false"
+                     type="search" class="search-input">
+            </div>
+            <div class="search-close-btn">
+                <div class="icon close-btn"></div>
+            </div>
+        </div>
+        <div class="search-result-container">
+        </div>
+    </div>
+</div>
+
+<script>
+    const searchConfig = {
+        path             : "/search.xml",
+        top_n_per_article: "1",
+        unescape         : "false",
+        trigger: "auto",
+        preload: "false"
+    }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js"></script>
+<script src="/js/search.js"></script>
+    
+    
+
+  </body>
+</html>
