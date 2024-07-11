@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="John Doe">
+
+
+
+
+
+
+
+<title>见缝插针游戏 | Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/menu.js"></script>
+    
+
+
+
+
+
+
+
+    <script src='https://unpkg.com/valine@1.4.16/dist/Valine.min.js'></script>
+
+
+
+
+  <!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.1.1"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            首页
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">主页</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">归档</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/categories/gallery/">画廊</a>
+              </li> 
+                   
+          
+          
+            <li class="menu-item search-btn">
+              <a href="#">Search</a>
+            </li>
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+                
+                    <span class="post-tag">
+                        <a href="/tags/C-EasyX-%E9%A1%B9%E7%9B%AE/">
+                            C++_EasyX 项目
+                        </a>
+                    </span>    
+                           
+            
+        </div>
+        <div class="post-title">
+            
+            
+                见缝插针游戏
+            
+            
+        </div>
+        <span class="post-date">
+            Jul 10, 2024
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <!-- toc -->
+
+<ul>
+<li><a href="#%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90">案例分析</a></li>
+<li><a href="#1%E7%BB%98%E5%88%B6%E5%9C%86%E7%9B%98%E4%B8%8E%E9%92%88">1.绘制圆盘与针</a></li>
+<li><a href="#2%E9%92%88%E7%9A%84%E6%97%8B%E8%BD%AC">2.针的旋转</a></li>
+<li><a href="#3%E5%88%A9%E7%94%A8%E6%95%B0%E7%BB%84%E5%AE%9E%E7%8E%B0%E5%A4%9A%E6%A0%B9%E9%92%88%E7%9A%84%E7%BB%98%E5%88%B6">3.利用数组实现多根针的绘制</a></li>
+<li><a href="#4%E6%89%B9%E9%87%8F%E7%BB%98%E5%88%B6%E5%87%BD%E6%95%B0">4.批量绘制函数</a></li>
+<li><a href="#5%E9%92%88%E7%9A%84%E5%8F%91%E5%B0%84%E4%B8%8E%E6%96%B0%E5%A2%9E">5.针的发射与新增</a></li>
+<li><a href="#6%E6%B8%B8%E6%88%8F%E5%A4%B1%E8%B4%A5%E5%88%A4%E6%96%AD">6.游戏失败判断</a></li>
+<li><a href="#7%E5%85%A8%E9%83%A8%E4%BB%A3%E7%A0%81">7.全部代码</a></li>
+</ul>
+<!-- tocstop -->
+
+<p>[TOC]</p>
+<h2><span id="案例分析">案例分析</span></h2><p>首先绘制圆盘与针，利用三角函数实现针的旋转；</p>
+<p>然后利用数组实现多根针的效果；</p>
+<p>接着利用批量绘制函数分析绘制效果改进方法；</p>
+<p>最后分析针的发射与增加、游戏失败判断、得分与显示效果的改进方法。</p>
+<h2><span id="1绘制圆盘与针">1.绘制圆盘与针</span></h2><p>line(x1,y1,x2,y2)可以画一条直线，(x1,y1)(x2,y2)是直线两个端点的位置</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;graphics.h&gt;</span><br><span class="line">#include&lt;conio.h&gt;</span><br><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">int main() &#123;</span><br><span class="line">	int width = 800;</span><br><span class="line">	int height = 600;</span><br><span class="line">	initgraph(width, height);//新建画布</span><br><span class="line">	setbkcolor(RGB(255, 255, 255));//背景为白色</span><br><span class="line">	cleardevice();// 以背景色清空背景</span><br><span class="line"></span><br><span class="line">	setlinestyle(PS_SOLID, 3);//实线，线条宽度3</span><br><span class="line">	setlinecolor(RGB(0, 0, 0));//线为黑色</span><br><span class="line">	line(width / 2, height / 2, width / 2 + 160, height / 2);//画一根针</span><br><span class="line">	</span><br><span class="line">	setlinecolor(HSVtoRGB(0, 0.9, 0.8));//设置圆盘线条为红色</span><br><span class="line">	circle(width / 2, height / 2, 60);</span><br><span class="line">	</span><br><span class="line">	_getch();//防止闪退</span><br><span class="line">	return 0;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2024/07/10/%E8%A7%81%E7%BC%9D%E6%8F%92%E9%92%88%E6%B8%B8%E6%88%8F/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240711085111.png" alt="微信截图_20240711085111"></p>
+<h2><span id="2针的旋转">2.针的旋转</span></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;graphics.h&gt;</span><br><span class="line">#include&lt;conio.h&gt;</span><br><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">#include&lt;math.h&gt;</span><br><span class="line">int main() &#123;</span><br><span class="line">	const float PI = 3.1415926;</span><br><span class="line">	int width = 800;</span><br><span class="line">	int height = 600;</span><br><span class="line">	initgraph(width, height);//新建画布</span><br><span class="line">	setbkcolor(RGB(255, 255, 255));//背景为白色</span><br><span class="line">	</span><br><span class="line"></span><br><span class="line">	float linelength = 160;</span><br><span class="line">	float xend, yend;//针的末端坐标，起始坐标为圆心</span><br><span class="line">	float angle = 0;//针的旋转角度</span><br><span class="line">	float rotatespeed = PI / 360;//针的旋转速度</span><br><span class="line">	</span><br><span class="line">	setlinestyle(PS_SOLID, 3);//实线，线条宽度3</span><br><span class="line">	</span><br><span class="line">	while (1) &#123;</span><br><span class="line">		cleardevice();// 以背景色清空背景</span><br><span class="line">		angle += rotatespeed;//角度增加</span><br><span class="line">		if (angle &gt; 2 * PI) angle -= 2 * PI;</span><br><span class="line">		xend = linelength * cos(-angle) + width / 2;</span><br><span class="line">		yend = linelength * sin(-angle) + height / 2;</span><br><span class="line">		setlinecolor(RGB(0, 0, 0));//线为黑色</span><br><span class="line">		line(width / 2, height / 2,xend,yend);//画一根针</span><br><span class="line">		setlinecolor(HSVtoRGB(0, 0.9, 0.8));//设置圆盘线条为红色</span><br><span class="line">		circle(width / 2, height / 2, 60);</span><br><span class="line">		</span><br><span class="line">		Sleep(10);</span><br><span class="line">	</span><br><span class="line">	&#125;</span><br><span class="line">	_getch();//防止闪退</span><br><span class="line">	return 0;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>其中核心代码为：</p>
+<p>angle +&#x3D; rotatespeed;&#x2F;&#x2F;角度增加</p>
+<p>if (angle &gt; 2 * PI) angle -&#x3D; 2 * PI;</p>
+<p>xend &#x3D; linelength * cos(-angle) + width &#x2F; 2;<br>yend &#x3D; linelength * sin(-angle) + height &#x2F; 2;</p>
+<h2><span id="3利用数组实现多根针的绘制">3.利用数组实现多根针的绘制</span></h2><p>要实现多根针的绘制，需要记录每根针的角度值。</p>
+<p>int linenum&#x3D;20;&#x2F;&#x2F;假设有20根针</p>
+<p>float angles[20];&#x2F;&#x2F;定义浮点数数组存储所有针的旋转角度</p>
+<p>for(int i&#x3D;0;i&lt;linenum;i++)&#x2F;&#x2F;利用for循环让数组中针的角度均匀分布到0-2*PI</p>
+<p>  angles[i] &#x3D; i* 2 * PI&#x2F;linenum;</p>
+<h2><span id="4批量绘制函数">4.批量绘制函数</span></h2><p>当绘制的元素较多时，会出现明显的画面闪烁，这时可以使用批量绘图函数。</p>
+<p>BeginBatchDraw()用于开始批量绘图</p>
+<p>FlushBatchDraw()用于执行未完成的绘制任务</p>
+<p>EndBatchDraw()用于结束批量绘制</p>
+<h2><span id="5针的发射与新增">5.针的发射与新增</span></h2><p>初始linenum置为0；</p>
+<p>if (_kbhit()) {<br>    char input &#x3D; _getch();<br>    if (input &#x3D;&#x3D; ‘ ‘) {<br>        linenum++;&#x2F;&#x2F;针的个数增加<br>        angles[linenum - 1] &#x3D; PI;&#x2F;&#x2F;这根新增针的初始角度<br>        xend &#x3D; linelength * cos(-angles[linenum - 1]) + width &#x2F; 2;<br>        yend &#x3D; linelength * sin(-angles[linenum] - 1) + height &#x2F; 2;<br>        line(width &#x2F; 2, height &#x2F; 2,xend, yend);&#x2F;&#x2F;画出这根新增的针<br>    }<br>}</p>
+<h2><span id="6游戏失败判断">6.游戏失败判断</span></h2><p>abs();是求绝对值的函数；</p>
+<p>当然也可以用fabs();</p>
+<p>当新增加的针和已有针发生碰撞时，游戏失败，在此设定当两根针的旋转角度差的绝对值小于PI&#x2F;60时，认为两根针足够接近，即发生了碰撞。</p>
+<p>for (int i &#x3D; 0; i &lt; linenum - 1; i++) {&#x2F;&#x2F;拿新增加的针和之前所有针做比较<br>    if (fabs(angles[linenum - 1] - angles[i]) &lt; PI &#x2F; 60) {<br>    rotatespeed &#x3D; 0;&#x2F;&#x2F;旋转速度置为0<br>    break;<br>    }<br>}</p>
+<p><img src="/2024/07/10/%E8%A7%81%E7%BC%9D%E6%8F%92%E9%92%88%E6%B8%B8%E6%88%8F/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240711103025.png" alt="微信截图_20240711103025"></p>
+<h2><span id="7全部代码">7.全部代码</span></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;graphics.h&gt;</span><br><span class="line">#include&lt;conio.h&gt;</span><br><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">#include&lt;math.h&gt;</span><br><span class="line">int main() &#123;</span><br><span class="line">	const float PI = 3.1415926;</span><br><span class="line">	int width = 800;</span><br><span class="line">	int height = 600;</span><br><span class="line">	initgraph(width, height);//新建画布</span><br><span class="line">	setbkcolor(RGB(255, 255, 255));//背景为白色</span><br><span class="line">	setlinestyle(PS_SOLID, 3);//实线，线条宽度3</span><br><span class="line"></span><br><span class="line">	float linelength = 160;</span><br><span class="line">	float xend, yend;//针的末端坐标，起始坐标为圆心</span><br><span class="line">	float rotatespeed = PI / 360;//针的旋转速度</span><br><span class="line">	int linenum = 0;//在旋转的针的个数</span><br><span class="line">	float angles[1000];</span><br><span class="line">	</span><br><span class="line">	int score = 0;//记录得分</span><br><span class="line">	</span><br><span class="line">	BeginBatchDraw();</span><br><span class="line">	while (1) &#123;</span><br><span class="line">		cleardevice();// 以背景色清空背景</span><br><span class="line">		setlinecolor(RGB(0, 0, 0));//线为黑色</span><br><span class="line">		line(0, height / 2, linelength, height / 2);//左边发射区域的一根针</span><br><span class="line">	</span><br><span class="line">		for (int i = 0; i &lt; linenum; i++) &#123;</span><br><span class="line">			angles[i] += rotatespeed;//角度增加</span><br><span class="line">			if (angles[i] &gt; 2 * PI) //如果超过2PI，就减去2PI</span><br><span class="line">				angles[i] -= 2 * PI;</span><br><span class="line">			xend = linelength * cos(-angles[i]) + width / 2;</span><br><span class="line">			yend = linelength * sin(-angles[i]) + height / 2;</span><br><span class="line">			line(width / 2, height / 2, xend, yend);//画一根针</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		if (_kbhit()) &#123;</span><br><span class="line">			char input = _getch();</span><br><span class="line">			if (input == &#x27; &#x27;) &#123;</span><br><span class="line">				linenum++;//针的个数增加</span><br><span class="line">				angles[linenum - 1] = PI;//这根新增针的初始角度</span><br><span class="line">				xend = linelength * cos(-angles[linenum - 1]) + width / 2;</span><br><span class="line">				yend = linelength * sin(-angles[linenum] - 1) + height / 2;</span><br><span class="line">				line(width / 2, height / 2,xend, yend);//画出这根新增的针</span><br><span class="line">				for (int i = 0; i &lt; linenum - 1; i++) &#123;//拿新增加的针和之前所有针做比较</span><br><span class="line">					if (fabs(angles[linenum - 1] - angles[i]) &lt; PI / 60) &#123;</span><br><span class="line">						rotatespeed = 0;//旋转速度置为0</span><br><span class="line">						break;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">				&#125;score++;</span><br><span class="line">			&#125;</span><br><span class="line">		setfillcolor(HSVtoRGB(0, linenum / 60.0, 0.8));//针越多，中间圆盘颜色越鲜艳</span><br><span class="line">		setlinecolor(HSVtoRGB(0, 0.9, 0.8));//设置圆盘线条为红色</span><br><span class="line">		circle(width / 2, height / 2, 60);</span><br><span class="line">	</span><br><span class="line">		TCHAR s[20];</span><br><span class="line">		_stprintf_s(s, _T(&quot;%d&quot;), score);</span><br><span class="line">		settextstyle(50, 0, _T(&quot;Times&quot;));//设置文字大小，字体</span><br><span class="line">		settextcolor(RGB(50, 50, 50));//设置文字颜色</span><br><span class="line">		outtextxy(65, 200, s);//输出得分文字</span><br><span class="line">	</span><br><span class="line">		FlushBatchDraw();</span><br><span class="line">		Sleep(10);</span><br><span class="line">	</span><br><span class="line">	&#125;</span><br><span class="line">	return 0;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2024/07/10/%E8%A7%81%E7%BC%9D%E6%8F%92%E9%92%88%E6%B8%B8%E6%88%8F/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240711105542.png" alt="微信截图_20240711105542"></p>
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+                <div class="icon arrow-left"></div>
+                <div class="post-link">
+                    <a href="/2024/07/10/%E8%A7%81%E7%BC%9D%E6%8F%92%E5%9C%86%E6%B8%B8%E6%88%8F/">Prev</a>
+                </div>
+            
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2024/07/09/%E7%BB%98%E5%88%B6%E2%80%9D%E6%97%8B%E8%BD%AC%E8%9B%87%E2%80%9C%E9%94%99%E8%A7%89/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+    
+        <div id="vcomments"></div>
+        <script>
+            var META = ['nick', 'mail', 'link'];
+            var meta = 'nick,mail';
+            meta = meta.split(',').filter(item => {
+                return META.includes(item);
+            });
+            new Valine({
+                el: '#vcomments',
+                appId: 'f131VXTFNbI57QRvg5lJFtbq-MdYXbMMI',
+                appKey: 'd1GENolYcYpRMO2FbRRbarov',
+                lang: 'zh-CN',
+                placeholder: 'Say something',
+                avatar: 'mp',
+                meta: meta
+            })
+        </script>    
+     
+
+     
+    
+    
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    
+      <div class="search-popup">
+    <div class="search-popup-overlay">  
+    </div>
+    <div class="search-popup-window" >
+        <div class="search-header">
+            <div class="search-input-container">
+              <input autocomplete="off" autocapitalize="off" maxlength="80"
+                     placeholder="Search Anything" spellcheck="false"
+                     type="search" class="search-input">
+            </div>
+            <div class="search-close-btn">
+                <div class="icon close-btn"></div>
+            </div>
+        </div>
+        <div class="search-result-container">
+        </div>
+    </div>
+</div>
+
+<script>
+    const searchConfig = {
+        path             : "/search.xml",
+        top_n_per_article: "1",
+        unescape         : "false",
+        trigger: "auto",
+        preload: "false"
+    }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js"></script>
+<script src="/js/search.js"></script>
+    
+    
+
+  </body>
+</html>
