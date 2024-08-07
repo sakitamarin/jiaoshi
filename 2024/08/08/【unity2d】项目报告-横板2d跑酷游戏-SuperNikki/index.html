@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="John Doe">
+
+
+
+
+
+
+
+<title>【unity2d】项目报告 横板2d跑酷游戏 SuperNikki | Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/menu.js"></script>
+    
+
+
+
+
+
+
+
+    <script src='https://unpkg.com/valine@1.4.16/dist/Valine.min.js'></script>
+
+
+
+
+  <!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.1.1"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            首页
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">主页</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">归档</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/categories/gallery/">画廊</a>
+              </li> 
+                   
+          
+          
+            <li class="menu-item search-btn">
+              <a href="#">Search</a>
+            </li>
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+                
+                    <span class="post-tag">
+                        <a href="/tags/unity2d/">
+                            unity2d
+                        </a>
+                    </span>    
+                           
+            
+        </div>
+        <div class="post-title">
+            
+            
+                【unity2d】项目报告 横板2d跑酷游戏 SuperNikki
+            
+            
+        </div>
+        <span class="post-date">
+            Aug 8, 2024
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <!-- toc -->
+
+<ul>
+<li><a href="#1-%E5%88%9B%E5%BB%BA%E6%96%B0%E9%A1%B9%E7%9B%AE">1 创建新项目</a></li>
+<li><a href="#2-%E4%BD%BF%E7%94%A8%E5%9B%BE%E5%83%8F%E7%B4%A0%E6%9D%90%E5%88%B6%E4%BD%9C%E6%B8%B8%E6%88%8F%E7%94%BB%E9%9D%A2">2 使用图像素材制作游戏画面</a></li>
+<li><a href="#3-%E5%88%B6%E4%BD%9C%E7%8E%A9%E5%AE%B6%E8%A7%92%E8%89%B2">3 制作玩家角色</a></li>
+<li><a href="#4-%E7%94%A8%E8%84%9A%E6%9C%AC%E6%8E%A7%E5%88%B6%E8%A7%92%E8%89%B2%E7%A7%BB%E5%8A%A8">4 用脚本控制角色移动</a></li>
+</ul>
+<!-- tocstop -->
+
+<p>[TOC]</p>
+<h2><span id="1-创建新项目">1 创建新项目</span></h2><p>启动unity，点击“新项目”，选择“2d”，这样就创建了一个新项目。</p>
+<p><strong>导入素材有两种方法：</strong></p>
+<p>①点击window菜单栏 -&gt; Asset Store -&gt; 搜索 -&gt; Import</p>
+<p>将所有资源一次性全部导入。</p>
+<p>② 准备好本地资源，拖拽到Assets文件夹下。</p>
+<p><strong>保存游戏关卡：</strong></p>
+<p>点击File -&gt; save as -&gt; 选择Scenes文件夹 -&gt; 重命名为“Stage1” -&gt; 保存。</p>
+<p>点击File -&gt; Build Settings…，将保存好的场景文件拖拽到Scenes in build的框内，这样这个场景就可以使用了。</p>
+<h2><span id="2-使用图像素材制作游戏画面">2 使用图像素材制作游戏画面</span></h2><p>将背景图像和跳台图像拖拽到场景视图中，注意要放在摄像机的范围内，并将跳台的Order in layer设置为2（0以上的数值）。</p>
+<p>把玩家图像拖拽到场景视图中，Order in layer设置为3。</p>
+<p>这样，图像显示的优先顺序就变成了玩家&gt;跳台&gt;背景。</p>
+<h2><span id="3-制作玩家角色">3 制作玩家角色</span></h2><p>选择玩家，单击Add Component -&gt; 搜索Rigidbody 2D -&gt; 单击添加。</p>
+<p>将重力Gravity Scale设置为1.5。</p>
+<p>勾选Freeze Rotation Z。（禁止旋转）</p>
+<p>单击Add Component -&gt; 添加Capsule Collider 2D。</p>
+<p><strong>给物体添加碰撞体积：</strong></p>
+<p>选中跳台，单击Add Component -&gt; 搜索Rigidbody 2D -&gt; 单击添加。</p>
+<p>这样，也给跳台添加了重力效果。</p>
+<p>单击Add Component -&gt; 添加Box collider 2D，这样就给跳台添加了碰撞体积。</p>
+<p><img src="/2024/08/08/%E3%80%90unity2d%E3%80%91%E9%A1%B9%E7%9B%AE%E6%8A%A5%E5%91%8A-%E6%A8%AA%E6%9D%BF2d%E8%B7%91%E9%85%B7%E6%B8%B8%E6%88%8F-SuperNikki/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20240808020912.png" alt="微信截图_20240808020912"></p>
+<p>可以看到角色稳稳当当地落在跳台上。</p>
+<h2><span id="4-用脚本控制角色移动">4 用脚本控制角色移动</span></h2><p>新建C#脚本，命名为PlayerController。</p>
+<p>拖拽脚本使其附着在玩家角色上。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">GameObject obj =（游戏物体）.GetComponent&lt;类型名&gt;();</span><br><span class="line">可以用此方法取得附着于该游戏物体上的任意组件。</span><br><span class="line">当用的是this.时，表示从自身取得。此外，this.的写法可以省略。</span><br></pre></td></tr></table></figure>
+
+<p><strong>Update函数：</strong></p>
+<p>游戏通过定期对画面进行微小的刷新，来使画面看起来在动，这就是帧。</p>
+<p>在unity中，每一帧都会调用一次update函数，将画面刷新和游戏动作相关的内容在update函数中实现，就可以反映在游戏中了。</p>
+<p>update函数不一定就是周期调用的，FixedUpdate函数才是周期调用。</p>
+<p><strong>移动：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">float axisH = 0.0f;//输入</span><br><span class="line">//省略</span><br><span class="line">//（Update函数）</span><br><span class="line">axisH = Input.GetAxisRaw(&quot;Horizontal&quot;);</span><br></pre></td></tr></table></figure>
+
+<p>这一行用来检测键盘的左右方向键有没有被按下。horizontal在英语中是水平的意思。<br>当按下右，GetAxisRaw会返回1.0f，<br>按下左会返回-1.0f,<br>什么都不按下会返回0.0f。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public float speed = 3.0f;//移动速度</span><br><span class="line">//省略</span><br><span class="line">//FixedUpdate函数</span><br><span class="line">rbody.velocity = new Vector2(axisH * speed, rbody.velocity.y);</span><br></pre></td></tr></table></figure>
+
+<p>物理类的处理需要添加到FixedUpdate函数中。<br>Rigidbody2D类所带的velocity变量是反映该游戏物体当前移动速度的vector2类型的变量。通过给这个变量赋值，可以对Rigidbody2D组件的速度进行操作。<br>右：3.0f，<br>左：-3.0f，<br>不动：0.0f。</p>
+<p><strong>角色翻转：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">if (axisH &gt; 0.0f)</span><br><span class="line">&#123;</span><br><span class="line">   //向右移动</span><br><span class="line">    Debug.Log(&quot;向右移动&quot;);</span><br><span class="line">    transform.localScale = new Vector2(1, 1);</span><br><span class="line">&#125;</span><br><span class="line">    else if (axisH &lt; 0.0f) &#123;</span><br><span class="line">    //向左移动</span><br><span class="line">    Debug.Log(&quot;向左移动&quot;);</span><br><span class="line">    transform.localScale = new Vector2(-1, 1);//左右翻转</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>localScale是设置缩放倍率的参数，当其设置为负值时，就可以达到翻转效果。</p>
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2024/08/08/%E3%80%90unity2d%E3%80%91%E3%80%90%E8%84%9A%E6%9C%AC%E3%80%91%E4%BA%BA%E7%89%A9%E7%9A%84%E7%A7%BB%E5%8A%A8%E3%80%81%E8%B7%B3%E8%B7%83%E3%80%81%E5%8A%A8%E7%94%BB/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+    
+        <div id="vcomments"></div>
+        <script>
+            var META = ['nick', 'mail', 'link'];
+            var meta = 'nick,mail';
+            meta = meta.split(',').filter(item => {
+                return META.includes(item);
+            });
+            new Valine({
+                el: '#vcomments',
+                appId: 'f131VXTFNbI57QRvg5lJFtbq-MdYXbMMI',
+                appKey: 'd1GENolYcYpRMO2FbRRbarov',
+                lang: 'zh-CN',
+                placeholder: 'Say something',
+                avatar: 'mp',
+                meta: meta
+            })
+        </script>    
+     
+
+     
+    
+    
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    
+      <div class="search-popup">
+    <div class="search-popup-overlay">  
+    </div>
+    <div class="search-popup-window" >
+        <div class="search-header">
+            <div class="search-input-container">
+              <input autocomplete="off" autocapitalize="off" maxlength="80"
+                     placeholder="Search Anything" spellcheck="false"
+                     type="search" class="search-input">
+            </div>
+            <div class="search-close-btn">
+                <div class="icon close-btn"></div>
+            </div>
+        </div>
+        <div class="search-result-container">
+        </div>
+    </div>
+</div>
+
+<script>
+    const searchConfig = {
+        path             : "/search.xml",
+        top_n_per_article: "1",
+        unescape         : "false",
+        trigger: "auto",
+        preload: "false"
+    }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js"></script>
+<script src="/js/search.js"></script>
+    
+    
+
+  </body>
+</html>
