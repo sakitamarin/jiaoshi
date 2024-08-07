@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="John Doe">
+
+
+
+
+
+
+
+<title>【unity2d】【脚本】人物的移动、跳跃、动画 | Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/menu.js"></script>
+    
+
+
+
+
+
+
+
+    <script src='https://unpkg.com/valine@1.4.16/dist/Valine.min.js'></script>
+
+
+
+
+  <!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.1.1"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            首页
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">主页</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">归档</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/categories/gallery/">画廊</a>
+              </li> 
+                   
+          
+          
+            <li class="menu-item search-btn">
+              <a href="#">Search</a>
+            </li>
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+                
+                    <span class="post-tag">
+                        <a href="/tags/unity2d/">
+                            unity2d
+                        </a>
+                    </span>    
+                           
+            
+        </div>
+        <div class="post-title">
+            
+            
+                【unity2d】【脚本】人物的移动、跳跃、动画
+            
+            
+        </div>
+        <span class="post-date">
+            Aug 8, 2024
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br></pre></td><td class="code"><pre><span class="line">using System.Collections;</span><br><span class="line">using System.Collections.Generic;</span><br><span class="line">using UnityEngine;</span><br><span class="line"></span><br><span class="line">public class PlayerController : MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    Rigidbody2D rbody;//Rigidbody2D类型的变量</span><br><span class="line">    float axisH = 0.0f;//输入</span><br><span class="line">    public float speed = 3.0f;//移动速度</span><br><span class="line"></span><br><span class="line">    public float jump = 9.0f;//跳跃力</span><br><span class="line">    public LayerMask groundLayer;//可以落脚的层</span><br><span class="line">    bool goJump = false;//跳跃开始的旗标</span><br><span class="line">    bool onGround = false;//立于地面的旗标</span><br><span class="line">    Animator animator;//画师</span><br><span class="line">    public string stopAnime = &quot;PlayerStop&quot;;</span><br><span class="line">    public string moveAnime = &quot;PlayerMove&quot;;</span><br><span class="line">    public string jumpAnime = &quot;PlayerJump&quot;;</span><br><span class="line">    public string goalAnime = &quot;PlayerGoal&quot;;</span><br><span class="line">    public string deadAnime = &quot;PlayerDead&quot;;</span><br><span class="line">    string nowAnime = &quot;&quot;;</span><br><span class="line">    string oldAnime = &quot;&quot;;</span><br><span class="line">    </span><br><span class="line">    public static string gameState = &quot;playing&quot;;//游戏的状态</span><br><span class="line">    </span><br><span class="line">    // Start is called before the first frame update</span><br><span class="line">    void Start()</span><br><span class="line">    &#123;</span><br><span class="line">        //取得Rugidbody2D</span><br><span class="line">        rbody = this.GetComponent&lt;Rigidbody2D&gt;();</span><br><span class="line">        gameState = &quot;playing&quot;;//设为游戏中</span><br><span class="line">        //取得Animator</span><br><span class="line">        animator = GetComponent&lt;Animator&gt;();</span><br><span class="line">        nowAnime = stopAnime;</span><br><span class="line">        oldAnime = stopAnime;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    // Update is called once per frame</span><br><span class="line">    void Update()</span><br><span class="line">    &#123;</span><br><span class="line">        if (gameState != &quot;playing&quot;) return;</span><br><span class="line">        //检查水平方向的输入</span><br><span class="line">        axisH = Input.GetAxisRaw(&quot;Horizontal&quot;);</span><br><span class="line">        //方向调整</span><br><span class="line">        if (axisH &gt; 0.0f)</span><br><span class="line">        &#123;</span><br><span class="line">            //向右移动</span><br><span class="line">            Debug.Log(&quot;向右移动&quot;);</span><br><span class="line">            transform.localScale = new Vector2(1, 1);</span><br><span class="line">        &#125;</span><br><span class="line">        else if (axisH &lt; 0.0f) &#123;</span><br><span class="line">            //向左移动</span><br><span class="line">            Debug.Log(&quot;向左移动&quot;);</span><br><span class="line">            transform.localScale = new Vector2(-1, 1);//左右翻转</span><br><span class="line">        &#125;</span><br><span class="line">        if (Input.GetButtonDown(&quot;Jump&quot;))</span><br><span class="line">        &#123;</span><br><span class="line">            Jump();//跳跃</span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    void FixedUpdate()</span><br><span class="line">    &#123;</span><br><span class="line">        if (gameState != &quot;playing&quot;) return;</span><br><span class="line">        //地面判定</span><br><span class="line">         bool onGround = Physics2D.Linecast(transform.position, transform.position - (transform.up * 0.1f), groundLayer);</span><br><span class="line">        if (onGround || axisH != 0)</span><br><span class="line">        &#123;</span><br><span class="line">            //在地面上或速度不为0</span><br><span class="line">            //更新速度</span><br><span class="line">            rbody.velocity = new Vector2(axisH * speed, rbody.velocity.y);</span><br><span class="line">        &#125;</span><br><span class="line">        if (goJump)//if(onGround &amp;&amp;goJump)</span><br><span class="line">        &#123;</span><br><span class="line">            //在地面上按下了跳跃键</span><br><span class="line">            //跳起来</span><br><span class="line">            Debug.Log(&quot;跳跃！&quot;);</span><br><span class="line">            Vector2 jumpPw = new Vector2(0, jump);//新建用于跳跃的向量</span><br><span class="line">            rbody.AddForce(jumpPw, ForceMode2D.Impulse);//施加瞬间的力</span><br><span class="line">            goJump = false;//取下跳跃旗标</span><br><span class="line">        &#125;</span><br><span class="line">        if (axisH != 0 || axisH == 0)//if(onGround)</span><br><span class="line">        &#123;</span><br><span class="line">            //在地面上</span><br><span class="line">            if (axisH == 0)</span><br><span class="line">            &#123;</span><br><span class="line">                nowAnime = stopAnime;//停止</span><br><span class="line">            &#125;</span><br><span class="line">            else</span><br><span class="line">            &#123;</span><br><span class="line">                nowAnime = moveAnime;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        else</span><br><span class="line">        &#123;</span><br><span class="line">            //空中</span><br><span class="line">            nowAnime = jumpAnime;</span><br><span class="line">        &#125;</span><br><span class="line">        if (nowAnime != oldAnime)</span><br><span class="line">        &#123;</span><br><span class="line">            oldAnime = nowAnime;</span><br><span class="line">            animator.Play(nowAnime);//播放动画效果</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    //跳跃</span><br><span class="line">    public void Jump()</span><br><span class="line">    &#123;</span><br><span class="line">        goJump = true;</span><br><span class="line">        Debug.Log(&quot;按下了跳跃键！&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    //接触开始</span><br><span class="line">    void OnTriggerEnter2D(Collider2D collision)</span><br><span class="line">    &#123;</span><br><span class="line">        if (collision.gameObject.tag == &quot;Goal&quot;)&#123;</span><br><span class="line">            Goal();</span><br><span class="line">        &#125;else if (collision.gameObject.tag == &quot;Dead&quot;)</span><br><span class="line">        &#123;</span><br><span class="line">            GameOver(); </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    //到达终点</span><br><span class="line">    public void Goal()</span><br><span class="line">    &#123;</span><br><span class="line">        animator.Play(goalAnime);</span><br><span class="line">        gameState = &quot;gameclear&quot;;</span><br><span class="line">        GameStop();//游戏停止</span><br><span class="line">    &#125;</span><br><span class="line">    //游戏失败</span><br><span class="line">    public void GameOver()</span><br><span class="line">    &#123;</span><br><span class="line">        animator.Play(deadAnime);</span><br><span class="line">        gameState = &quot;gameover&quot;;</span><br><span class="line">        GameStop();</span><br><span class="line">        GetComponent&lt;CapsuleCollider2D&gt;().enabled=false;</span><br><span class="line">        rbody.AddForce(new Vector2(0,5),ForceMode2D.Impulse);</span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line">//游戏停止</span><br><span class="line">void GameStop()</span><br><span class="line">    &#123;</span><br><span class="line">    Rigidbody2D rbody = GetComponent&lt;Rigidbody2D&gt;();</span><br><span class="line">    rbody.velocity = new Vector2(0, 0);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2024/07/27/%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E7%B1%BB%E5%9E%8B-%E9%A2%98%E8%A7%A3/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+    
+        <div id="vcomments"></div>
+        <script>
+            var META = ['nick', 'mail', 'link'];
+            var meta = 'nick,mail';
+            meta = meta.split(',').filter(item => {
+                return META.includes(item);
+            });
+            new Valine({
+                el: '#vcomments',
+                appId: 'f131VXTFNbI57QRvg5lJFtbq-MdYXbMMI',
+                appKey: 'd1GENolYcYpRMO2FbRRbarov',
+                lang: 'zh-CN',
+                placeholder: 'Say something',
+                avatar: 'mp',
+                meta: meta
+            })
+        </script>    
+     
+
+     
+    
+    
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    
+      <div class="search-popup">
+    <div class="search-popup-overlay">  
+    </div>
+    <div class="search-popup-window" >
+        <div class="search-header">
+            <div class="search-input-container">
+              <input autocomplete="off" autocapitalize="off" maxlength="80"
+                     placeholder="Search Anything" spellcheck="false"
+                     type="search" class="search-input">
+            </div>
+            <div class="search-close-btn">
+                <div class="icon close-btn"></div>
+            </div>
+        </div>
+        <div class="search-result-container">
+        </div>
+    </div>
+</div>
+
+<script>
+    const searchConfig = {
+        path             : "/search.xml",
+        top_n_per_article: "1",
+        unescape         : "false",
+        trigger: "auto",
+        preload: "false"
+    }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js"></script>
+<script src="/js/search.js"></script>
+    
+    
+
+  </body>
+</html>
