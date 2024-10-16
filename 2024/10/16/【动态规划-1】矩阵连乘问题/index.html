@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="John Doe">
+
+
+
+
+
+
+
+<title>【动态规划-1】矩阵连乘问题 | Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/menu.js"></script>
+    
+
+
+
+
+
+
+
+    <script src='https://unpkg.com/valine@1.4.16/dist/Valine.min.js'></script>
+
+
+
+
+  <!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.1.1"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            首页
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">主页</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">归档</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/categories/gallery/">画廊</a>
+              </li> 
+                   
+          
+          
+            <li class="menu-item search-btn">
+              <a href="#">Search</a>
+            </li>
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+                
+                    <span class="post-tag">
+                        <a href="/tags/%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%BE%E8%AE%A1/">
+                            算法分析与设计
+                        </a>
+                    </span>    
+                           
+            
+        </div>
+        <div class="post-title">
+            
+            
+                【动态规划-1】矩阵连乘问题
+            
+            
+        </div>
+        <span class="post-date">
+            Oct 16, 2024
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <!-- toc -->
+
+<ul>
+<li><a href="#7-1-%E7%9F%A9%E9%98%B5%E9%93%BE%E7%9B%B8%E4%B9%98%E9%97%AE%E9%A2%98"><strong>7-1 矩阵链相乘问题</strong></a></li>
+<li><a href="#7-2-%E6%9C%80%E5%A4%A7k%E4%B9%98%E7%A7%AF"><strong>7-2 最大k乘积</strong></a></li>
+</ul>
+<!-- tocstop -->
+
+<p>[TOC]</p>
+<h3><span id="7-1-矩阵链相乘问题"><strong>7-1 矩阵链相乘问题</strong></span></h3><p>矩阵的乘法定义如下：设<em>A</em>是<em>m</em>×<em>p</em>的矩阵，<em>B</em>是<em>p</em>×<em>n</em>的矩阵，则<em>A</em>与<em>B</em>的乘积为<em>m</em>×<em>n</em>的矩阵，记作<em>C</em>&#x3D;<em>AB</em>，其中，矩阵<em>C</em>中的第<em>i</em>行第<em>j</em>列元素<em>cij</em>可以表示为：<em>cij</em>&#x3D;Σ<em>k</em>&#x3D;1<em>p<strong>a</strong>ik</em>×<em>bkj</em>&#x3D;<em>ai</em>1<em>b</em>1<em>j</em>+<em>ai</em>2<em>b</em>2<em>j</em>+⋯+<em>a<strong>i</strong>p<strong>b</strong>pj</em>.</p>
+<p>当多个矩阵相乘时，采用不同的计算顺序所需的乘法次数不相同。例如，<em>A</em>是50×10的矩阵，<em>B</em>是10×20的矩阵，<em>C</em>是20×5的矩阵，<br>计算<em>ABC</em>有两种方式：(<em>AB</em>)<em>C</em>和<em>A</em>(<em>BC</em>)，前一种需要15000次乘法计算，后一种则只需3500次。</p>
+<p>设<em>A</em>1,<em>A</em>2,…,<em>An</em>为矩阵序列，<em>Ai</em>是阶为<em>Pi</em>−1∗<em>Pi</em>的矩阵(1≤<em>i</em>≤<em>n</em>)。试确定矩阵的乘法顺序，使得计算<em>A</em>1<em>A</em>2…<em>An</em>过程中元素相乘的总次数最少。</p>
+<h4><span id="输入格式">输入格式:</span></h4><p>每个输入文件为一个测试用例，每个测试用例的第一行给出一个正整数<em>n</em>(1≤<em>n</em>≤500)，表示一共有<em>n</em>个矩阵<em>A</em>1,<em>A</em>2,…,<em>An</em>，第二行给出<em>n</em>+1个整数<em>P</em>0,<em>P</em>1…<em>Pn</em>，以空格分隔，其中1≤<em>Pi</em>≤100(0≤<em>i</em>≤<em>n</em>)，第<em>i</em>个矩阵<em>Ai</em>是阶为<em>Pi</em>−1∗<em>Pi</em>的矩阵。</p>
+<h4><span id="输出格式">输出格式:</span></h4><p>获得上述矩阵的乘积，所需的最少乘法次数。</p>
+<h4><span id="输入样例">输入样例:</span></h4><p>在这里给出一组输入。例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">5</span><br><span class="line">30 35 15 5 10 20</span><br></pre></td></tr></table></figure>
+
+<h4><span id="输出样例">输出样例:</span></h4><p>在这里给出相应的输出。例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">11875</span><br></pre></td></tr></table></figure>
+
+<h4><span id="算法步骤">算法步骤：</span></h4><p>1.初始化一个二维数组m，大小为n*n；</p>
+<p>2.对于i&#x3D;1到n，设置m[i]_[i]&#x3D;0，即对角线上的元素置零;</p>
+<p>3.自底到上、自左到右对对角线右边的空位进行填表，计算m[i]_[j]；</p>
+<p>4.根据状态转移方程更新数组m；</p>
+<p>5.最终m[1]_[n]即为最少数乘次数。</p>
+<h4><span id="代码">代码：</span></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int n;</span><br><span class="line">int p[10000];//因为可相乘矩阵要求RA=CB，所以p[i-1]代表矩阵行数，p[i]代表矩阵列数</span><br><span class="line">int m[10000][10000];//数组m记录Ai···Aj所需的最少数乘次数</span><br><span class="line">//int s[10000][10000];数组s用于记录最优断开位置</span><br><span class="line"></span><br><span class="line">int MatrixChain()&#123;</span><br><span class="line">    for(int i=1;i&lt;=n;i++)</span><br><span class="line">        m[i][i]=0;//对角线元素计为0，因为i=j时只有一个矩阵，无需乘法</span><br><span class="line">    for(int i=n;i&gt;=1;i--)&#123;//自底而上填表</span><br><span class="line">        for(int j=i+1;j&lt;=n;j++)&#123;</span><br><span class="line">            m[i][j]=m[i+1][j]+p[i-1]*p[i]*p[j];</span><br><span class="line">            //s[i][j]=i;当前最优断点为i</span><br><span class="line">            for(int k=i+1;k&lt;j;k++)&#123;//寻找最优次序中的断开位置，范围是i+1到j-1，因为这个断开位置既不会是第一个矩阵也不会是最后一个矩阵</span><br><span class="line">                int t=m[i][k]+m[k+1][j]+p[i-1]*p[k]*p[j];</span><br><span class="line">                //p[i-1]*p[k]*p[j]是Ai···Ak与Ak+1···Aj的数乘次数</span><br><span class="line">                if(t&lt;m[i][j])&#123;</span><br><span class="line">                    m[i][j]=t;//如果当前值更优，更换m[i][j]</span><br><span class="line">                    //s[i][j]=k;更换最优断点</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return m[1][n];</span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">    cin&gt;&gt;n;</span><br><span class="line">    for(int i=0;i&lt;n+1;i++)&#123;</span><br><span class="line">        cin&gt;&gt;p[i];</span><br><span class="line">    &#125;</span><br><span class="line">    int result=MatrixChain();</span><br><span class="line">    cout&lt;&lt;result;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3><span id="7-2-最大k乘积"><strong>7-2 最大k乘积</strong></span></h3><p>设I是一个n位十进制整数。如果将I划分为k段，则可得到k个整数。这k个整数的乘积称为I的一个k乘积。试设计一个算法，对于给定的I和k，求出I的最大k乘积。</p>
+<h4><span id="输入格式">输入格式:</span></h4><p>第1 行中有2个正整数n和k。正整数n是序列的长度；正整数k是分割的段数。<br>接下来的一行中是一个n位十进制整数。（n&lt;&#x3D;10）</p>
+<h4><span id="输出格式">输出格式:</span></h4><p>计算出的最大k乘积</p>
+<h4><span id="输入样例1">输入样例1:</span></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">4 3</span><br><span class="line">3456</span><br></pre></td></tr></table></figure>
+
+<h4><span id="输出样例1">输出样例1:</span></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1020</span><br></pre></td></tr></table></figure>
+
+<h4><span id="输入样例2">输入样例2:</span></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">2 1</span><br><span class="line">15</span><br></pre></td></tr></table></figure>
+
+<h4><span id="输出样例2">输出样例2:</span></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">15</span><br></pre></td></tr></table></figure>
+
+<h4><span id="代码">代码：</span></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int dp[15][15];</span><br><span class="line"></span><br><span class="line">char numstr[15];</span><br><span class="line">int num[15];</span><br><span class="line"></span><br><span class="line">int getValue(int i,int j)&#123;</span><br><span class="line">    int sum = 0;</span><br><span class="line">    for(int k = i;k &lt; j;k++)&#123;</span><br><span class="line">        sum += num[k];</span><br><span class="line">        sum *= 10;</span><br><span class="line">    &#125;</span><br><span class="line">    return sum + num[j];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void dpAlgo(int l,int k)&#123;</span><br><span class="line">    for(int i = 1;i &lt;= l;i++)</span><br><span class="line">        dp[i][1] = getValue(1,i);</span><br><span class="line">    for(int i = 0;i &lt;= l;i++)&#123;</span><br><span class="line">        for(int j = 2;j &lt;= k;j++)&#123;</span><br><span class="line">            int temp = 0;</span><br><span class="line">            for(int d = 1;d &lt; i;d++)</span><br><span class="line">                temp = max(temp,dp[d][j - 1] * getValue(d + 1,i));</span><br><span class="line">            dp[i][j] = temp;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int l,k;</span><br><span class="line">    cin &gt;&gt; l &gt;&gt; k &gt;&gt; numstr;//输入长度l、分割段数k、字符串序列</span><br><span class="line">    for(int i = 0;i &lt; l;i++)</span><br><span class="line">        num[i + 1] = numstr[i] - &#x27;0&#x27;;//去掉空字符，将字符串转化成整数数组</span><br><span class="line">    dpAlgo(l,k);</span><br><span class="line">    cout &lt;&lt; dp[l][k];</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2024/08/08/%E3%80%90unity2d%E3%80%91%E9%A1%B9%E7%9B%AE%E6%8A%A5%E5%91%8A-%E6%A8%AA%E6%9D%BF2d%E8%B7%91%E9%85%B7%E6%B8%B8%E6%88%8F-SuperNikki/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+    
+        <div id="vcomments"></div>
+        <script>
+            var META = ['nick', 'mail', 'link'];
+            var meta = 'nick,mail';
+            meta = meta.split(',').filter(item => {
+                return META.includes(item);
+            });
+            new Valine({
+                el: '#vcomments',
+                appId: 'f131VXTFNbI57QRvg5lJFtbq-MdYXbMMI',
+                appKey: 'd1GENolYcYpRMO2FbRRbarov',
+                lang: 'zh-CN',
+                placeholder: 'Say something',
+                avatar: 'mp',
+                meta: meta
+            })
+        </script>    
+     
+
+     
+    
+    
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    
+      <div class="search-popup">
+    <div class="search-popup-overlay">  
+    </div>
+    <div class="search-popup-window" >
+        <div class="search-header">
+            <div class="search-input-container">
+              <input autocomplete="off" autocapitalize="off" maxlength="80"
+                     placeholder="Search Anything" spellcheck="false"
+                     type="search" class="search-input">
+            </div>
+            <div class="search-close-btn">
+                <div class="icon close-btn"></div>
+            </div>
+        </div>
+        <div class="search-result-container">
+        </div>
+    </div>
+</div>
+
+<script>
+    const searchConfig = {
+        path             : "/search.xml",
+        top_n_per_article: "1",
+        unescape         : "false",
+        trigger: "auto",
+        preload: "false"
+    }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js"></script>
+<script src="/js/search.js"></script>
+    
+    
+
+  </body>
+</html>
