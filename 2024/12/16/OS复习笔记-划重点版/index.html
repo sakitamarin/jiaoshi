@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="John Doe">
+
+
+
+
+
+
+
+<title>OS复习笔记 划重点版 | Hexo</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Roboto+Mono&display=swap');
+</style>
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/menu.js"></script>
+    
+
+
+
+
+
+
+
+    <script src='https://unpkg.com/valine@1.4.16/dist/Valine.min.js'></script>
+
+
+
+
+  <!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.1.1"></head>
+  <body>
+    <div class="mask-border">
+    </div>
+
+    <div class="wrapper">
+
+      <div class="header">
+  <div class="flex-container">
+    <div class="header-inner">
+      <div class="site-brand-container">
+        <a href="/">
+          
+            首页
+          
+        </a>
+      </div>
+      <div id="menu-btn" class="menu-btn" onclick="toggleMenu()">
+        Menu
+      </div>
+      <nav class="site-nav">
+        <ul class="menu-list">
+          
+            
+              <li class="menu-item">
+                <a href="/">主页</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/archives/">归档</a>
+              </li> 
+                   
+          
+            
+              <li class="menu-item">
+                <a href="/categories/gallery/">画廊</a>
+              </li> 
+                   
+          
+          
+            <li class="menu-item search-btn">
+              <a href="#">Search</a>
+            </li>
+          
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main">
+        <div class="flex-container">
+          <article id="post">
+
+  
+    <div class="post-head">
+    <div class="post-info">
+        <div class="tag-list">
+            
+                
+                    <span class="post-tag">
+                        <a href="/tags/2024-2025-1%E8%AF%BE%E5%86%85%E7%AC%94%E8%AE%B0/">
+                            2024-2025-1课内笔记
+                        </a>
+                    </span>    
+                           
+            
+        </div>
+        <div class="post-title">
+            
+            
+                OS复习笔记 划重点版
+            
+            
+        </div>
+        <span class="post-date">
+            Dec 16, 2024
+        </span>
+    </div>
+    <div class="post-img">
+        
+            <div class="h-line-primary"></div>
+              
+    </div>
+</div>
+    <div class="post-content">
+    <h2><span id="第一章">第一章</span></h2><h3><span id="选择题">【选择题】</span></h3><p><strong>1.操作系统的功能</strong></p>
+<p>①<u>存储器</u>管理功能——内存分配、地址映射、内存保护、内存扩充。</p>
+<p>②<u>处理机</u>管理功能——作业和进程调度、进程通信。</p>
+<p>③<u>设备</u>管理功能——缓冲区管理、设备分配、设备驱动、设备无关性。</p>
+<p>④<u>文件</u>管理功能——文件存储空间的管理、目录管理、文件的读写管理和存取控制。</p>
+<p>⑤<u>用户接口</u>——命令界面、图形界面、程序界面。</p>
+<p><strong>2.各个操作系统都注重什么特征</strong></p>
+<p>①多道批处理操作系统——多道、成批。</p>
+<p>②分时操作系统——交互。同时性（多个用户运行）、交互性、独占性、及时性。</p>
+<p>③实时操作系统——严格要求响应时间、可靠性。</p>
+<p>④嵌入式操作系统——小、精简、专用性。</p>
+<h3><span id="简答题">【简答题】</span></h3><p>&#x3D;&#x3D;<strong>1.什么是操作系统</strong>&#x3D;&#x3D;</p>
+<p>①是最基本和最重要的<u>系统软件</u>。</p>
+<p>②<u>管理和控制了计算机系统资源</u>。</p>
+<p>③为用户<u>提供服务</u>。</p>
+<p>&#x3D;&#x3D;<strong>2.操作系统的目标</strong>&#x3D;&#x3D;</p>
+<p>①<u>方便性</u>：用户操作只需要输入命令或者用鼠标点击就可以了。</p>
+<p>②<u>有效性</u>：计算机系统资源得到有效使用。</p>
+<p>③<u>可扩展性</u>：操作系统的功能会不断升级。</p>
+<p>**&#x3D;&#x3D;3.操作系统的特征&#x3D;&#x3D;**（并发和共享导致了异步）</p>
+<p>①<u>并发性</u>：宏观上多道程序<u>同时运行</u>。</p>
+<p>（并发指的是宏观上并行、微观上交替；区别于并行）</p>
+<p>②<u>异步性</u>：各个程序<u>不是一直在运行</u>的，什么时候运行、运行多久是不可预知的。</p>
+<p>③<u>资源共享性</u>：资源可以被访问者<u>共同使用</u>。分为互斥共享方式和同步共享方式。</p>
+<h2><span id="第三章">第三章</span></h2><h3><span id="选择题">【选择题】</span></h3><p><strong>1.进程的概念</strong></p>
+<p>（1）一些很细碎的概念</p>
+<p><u>多道程序设计</u>是操作系统最重要的思想（本质是共享）。</p>
+<p>现代操作系统的重要特点是<u>程序的并发执行、系统所拥有的资源被共享、系统用户随机地使用</u>。</p>
+<p>操作系统的重要任务之一是使用户充分、有效地利用系统资源。</p>
+<p><u>进程：计算机程序的执行过程、共享资源的基本单位。</u></p>
+<p>程序的顺序性和计算机的顺序性是一致的。</p>
+<p>程序的顺序执行的特点：顺序性、封闭性（结果由初始条件决定）、可再现性。</p>
+<p>程序的并发执行的特点：间断性、失去封闭性、不可再现性。（一个程序的开始在另一个程序的结束之前，就是并发）</p>
+<p>多道程序系统中程序执行环境的特点：独立性、随机性、资源共享。</p>
+<p>（2）进程的描述</p>
+<p>进程：程序在一个数据集合上的<u>运行过程</u>，是系统进行<u>资源分配</u>和调度的一个独立单位。</p>
+<p>进程的特征：动态、并行、<u>独立、异步</u>、结构性。</p>
+<p><strong>&#x3D;&#x3D;2.进程状态及其转换&#x3D;&#x3D;</strong></p>
+<p>&#x3D;&#x3D;<strong>（1）状态转换图</strong>&#x3D;&#x3D;</p>
+<img src="/2024/12/16/OS%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%88%92%E9%87%8D%E7%82%B9%E7%89%88/2820621e20b50021112272c76b66deb.jpg" alt="2820621e20b50021112272c76b66deb" style="zoom: 33%;">
+
+<p><strong>（2）各状态的说明</strong></p>
+<p>①运行——进程已获得CPU，正在运行。（在单处理机系统只有一个进程能够处于运行状态）</p>
+<p>②就绪——进程已经获得除了CPU以外的所有必要资源，只要CPU在就可以立即运行。</p>
+<p>③阻塞&#x2F;等待&#x2F;睡眠——正在运行的进程由于某种突发事件（如IO请求、申请缓冲区失败）而暂时无法运行。</p>
+<p>④新建——对应于进程被创建时的状态，尚未进入就绪队列。</p>
+<p>⑤完成——进程正常或非正常终止。</p>
+<p><strong>&#x3D;&#x3D;（3）状态转换（<u>CPU空闲的三种情况：时间片到、等待事件发生、终止</u>）&#x3D;&#x3D;</strong></p>
+<p>①新建→就绪：为新进程分配资源。</p>
+<p>②就绪→运行：进程得到了CPU。</p>
+<p>③运行→就绪：时间片（系统限定的最长时间）到了、出现比当前进程优先级高的进程。</p>
+<p>④运行→阻塞：等待使用资源&#x2F;等待事件发生。</p>
+<p>⑤阻塞→就绪：资源得到满足&#x2F;事件发生。</p>
+<p>⑥运行→完成：释放资源。</p>
+<h3><span id="简答题">【简答题】</span></h3><p><strong>&#x3D;&#x3D;1.进程的特征&#x3D;&#x3D;</strong></p>
+<p>①异步性</p>
+<p>②独立性</p>
+<p>③并行性</p>
+<p>④动态性</p>
+<p>⑤结构性</p>
+<p><strong>&#x3D;&#x3D;2.进程和程序的区别&#x3D;&#x3D;</strong></p>
+<p>①进程具有<u>动态性</u>，强调执行过程；</p>
+<p>程序具有<u>静态性</u>，是指令的有序集合。</p>
+<p>②进程是<u>并行</u>的，程序不是。</p>
+<p>③ <u>进程是竞争计算机系统资源的基本单位</u>，从而其并行性受到系统资源的制约。</p>
+<p>④不同的进程可以对应不同程序，也可以为同一程序（只要所对应的数据集不同。</p>
+<p>⑤作为被控制和管理的实体，除程序本身和所需数据集之外，应包括控制和管理信息。</p>
+<p>&#x3D;&#x3D;3.进程状态及其转换&#x3D;&#x3D;</p>
+<p>（看上面）</p>
+<h2><span id="第四章">第四章</span></h2><h3><span id="选择题">【选择题】</span></h3><p><strong>1.多道程序设计</strong></p>
+<p>多道程序设计引起资源共享，因此<u>对共享的资源进行调度</u>是必要的。</p>
+<p>即使利用了中断，CPU仍有可能未得到充分的利用，因此需要允许多道用户程序同时处于活动状态。</p>
+<p>多道程序设计的程度决定何时创建一个进程——创建的进程越多，每个进程可能执行的时间平均就越少。</p>
+<p><strong>2.高级、中级和低级调度</strong></p>
+<p>（1）高级调度——决定是否把进程添加到当前活跃的进程集合中（决定哪些进程进内存）。<u>作业调度、宏观调度</u>。</p>
+<p>（2）中级调度——①属于<u>交换</u>（Swapping）功能的一部分。②在<u>内存和外存之间</u>。③<u>系统的并发度过高时，就将某些进程暂时交换到外存。</u>缓解内存空间紧张。</p>
+<p>并发度的提高会：提高系统资源利用率；增加系统开销，降低进程速度，激烈资源竞争，死锁。</p>
+<p>（3）低级调度——<u>真正</u>决定下一次执行哪一个就绪进程。<u>进程调度、处理机调度</u>。</p>
+<p>低级调度的产生时机：一个进程执行结束、当前进程由于请求I&#x2F;O进入阻塞、以及分时系统中时间片到。</p>
+<p><strong>3.实现实时调度的基本条件</strong></p>
+<p>①提供必要的信息——就绪时间、开始截止时间和完成截止时间、处理时间、资源要求、优先级</p>
+<p>②系统处理能力</p>
+<p>③采用抢占式调度机制</p>
+<p>④具有快速切换机制</p>
+<p>4.实时调度的算法分类</p>
+<p>(1) 根据任务性质：硬实时、软实时 </p>
+<p>(2) <u>按调度方式</u>：非抢占式、抢占式 </p>
+<p>(3) 按调度时间：静态、动态 </p>
+<p>(4) 多处理机环境：集中式、分布式</p>
+<p><strong>5.实时调度算法</strong>（待补充例题）</p>
+<p>最重要的参考依据是：截止时间。</p>
+<p>①最早截止时间优先EDF</p>
+<p>根据任务的开始截止时间确定优先级。截止时间越早优先级越高。</p>
+<p>②最低松弛度优先LLF</p>
+<p>根据任务紧急的程度确定优先级。</p>
+<p>松弛度&#x3D;必须完成的时间点-其本身需要的运行时间-当前时间</p>
+<h3><span id="简答题">【简答题】</span></h3><p><strong>&#x3D;&#x3D;各种调度算法的侧重点和优缺点&#x3D;&#x3D;</strong></p>
+<p><strong>①先来先服务FIFO——侧重于作业在系统的等待时间。</strong></p>
+<p>优点：有利于长作业和CPU繁忙型作业。</p>
+<p>缺点：可能造成CPU和IO设备都没有充分发挥。</p>
+<p><strong>②短作业&#x2F;进程优先SJF——侧重于作业自身的估计运行时间。</strong></p>
+<p>优点：提高整体性能，有利于短作业。</p>
+<p>缺点：需要事先知道每个作业所需的处理机时间、长作业可能饿死、不利于分时系统（因为不可抢占）。</p>
+<p><strong>③最高响应比HRP——侧重于响应时间比。</strong></p>
+<p>优点：结合了先来先服务和短作业优先的特点，对待长短作业均衡，不会饿死。</p>
+<p>缺点：大量计算，消耗CPU时间。不适合作业调度。</p>
+<p><strong>④最短剩余时间SRT——侧重于预期剩余时间。抢占。</strong></p>
+<p>优点：好于前面的非抢占式算法。</p>
+<p>缺点：存在饥饿现象，不利于长作业。</p>
+<p>⑤轮转RR——基于先来先服务和时钟</p>
+<p>优点：主要用于分时系统中的进程调度。公平对待长短作业。</p>
+<p>缺点：如果时间片太小，吞吐量会降低。不适合作业调度。</p>
+<p><strong>⑥多级反馈队列MFQ</strong></p>
+<p>优点：有利于IO繁忙型作业。</p>
+<p>缺点：可能导致饥饿。</p>
+<p><strong>⑦多级队列</strong></p>
+<p><strong>⑧优先级法</strong></p>
+<p>静态优先级、动态优先级（优先级应随着等待时间的增加而提高）</p>
+<p>优点：资源利用率提高，公平性较好。</p>
+<p>缺点：系统开销大，实现比较复杂，存在 “饥饿”现象。</p>
+<h3><span id="计算题">【计算题】</span></h3><p>&#x3D;&#x3D;进程调度算法&#x3D;&#x3D;</p>
+<p><strong>1.公式</strong></p>
+<p>周转时间T&#x3D;<u>结束时间-到达时间</u></p>
+<p>平均周转时间</p>
+<p>带权周转时间W&#x3D;<u>周转时间 &#x2F; 服务时间</u>（也叫实际运行时间）</p>
+<p>响应比R&#x3D;<u>（响应时间+运行时间）&#x2F;运行时间</u></p>
+<p>响应时间&#x3D; <u>上个作业的结束时间-到达时间</u></p>
+<p>系统响应时间&#x3D;时间片*就绪队列中进程的数目</p>
+<p>2.先来先服务FCFS（不考）</p>
+<p>3.短作业&#x2F;进程优先SJF</p>
+<p>服务时间短的优先，同时需要考虑进程结束后下一个进程是否到达</p>
+<p>4.最高响应比HRP</p>
+<p>5.最短剩余时间SRT——抢占式版本的SJF</p>
+<p>6.轮转RR</p>
+<p>响应时间&#x3D;时间片长度*进程数</p>
+<h2><span id="第五章">第五章</span></h2><h3><span id="选择题">【选择题】</span></h3><p>信号量的初值（初值应≥0，只能赋值一次）、进程释放后当前资源情况（比如几个进程在等待）</p>
+<p>信号量的概念：信号量是一个记录型数据结构</p>
+<p>除初始化外，仅能通过两个原子操作wait(S)和signal(S)来访问信号量，前者为P操作， 后者为V操作</p>
+<p>信号量 S 的物理含义： </p>
+<p>(1) S&gt;0——表示有S个资源可用</p>
+<p>(2) S&#x3D;0——表示无资源可用 </p>
+<p>(3) S&lt;0——则 |S| 表示等待队列中进程的个数</p>
+<h3><span id="简答题">【简答题】</span></h3><p>临界区和进程互斥</p>
+<p>&#x3D;&#x3D;<strong>临界区、临界资源、原则</strong>&#x3D;&#x3D;</p>
+<p><strong>（1）临界资源：</strong>一次只允许一个进程使用的资源。</p>
+<p><strong>（2）临界区：</strong>访问临界资源的那段程序。</p>
+<p>相关临界区：多个进程的临界区。</p>
+<p><strong>（3）原则：</strong></p>
+<p>①<u>空闲让进</u>——当无进程在互斥区时，任何有权使用互斥区的进程都可进入。</p>
+<p>②<u>忙则等待</u>——禁止两个以上的进程同时进入互斥区。</p>
+<p>③<u>有限等</u><u>待</u>——任何进入互斥区的要求应在有限时间内得到满足。</p>
+<p>④<u>让权等待</u>——让出CPU使用权，处于等待状态的进程应放弃CPU。以免进程陷入“忙等”。</p>
+<p>【大题】——PV操作</p>
+<h2><span id="第六章">第六章</span></h2><p>死锁中不可能只有一个进程。</p>
+<h3><span id="选择题">【选择题】</span></h3><p>死锁的预防、避免、处理</p>
+<p>当前是否安全（安全→不死锁，不安全→可能死锁可能不死锁）</p>
+<p>资源分配图</p>
+<h3><span id="简答题">【简答题】</span></h3><p><strong>1.死锁的必要条件</strong></p>
+<p>①互斥条件</p>
+<p>②请求和保持条件</p>
+<p>③非剥夺条件</p>
+<p>④循环等待条件</p>
+<p><strong>2.死锁的预防</strong></p>
+<p>①互斥条件——不能破坏，必须保持</p>
+<p>②请求和保持条件——采用预先分配策略，一次性给（缺点：资源利用率低、可能饥饿）</p>
+<p>③非剥夺条件——收回已分给进程且尚未使用完的资源</p>
+<p>④循环等待条件——采用有序分配策略</p>
+<p><strong>3.死锁的处理</strong></p>
+<p>(1) 避免策略（预防、避免） 死锁不会发生 </p>
+<p>(2) 解决策略（检测、解除） 死锁可能发生</p>
+<p>4.死锁的避免</p>
+<p>【大题】——银行家算法</p>
+<p>1.当前是否死锁</p>
+<p>2.找出安全序列</p>
+<p>3.可分配？</p>
+<h2><span id="第七章">第七章</span></h2><h3><span id="选择题">【选择题】</span></h3><p>程序的链接</p>
+<p>程序的加载（加载后不一定是物理地址）</p>
+<p>连续分配方式</p>
+<p>【简答题】</p>
+<p>基本分页分配方式（逻辑分页、物理分块，物理块之间可不连续）</p>
+<p>分页、分段的区别</p>
+<p>可变分区分配的4个算法</p>
+<p>【大题】——和第八章一起考</p>
+<p>逻辑地址转换为物理地址</p>
+<p>十进制、十六进制、缺页率</p>
+<p>一个在内存不用调入，一个不在内存要调入（用到页面置换算法，LRU,CLOCK,FIFO）</p>
+<p>第八章</p>
+<p>【选择题】</p>
+<p>最优页面置换</p>
+<p>先进先出置换</p>
+<p>最近最少使用置换</p>
+<p>时钟算法</p>
+<p>【简答题】</p>
+<p>伙伴算法</p>
+<p>第九章</p>
+<p>【简答题】</p>
+<p>IO设备数据传输控制方式（程序直接、中断、DMA、通道）</p>
+<p>磁盘访问时间的组成</p>
+<p>SPOOLING系统</p>
+<p>【大题】</p>
+<p>磁盘调度算法</p>
+<p>第十章</p>
+<p>【简答题】</p>
+<p>FAT</p>
+<p>位示图</p>
+<p>UNIX成组链接（只适用磁盘管理）</p>
+<p>【大题】</p>
+<p>索引结构+文件占用大小</p>
+
+</div> 
+
+<script>
+    window.onload = detectors();
+</script>
+    <div class="post-footer">
+    <div class="h-line-primary"></div>
+    <nav class="post-nav">
+        <div class="prev-item">
+           
+        </div>
+        <div class="next-item">
+            
+                <div class="icon arrow-right"></div>
+                <div class="post-link">
+                  <a href="/2024/12/15/%E8%AE%A1%E7%BB%84%E5%A4%8D%E4%B9%A0%E7%AC%94%E8%AE%B0/">Next</a>  
+                </div>  
+            
+        </div>
+    </nav>
+</div>
+
+    
+      <div class="post-comment">
+
+    
+        <div id="vcomments"></div>
+        <script>
+            var META = ['nick', 'mail', 'link'];
+            var meta = 'nick,mail';
+            meta = meta.split(',').filter(item => {
+                return META.includes(item);
+            });
+            new Valine({
+                el: '#vcomments',
+                appId: 'f131VXTFNbI57QRvg5lJFtbq-MdYXbMMI',
+                appKey: 'd1GENolYcYpRMO2FbRRbarov',
+                lang: 'zh-CN',
+                placeholder: 'Say something',
+                avatar: 'mp',
+                meta: meta
+            })
+        </script>    
+     
+
+     
+    
+    
+
+</div>
+     
+  
+</article>
+        </div>
+      </div>
+      
+      <div class="footer">
+    <div class="flex-container">
+        <div class="footer-text">
+            
+            
+            
+                Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a target="_blank" rel="noopener" href="https://github.com/zoeingwingkei/frame/">Frame</a>
+                
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    
+      <div class="search-popup">
+    <div class="search-popup-overlay">  
+    </div>
+    <div class="search-popup-window" >
+        <div class="search-header">
+            <div class="search-input-container">
+              <input autocomplete="off" autocapitalize="off" maxlength="80"
+                     placeholder="Search Anything" spellcheck="false"
+                     type="search" class="search-input">
+            </div>
+            <div class="search-close-btn">
+                <div class="icon close-btn"></div>
+            </div>
+        </div>
+        <div class="search-result-container">
+        </div>
+    </div>
+</div>
+
+<script>
+    const searchConfig = {
+        path             : "/search.xml",
+        top_n_per_article: "1",
+        unescape         : "false",
+        trigger: "auto",
+        preload: "false"
+    }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js"></script>
+<script src="/js/search.js"></script>
+    
+    
+
+  </body>
+</html>
